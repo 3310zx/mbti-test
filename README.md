@@ -1,3 +1,14 @@
+---
+AIGC:
+    Label: "1"
+    ContentProducer: 001191440300708461136T1XGW3
+    ProduceID: c246678a38a94bf2e839f4ad8865f533_00521cf6ad0011f18039525400461939
+    ReservedCode1: MrxFUvBt3+Q4IPkIo/qbRarldUK2jfF3udOuu5+eY7Y1ERzEH0qbcgEFkSRFF6GVjAPp8y6Ge0O8apBhsIBKb0+I/ArIEdL58xqoZGORT3xgZNat2ht1IxPB4MdUGVUvKXSHptoAsO8M3bKjLkkyQbgT/DwgT23nbPhEgWsBLmsDzH6N6hN6Z8aNcCE=
+    ContentPropagator: 001191440300708461136T1XGW3
+    PropagateID: c246678a38a94bf2e839f4ad8865f533_00521cf6ad0011f18039525400461939
+    ReservedCode2: MrxFUvBt3+Q4IPkIo/qbRarldUK2jfF3udOuu5+eY7Y1ERzEH0qbcgEFkSRFF6GVjAPp8y6Ge0O8apBhsIBKb0+I/ArIEdL58xqoZGORT3xgZNat2ht1IxPB4MdUGVUvKXSHptoAsO8M3bKjLkkyQbgT/DwgT23nbPhEgWsBLmsDzH6N6hN6Z8aNcCE=
+---
+
 # MBTI 认知功能测试
 
 基于认知功能栈判定的 MBTI 测试，Material Design 3 风格，桌面 / 移动端自适应。
@@ -37,3 +48,4 @@ var ADS_SLOT   = '1234567890';           // 广告单元 slot（可留空）
 - 留空则页面不加载任何广告代码
 - 广告位位于：开始页底部 / 答题页底部 / 结果页下方
 - 需先通过 Google AdSense 审核，并在仓库根目录放置后台生成的 `ads.txt`
+*（内容由AI生成，仅供参考）*
