@@ -190,6 +190,8 @@
     .likert { gap: 6px; }
   }
 </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8250844529483545"
+     crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -280,24 +282,22 @@
  * 填上 ADS_CLIENT / ADS_SLOT 即自动注入官方广告代码；
  * 留空则页面不加载任何广告。
  * ============================================================ */
-var ADS_CLIENT = '';   // 例：'ca-pub-1234567890123456'
+var ADS_CLIENT = 'ca-pub-8250844529483545';   // 已配置发布商ID
 var ADS_SLOT   = '';   // 例：'1234567890'
 
 function initAds(){
-  if(!ADS_CLIENT){
+  if(!ADS_CLIENT || !ADS_SLOT){
     document.querySelectorAll('.ad-box').forEach(function(box){
-      box.innerHTML = '<div class="ad-placeholder">广告位（Google AdSense · 配置 ADS_CLIENT 后生效）</div>';
+      box.innerHTML = '<div class="ad-placeholder">广告位（Google AdSense · '
+        + (ADS_CLIENT ? '待配置广告单元 ADS_SLOT' : '配置 ADS_CLIENT 后生效')
+        + '）</div>';
     });
     return;
   }
-  var s = document.createElement('script');
-  s.async = true; s.crossOrigin = 'anonymous';
-  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADS_CLIENT;
-  document.head.appendChild(s);
   document.querySelectorAll('.ad-box').forEach(function(box){
     box.innerHTML = '<ins class="adsbygoogle" style="display:block" '
       + 'data-ad-client="' + ADS_CLIENT + '"'
-      + (ADS_SLOT ? ' data-ad-slot="' + ADS_SLOT + '"' : '')
+      + ' data-ad-slot="' + ADS_SLOT + '"'
       + ' data-ad-format="auto" data-full-width-responsive="true"></ins>';
     (window.adsbygoogle = window.adsbygoogle || []).push({});
   });
