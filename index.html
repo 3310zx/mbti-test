@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MBTI 认知功能测试</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============ Material 3 设计变量 ============ */
+  :root {
+    --md-primary: #6750A4;
+    --md-on-primary: #FFFFFF;
+    --md-primary-container: #EADDFF;
+    --md-on-primary-container: #21005D;
+    --md-secondary: #625B71;
+    --md-secondary-container: #E8DEF8;
+    --md-surface: #FEF7FF;
+    --md-surface-container-low: #F7F2FA;
+    --md-surface-container: #F3EDF7;
+    --md-on-surface: #1D1B20;
+    --md-on-surface-variant: #49454F;
+    --md-outline: #79747E;
+    --md-outline-variant: #CAC4D0;
+    --md-warning: #BA1A1A;
+    --md-warning-container: #FFDAD6;
+    --md-success: #386A20;
+    --elev-1: 0 1px 2px rgba(0,0,0,.30), 0 1px 3px 1px rgba(0,0,0,.15);
+    --elev-2: 0 1px 2px rgba(0,0,0,.30), 0 2px 6px 2px rgba(0,0,0,.15);
+    --elev-3: 0 4px 8px 3px rgba(0,0,0,.15), 0 1px 3px rgba(0,0,0,.30);
+    --radius: 12px;
+    --radius-pill: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Roboto", "Noto Sans SC", -apple-system, "PingFang SC", sans-serif;
+    background: var(--md-surface-container); color: var(--md-on-surface);
+    line-height: 1.7; min-height: 100vh;
+  }
+
+  /* ============ App Bar ============ */
+  .appbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--md-surface); color: var(--md-on-surface);
+    box-shadow: var(--elev-1);
+  }
+  .appbar-inner {
+    max-width: 720px; margin: 0 auto; padding: 14px 20px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .appbar-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--md-primary-container); color: var(--md-on-primary-container);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 15px; flex-shrink: 0;
+  }
+  .appbar-title { font-size: 17px; font-weight: 500; letter-spacing: .2px; }
+  .appbar-sub { font-size: 12px; color: var(--md-on-surface-variant); font-weight: 400; }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 24px 20px 80px; }
+
+  /* ============ 卡片 ============ */
+  .card {
+    background: var(--md-surface); border-radius: var(--radius);
+    box-shadow: var(--elev-1); padding: 24px;
+    animation: fadeIn .25s ease;
+  }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: none;} }
+
+  /* ============ 按钮（Material filled / tonal / text） ============ */
+  .btn {
+    border: none; cursor: pointer; font-family: inherit;
+    font-size: 14px; font-weight: 500; letter-spacing: .1px;
+    padding: 0 24px; height: 40px; border-radius: var(--radius-pill);
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: box-shadow .15s, background .15s, opacity .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn:active { box-shadow: var(--elev-2); }
+  .btn-filled { background: var(--md-primary); color: var(--md-on-primary); }
+  .btn-filled:disabled { background: var(--md-outline-variant); color: rgba(29,27,32,.38); box-shadow: none; cursor: not-allowed; }
+  .btn-tonal { background: var(--md-secondary-container); color: var(--md-on-surface); }
+  .btn-text { background: transparent; color: var(--md-primary); padding: 0 12px; }
+  .btn-text:hover { background: rgba(103,80,164,.08); }
+
+  /* ============ 进度条（Material linear indicator） ============ */
+  .progress { height: 4px; background: var(--md-outline-variant); border-radius: 999px; overflow: hidden; margin-bottom: 24px; }
+  .progress > div { height: 100%; background: var(--md-primary); border-radius: 999px; transition: width .3s ease; }
+
+  /* ============ 答题区 ============ */
+  .q-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+  .chip {
+    font-size: 12px; font-weight: 500; padding: 4px 12px; border-radius: 8px;
+    background: var(--md-primary-container); color: var(--md-on-primary-container);
+  }
+  .q-count { font-size: 12px; color: var(--md-on-surface-variant); }
+  .q-text { font-size: 18px; font-weight: 500; margin-bottom: 8px; letter-spacing: .1px; }
+  .q-hint { font-size: 13px; color: var(--md-on-surface-variant); margin-bottom: 18px; }
+
+  /* 程度评分：Material 风格按钮组 */
+  .likert { display: flex; gap: 10px; flex-wrap: wrap; }
+  .likert button {
+    flex: 1 1 15%; min-width: 100px; padding: 12px 6px;
+    background: var(--md-surface); color: var(--md-on-surface);
+    border: 1px solid var(--md-outline-variant); border-radius: var(--radius);
+    cursor: pointer; font-family: inherit; text-align: center;
+    transition: background .15s, border-color .15s, box-shadow .15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .likert button:hover { background: var(--md-surface-container-low); }
+  .likert button .v { display: block; font-size: 16px; font-weight: 700; color: var(--md-primary); }
+  .likert button .l { display: block; font-size: 12px; color: var(--md-on-surface-variant); margin-top: 2px; }
+  .likert button.sel {
+    background: var(--md-primary); border-color: var(--md-primary);
+    box-shadow: var(--elev-2);
+  }
+  .likert button.sel .v { color: var(--md-on-primary); }
+  .likert button.sel .l { color: var(--md-on-primary); font-weight: 500; }
+
+  .nav { display: flex; justify-content: space-between; gap: 12px; margin-top: 24px; }
+  .nav .spacer { flex: 1; }
+
+  /* ============ 结果页 ============ */
+  #result { display: none; }
+  .result-head { text-align: center; }
+  .type-letters {
+    font-size: 46px; font-weight: 700; letter-spacing: 6px;
+    color: var(--md-primary); margin: 8px 0 4px;
+  }
+  .type-name { font-size: 16px; color: var(--md-on-surface-variant); margin-bottom: 20px; }
+  .type-desc { font-size: 15px; text-align: left; padding: 0 8px; }
+  .stack-title { font-size: 13px; font-weight: 500; color: var(--md-on-surface-variant); margin: 24px 0 10px; text-align: left; }
+  .stack { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .stack .fn {
+    padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 500;
+    background: var(--md-secondary-container); color: var(--md-on-surface);
+  }
+  .stack .fn.dim { opacity: .38; }
+  .bar-row { text-align: left; margin-bottom: 16px; }
+  .bar-row .bar-label { display: flex; justify-content: space-between; font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+  .bar-row .bar-label .dim2 { color: var(--md-on-surface-variant); font-weight: 400; }
+  .bar-track { height: 6px; background: var(--md-outline-variant); border-radius: 999px; overflow: hidden; }
+  .bar-fill {
+    height: 100%; border-radius: 999px;
+    background: var(--md-primary); transition: width .4s ease;
+  }
+  .bar-fill.tie { background: var(--md-warning); }
+  .tie-note {
+    font-size: 13px; color: var(--md-warning);
+    background: var(--md-warning-container); border-radius: var(--radius);
+    padding: 12px 16px; text-align: left; margin-top: 20px;
+  }
+
+  /* ============ 广告位 ============ */
+  .ad-box { margin-top: 20px; min-height: 90px; }
+  .ad-placeholder {
+    width: 100%; height: 90px; border: 1.5px dashed var(--md-outline-variant); border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--md-outline); font-size: 12px; background: var(--md-surface);
+  }
+
+  .disclaimer {
+    font-size: 12px; color: var(--md-on-surface-variant); margin-top: 24px; text-align: left;
+    background: var(--md-surface); border: 1px solid var(--md-outline-variant);
+    border-radius: var(--radius); padding: 14px 16px;
+  }
+  .again { margin-top: 24px; text-align: center; }
+
+  /* ============ 移动端适配 ============ */
+  @media (max-width: 600px) {
+    .wrap { padding: 16px 14px 60px; }
+    .appbar-inner { padding: 12px 16px; }
+    .card { padding: 20px 16px; }
+    .q-text { font-size: 16px; }
+    .likert { gap: 8px; }
+    .likert button { flex: 1 1 30%; min-width: 0; padding: 10px 4px; }
+    .likert button .v { font-size: 15px; }
+    .likert button .l { font-size: 11px; }
+    .nav button { flex: 1; }
+    .type-letters { font-size: 36px; letter-spacing: 4px; }
+    .stack .fn { font-size: 12px; padding: 6px 10px; }
+    .bar-label { font-size: 12px; }
+  }
+  @media (max-width: 380px) {
+    .likert button .l { font-size: 10px; }
+    .likert { gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- App Bar -->
+  <div class="appbar">
+    <div class="appbar-inner">
+      <div class="appbar-icon">M</div>
+      <div>
+        <div class="appbar-title">MBTI 认知功能测试</div>
+        <div class="appbar-sub">程度评分 · 规避巴纳姆效应</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- 开始页 -->
+    <div id="start">
+      <div class="card">
+        <div class="q-text" style="font-size:16px;font-weight:500;">
+          每个维度 8 道陈述题，采用 6 级程度评分（无"不确定"中间项，强制你做出倾向）。
+          计分基于 MBTI 底层认知功能，交叉验证、逐题加权——比二选一更细，比模糊描述更准。
+        </div>
+        <div style="text-align:center;margin-top:28px;">
+          <button class="btn btn-filled" onclick="startTest()" style="height:44px;padding:0 40px;font-size:15px;">开始测试</button>
+        </div>
+      </div>
+      <div class="ad-box" id="ad-start"></div>
+    </div>
+
+    <!-- 答题页 -->
+    <div id="quiz" style="display:none;">
+      <div class="progress"><div id="progressBar" style="width:0%"></div></div>
+      <div class="card">
+        <div class="q-meta">
+          <span class="chip" id="dimTag"></span>
+          <span class="q-count" id="qCount"></span>
+        </div>
+        <div class="q-text" id="qText"></div>
+        <div class="q-hint">你对这句话的认同程度：</div>
+        <div class="likert" id="likert"></div>
+      </div>
+      <div class="nav">
+        <button class="btn btn-text" id="prevBtn" onclick="prev()">上一题</button>
+        <span class="spacer"></span>
+        <button class="btn btn-filled" id="nextBtn" onclick="next()" disabled>下一题</button>
+      </div>
+      <div class="ad-box" id="ad-quiz"></div>
+    </div>
+
+    <!-- 结果页 -->
+    <div id="result">
+      <div class="card">
+        <div class="result-head">
+          <div id="typeLetters" class="type-letters"></div>
+          <div id="typeName" class="type-name"></div>
+        </div>
+        <div class="type-desc" id="typeDesc"></div>
+        <div class="stack-title">认知功能栈（主导 → 劣势）</div>
+        <div class="stack" id="stackBox"></div>
+        <div id="bars"></div>
+        <div id="tieNote" class="tie-note" style="display:none;"></div>
+      </div>
+      <div class="ad-box" id="ad-result"></div>
+      <div class="disclaimer">
+        <b>提示：</b>MBTI 属于职业测评工具而非心理诊断，其结果仅供自我认知参考，不构成科学定论。
+        程度评分能降低作答噪声，但仍受主观偏差影响；若某维度倾向 &lt;58%，建议结合功能描述或换时重测复核。
+      </div>
+      <div class="again">
+        <button class="btn btn-tonal" onclick="location.reload()">重新测试</button>
+      </div>
+    </div>
+
+  </div>
+
+<script>
+/* ============================================================
+ * Google AdSense 广告接口（预留）
+ * ------------------------------------------------------------
+ * 1. 在 Google AdSense 后台创建广告单元，拿到发布商 ID（ca-pub-xxxxxxxx）
+ *    和可选的广告单元 slot 号；
+ * 2. 把下面两个常量填上，刷新页面即自动注入官方广告脚本与广告位；
+ * 3. 留空（保持 ''）则不会加载任何广告代码，页面无广告。
+ * 广告位已预留在三个位置：开始页底部 / 答题页底部 / 结果页下方。
+ * ============================================================ */
+var ADS_CLIENT = '';   // 例：'ca-pub-1234567890123456'
+var ADS_SLOT   = '';   // 例：'1234567890'（广告单元 slot，可留空）
+
+function initAds(){
+  if(!ADS_CLIENT){
+    document.querySelectorAll('.ad-box').forEach(function(box){
+      box.innerHTML = '<div class="ad-placeholder">广告位（Google AdSense · 配置 ADS_CLIENT 后生效）</div>';
+    });
+    return;
+  }
+  var s = document.createElement('script');
+  s.async = true; s.crossOrigin = 'anonymous';
+  s.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + ADS_CLIENT;
+  document.head.appendChild(s);
+
+  document.querySelectorAll('.ad-box').forEach(function(box){
+    box.innerHTML = '<ins class="adsbygoogle" style="display:block" '
+      + 'data-ad-client="' + ADS_CLIENT + '"'
+      + (ADS_SLOT ? ' data-ad-slot="' + ADS_SLOT + '"' : '')
+      + ' data-ad-format="auto" data-full-width-responsive="true"></ins>';
+    (window.adsbygoogle = window.adsbygoogle || []).push({});
+  });
+}
+
+/* ---------------- 题库（每维度 8 题；dir=+1 同意偏向首字母，dir=-1 同意偏向次字母） ---------------- */
+var QUESTIONS = [
+  // E / I
+  { dim:'EI', dir: 1,  text:'参加聚会、和人交流能让我恢复精力，而不是消耗精力。' },
+  { dim:'EI', dir:-1,  text:'长时间与人相处后，我迫切需要独处来"回血"。' },
+  { dim:'EI', dir: 1,  text:'遇到问题，我倾向于找人讨论，边聊边理清思路。' },
+  { dim:'EI', dir:-1,  text:'开口前，我通常先在脑子里把话想清楚再说。' },
+  { dim:'EI', dir: 1,  text:'热闹的场合让我兴奋，结束后我还想继续找人聊。' },
+  { dim:'EI', dir:-1,  text:'一个人待一整天我也不会觉得无聊，反而很自在。' },
+  { dim:'EI', dir: 1,  text:'团队讨论时，我常主动抛话题、带节奏。' },
+  { dim:'EI', dir:-1,  text:'在人群中，我更多时候是倾听者而不是发言者。' },
+
+  // S / N
+  { dim:'SN', dir: 1,  text:'做决定时，我主要依赖实际经验和确凿的数据。' },
+  { dim:'SN', dir:-1,  text:'做决定时，我更相信自己的直觉和对未来的预感。' },
+  { dim:'SN', dir: 1,  text:'看方案时，我优先关注具体细节和可落地的步骤。' },
+  { dim:'SN', dir:-1,  text:'看方案时，我更容易先想到整体思路和潜在可能性。' },
+  { dim:'SN', dir: 1,  text:'学新东西时，我习惯按步骤实操、把细节记牢。' },
+  { dim:'SN', dir:-1,  text:'学新东西时，我习惯先搭整体框架、理解背后原理。' },
+  { dim:'SN', dir: 1,  text:'回忆一件事时，我常能想起具体的场景细节和原话。' },
+  { dim:'SN', dir:-1,  text:'我对现有做法常常不满，总想尝试更新更好的方式。' },
+
+  // T / F
+  { dim:'TF', dir: 1,  text:'朋友倾诉时，我更倾向于直接给分析和解决办法。' },
+  { dim:'TF', dir:-1,  text:'朋友倾诉时，我更倾向于先安慰、让他感觉被理解。' },
+  { dim:'TF', dir: 1,  text:'做重要决定时，我最看重合理性、是否经得起推敲。' },
+  { dim:'TF', dir:-1,  text:'做重要决定时，我最看重是否符合自己的心意。' },
+  { dim:'TF', dir: 1,  text:'当规则与人情冲突时，我认为公平和原则优先。' },
+  { dim:'TF', dir:-1,  text:'当规则与人情冲突时，我认为应照顾具体情况与人情。' },
+  { dim:'TF', dir: 1,  text:'帮人拿主意时，我宁可说真话，哪怕话不顺耳。' },
+  { dim:'TF', dir:-1,  text:'与人争论时，我很在意气氛和对方的感受。' },
+
+  // J / P
+  { dim:'JP', dir: 1,  text:'我习惯把事情提前规划好，并按计划推进。' },
+  { dim:'JP', dir:-1,  text:'我更喜欢灵活应对，不喜欢被计划框死。' },
+  { dim:'JP', dir: 1,  text:'我的桌面/工作区通常井然有序、心里有数。' },
+  { dim:'JP', dir:-1,  text:'我常同时开着好几件事，中途改主意很常见。' },
+  { dim:'JP', dir: 1,  text:'旅行前，我会仔细订好行程和攻略。' },
+  { dim:'JP', dir:-1,  text:'旅行时，我倾向只定个大方向，到了再说。' },
+  { dim:'JP', dir: 1,  text:'任务多时，我喜欢列清单、按优先级一件件处理。' },
+  { dim:'JP', dir:-1,  text:'对我来说，计划赶不上变化，订了也常不执行。' },
+];
+
+var DIMS = ['EI','SN','TF','JP'];
+var DIM_KEYS = { EI:['E','I'], SN:['S','N'], TF:['T','F'], JP:['J','P'] };
+
+var STACKS = {
+  INTJ: ['Ni','Te','Fi','Se'], INTP: ['Ti','Ne','Si','Fe'],
+  ENTJ: ['Te','Ni','Se','Fi'], ENTP: ['Ne','Ti','Fe','Si'],
+  INFJ: ['Ni','Fe','Ti','Se'], INFP: ['Fi','Ne','Si','Te'],
+  ENFJ: ['Fe','Ni','Se','Ti'], ENFP: ['Ne','Fi','Te','Si'],
+  ISTJ: ['Si','Te','Fi','Ne'], ISFJ: ['Si','Fe','Ti','Ne'],
+  ESTJ: ['Te','Si','Ne','Fi'], ESFJ: ['Fe','Si','Ne','Ti'],
+  ISTP: ['Ti','Se','Ni','Fe'], ISFP: ['Fi','Se','Ni','Te'],
+  ESTP: ['Se','Ti','Fe','Ni'], ESFP: ['Se','Fi','Te','Ni'],
+};
+var TYPE_INFO = {
+  INTJ:{ name:'建筑师', desc:'Ni 主导：习惯用直觉洞察全局与长远走向，Te 辅助把构想拆成可执行方案。独立、目标感强，倾向于自己把事想透再行动，对低效和含糊缺乏耐心。' },
+  INTP:{ name:'逻辑学家', desc:'Ti 主导：追求概念的内在一致性，喜欢拆解问题到最底层原理。Ne 辅助发散新可能，是典型"想得深、发散广"的思考者，重视精确表达。' },
+  ENTJ:{ name:'指挥官', desc:'Te 主导：执行力与组织力突出，善于调动资源、推进目标。Ni 辅助提供战略眼光，天生适合带团队和攻坚，讨厌失控与低效。' },
+  ENTP:{ name:'辩论家', desc:'Ne 主导：思维活跃、点子层出不穷，喜欢挑战既有框架。Ti 辅助把想法打磨成严密论证，享受思想交锋，但对重复性事务缺乏耐心。' },
+  INFJ:{ name:'提倡者', desc:'Ni 主导：对人与事有深刻洞察和使命感，Fe 辅助敏锐体察他人情绪。理想主义且坚定，常常默默推动自己相信的改变。' },
+  INFP:{ name:'调停者', desc:'Fi 主导：价值观和个人信念是第一行动准则，忠于内心。Ne 辅助在理想与现实间探索可能性，同理心强，追求有意义的工作与生活。' },
+  ENFJ:{ name:'主人公', desc:'Fe 主导：擅长理解、感染并凝聚他人，是天生的组织者与激励者。Ni 辅助看清团队方向，乐于成就别人，社交中自带温暖气场。' },
+  ENFP:{ name:'竞选者', desc:'Ne 主导：热情、好奇、脑洞大，对人和新事物充满兴趣。Fi 辅助在众多可能中捕捉真正打动自己的那一个，适合创意与连接型工作。' },
+  ISTJ:{ name:'物流师', desc:'Si 主导：依赖经验与既定流程，做事稳妥可靠、注重细节。Te 辅助把标准高效落地，是团队里"说到做到"的稳定器。' },
+  ISFJ:{ name:'守卫者', desc:'Si 主导：重视传统与承诺，细心体贴地照顾身边人。Fe 辅助对他人需求高度敏感，默默付出、可靠低调，是值得信赖的后盾。' },
+  ESTJ:{ name:'总经理', desc:'Te 主导：务实高效，善于制定规则并推动执行。Si 辅助提供扎实的经验参照，适合管理和组织场景，重视秩序与结果。' },
+  ESFJ:{ name:'执政官', desc:'Fe 主导：热心组织社群、协调关系，关注他人感受与和谐氛围。Si 辅助在熟悉圈子里游刃有余，是天然的"润滑剂"与召集人。' },
+  ISTP:{ name:'鉴赏家', desc:'Ti 主导：冷静务实，喜欢动手钻研事物的运行原理。Se 辅助提供敏锐的现场感知与动手能力，遇事不慌、随机应变，是解决问题的高手。' },
+  ISFP:{ name:'探险家', desc:'Fi 主导：内心有清晰的审美与价值观，低调而有主见。Se 辅助活在当下、享受感官体验，用行动而非言语表达自我。' },
+  ESTP:{ name:'企业家', desc:'Se 主导：反应快、行动力强，擅长把握当下机会。Ti 辅助在实战中快速推理，喜欢刺激与挑战，天生适合高压应变场景。' },
+  ESFP:{ name:'表演者', desc:'Se 主导：热情外向，享受当下并感染周围人。Fi 辅助在热闹中保持对自我的忠诚，是气氛担当与体验派。' },
+};
+var FN_NAME = { Ni:'直觉内倾', Ne:'直觉外倾', Ti:'思考内倾', Te:'思考外倾',
+  Fi:'情感内倾', Fe:'情感外倾', Si:'感觉内倾', Se:'感觉外倾' };
+
+var SCALE = [
+  { v:1, l:'完全同意' }, { v:2, l:'同意' }, { v:3, l:'略同意' },
+  { v:4, l:'略不同意' }, { v:5, l:'不同意' }, { v:6, l:'完全不同意' }
+];
+
+var cur = 0;
+var answers = new Array(QUESTIONS.length).fill(null);
+
+function startTest(){
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+  render();
+}
+function dimName(d){ return { EI:'能量来源', SN:'信息获取', TF:'决策方式', JP:'生活方式' }[d]; }
+
+function render(){
+  var q = QUESTIONS[cur];
+  document.getElementById('dimTag').textContent = dimName(q.dim);
+  document.getElementById('qCount').textContent = (cur+1) + ' / ' + QUESTIONS.length;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('progressBar').style.width = ((cur+1)/QUESTIONS.length*100) + '%';
+
+  var lb = document.getElementById('likert');
+  lb.innerHTML = '';
+  SCALE.forEach(function(opt){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span class="v">' + opt.v + '</span><span class="l">' + opt.l + '</span>';
+    if(answers[cur] === opt.v){ b.className = 'sel'; }
+    b.onclick = (function(v){ return function(){ answer(v); }; })(opt.v);
+    lb.appendChild(b);
+  });
+
+  document.getElementById('prevBtn').style.visibility = cur === 0 ? 'hidden' : 'visible';
+  document.getElementById('nextBtn').textContent = cur === QUESTIONS.length-1 ? '查看结果' : '下一题';
+  document.getElementById('nextBtn').disabled = answers[cur] === null;
+}
+function answer(v){
+  answers[cur] = v;
+  render();
+  if(cur < QUESTIONS.length-1){ setTimeout(next, 160); }
+}
+function next(){
+  if(cur < QUESTIONS.length-1){ cur++; render(); }
+  else { showResult(); }
+}
+function prev(){ if(cur>0){ cur--; render(); } }
+
+function showResult(){
+  document.getElementById('quiz').style.display = 'none';
+  document.getElementById('result').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+
+  var sum = {}, maxScore = {};
+  DIMS.forEach(function(d){ sum[d] = 0; maxScore[d] = 0; });
+  QUESTIONS.forEach(function(q, i){
+    if(answers[i] === null) return;
+    var t = 7 - answers[i];
+    sum[q.dim] += t * q.dir;
+    maxScore[q.dim] += 6;
+  });
+
+  var type = '';
+  var weakDims = [];
+  var dimResults = {};
+  DIMS.forEach(function(d){
+    var k = DIM_KEYS[d];
+    var ratio = (sum[d] + maxScore[d]) / (2 * maxScore[d]);
+    dimResults[d] = ratio;
+    if(ratio < 0.58 && ratio > 0.42){ weakDims.push(dimName(d)); }
+    type += (ratio >= 0.5 ? k[0] : k[1]);
+  });
+
+  var stack = STACKS[type];
+  document.getElementById('typeLetters').textContent = type;
+  document.getElementById('typeName').textContent = TYPE_INFO[type].name;
+  document.getElementById('typeDesc').innerHTML = TYPE_INFO[type].desc;
+
+  var box = document.getElementById('stackBox');
+  box.innerHTML = '';
+  stack.forEach(function(fn, idx){
+    var el = document.createElement('div');
+    el.className = 'fn' + (idx>=2 ? ' dim' : '');
+    el.textContent = fn + ' · ' + FN_NAME[fn];
+    el.title = idx===0 ? '主导功能' : idx===1 ? '辅助功能' : idx===2 ? '第三功能' : '劣势功能';
+    box.appendChild(el);
+  });
+
+  var bars = document.getElementById('bars');
+  bars.innerHTML = '';
+  DIMS.forEach(function(d){
+    var k = DIM_KEYS[d];
+    var ratio = dimResults[d];
+    var pct = Math.round(ratio * 100);
+    var weak = ratio < 0.58 && ratio > 0.42;
+    var row = document.createElement('div');
+    row.className = 'bar-row';
+    row.innerHTML =
+      '<div class="bar-label"><span>' + k[0] + ' ' + pct + '%</span>' +
+      '<span class="dim2">' + dimName(d) + '</span>' +
+      '<span class="dim2">' + k[1] + ' ' + (100-pct) + '%</span></div>' +
+      '<div class="bar-track"><div class="bar-fill' + (weak ? ' tie' : '') + '" style="width:' + pct + '%"></div></div>';
+    bars.appendChild(row);
+  });
+
+  var tie = document.getElementById('tieNote');
+  if(weakDims.length > 0){
+    tie.style.display = 'block';
+    tie.innerHTML = '<b>注意：</b>「' + weakDims.join('、') + '」维度倾向 <58%，属于偏弱区间。' +
+      '结果仍按常规倾向给出，建议对照功能描述自评，或换一天重测复核。';
+  } else {
+    tie.style.display = 'none';
+  }
+}
+
+initAds();
+</script>
+</body>
+</html>
