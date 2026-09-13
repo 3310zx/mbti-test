@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://3310zx.github.io/mbti-test/sitemap.xml
