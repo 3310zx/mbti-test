@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>隐私政策 - MBTI 认知功能测试</title>
+<meta name="description" content="了解 MBTI 认知功能测试如何处理您的数据：测试作答不上传不存储、localStorage 仅保存答题进度与主题偏好、Google AdSense 广告与 Cookie 说明，以及您的数据权利。">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://3310zx.github.io/mbti-test/privacy.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"隐私政策 - MBTI 认知功能测试","description":"MBTI 认知功能测试的隐私政策：数据收集、Cookie 与本地存储、第三方广告服务、用户权利与联系方式。","url":"https://3310zx.github.io/mbti-test/privacy.html","inLanguage":"zh-CN","dateModified":"2026-09-13"}</script>
+<style>
+:root{
+  --md-primary:#0071E3; --md-primary-deep:#0077ED; --md-on-primary:#FFFFFF;
+  --md-primary-container:#E8F2FF; --md-on-primary-container:#0B3D91;
+  --md-secondary:#6E6E73; --md-secondary-container:#F0F0F2;
+  --md-surface:#FFFFFF; --md-surface-container-low:#F5F5F7; --md-surface-container:#F5F5F7;
+  --md-on-surface:#1D1D1F; --md-on-surface-variant:#6E6E73;
+  --md-outline:#D2D2D7; --md-outline-variant:#D2D2D7; --md-warning:#D70015;
+  --elev-1:0 1px 0 rgba(0,0,0,.04),0 10px 28px -14px rgba(0,0,0,.12);
+  --elev-2:0 2px 8px rgba(0,0,0,.08),0 18px 40px -18px rgba(0,0,0,.18);
+  --radius:18px; --radius-pill:980px;
+  --appbar-bg:rgba(251,251,253,.78); --appbar-border:rgba(0,0,0,.08);
+  --md-tonal-bg:rgba(0,0,0,.05); --md-tonal-bg-hover:rgba(0,0,0,.09);
+  --md-track:#E8E8ED;
+  --rt-c1:#4056E8; --rt-c2:#7C6BF0; --rt-c3:#2EC4B6;
+}
+html[data-theme="dark"]{
+  --md-primary:#0A84FF; --md-on-primary:#FFFFFF; --md-primary-container:#1F3A5F;
+  --md-on-primary-container:#BFDBFF; --md-secondary:#98989D; --md-secondary-container:#2C2C2E;
+  --md-surface:#0D0D0D; --md-surface-container-low:#161617; --md-surface-container:#000000;
+  --md-on-surface:#F5F5F7; --md-on-surface-variant:#6E6E73;
+  --md-outline:#3A3A3C; --md-outline-variant:#2C2C2E;
+  --elev-1:0 1px 0 rgba(255,255,255,.06),0 10px 28px -14px rgba(0,0,0,.6);
+  --elev-2:0 2px 8px rgba(0,0,0,.5),0 18px 40px -18px rgba(0,0,0,.7);
+  --appbar-bg:rgba(13,13,13,.78); --appbar-border:rgba(255,255,255,.08);
+  --md-tonal-bg:rgba(255,255,255,.08); --md-tonal-bg-hover:rgba(255,255,255,.14);
+  --md-track:#2C2C2E;
+  --rt-c1:#7C8CFF; --rt-c2:#9B8CF8; --rt-c3:#4EE0D2;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro SC","PingFang SC","Noto Sans SC","Helvetica Neue",sans-serif;
+  background:var(--md-surface-container); color:var(--md-on-surface); line-height:1.75; min-height:100vh;
+  letter-spacing:.01em; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  transition:background .4s ease-out,color .3s ease-out;
+}
+a{color:inherit;text-decoration:none}
+.appbar{position:sticky;top:0;z-index:10;background:var(--appbar-bg);
+  -webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);
+  border-bottom:1px solid var(--appbar-border)}
+.appbar-inner{max-width:880px;margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;cursor:pointer}
+.brand:hover .brand-name{color:var(--md-primary)}
+.appbar-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--rt-c1),var(--rt-c2));color:#fff;font-weight:700;font-size:18px}
+.brand-name{font-size:15px;font-weight:600;line-height:1.2}
+.brand-sub{font-size:11px;color:var(--md-on-surface-variant)}
+.spacer{margin-left:auto}
+.nav-link{font-size:13px;font-weight:500;color:var(--md-on-surface);padding:7px 14px;border-radius:var(--radius-pill);
+  border:1px solid var(--md-outline-variant);background:var(--md-surface);transition:transform .15s ease,border-color .2s}
+.nav-link:hover{transform:scale(1.03);border-color:var(--rt-c1);color:var(--rt-c1)}
+.theme-toggle{width:38px;height:38px;border-radius:50%;border:1px solid var(--md-outline-variant);
+  background:var(--md-surface);color:var(--md-on-surface);cursor:pointer;font-size:16px;
+  display:flex;align-items:center;justify-content:center;transition:transform .15s ease,background .2s}
+.theme-toggle:hover{background:var(--md-surface-container-low);transform:scale(1.06)}
+.wrap{max-width:880px;margin:0 auto;padding:44px 22px 70px}
+/* hero */
+.hero{border-radius:28px;padding:44px 40px;color:#fff;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,var(--rt-c1),var(--rt-c2) 55%,var(--rt-c3));
+  box-shadow:var(--elev-2);animation:fadeIn .5s ease-out both}
+.hero h1{font-size:30px;font-weight:800;letter-spacing:.02em}
+.hero .hsub{margin-top:12px;font-size:15px;max-width:680px;opacity:.96;line-height:1.7}
+.hero .hmeta{margin-top:16px;display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;padding:5px 14px;border-radius:var(--radius-pill);background:rgba(255,255,255,.22)}
+/* prose */
+.card{background:var(--md-surface);border-radius:var(--radius);padding:30px 32px;box-shadow:var(--elev-1);border:1px solid var(--md-outline-variant);margin-top:30px}
+.card h2{font-size:20px;font-weight:700;display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.card h2::before{content:"";width:5px;height:22px;border-radius:3px;background:linear-gradient(180deg,var(--rt-c1),var(--rt-c3))}
+.card h3{font-size:16px;font-weight:700;margin:18px 0 8px}
+.card p{font-size:15px;color:var(--md-on-surface);margin-bottom:10px}
+.card ul{font-size:15px;padding-left:22px;margin-bottom:10px}
+.card li{margin-bottom:8px}
+.card li b{font-weight:700}
+.muted{color:var(--md-on-surface-variant)}
+a.link{color:var(--md-primary);font-weight:500}
+a.link:hover{text-decoration:underline}
+.notice{border-radius:14px;padding:14px 18px;background:var(--md-tonal-bg);border-left:4px solid var(--md-warning);font-size:14px;margin-top:14px}
+.notice code{font-size:13px;background:var(--md-tonal-bg-hover);padding:1px 7px;border-radius:6px}
+footer{padding:26px 22px;border-top:1px solid var(--md-outline-variant);color:var(--md-on-surface-variant);font-size:12px;text-align:center;line-height:1.9}
+footer a{color:var(--md-primary);font-weight:500}
+@media (max-width:760px){.hero{padding:32px 24px}.hero h1{font-size:24px}.card{padding:24px 20px}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+  <div class="appbar">
+    <div class="appbar-inner">
+      <a class="brand" href="index.html" aria-label="返回 MBTI 测试首页">
+        <div class="appbar-icon">M</div>
+        <div>
+          <div class="brand-name">MBTI 认知功能测试</div>
+          <div class="brand-sub">隐私政策</div>
+        </div>
+      </a>
+      <div class="spacer"></div>
+      <a class="nav-link" href="index.html">开始测试</a>
+      <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="切换深色模式">🌙</button>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header class="hero">
+      <h1>隐私政策</h1>
+      <p class="hsub">我们尊重并保护您的隐私。本页说明本网站在访问与测试过程中涉及的个人数据处理方式、Cookie 与本地存储的使用、第三方广告服务以及您享有的权利。</p>
+      <div class="hmeta">生效日期：2026-09-13 · 最后更新：2026-09-13</div>
+    </header>
+
+    <section class="card">
+      <h2>一、我们收集什么数据</h2>
+      <p><b>测试作答内容不存储、不上传。</b>本网站的全部测试（MBTI 认知功能测试）均在您的浏览器本地完成计算，您的逐题作答、评分结果与类型判定<strong>不会发送到任何服务器</strong>，我们无法查看或留存您的答题记录。</p>
+      <p><b>不注册、不登录、不收集个人信息。</b>本网站不要求注册账号，不会主动收集您的姓名、邮箱、手机号、证件号码等可识别身份的个人信息。</p>
+      <p>网站托管方与广告服务商（见下文第三方服务）可能记录访问所必需的日志数据，如 IP 地址、浏览器类型、访问时间与页面 URL，用于网站安全、访问统计与广告投放。</p>
+    </section>
+
+    <section class="card">
+      <h2>二、Cookies 与本地存储</h2>
+      <p>本网站使用浏览器 <b>localStorage（本地存储）</b> 保存以下两类信息，均只存在于您的设备上，不上传到任何服务器：</p>
+      <ul>
+        <li><b>答题进度</b>：用于在您刷新或中途离开后继续未完成的测试（在支持的情况下可手动清除）；</li>
+        <li><b>主题偏好</b>：用于记忆您选择的浅色 / 深色显示模式，并在您下次访问时自动应用。</li>
+      </ul>
+      <p>您可随时通过浏览器设置清除本地存储数据，清除后仅影响上述进度与外观偏好，不影响网站其他功能。</p>
+    </section>
+
+    <section class="card">
+      <h2>三、第三方服务（Google AdSense 广告）</h2>
+      <p>本网站通过 <b>Google AdSense</b> 展示第三方广告以维持运营。Google 及其合作伙伴可能使用 Cookie 或类似技术，根据您在其他网站的浏览历史展示更相关的广告（即基于兴趣的广告）。</p>
+      <ul>
+        <li><b>第三方 Cookie / DART Cookie：</b>Google 及其广告合作伙伴可能投放 DART Cookie 或第三方 Cookie，用于在其各自网站上展示广告。</li>
+        <li><b>个性化广告设置：</b>您可以通过 <a class="link" href="https://adssettings.google.com" target="_blank" rel="noopener nofollow">https://adssettings.google.com</a> 随时查看、管理或退出 Google 的个性化广告。</li>
+        <li><b>退出方式：</b>您也可以访问 <a class="link" href="https://www.aboutads.info" target="_blank" rel="noopener nofollow">www.aboutads.info</a> 了解并选择退出部分第三方广告网络，或通过浏览器设置禁用第三方 Cookie。</li>
+      </ul>
+      <p>第三方 Cookie 与数据的使用由相应广告服务商（如 Google）的隐私政策管辖，本网站不对其处理行为负责。建议您同时阅读 Google 的隐私政策以了解其数据实践。</p>
+    </section>
+
+    <section class="card">
+      <h2>四、数据安全</h2>
+      <p>由于本网站不存储您的测试作答与个人信息，您面临的个人数据泄露风险极低。对于服务器与托管层面记录的访问日志，我们采取合理的安全措施（如访问控制与最小化留存）加以保护，防止未授权访问、披露或篡改。</p>
+      <p>请注意：任何经由互联网传输或存储的方法均无法保证绝对安全，我们会在能力范围内尽最大努力保护您的数据。</p>
+    </section>
+
+    <section class="card">
+      <h2>五、您的权利</h2>
+      <ul>
+        <li><b>访问与更正：</b>由于我们不保存您的个人信息，您无需向我们申请访问或更正；您设备上的本地数据可随时在浏览器设置中查看与清除。</li>
+        <li><b>删除：</b>您可通过浏览器设置清除本网站的所有本地存储数据（答题进度、主题偏好等）。</li>
+        <li><b>选择退出个性化广告：</b>您可通过 <a class="link" href="https://adssettings.google.com" target="_blank" rel="noopener nofollow">Google 广告设置</a> 选择退出基于兴趣的个性化广告，或通过浏览器禁用第三方 Cookie。</li>
+        <li><b>提出请求：</b>如您对个人数据处理有任何疑问或诉求，可通过下方联系方式与我们联系，我们将在合理期限内予以处理。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>六、政策更新与联系方式</h2>
+      <p>本隐私政策可能根据法律法规、网站功能或第三方服务的调整进行更新。更新后的版本将在本页面公布，并更新页面顶部的生效日期。重大变更时，我们会在网站显著位置提示。</p>
+      <p>如您对本隐私政策有任何疑问、意见或建议，请通过以下邮箱与我们联系：</p>
+      <div class="notice">⚠️ 请联系邮箱占位符：<code>support@example.com</code> —— <strong>正式上线前请替换为您真实的联系邮箱。</strong></div>
+    </section>
+  </div>
+
+  <footer>
+    <div><a href="index.html">MBTI 认知功能测试</a> · <a href="types/index.html">16 种人格类型百科</a> · <a href="privacy.html">隐私政策</a></div>
+    <div>© 2026 MBTI 认知功能测试 · 仅供自我认知参考，非心理诊断</div>
+  </footer>
+<script>
+/* 深浅主题：localStorage 记忆 + 首载跟随系统（与主站同键 mbti-theme，跨页同步） */
+(function(){
+  var KEY = 'mbti-theme';
+  var root = document.documentElement;
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch(e) {}
+  var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var theme = saved || (prefersDark ? 'dark' : 'light');
+  root.setAttribute('data-theme', theme);
+  window.__mbtiTheme = theme;
+  function syncBtn(t){
+    var b = document.getElementById('themeToggle');
+    if(!b) return;
+    b.textContent = (t === 'dark') ? '☀️' : '🌙';
+    b.setAttribute('aria-label', (t === 'dark') ? '切换到浅色模式' : '切换到深色模式');
+  }
+  window.toggleTheme = function(){
+    var next = (root.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    window.__mbtiTheme = next;
+    try { localStorage.setItem(KEY, next); } catch(e) {}
+    syncBtn(next);
+  };
+  if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').addEventListener){
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e){
+      var cur = null; try { cur = localStorage.getItem(KEY); } catch(_) {}
+      if(!cur){
+        var t = e.matches ? 'dark' : 'light';
+        root.setAttribute('data-theme', t);
+        window.__mbtiTheme = t;
+        syncBtn(t);
+      }
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', function(){ syncBtn(root.getAttribute('data-theme')); });
+  } else { syncBtn(root.getAttribute('data-theme')); }
+})();
+</script>
+</body>
+</html>
