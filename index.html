@@ -2514,12 +2514,14 @@
   html[data-theme="dark"] .theme-sn { --md-primary:#30D158; --md-primary-container:#123B24; --md-on-primary-container:#B2F0C8; --md-secondary-container:#12352A; }
   html[data-theme="dark"] .theme-tf { --md-primary:#FF9F0A; --md-primary-container:#3A2810; --md-on-primary-container:#FFD9A3; --md-secondary-container:#3A2A1B; }
   html[data-theme="dark"] .theme-jp { --md-primary:#BF5AF2; --md-primary-container:#2C1B3A; --md-on-primary-container:#E2C0FF; --md-secondary-container:#2A1F3A; }
+  html[data-theme="dark"] .theme-at { --md-primary:#B79BF5; --md-primary-container:#2F2050; --md-on-primary-container:#DECAFF; --md-secondary-container:#2A2440; }
 
   /* —— 维度主题（Apple 风格低饱和辅助色，仅作轻微区分） —— */
   .theme-ei { --md-primary:#0071E3; --md-on-primary:#FFFFFF; --md-primary-container:#E8F2FF; --md-on-primary-container:#0B3D91; --md-secondary-container:#EAF2FD; }
   .theme-sn { --md-primary:#34A865; --md-on-primary:#FFFFFF; --md-primary-container:#E3F4EA; --md-on-primary-container:#0F3D24; --md-secondary-container:#E6F4EC; }
   .theme-tf { --md-primary:#D8642F; --md-on-primary:#FFFFFF; --md-primary-container:#FCEBE2; --md-on-primary-container:#4A1E0B; --md-secondary-container:#F9ECE4; }
   .theme-jp { --md-primary:#7B6BD8; --md-on-primary:#FFFFFF; --md-primary-container:#EDEAFB; --md-on-primary-container:#241B5E; --md-secondary-container:#EEECF8; }
+  .theme-at { --md-primary:#9A6BE8; --md-on-primary:#FFFFFF; --md-primary-container:#F1EBFD; --md-on-primary-container:#3A1E6E; --md-secondary-container:#F2EEFA; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -2683,9 +2685,9 @@
   .q-text { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; line-height: 1.4; }
   .q-hint { font-size: 14px; color: var(--md-on-surface-variant); margin-bottom: 22px; }
 
-  .likert { display: flex; gap: 10px; flex-wrap: wrap; }
+  .likert { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
   .likert button {
-    flex: 1 1 15%; min-width: 84px; padding: 10px 6px;
+    flex: none; min-width: 0; padding: 10px 6px;
     background: var(--md-surface); color: var(--md-on-surface);
     border: 1px solid var(--md-outline-variant); border-radius: 14px;
     cursor: pointer; font-family: inherit; text-align: center; position: relative; overflow: hidden;
@@ -2794,6 +2796,38 @@
     font-size: 13px; color: var(--md-warning); background: var(--md-warning-container);
     border-radius: var(--radius); padding: 14px 18px; text-align: left; margin-top: 24px;
   }
+  /* ---- 人格细项：A/T 分支 与 认知功能栈详解 ---- */
+  .type-letters .tl-at {
+    font-size: 26px; vertical-align: super; letter-spacing: 2px; margin-left: 2px;
+    color: color-mix(in srgb, var(--md-primary) 62%, transparent); font-weight: 700;
+  }
+  .at-card {
+    margin-top: 16px; padding: 18px 20px; border-radius: var(--radius);
+    background: var(--md-secondary-container); color: var(--md-on-surface);
+    text-align: left;
+  }
+  .at-card .at-branch { font-size: 15px; font-weight: 700; color: var(--md-primary); margin-bottom: 6px; }
+  .at-card .at-desc { font-size: 14px; line-height: 1.75; color: var(--md-on-surface); opacity: .9; }
+
+  .fn-stack-title { font-size: 14px; font-weight: 600; color: var(--md-on-surface-variant); margin: 8px 0 12px; text-align: left; }
+  .fn-detail {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 28px;
+  }
+  .fn-detail-card {
+    padding: 16px 18px; border-radius: var(--radius);
+    background: var(--md-surface-container-low); border: 1px solid var(--md-outline-variant);
+    color: var(--md-on-surface); text-align: left;
+  }
+  .fn-detail-card .fnd-role {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .4px;
+    color: var(--md-primary); background: var(--md-primary-container);
+    padding: 3px 10px; border-radius: 999px; margin-bottom: 10px;
+  }
+  .fn-detail-card .fnd-code { font-size: 16px; font-weight: 700; color: var(--md-primary); }
+  .fn-detail-card .fnd-name { font-size: 14px; font-weight: 600; color: var(--md-on-surface); margin-left: 6px; }
+  .fn-detail-card .fnd-full { font-size: 13px; color: var(--md-on-surface-variant); margin-top: 2px; }
+  .fn-detail-card .fnd-desc { font-size: 13px; line-height: 1.7; color: var(--md-on-surface); opacity: .88; margin-top: 8px; }
+
 
   .ad-box { margin-top: 24px; min-height: 90px; }
   .ad-placeholder {
@@ -2975,8 +3009,8 @@
     .appbar-inner { padding: 14px 16px; }
     .card { padding: 28px 20px; }
     .q-text { font-size: 21px; }
-    .likert { gap: 8px; }
-    .likert button { flex: 1 1 30%; min-width: 0; padding: 12px 4px; }
+    .likert { gap: 8px; grid-template-columns: repeat(3, 1fr); }
+    .likert button { flex: none; min-width: 0; padding: 12px 4px; }
     .likert button .v { font-size: 15px; }
     .likert button .l { font-size: 11px; }
     .nav button { flex: 1; }
@@ -3003,24 +3037,78 @@
   }
 
   /* ============ ADHD 专注模式（独立于深浅主题的第三套模式） ============
-     目标：降低视觉干扰与动效刺激、强化当前焦点、提升注意力停留。
-     由顶栏 ADHD 按钮切换，localStorage 记忆，与 data-theme 完全独立。 */
+     目标：按神经多样性友好原则重构——降低认知负荷、单任务聚焦、
+     清晰进度反馈、强化当前焦点，而非单纯放大字号。
+     由顶栏 ADHD 按钮切换，localStorage 记忆，与 data-theme 完全独立、可叠加。 */
+
+  /* 1. 抗干扰基线：关闭一切动效/过渡/闪烁、纯色背景、隐藏装饰性粒子与气泡 */
   html[data-adhd="on"] * { animation: none !important; transition: none !important; }
   html[data-adhd="on"] body { letter-spacing: .02em; }
   html[data-adhd="on"] .bg-layer { background: var(--md-surface-container); }
   html[data-adhd="on"] .particle, html[data-adhd="on"] .blob { display: none !important; }
   html[data-adhd="on"] .progress > div::after { display: none; }
-  html[data-adhd="on"] .ad-box { display: none !important; }
   html[data-adhd="on"] .rv { opacity: 1 !important; }
   html[data-adhd="on"] .type-letters .tl { opacity: 1 !important; }
   html[data-adhd="on"] .bar-fill { transform: none !important; }
-  /* 强化当前焦点卡片与选项，减少跳读 */
-  html[data-adhd="on"] #quiz .card { border: 2px solid var(--md-primary); box-shadow: 0 0 0 4px rgba(0,113,227,.16); }
-  html[data-adhd="on"] .likert button { border-width: 2px; }
-  html[data-adhd="on"] .likert button.sel { outline: 3px solid rgba(0,113,227,.4); }
-  html[data-adhd="on"] .q-text { line-height: 1.65; }
+
+  /* 2. 单任务聚焦：收起左右侧栏、移动端填充卡、广告，仅保留当前答题列并居中占满 */
+  html[data-adhd="on"] .col-side,
+  html[data-adhd="on"] .col-right,
+  html[data-adhd="on"] .mobile-fill,
+  html[data-adhd="on"] .fill-card,
+  html[data-adhd="on"] .ad-box { display: none !important; }
+  html[data-adhd="on"] .layout { display: block; max-width: 860px; margin: 0 auto; padding: 0 24px 80px; }
+  html[data-adhd="on"] .col-main { max-width: 860px; margin: 0 auto; }
+  html[data-adhd="on"] .wrap { max-width: 760px; padding: 52px 0 80px; }
+
+  /* 3. 进度可视化增强：当前题号醒目放大加粗，进度条加高加粗、颜色更醒目 */
+  html[data-adhd="on"] .q-count { font-size: 19px; font-weight: 800; color: var(--md-primary); letter-spacing: .02em; }
+  html[data-adhd="on"] .progress { height: 12px; background: var(--md-outline-variant); margin-bottom: 36px; }
+  html[data-adhd="on"] .progress > div { background: var(--md-primary); }
+
+  /* 4. 选项可读性：likert 按钮更大、间距更宽、标签文字放大加深、选中态高对比 */
+  html[data-adhd="on"] .likert { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  html[data-adhd="on"] .likert button { flex: none; min-width: 0; padding: 16px 8px; border-width: 2px; border-radius: 16px; }
+  html[data-adhd="on"] .likert button .v { font-size: 17px; }
+  html[data-adhd="on"] .likert button .l { font-size: 14px; color: var(--md-on-surface); font-weight: 600; margin-top: 5px; }
+  html[data-adhd="on"] .likert button.sel { background: var(--md-primary); border-color: var(--md-primary); outline: 3px solid rgba(0,113,227,.45); outline-offset: 2px; }
+  html[data-adhd="on"] .likert button.sel .v,
+  html[data-adhd="on"] .likert button.sel .l { color: #fff; }
+
+  /* 5. 焦点强化：题干放大、行高更宽松，当前答题卡片高亮边框清晰 */
+  html[data-adhd="on"] #quiz .card { border: 3px solid var(--md-primary); box-shadow: 0 0 0 6px rgba(0,113,227,.14); }
+  html[data-adhd="on"] .q-text { font-size: 30px; line-height: 1.65; margin-bottom: 14px; }
   html[data-adhd="on"] .q-hint { font-weight: 600; }
-  html[data-adhd="on"] .likert button .l { font-size: 12px; }
+
+  /* 6. 导航区仅保留必要操作（上一题/下一题），按钮加大更易点击 */
+  html[data-adhd="on"] .nav { margin-top: 32px; }
+  html[data-adhd="on"] .nav .btn { height: 50px; font-size: 16px; font-weight: 600; }
+
+  /* 7. 排版降噪：全局行距约 1.5 倍，选项 hover 无位移无弹跳，避免打断注意力 */
+  html[data-adhd="on"] body { line-height: 1.5; }
+  html[data-adhd="on"] .card { line-height: 1.5; }
+  html[data-adhd="on"] .likert button:hover { transform: none; box-shadow: none; }
+
+  /* 8. ADHD + 窄屏：grid 保持严格等宽（600px 及以下 3 列），覆盖基础 6 列 */
+  @media (max-width: 600px){
+    html[data-adhd="on"] .likert { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    html[data-adhd="on"] .likert button { min-width: 0; padding: 14px 6px; }
+  }
+  @media (max-width: 380px){
+    html[data-adhd="on"] .likert { gap: 6px; }
+    html[data-adhd="on"] .likert button .l { font-size: 12px; }
+  }
+
+  /* 9. ADHD 面包屑导航与自动保存提示（默认隐藏，仅 ADHD 显示） */
+  .adhd-breadcrumb { display: none; align-items: center; flex-wrap: wrap; gap: 8px 14px;
+    font-size: 14px; font-weight: 600; line-height: 1.4;
+    background: var(--md-primary-container); color: var(--md-on-primary-container);
+    border-radius: 12px; padding: 10px 14px; margin-bottom: 14px; }
+  html[data-adhd="on"] .adhd-breadcrumb { display: flex; }
+  .adhd-breadcrumb .crumb-step { font-weight: 800; }
+  .adhd-breadcrumb .crumb-next { font-weight: 400; opacity: .85; }
+  .adhd-note { display: none; font-size: 13px; font-weight: 600; color: var(--md-primary); margin: 14px 0 0; }
+  html[data-adhd="on"] .adhd-note { display: flex; }
 
 </style>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8250844529483545"
@@ -3138,7 +3226,7 @@
       </div>
       <div class="side-card side-progress">
         <div class="side-title">测试进度</div>
-        <div class="side-prog-num"><span id="sideProgNum">0</span><small> / 32 题</small></div>
+        <div class="side-prog-num"><span id="sideProgNum">0</span><small> / 38 题</small></div>
         <div class="side-prog-bar"><div id="sideProgBar" style="width:0%"></div></div>
       </div>
       <div class="side-card side-dims">
@@ -3159,7 +3247,11 @@
           <div class="dim-row"><span class="dot" style="background:#7B6BD8"></span><span class="dim-code">J / P</span><span class="dim-name">生活方式</span><span class="dim-count" id="dimCntJP">0/8</span></div>
           <div class="dim-bar"><div class="dim-bar-fill" id="dimBarJP" style="background:#7B6BD8;width:0%"></div></div>
         </div>
-        <div class="side-dims-hint">每个维度 8 题 · 6 级程度评分 · 共 32 题，无“不确定”中间项。</div>
+        <div class="dim-block">
+          <div class="dim-row"><span class="dot" style="background:#9A6BE8"></span><span class="dim-code">A / T</span><span class="dim-name">自我评估</span><span class="dim-count" id="dimCntAT">0/6</span></div>
+          <div class="dim-bar"><div class="dim-bar-fill" id="dimBarAT" style="background:#9A6BE8;width:0%"></div></div>
+        </div>
+        <div class="side-dims-hint">四维各 8 题 · 自我评估 6 题 · 6 级程度评分 · 共 38 题，无“不确定”中间项。</div>
       </div>
       <div class="side-card side-footer">
         <div>© 2026 MBTI 认知功能测试</div>
@@ -3183,7 +3275,7 @@
       <div class="mobile-fill fill-card fill-note">
         <div class="fill-title">测前须知</div>
         <ul class="fill-list">
-          <li>共 32 道陈述题，每个维度 8 题</li>
+          <li>共 38 道陈述题：四维各 8 题 + 自我评估 6 题</li>
           <li>6 级程度评分，无“不确定”中间项，强制做出倾向</li>
           <li>全程约 5 分钟，请一次完成</li>
           <li>按第一反应作答即可，无需反复修改</li>
@@ -3205,6 +3297,7 @@
     </div>
 
     <div id="quiz" style="display:none;">
+      <div class="adhd-breadcrumb" id="adhdCrumb"></div>
       <div class="progress"><div id="progressBar" style="width:0%"></div></div>
       <div class="card">
         <div class="q-meta">
@@ -3215,6 +3308,7 @@
         <div class="q-hint">你对这句话的认同程度：</div>
         <div class="likert" id="likert"></div>
       </div>
+      <div id="progressNote" class="adhd-note"></div>
       <div class="nav">
         <button class="btn btn-text" id="prevBtn" onclick="prev()">上一题</button>
         <span class="spacer"></span>
@@ -3230,6 +3324,11 @@
           <div id="typeName" class="type-name rv" style="animation-delay:.85s"></div>
         </div>
         <div class="type-desc rv" id="typeDesc" style="animation-delay:1s"></div>
+
+        <div class="at-card rv" id="atCard" style="display:none;animation-delay:1.05s">
+          <div class="at-branch" id="atBranch"></div>
+          <div class="at-desc" id="atDesc"></div>
+        </div>
 
         <div class="figure-card rv" id="figureCard" style="animation-delay:1.15s">
           <div class="fig-portrait">
@@ -3251,6 +3350,8 @@
 
         <div class="stack-title rv" style="animation-delay:1.45s">认知功能栈（主导 → 劣势）</div>
         <div class="stack rv" id="stackBox" style="animation-delay:1.55s"></div>
+        <div class="fn-stack-title rv" id="fnStackTitle" style="animation-delay:1.6s">认知功能栈详解</div>
+        <div class="fn-detail" id="fnDetail"></div>
         <div id="bars" class="rv" style="animation-delay:1.65s"></div>
         <div id="tieNote" class="tie-note rv" style="display:none;animation-delay:1.75s;"></div>
       </div>
@@ -3370,6 +3471,12 @@ var QUESTIONS = [
   { dim:'JP', dir:-1,  text:'旅行时，我倾向只定个大方向，到了再说。' },
   { dim:'JP', dir: 1,  text:'任务多时，我喜欢列清单、按优先级一件件处理。' },
   { dim:'JP', dir:-1,  text:'对我来说，计划赶不上变化，订了也常不执行。' },
+  { dim:'AT', dir: 1,  text:'遇到挫折时，我能较快调整心态，不会长时间陷入自我怀疑。' },
+  { dim:'AT', dir: 1,  text:'面对批评，我通常能把它当参考，而不是被它动摇情绪。' },
+  { dim:'AT', dir: 1,  text:'我对自己的能力和决定总体很有信心，很少反复纠结。' },
+  { dim:'AT', dir:-1,  text:'我常常反思自己的表现，担心自己是不是做得不够好。' },
+  { dim:'AT', dir:-1,  text:'做完决定后，我偶尔会反复回想，琢磨是不是选错了。' },
+  { dim:'AT', dir:-1,  text:'周围人的评价会在一定程度上影响我的状态和信心。' },
 ];
 
 var DIMS = ['EI','SN','TF','JP'];
@@ -3438,6 +3545,18 @@ var TYPE_INFO = {
 };
 var FN_NAME = { Ni:'直觉内倾', Ne:'直觉外倾', Ti:'思考内倾', Te:'思考外倾',
   Fi:'情感内倾', Fe:'情感外倾', Si:'感觉内倾', Se:'感觉外倾' };
+var FN_FULL = { Ni:'内倾直觉', Ne:'外倾直觉', Ti:'内倾思考', Te:'外倾思考',
+  Fi:'内倾情感', Fe:'外倾情感', Si:'内倾感觉', Se:'外倾感觉' };
+var FN_DESC = {
+  Ni:'在头脑中构建对未来的深层洞察，擅长捕捉模式与走向，指向"可能意味着什么"。',
+  Ne:'对外界不断发散新点子与可能性，喜欢头脑风暴、联想与尝试新路径。',
+  Ti:'在内心建立精确的逻辑模型，追求概念一致、定义清晰，倾向于"想明白"。',
+  Te:'对外部世界高效组织与执行，用标准、规则与结果说话，倾向于"做出来"。',
+  Fi:'以内在价值观与真实感受为准则，忠于自我，判断"这事对不对我的心"。',
+  Fe:'敏锐感知并协调他人情绪与氛围，重视和谐与连接，判断"大家感觉如何"。',
+  Si:'沉淀经验与细节，依赖熟悉的流程与记忆，求稳、求可预期。',
+  Se:'活在当下、敏锐捕捉现场信息与感官体验，反应快、随机应变。' };
+
 
 var SCALE = [
   { v:1, l:'完全同意' }, { v:2, l:'同意' }, { v:3, l:'略同意' },
@@ -3447,12 +3566,60 @@ var SCALE = [
 var cur = 0;
 var answers = new Array(QUESTIONS.length).fill(null);
 
+/* ---- ADHD 自动保存 / 恢复 / 面包屑 / 轻提示（localStorage key: mbti-progress） ---- */
+var noteTimer = null;
+function saveProgress(){
+  try {
+    localStorage.setItem('mbti-progress', JSON.stringify({ cur: cur, answers: answers, ts: Date.now() }));
+    showNote('已自动保存');
+  } catch(e){}
+}
+function clearProgress(){
+  try { localStorage.removeItem('mbti-progress'); } catch(e){}
+}
+function loadProgress(){
+  try {
+    var raw = localStorage.getItem('mbti-progress');
+    if(!raw) return false;
+    var p = JSON.parse(raw);
+    if(!p || !p.answers || p.answers.length !== QUESTIONS.length) return false;
+    var n = 0;
+    p.answers.forEach(function(a){ if(a !== null) n++; });
+    if(n === 0 || n === QUESTIONS.length) return false; /* 未开始或已全部完成不恢复 */
+    return p;
+  } catch(e){ return false; }
+}
+function showNote(msg){
+  var el = document.getElementById('progressNote');
+  if(!el) return;
+  el.textContent = msg;
+  el.style.display = 'flex';
+  if(noteTimer){ clearTimeout(noteTimer); }
+  noteTimer = setTimeout(function(){ el.style.display = 'none'; }, 1800);
+}
+function updateBreadcrumb(){
+  var el = document.getElementById('adhdCrumb');
+  if(!el) return;
+  var q = QUESTIONS[cur];
+  var pct = Math.round((cur + 1) / QUESTIONS.length * 100);
+  var nextTxt = cur < QUESTIONS.length - 1
+    ? '下一步：第 ' + (cur + 2) + '/' + QUESTIONS.length + ' 题'
+    : '下一步：查看结果';
+  el.innerHTML = '<span class="crumb-step">' + dimName(q.dim) + '</span>'
+    + '<span>第 ' + (cur + 1) + '/' + QUESTIONS.length + ' 题</span>'
+    + '<span class="crumb-next">已完成 ' + pct + '%</span>'
+    + '<span class="crumb-next">' + nextTxt + '</span>';
+}
+
 /* 左侧四维进度条：按各维度已答题数更新 x/8（每维固定 8 题） */
 function updateSideDims(){
   var done = {};
   DIMS.forEach(function(d){ done[d] = 0; });
   answers.forEach(function(a, i){
-    if(a !== null){ done[QUESTIONS[i].dim]++; }
+    if(a !== null){
+      var d = QUESTIONS[i].dim;
+      if(DIMS.indexOf(d) !== -1){ done[d]++; }
+    }
   });
   DIMS.forEach(function(d){
     var bar = document.getElementById('dimBar' + d);
@@ -3460,6 +3627,15 @@ function updateSideDims(){
     if(bar){ bar.style.width = (done[d]/8*100) + '%'; }
     if(cnt){ cnt.textContent = done[d] + '/8'; }
   });
+  /* AT 自我评估维度：6 题单独一条，跟随最后 6 题进度 */
+  var at = 0;
+  answers.forEach(function(a, i){
+    if(a !== null && QUESTIONS[i].dim === 'AT'){ at++; }
+  });
+  var barAT = document.getElementById('dimBarAT');
+  var cntAT = document.getElementById('dimCntAT');
+  if(barAT){ barAT.style.width = (at/6*100) + '%'; }
+  if(cntAT){ cntAT.textContent = at + '/6'; }
 }
 
 function startTest(){
@@ -3467,11 +3643,12 @@ function startTest(){
   document.getElementById('quiz').style.display = 'block';
   render();
 }
-function dimName(d){ return { EI:'能量来源', SN:'信息获取', TF:'决策方式', JP:'生活方式' }[d]; }
+function dimName(d){ return { EI:'能量来源', SN:'信息获取', TF:'决策方式', JP:'生活方式', AT:'自我评估' }[d]; }
 
 function applyTheme(cls){
   var quiz = document.getElementById('quiz');
   DIMS.forEach(function(d){ quiz.classList.remove(DIM_THEME[d]); });
+  quiz.classList.remove('theme-at');
   if(cls) quiz.classList.add(cls);
 }
 
@@ -3486,7 +3663,7 @@ function render(){
   var spb = document.getElementById('sideProgBar');
   if(spb){ spb.style.width = ((cur+1)/QUESTIONS.length*100) + '%'; }
   updateSideDims();
-  applyTheme(DIM_THEME[q.dim]);
+  applyTheme(q.dim === 'AT' ? 'theme-at' : DIM_THEME[q.dim]);
 
   var lb = document.getElementById('likert');
   lb.innerHTML = '';
@@ -3505,19 +3682,31 @@ function render(){
 
   animateIn(document.getElementById('qText'));
   animateIn(document.getElementById('likert'));
+  updateBreadcrumb();
 }
+/* 自动跳转防重入：连点/改选/手动 next 时不叠加 timer，避免跳题漏计 */
+var autoNextTimer = null;
 function answer(v){
   answers[cur] = v;
+  if(autoNextTimer){ clearTimeout(autoNextTimer); autoNextTimer = null; }
   render();
-  if(cur < QUESTIONS.length-1){ setTimeout(next, 160); }
+  saveProgress();
+  if(cur < QUESTIONS.length-1){
+    autoNextTimer = setTimeout(function(){ autoNextTimer = null; next(); }, 160);
+  }
 }
 function next(){
-  if(cur < QUESTIONS.length-1){ cur++; render(); }
+  if(autoNextTimer){ clearTimeout(autoNextTimer); autoNextTimer = null; }
+  if(cur < QUESTIONS.length-1){ cur++; render(); saveProgress(); }
   else { showResult(); }
 }
-function prev(){ if(cur>0){ cur--; render(); } }
+function prev(){
+  if(autoNextTimer){ clearTimeout(autoNextTimer); autoNextTimer = null; }
+  if(cur>0){ cur--; render(); saveProgress(); }
+}
 
 function showResult(){
+  clearProgress();
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('result').style.display = 'block';
   window.scrollTo({top:0, behavior:'smooth'});
@@ -3530,6 +3719,16 @@ function showResult(){
     sum[q.dim] += t * q.dir;
     maxScore[q.dim] += 6;
   });
+
+  /* A/T 分支单独统计（不进四维 DIMS） */
+  var sumAT = 0, maxAT = 0;
+  QUESTIONS.forEach(function(q, i){
+    if(answers[i] === null || q.dim !== 'AT') return;
+    sumAT += (7 - answers[i]) * q.dir;
+    maxAT += 6;
+  });
+  var atLetter = (maxAT > 0 && (sumAT + maxAT) / (2 * maxAT) < 0.5) ? 'T' : 'A';
+  var atName = atLetter === 'A' ? '自信型' : '动荡型';
 
   var type = '';
   var weakDims = [];
@@ -3562,8 +3761,21 @@ function showResult(){
     ts.textContent = type.charAt(ti);
     tlEl.appendChild(ts);
   }
+  var atSpan = document.createElement('span');
+  atSpan.className = 'tl tl-at';
+  atSpan.style.animationDelay = (0.15 + type.length*0.12) + 's';
+  atSpan.textContent = atLetter;
+  tlEl.appendChild(atSpan);
   document.getElementById('typeName').textContent = info.name;
   document.getElementById('typeDesc').innerHTML = info.desc;
+  var atCard = document.getElementById('atCard');
+  if(atCard){
+    atCard.style.display = 'block';
+    document.getElementById('atBranch').textContent = atName + '（' + atLetter + '）';
+    document.getElementById('atDesc').textContent = atLetter === 'A'
+      ? '自信型更关注自己的节奏与目标，对压力与外界评价的敏感度较低，情绪更稳定、更少内耗。容易果断推进，但有时可能忽略外界反馈与潜在风险。'
+      : '动荡型对自我表现与外界评价更敏感，常有复盘与自我完善的动力，追求更高标准。容易焦虑与内耗，但也因此更谨慎、更愿意成长，对他人情绪也更敏锐。';
+  }
   document.getElementById('figName').textContent = info.figure;
   document.getElementById('figDesc').textContent = info.fdesc;
   setPortrait(type);
@@ -3579,6 +3791,22 @@ function showResult(){
     el.title = idx===0 ? '主导功能' : idx===1 ? '辅助功能' : idx===2 ? '第三功能' : '劣势功能';
     box.appendChild(el);
   });
+  /* 功能栈详解：主导/辅助/第三/劣势 各渲染一张细项卡 */
+  var fnRoles = ['主导功能','辅助功能','第三功能','劣势功能'];
+  var fnd = document.getElementById('fnDetail');
+  if(fnd){
+    fnd.innerHTML = '';
+    stack.forEach(function(fn, idx){
+      var card = document.createElement('div');
+      card.className = 'fn-detail-card';
+      card.innerHTML =
+        '<div class="fnd-role">' + fnRoles[idx] + '</div>' +
+        '<div class="fnd-code">' + fn + '<span class="fnd-name">' + (FN_NAME[fn] || '') + '</span></div>' +
+        '<div class="fnd-full">' + (FN_FULL[fn] || '') + '</div>' +
+        '<div class="fnd-desc">' + (FN_DESC[fn] || '') + '</div>';
+      fnd.appendChild(card);
+    });
+  }
 
   var bars = document.getElementById('bars');
   bars.innerHTML = '';
@@ -3616,7 +3844,7 @@ function showResult(){
   /* 供分享图片生成复用：结果快照 */
   window.__lastResult = {
     type: type, name: info.name, figure: info.figure, fdesc: info.fdesc, mot: info.mot,
-    dimResults: dimResults, weakDims: weakDims
+    dimResults: dimResults, weakDims: weakDims, at: atLetter, atName: atName
   };
 }
 
@@ -3858,7 +4086,7 @@ function renderShareShot(){
         var fileName = 'mbti-result-' + (rr.type || 'unknown') + '.png';
         var file = new File([blob], fileName, { type: 'image/png' });
         if(navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share){
-          navigator.share({ files: [file], title: '我的 MBTI 结果', text: '我的 MBTI 认知功能测试结果：' + rr.type + ' ' + rr.name + '。' }).catch(function(){});
+          navigator.share({ files: [file], title: '我的 MBTI 结果', text: '我的 MBTI 认知功能测试结果：' + rr.type + (rr.at || '') + ' ' + rr.name + '。' }).catch(function(){});
         } else {
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
@@ -3909,6 +4137,18 @@ function animateIn(el){
 
 
 initAds();
+
+/* ---- 页面加载：若存在未完成进度则恢复续答（ADHD 自动保存/容错） ---- */
+(function(){
+  var p = loadProgress();
+  if(!p) return;
+  cur = Math.max(0, Math.min(p.cur, QUESTIONS.length - 1));
+  answers = p.answers;
+  document.getElementById('start').style.display = 'none';
+  document.getElementById('quiz').style.display = 'block';
+  render();
+  showNote('已恢复上次进度，继续作答');
+})();
 </script>
 <script>
 /*!
