@@ -1,0 +1,86 @@
+# ============================================================
+# GitHub Actions 自动部署到 GitHub Pages
+# ------------------------------------------------------------
+# 用途：每次 push 到 main 分支，自动把本站点发布到 GitHub Pages。
+# 本仓库为纯静态站点（无构建步骤），站点文件直接位于仓库根目录
+# （index.html / mbti_test.html / types/ / images/ / assets/）。
+#
+# 【一次性手动设置（部署前必做，仅需一次）】
+# 1. 打开仓库 GitHub 网页：Settings -> Pages
+# 2. 在 "Build and deployment" -> "Source"（源）处，
+#    把下拉框从 "Deploy from a branch" 改为 "GitHub Actions"
+#    （即：让 GitHub Actions 工作流来负责发布，而不是直接发布某个分支）
+# 3. 保存后，推送任意一次代码到 main，本工作流会自动运行并完成部署。
+#    完成后可在 Actions 页面看到 "Deploy to GitHub Pages" 任务。
+#
+# 方案说明（本文件选用官方 actions/deploy-pages 方案）：
+#   - 优点：GitHub 官方维护、与 Pages 环境深度集成，部署结果可回滚、
+#           有 environment 页面（含 page_url）与部署日志，最稳妥。
+#   - 备选方案（如不想改 Pages 源、希望直接推到 gh-pages 分支）：
+#       改用 actions-gh-pages@v4（见文件末尾注释掉的示例），
+#       该方案会把构建产物推送到 gh-pages 分支，需要保留 gh-pages 分支。
+#       两个方案二选一即可，本文件默认启用官方 deploy-pages 方案。
+# ============================================================
+
+name: Deploy to GitHub Pages
+
+on:
+  # 推送 main 分支时触发
+  push:
+    branches: [main]
+  # 允许在 Actions 页面手动点击运行（便于首次测试部署）
+  workflow_dispatch:
+
+# 赋予部署所需的 GitHub 权限（官方 deploy-pages 必需）
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同一时间只运行一个部署任务；新提交到来时取消旧的，避免排队冲突
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # 部署环境名，GitHub Pages 部署要求固定为 github-pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 拉取仓库代码
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. 初始化 Pages 环境（生成临时部署 token 等）
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 3. 把站点文件打包成部署产物（path: ./ 表示整个仓库根目录，
+      #    即 index.html 所在的目录；纯静态站无需先构建）
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./
+
+      # 4. 发布到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+# ============================================================
+# 【备选方案】如果你选择保留 "Deploy from a branch"（不切换
+# Source 为 GitHub Actions），可改用下方 actions-gh-pages 方案，
+# 它会将产物推送到 gh-pages 分支，由 Pages 从 gh-pages/(root) 发布。
+# 使用前提：Settings -> Pages -> Source 保持 "Deploy from a branch"
+#            且 Branch 选 gh-pages。
+# 启用方法：删除上方 4 个步骤，取消下面注释并替换整个 steps 块。
+# ============================================================
+#       - name: Deploy to GitHub Pages
+#         uses: peaceiris/actions-gh-pages@v4
+#         with:
+#           github_token: ${{ secrets.GITHUB_TOKEN }}
+#           publish_dir: ./          # 发布仓库根目录
+#           publish_branch: gh-pages # 推送到 gh-pages 分支
