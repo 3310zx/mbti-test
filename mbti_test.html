@@ -3572,6 +3572,35 @@ var SCALE = [
   { v:4, l:'略不同意' }, { v:5, l:'不同意' }, { v:6, l:'完全不同意' }
 ];
 
+/* ---- 题序随机化：ORDER 为 0..N-1 的置换数组，作答位置 cur 对应的题目是 QUESTIONS[ORDER[cur]]，answers[] 仍按作答位置索引存储，保证答案与题目一一对应不错位 ---- */
+var ORDER = [];
+(function(){
+  for(var i=0;i<QUESTIONS.length;i++){ ORDER[i] = i; }
+})();
+function freshOrder(){
+  var arr = new Array(QUESTIONS.length);
+  for(var i=0;i<QUESTIONS.length;i++){ arr[i] = i; }
+  for(var i=QUESTIONS.length-1;i>0;i--){ /* Fisher-Yates 洗牌 */
+    var j = Math.floor(Math.random()*(i+1));
+    var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+function resetOrder(){ ORDER = freshOrder(); }
+
+/* ---- 数据埋点：可插拔上报钩子（默认空实现；未来接入 GA4 / 自建上报接口时替换 window.__mbtiTrack 即可），事件仅含聚合结果、不含题目答案明文 ---- */
+window.__mbtiTrack = window.__mbtiTrack || function(evt){ /* 空实现：可在此接入 GA4 / 自建接口上报 */ };
+function pushEvent(evt){
+  try {
+    if(typeof window.__mbtiTrack === 'function'){ window.__mbtiTrack(evt); }
+    var list = [];
+    try { list = JSON.parse(localStorage.getItem('mbti-events') || '[]') || []; } catch(e){ list = []; }
+    list.push(evt);
+    if(list.length > 500){ list = list.slice(list.length - 500); } /* 上限 500 条，超出丢最旧 */
+    localStorage.setItem('mbti-events', JSON.stringify(list));
+  } catch(e){}
+}
+
 var cur = 0;
 var answers = new Array(QUESTIONS.length).fill(null);
 
@@ -3579,7 +3608,7 @@ var answers = new Array(QUESTIONS.length).fill(null);
 var noteTimer = null;
 function saveProgress(){
   try {
-    localStorage.setItem('mbti-progress', JSON.stringify({ cur: cur, answers: answers, ts: Date.now() }));
+    localStorage.setItem('mbti-progress', JSON.stringify({ cur: cur, answers: answers, order: ORDER, ts: Date.now() }));
     showNote('已自动保存');
   } catch(e){}
 }
@@ -3592,6 +3621,7 @@ function loadProgress(){
     if(!raw) return false;
     var p = JSON.parse(raw);
     if(!p || !p.answers || p.answers.length !== QUESTIONS.length) return false;
+    if(p.order && p.order.length !== QUESTIONS.length) return false; /* ORDER 不完整则视为无效进度 */
     var n = 0;
     p.answers.forEach(function(a){ if(a !== null) n++; });
     if(n === 0 || n === QUESTIONS.length) return false; /* 未开始或已全部完成不恢复 */
@@ -3609,7 +3639,7 @@ function showNote(msg){
 function updateBreadcrumb(){
   var el = document.getElementById('adhdCrumb');
   if(!el) return;
-  var q = QUESTIONS[cur];
+  var q = QUESTIONS[ORDER[cur]];
   var pct = Math.round((cur + 1) / QUESTIONS.length * 100);
   var nextTxt = cur < QUESTIONS.length - 1
     ? '下一步：第 ' + (cur + 2) + '/' + QUESTIONS.length + ' 题'
@@ -3626,7 +3656,7 @@ function updateSideDims(){
   DIMS.forEach(function(d){ done[d] = 0; });
   answers.forEach(function(a, i){
     if(a !== null){
-      var d = QUESTIONS[i].dim;
+      var d = QUESTIONS[ORDER[i]].dim;
       if(DIMS.indexOf(d) !== -1){ done[d]++; }
     }
   });
@@ -3639,7 +3669,7 @@ function updateSideDims(){
   /* AT 自我评估维度：6 题单独一条，跟随最后 6 题进度 */
   var at = 0;
   answers.forEach(function(a, i){
-    if(a !== null && QUESTIONS[i].dim === 'AT'){ at++; }
+    if(a !== null && QUESTIONS[ORDER[i]].dim === 'AT'){ at++; }
   });
   var barAT = document.getElementById('dimBarAT');
   var cntAT = document.getElementById('dimCntAT');
@@ -3648,6 +3678,8 @@ function updateSideDims(){
 }
 
 function startTest(){
+  resetOrder(); /* 每次开始/重测重新洗牌，避免固定顺序作答 */
+  window.__mbtiStartTs = Date.now(); /* 供埋点统计耗时 */
   document.getElementById('start').style.display = 'none';
   document.getElementById('quiz').style.display = 'block';
   render();
@@ -3662,7 +3694,7 @@ function applyTheme(cls){
 }
 
 function render(){
-  var q = QUESTIONS[cur];
+  var q = QUESTIONS[ORDER[cur]];
   document.getElementById('dimTag').textContent = dimName(q.dim);
   document.getElementById('qCount').textContent = (cur+1) + ' / ' + QUESTIONS.length;
   document.getElementById('qText').textContent = q.text;
@@ -3722,8 +3754,9 @@ function showResult(){
 
   var sum = {}, maxScore = {};
   DIMS.forEach(function(d){ sum[d] = 0; maxScore[d] = 0; });
-  QUESTIONS.forEach(function(q, i){
+  ORDER.forEach(function(qi, i){ /* 按 ORDER 映射：answers[i] 对应题目 QUESTIONS[ORDER[i]] */
     if(answers[i] === null) return;
+    var q = QUESTIONS[qi];
     var t = 7 - answers[i];
     sum[q.dim] += t * q.dir;
     maxScore[q.dim] += 6;
@@ -3731,8 +3764,10 @@ function showResult(){
 
   /* A/T 分支单独统计（不进四维 DIMS） */
   var sumAT = 0, maxAT = 0;
-  QUESTIONS.forEach(function(q, i){
-    if(answers[i] === null || q.dim !== 'AT') return;
+  ORDER.forEach(function(qi, i){
+    if(answers[i] === null) return;
+    var q = QUESTIONS[qi];
+    if(q.dim !== 'AT') return;
     sumAT += (7 - answers[i]) * q.dir;
     maxAT += 6;
   });
@@ -3849,6 +3884,16 @@ function showResult(){
 
   var shareBtn = document.getElementById('shareBtn');
   if(shareBtn){ shareBtn.style.display = 'inline-flex'; }
+
+  /* ---- 数据埋点：结果事件 + 完成事件（仅聚合结果，不含答案明文），经可插拔钩子 __mbtiTrack 并写入本地 mbti-events ---- */
+  var durationMs = (typeof window.__mbtiStartTs === 'number') ? Date.now() - window.__mbtiStartTs : 0;
+  var evtTs = Date.now();
+  pushEvent({
+    type: type, at: atLetter,
+    dims: { EI: dimResults.EI, SN: dimResults.SN, TF: dimResults.TF, JP: dimResults.JP },
+    durationMs: durationMs, ts: evtTs
+  });
+  pushEvent({ evt: 'complete', mbti: type + atLetter, durationMs: durationMs, ts: evtTs });
 
   /* 供分享图片生成复用：结果快照 */
   window.__lastResult = {
@@ -4153,6 +4198,8 @@ initAds();
   if(!p) return;
   cur = Math.max(0, Math.min(p.cur, QUESTIONS.length - 1));
   answers = p.answers;
+  if(p.order && p.order.length === QUESTIONS.length){ ORDER = p.order.slice(); } /* 恢复同源 ORDER，防止答案与题目错位 */
+  window.__mbtiStartTs = Date.now(); /* 恢复续答后重新计时，供埋点统计耗时 */
   document.getElementById('start').style.display = 'none';
   document.getElementById('quiz').style.display = 'block';
   render();
