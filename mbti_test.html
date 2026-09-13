@@ -3026,7 +3026,14 @@
 
   @media (max-width: 600px) {
     .wrap { padding: 36px 16px 70px; }
-    .appbar-inner { padding: 14px 16px; }
+    /* ---- 手机端顶栏两行布局：第一行 图标+标题，第二行 右侧三个按钮 ---- */
+    .appbar-inner { padding: 10px 14px; flex-wrap: wrap; row-gap: 10px; }
+    .appbar-sub { display: none; }
+    .appbar-title { font-size: 17px; }
+    .appbar-actions { width: 100%; margin-left: 0 !important; justify-content: flex-start; gap: 8px; }
+    .appbar-actions .appbar-link { height: 34px !important; padding: 0 12px !important; font-size: 12px !important; }
+    .appbar-actions .adhd-toggle { height: 34px; padding: 0 12px; font-size: 12px; }
+    .appbar-actions .theme-toggle { width: 34px; height: 34px; font-size: 14px; }
     .card { padding: 28px 20px; }
     .q-text { font-size: 21px; }
     .likert { gap: 8px; grid-template-columns: repeat(3, 1fr); }
@@ -3206,15 +3213,15 @@
 
   <div class="appbar">
     <div class="appbar-inner">
-      <div style="display:flex;align-items:center;gap:12px;">
+      <div class="appbar-brand" style="display:flex;align-items:center;gap:12px;">
         <div class="appbar-icon">M</div>
         <div>
           <div class="appbar-title">MBTI 认知功能测试</div>
           <div class="appbar-sub">程度评分 · 规避巴纳姆效应 · Apple 极简风</div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:10px;margin-left:auto;">
-        <a href="types/index.html" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:980px;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-on-surface);font-size:13px;font-weight:500;text-decoration:none;transition:transform .15s ease,border-color .2s,color .2s;" onmouseover="this.style.borderColor='var(--md-primary)';this.style.color='var(--md-primary)';" onmouseout="this.style.borderColor='';this.style.color='';">类型百科</a>
+      <div class="appbar-actions" style="display:flex;align-items:center;gap:10px;margin-left:auto;">
+        <a href="types/index.html" class="appbar-link" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:980px;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-on-surface);font-size:13px;font-weight:500;text-decoration:none;transition:transform .15s ease,border-color .2s,color .2s;" onmouseover="this.style.borderColor='var(--md-primary)';this.style.color='var(--md-primary)';" onmouseout="this.style.borderColor='';this.style.color='';">类型百科</a>
         <button class="adhd-toggle" id="adhdToggle" type="button" onclick="toggleAdhd()" aria-label="切换 ADHD 专注模式">
           <span class="adhd-dot"></span>ADHD
         </button>
