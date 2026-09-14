@@ -3653,7 +3653,8 @@ function updateBreadcrumb(){
   var el = document.getElementById('adhdCrumb');
   if(!el) return;
   var q = QUESTIONS[ORDER[cur]];
-  var pct = Math.round((cur + 1) / QUESTIONS.length * 100);
+  var doneCount = answers.filter(function(a){ return a !== null; }).length;
+  var pct = Math.round(doneCount / QUESTIONS.length * 100);
   var nextTxt = cur < QUESTIONS.length - 1
     ? '下一步：第 ' + (cur + 2) + '/' + QUESTIONS.length + ' 题'
     : '下一步：查看结果';
@@ -3708,14 +3709,15 @@ function applyTheme(cls){
 
 function render(){
   var q = QUESTIONS[ORDER[cur]];
+  var doneCount = answers.filter(function(a){ return a !== null; }).length;
   document.getElementById('dimTag').textContent = dimName(q.dim);
-  document.getElementById('qCount').textContent = (cur+1) + ' / ' + QUESTIONS.length;
+  document.getElementById('qCount').textContent = doneCount + ' / ' + QUESTIONS.length;
   document.getElementById('qText').textContent = q.text;
-  document.getElementById('progressBar').style.width = ((cur+1)/QUESTIONS.length*100) + '%';
+  document.getElementById('progressBar').style.width = (doneCount/QUESTIONS.length*100) + '%';
   var spn = document.getElementById('sideProgNum');
-  if(spn){ spn.textContent = (cur+1); }
+  if(spn){ spn.textContent = doneCount; }
   var spb = document.getElementById('sideProgBar');
-  if(spb){ spb.style.width = ((cur+1)/QUESTIONS.length*100) + '%'; }
+  if(spb){ spb.style.width = (doneCount/QUESTIONS.length*100) + '%'; }
   updateSideDims();
   applyTheme(q.dim === 'AT' ? 'theme-at' : DIM_THEME[q.dim]);
 
@@ -3763,6 +3765,7 @@ function showResult(){
   clearProgress();
   document.getElementById('quiz').style.display = 'none';
   document.getElementById('result').style.display = 'block';
+  initAds(); /* 结果页可见后再注入广告，避免对隐藏空容器发起广告请求 */
   window.scrollTo({top:0, behavior:'smooth'});
 
   var sum = {}, maxScore = {};
@@ -4211,8 +4214,6 @@ function animateIn(el){
   el.classList.add('re-anim');
 }
 
-
-initAds();
 
 /* ---- 页面加载：若存在未完成进度则恢复续答（ADHD 自动保存/容错） ---- */
 (function(){
