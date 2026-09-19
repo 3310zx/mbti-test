@@ -1,15 +1,28 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JCKX59J312"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JCKX59J312');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#6750A4" id="theme-color-meta">
 <script>
 (function () {
-  var t = null;
+  var t = null, a = null;
   try { t = localStorage.getItem('high-need-theme'); } catch (e) {}
+  try { a = localStorage.getItem('high-need-adhd'); } catch (e) {}
   if (t === 'dark' || t === 'light') {
     document.documentElement.setAttribute('data-theme', t);
+  }
+  if (a === 'on') {
+    document.documentElement.setAttribute('data-adhd', 'on');
   }
 })();
 </script>
@@ -22,6 +35,10 @@
 <meta property="og:description" content="一个温和的自我觉察小测试：通过两阶段共 50 道题，先筛查你在友谊中的高需求倾向，再细分你更接近哪种类型。结果仅供参考，不构成心理诊断。">
 <meta property="og:url" content="https://3310zx.github.io/mbti-test/high-need-test/">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://3310zx.github.io/mbti-test/high-need-test/images/og.png">
+<meta property="og:image:width" content="630">
+<meta property="og:image:height" content="1200">
+<meta name="twitter:image" content="https://3310zx.github.io/mbti-test/high-need-test/images/og.png">
 <meta name="twitter:card" content="summary">
 <style>
 /* ================= Material Design 3 Color Roles ================= */
@@ -203,7 +220,8 @@ button { font-family: inherit; }
   font-size: 15px; font-weight: 700; color: var(--md-on-surface);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.theme-toggle {
+.theme-toggle,
+.adhd-toggle {
   margin-left: auto;
   width: 36px; height: 36px; border-radius: 50%;
   border: 1px solid var(--md-outline-variant);
@@ -215,8 +233,13 @@ button { font-family: inherit; }
   flex-shrink: 0;
   transition: background .3s ease-out, transform .2s ease-out;
 }
-.theme-toggle:hover { transform: scale(1.08); }
-.theme-toggle:active { transform: scale(.96); }
+.theme-toggle:hover, .adhd-toggle:hover { transform: scale(1.08); }
+.theme-toggle:active, .adhd-toggle:active { transform: scale(.96); }
+.adhd-toggle.on {
+  background: var(--md-primary);
+  color: var(--md-on-primary);
+  border-color: var(--md-primary);
+}
 
 /* ================= 卡片 ================= */
 .card {
@@ -512,6 +535,54 @@ footer {
   }
 }
 
+/* ================= ADHD 友好专注模式（手动开关 html[data-adhd="on"]，与主题正交） ================= */
+:root[data-adhd="on"] *,
+:root[data-adhd="on"] *::before,
+:root[data-adhd="on"] *::after {
+  animation-duration: .01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: .01ms !important;
+}
+:root[data-adhd="on"] body {
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: .03em;
+}
+/* 单任务聚焦：宽屏恢复顶栏、隐藏侧栏，答题区单列居中收窄 */
+:root[data-adhd="on"] .appbar { display: block; }
+:root[data-adhd="on"] .sidebar { display: none !important; }
+:root[data-adhd="on"] .layout { display: block; }
+:root[data-adhd="on"] .layout-main { padding: 0 16px; }
+:root[data-adhd="on"] .layout-main main { max-width: 680px; }
+:root[data-adhd="on"] .card { padding: 36px 32px; }
+/* 进度清晰化：题号放大加粗、进度条加高 */
+:root[data-adhd="on"] .quiz-top { font-size: 16px; font-weight: 700; color: var(--md-on-surface); }
+:root[data-adhd="on"] .progress-track { height: 14px; }
+:root[data-adhd="on"] .progress-fill { transition: none; }
+/* 题目与选项放大、间距拉开、选中高对比外描边 */
+:root[data-adhd="on"] .q-dim { font-size: 14px; padding: 6px 16px; }
+:root[data-adhd="on"] .q-text { font-size: 21px; line-height: 1.65; }
+:root[data-adhd="on"] .options { gap: 16px; }
+:root[data-adhd="on"] .opt {
+  padding: 18px 20px;
+  font-size: 17px;
+  border-radius: 14px;
+}
+:root[data-adhd="on"] .opt-label small { font-size: 14px; line-height: 1.6; }
+:root[data-adhd="on"] .opt.selected {
+  outline: 3px solid var(--md-primary);
+  outline-offset: 2px;
+}
+:root[data-adhd="on"] .opt-score { width: 44px; height: 44px; font-size: 17px; }
+/* 开始页与结果页字号同步放大 */
+:root[data-adhd="on"] .hero-badge { font-size: 14px; padding: 8px 16px; }
+:root[data-adhd="on"] h1 { font-size: 32px; }
+:root[data-adhd="on"] .hero-sub { font-size: 16px; }
+:root[data-adhd="on"] .dim-list li { font-size: 16px; padding: 12px 0; }
+:root[data-adhd="on"] .btn { font-size: 16px; padding: 14px 24px; }
+:root[data-adhd="on"] .result-score { font-size: 64px; }
+:root[data-adhd="on"] .result-percent { font-size: 16px; }
+
 /* ================= 移动端响应式（8dp 网格收缩） ================= */
 @media (max-width: 600px) {
   main { padding: 16px 12px 48px; }
@@ -547,7 +618,8 @@ footer {
     border-right: 1px solid var(--md-outline-variant);
     padding: 28px 20px;
   }
-  .sidebar .side-theme-toggle { display: inline-flex; }
+  .sidebar .side-theme-toggle,
+  .sidebar .side-adhd-toggle { display: inline-flex; }
   .layout-main {
     min-width: 0;
     box-sizing: border-box;
@@ -564,8 +636,10 @@ footer {
 .side-title { font-size: 17px; font-weight: 700; color: var(--md-on-surface); line-height: 1.35; }
 .side-sub { font-size: 12px; color: var(--md-on-surface-variant); margin-top: 4px; }
 
-/* 侧栏主题按钮：仅宽屏显示（窄屏用顶栏按钮） */
-.side-theme-toggle { display: none; position: absolute; right: 0; top: 0; }
+/* 侧栏主题/专注按钮：仅宽屏显示（窄屏用顶栏按钮） */
+.side-theme-toggle,
+.side-adhd-toggle { display: none; position: absolute; right: 0; top: 0; }
+.side-theme-toggle { right: 44px; }
 
 /* 步骤列表 */
 .step-list {
@@ -751,6 +825,7 @@ body.share-capture {
   <div class="appbar-inner">
     <span class="appbar-logo">高</span>
     <span class="appbar-title">你是高需求朋友吗</span>
+    <button class="adhd-toggle" id="adhd-toggle" type="button" aria-label="ADHD友好专注模式" title="ADHD友好专注模式：减弱动效、放大文字、单题聚焦" aria-pressed="false">🧠</button>
     <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式">🌙</button>
   </div>
 </header>
@@ -760,6 +835,7 @@ body.share-capture {
     <div class="side-head">
       <div class="side-title">你是高需求朋友吗</div>
       <div class="side-sub">两阶段自评测试</div>
+      <button class="adhd-toggle side-adhd-toggle" id="adhd-toggle-side" type="button" aria-label="ADHD友好专注模式" title="ADHD友好专注模式：减弱动效、放大文字、单题聚焦" aria-pressed="false">🧠</button>
       <button class="theme-toggle side-theme-toggle" id="theme-toggle-side" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式">🌙</button>
     </div>
     <nav class="step-list">
@@ -906,6 +982,35 @@ body.share-capture {
     if (t !== 'dark' && t !== 'light') sync();
   });
   sync();
+})();
+
+/* ================= ADHD 友好专注模式 ================= */
+(function () {
+  var KEY = 'high-need-adhd';
+  var root = document.documentElement;
+  var btns = document.querySelectorAll('.adhd-toggle');
+  function apply(on) {
+    if (on) {
+      root.setAttribute('data-adhd', 'on');
+    } else {
+      root.removeAttribute('data-adhd');
+    }
+    for (var i = 0; i < btns.length; i++) {
+      if (on) btns[i].classList.add('on');
+      else btns[i].classList.remove('on');
+      btns[i].setAttribute('aria-pressed', on ? 'true' : 'false');
+    }
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var on = root.getAttribute('data-adhd') === 'on';
+      try { localStorage.setItem(KEY, on ? 'off' : 'on'); } catch (e) {}
+      apply(!on);
+    });
+  }
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  apply(saved === 'on');
 })();
 
 /* ================= 题目数据 ================= */
