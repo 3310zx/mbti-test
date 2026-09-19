@@ -3,7 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#6750A4">
+<meta name="theme-color" content="#6750A4" id="theme-color-meta">
+<script>
+(function () {
+  var t = null;
+  try { t = localStorage.getItem('high-need-theme'); } catch (e) {}
+  if (t === 'dark' || t === 'light') {
+    document.documentElement.setAttribute('data-theme', t);
+  }
+})();
+</script>
 <title>你是高需求朋友吗 - 互动测试</title>
 <meta name="description" content="一个温和的自我觉察小测试：通过两阶段共 50 道题，先筛查你在友谊中的高需求倾向，再细分你更接近哪种类型。结果仅供参考，不构成心理诊断。">
 <link rel="canonical" href="https://3310zx.github.io/mbti-test/high-need-test/">
@@ -61,9 +70,9 @@
   --c-d5-container: #FBDCDC;
 }
 
-/* ============ 深色主题（跟随系统 prefers-color-scheme） ============ */
+/* ============ 深色主题（默认跟随系统，可手动覆盖） ============ */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --md-primary: #D0BCFF;
     --md-on-primary: #381E72;
     --md-primary-container: #4F378B;
@@ -99,6 +108,44 @@
     --c-d5: #F28B82;
     --c-d5-container: #5C2020;
   }
+}
+
+/* 手动切换为深色（覆盖系统浅色） */
+:root[data-theme="dark"] {
+  --md-primary: #D0BCFF;
+  --md-on-primary: #381E72;
+  --md-primary-container: #4F378B;
+  --md-on-primary-container: #EADDFF;
+  --md-secondary: #CCC2DC;
+  --md-on-secondary: #332D41;
+  --md-secondary-container: #4A4458;
+  --md-on-secondary-container: #E8DEF8;
+  --md-surface: #141218;
+  --md-surface-container-low: #1D1B20;
+  --md-surface-container: #211F26;
+  --md-surface-container-high: #2B2930;
+  --md-on-surface: #E6E0E9;
+  --md-on-surface-variant: #CAC4D0;
+  --md-outline: #938F99;
+  --md-outline-variant: #49454F;
+  --md-error: #F2B8B5;
+  --md-error-container: #8C1D18;
+  --md-on-error-container: #F9DEDC;
+
+  --elev-1: 0 1px 2px rgba(0,0,0,.4), 0 4px 12px -4px rgba(0,0,0,.5);
+  --elev-2: 0 2px 8px rgba(0,0,0,.5), 0 12px 28px -8px rgba(0,0,0,.6);
+  --elev-3: 0 4px 12px rgba(0,0,0,.55), 0 18px 40px -10px rgba(0,0,0,.7);
+
+  --c-d1: #D0BCFF;
+  --c-d1-container: #4F378B;
+  --c-d2: #AEC2FF;
+  --c-d2-container: #243B8C;
+  --c-d3: #81C995;
+  --c-d3-container: #1E4620;
+  --c-d4: #FFB74D;
+  --c-d4-container: #5A3A00;
+  --c-d5: #F28B82;
+  --c-d5-container: #5C2020;
 }
 
 /* ================= 基础 ================= */
@@ -156,6 +203,20 @@ button { font-family: inherit; }
   font-size: 15px; font-weight: 700; color: var(--md-on-surface);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
+.theme-toggle {
+  margin-left: auto;
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid var(--md-outline-variant);
+  background: var(--md-surface-container-high);
+  color: var(--md-on-surface);
+  font-size: 16px; line-height: 1;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background .3s ease-out, transform .2s ease-out;
+}
+.theme-toggle:hover { transform: scale(1.08); }
+.theme-toggle:active { transform: scale(.96); }
 
 /* ================= 卡片 ================= */
 .card {
@@ -486,6 +547,7 @@ footer {
     border-right: 1px solid var(--md-outline-variant);
     padding: 28px 20px;
   }
+  .sidebar .side-theme-toggle { display: inline-flex; }
   .layout-main {
     min-width: 0;
     box-sizing: border-box;
@@ -498,9 +560,12 @@ footer {
 }
 
 /* 左栏头部 */
-.side-head { padding: 6px 8px 20px; }
+.side-head { padding: 6px 8px 20px; position: relative; }
 .side-title { font-size: 17px; font-weight: 700; color: var(--md-on-surface); line-height: 1.35; }
 .side-sub { font-size: 12px; color: var(--md-on-surface-variant); margin-top: 4px; }
+
+/* 侧栏主题按钮：仅宽屏显示（窄屏用顶栏按钮） */
+.side-theme-toggle { display: none; position: absolute; right: 0; top: 0; }
 
 /* 步骤列表 */
 .step-list {
@@ -686,6 +751,7 @@ body.share-capture {
   <div class="appbar-inner">
     <span class="appbar-logo">高</span>
     <span class="appbar-title">你是高需求朋友吗</span>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式">🌙</button>
   </div>
 </header>
 
@@ -694,6 +760,7 @@ body.share-capture {
     <div class="side-head">
       <div class="side-title">你是高需求朋友吗</div>
       <div class="side-sub">两阶段自评测试</div>
+      <button class="theme-toggle side-theme-toggle" id="theme-toggle-side" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式">🌙</button>
     </div>
     <nav class="step-list">
       <div class="step-item" id="step-1">
@@ -809,6 +876,38 @@ body.share-capture {
 </div>
 
 <script>
+/* ================= 白天黑夜模式 ================= */
+(function () {
+  var KEY = 'high-need-theme';
+  var meta = document.getElementById('theme-color-meta');
+  var btns = document.querySelectorAll('.theme-toggle');
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  function currentDark() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t === 'dark') return true;
+    if (t === 'light') return false;
+    return mq ? mq.matches : false;
+  }
+  function sync() {
+    var dark = currentDark();
+    for (var i = 0; i < btns.length; i++) btns[i].textContent = dark ? '☀️' : '🌙';
+    if (meta) meta.setAttribute('content', dark ? '#141218' : '#6750A4');
+  }
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var next = currentDark() ? 'light' : 'dark';
+      try { localStorage.setItem(KEY, next); } catch (e) {}
+      document.documentElement.setAttribute('data-theme', next);
+      sync();
+    });
+  }
+  if (mq) mq.addEventListener('change', function () {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t !== 'dark' && t !== 'light') sync();
+  });
+  sync();
+})();
+
 /* ================= 题目数据 ================= */
 var DIMS = [
   { key: 'd1', name: '情感索取', color: 'var(--c-d1)',
