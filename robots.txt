@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://3310zx.github.io/mbti-test/sitemap.xml
-（内容由AI生成，仅供参考）
