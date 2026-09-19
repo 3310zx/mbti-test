@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#6750A4">
+<title>你是高需求朋友吗 - 互动测试</title>
+<meta name="description" content="一个温和的自我觉察小测试：通过两阶段共 50 道题，先筛查你在友谊中的高需求倾向，再细分你更接近哪种类型。结果仅供参考，不构成心理诊断。">
+<style>
+/* ================= Material Design 3 Color Roles ================= */
+:root {
+  --md-primary: #6750A4;
+  --md-on-primary: #FFFFFF;
+  --md-primary-container: #EADDFF;
+  --md-on-primary-container: #21005D;
+  --md-secondary: #625B71;
+  --md-on-secondary: #FFFFFF;
+  --md-secondary-container: #E8DEF8;
+  --md-on-secondary-container: #1D192B;
+  --md-surface: #FEF7FF;
+  --md-surface-container-low: #F7F2FA;
+  --md-surface-container: #F3EDF7;
+  --md-surface-container-high: #ECE6F0;
+  --md-on-surface: #1D1B20;
+  --md-on-surface-variant: #49454F;
+  --md-outline: #79747E;
+  --md-outline-variant: #CAC4D0;
+  --md-error: #B3261E;
+  --md-error-container: #F9DEDC;
+  --md-on-error-container: #410E0B;
+
+  /* Elevation 阴影层级 */
+  --elev-1: 0 1px 2px rgba(0,0,0,.06), 0 4px 12px -4px rgba(0,0,0,.10);
+  --elev-2: 0 2px 8px rgba(0,0,0,.08), 0 12px 28px -8px rgba(0,0,0,.16);
+  --elev-3: 0 4px 12px rgba(0,0,0,.10), 0 18px 40px -10px rgba(0,0,0,.22);
+
+  /* Shape（MD3 圆角规范） */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  /* 维度印象色（浅色） */
+  --c-d1: #6750A4;
+  --c-d1-container: #EADDFF;
+  --c-d2: #3D5AFE;
+  --c-d2-container: #DEE4FF;
+  --c-d3: #2E7D32;
+  --c-d3-container: #DDEDDD;
+  --c-d4: #E8710A;
+  --c-d4-container: #FFE8D6;
+  --c-d5: #C62828;
+  --c-d5-container: #FBDCDC;
+}
+
+/* ============ 深色主题（跟随系统 prefers-color-scheme） ============ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --md-primary: #D0BCFF;
+    --md-on-primary: #381E72;
+    --md-primary-container: #4F378B;
+    --md-on-primary-container: #EADDFF;
+    --md-secondary: #CCC2DC;
+    --md-on-secondary: #332D41;
+    --md-secondary-container: #4A4458;
+    --md-on-secondary-container: #E8DEF8;
+    --md-surface: #141218;
+    --md-surface-container-low: #1D1B20;
+    --md-surface-container: #211F26;
+    --md-surface-container-high: #2B2930;
+    --md-on-surface: #E6E0E9;
+    --md-on-surface-variant: #CAC4D0;
+    --md-outline: #938F99;
+    --md-outline-variant: #49454F;
+    --md-error: #F2B8B5;
+    --md-error-container: #8C1D18;
+    --md-on-error-container: #F9DEDC;
+
+    --elev-1: 0 1px 2px rgba(0,0,0,.4), 0 4px 12px -4px rgba(0,0,0,.5);
+    --elev-2: 0 2px 8px rgba(0,0,0,.5), 0 12px 28px -8px rgba(0,0,0,.6);
+    --elev-3: 0 4px 12px rgba(0,0,0,.55), 0 18px 40px -10px rgba(0,0,0,.7);
+
+    --c-d1: #D0BCFF;
+    --c-d1-container: #4F378B;
+    --c-d2: #AEC2FF;
+    --c-d2-container: #243B8C;
+    --c-d3: #81C995;
+    --c-d3-container: #1E4620;
+    --c-d4: #FFB74D;
+    --c-d4-container: #5A3A00;
+    --c-d5: #F28B82;
+    --c-d5-container: #5C2020;
+  }
+}
+
+/* ================= 基础 ================= */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Zpix', 'PingFang SC', monospace;
+  background: var(--md-surface-container);
+  color: var(--md-on-surface);
+  line-height: 1.7;
+  min-height: 100vh;
+  letter-spacing: .02em;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background .3s ease-out, color .3s ease-out;
+  display: flex;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+  width: 100%;
+  max-width: 720px;             /* 8dp 网格：内容区宽度收敛，保持舒适阅读 */
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+}
+button { font-family: inherit; }
+
+/* :focus-visible 清晰焦点（ADHD 友好：不依赖 hover 也能定位） */
+:focus-visible {
+  outline: 3px solid var(--md-primary);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* ================= 顶栏 ================= */
+.appbar {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--md-surface-container) 82%, transparent);
+  -webkit-backdrop-filter: saturate(1.8) blur(20px);
+  backdrop-filter: saturate(1.8) blur(20px);
+  border-bottom: 1px solid var(--md-outline-variant);
+}
+.appbar-inner {
+  max-width: 720px; margin: 0 auto; padding: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.appbar-logo {
+  width: 34px; height: 34px; border-radius: 10px;
+  background: var(--md-primary); color: var(--md-on-primary);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700;
+  flex-shrink: 0;
+}
+.appbar-title {
+  font-size: 15px; font-weight: 700; color: var(--md-on-surface);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* ================= 卡片 ================= */
+.card {
+  background: var(--md-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elev-1);
+  padding: 32px 24px;
+  animation: fadeIn .4s ease-out both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ================= 开始页 ================= */
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+  font-size: 12px; font-weight: 700;
+  padding: 6px 14px; border-radius: var(--radius-pill);
+  margin-bottom: 24px;
+}
+h1 {
+  font-size: 28px; line-height: 1.35; font-weight: 800;
+  letter-spacing: .01em; margin-bottom: 12px;
+}
+.hero-sub {
+  color: var(--md-on-surface-variant);
+  font-size: 14px; margin-bottom: 24px;
+}
+.divider {
+  border: none; border-top: 1px solid var(--md-outline-variant);
+  margin: 24px 0;
+}
+.dim-list { list-style: none; }
+.dim-list li {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--md-on-surface);
+}
+.dim-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  margin-top: 6px; flex-shrink: 0;
+}
+.dim-dot.d1 { background: var(--c-d1); }
+.dim-dot.d2 { background: var(--c-d2); }
+.dim-dot.d3 { background: var(--c-d3); }
+.dim-dot.d4 { background: var(--c-d4); }
+.dim-dot.d5 { background: var(--c-d5); }
+.dim-name { font-weight: 700; white-space: nowrap; }
+.dim-desc { color: var(--md-on-surface-variant); }
+
+/* ================= 按钮 ================= */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px;
+  min-height: 48px;                 /* MD3 按钮最小触摸高度 */
+  padding: 0 24px;
+  border: none; border-radius: var(--radius-pill);
+  font-size: 15px; font-weight: 700;
+  cursor: pointer;
+  transition: background .2s ease-out, box-shadow .2s ease-out, transform .15s ease-out;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary {
+  background: var(--md-primary); color: var(--md-on-primary);
+  box-shadow: var(--elev-1);
+}
+.btn-primary:hover { box-shadow: var(--elev-2); }
+.btn-secondary {
+  background: var(--md-secondary-container); color: var(--md-on-secondary-container);
+}
+.btn-secondary:hover { background: color-mix(in srgb, var(--md-secondary-container) 88%, var(--md-on-secondary-container)); }
+.btn-block { width: 100%; }
+
+/* ================= 答题页 ================= */
+.quiz-top {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 12px;
+  font-size: 13px; color: var(--md-on-surface-variant);
+}
+.progress-track {
+  width: 100%; height: 6px; border-radius: var(--radius-pill);
+  background: var(--md-surface-container-high);
+  overflow: hidden; margin-bottom: 24px;
+}
+.progress-fill {
+  height: 100%; border-radius: var(--radius-pill);
+  background: var(--md-primary);
+  transition: width .35s cubic-bezier(.2,.8,.2,1);
+}
+.q-dim {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700;
+  padding: 4px 12px; border-radius: var(--radius-pill);
+  margin-bottom: 16px;
+}
+.q-dim.d1 { background: var(--c-d1-container); color: var(--md-on-surface); }
+.q-dim.d2 { background: var(--c-d2-container); color: var(--md-on-surface); }
+.q-dim.d3 { background: var(--c-d3-container); color: var(--md-on-surface); }
+.q-dim.d4 { background: var(--c-d4-container); color: var(--md-on-surface); }
+.q-dim.d5 { background: var(--c-d5-container); color: var(--md-on-surface); }
+.q-text {
+  font-size: 18px; font-weight: 700; line-height: 1.6;
+  margin-bottom: 24px;
+}
+.options { display: grid; gap: 12px; }
+.opt {
+  display: flex; align-items: center; gap: 16px;
+  width: 100%; text-align: left;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--md-outline-variant);
+  background: var(--md-surface);
+  color: var(--md-on-surface);
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color .15s ease-out, background .15s ease-out, box-shadow .15s ease-out;
+}
+.opt:hover { border-color: var(--md-primary); background: var(--md-surface-container-low); }
+.opt.selected {
+  border-color: var(--md-primary);
+  background: var(--md-primary-container);
+  box-shadow: var(--elev-1);
+}
+.opt-score {
+  flex-shrink: 0;
+  width: 40px; height: 40px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--md-surface-container-high);
+  font-weight: 800; font-size: 15px;
+}
+.opt.selected .opt-score {
+  background: var(--md-primary); color: var(--md-on-primary);
+}
+.opt-label { flex: 1; }
+.opt-label small { display: block; font-size: 12px; color: var(--md-on-surface-variant); }
+.opt.selected .opt-label small { color: var(--md-on-surface-variant); }
+
+/* 作答后的选中反馈（短暂停留后自动进入下一题） */
+.quiz-lock .opt { cursor: default; pointer-events: none; }
+
+/* ================= 结果页 ================= */
+.result-head { text-align: center; margin-bottom: 24px; }
+.result-score {
+  font-size: 52px; font-weight: 800; line-height: 1.1;
+  color: var(--md-primary);
+}
+.result-percent { font-size: 14px; color: var(--md-on-surface-variant); margin-bottom: 16px; }
+.result-band {
+  display: inline-block;
+  padding: 8px 20px; border-radius: var(--radius-pill);
+  font-size: 15px; font-weight: 800;
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+.band-text {
+  margin-top: 16px; font-size: 14px;
+  color: var(--md-on-surface-variant);
+  text-align: left;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--md-surface-container-low);
+}
+.section-title {
+  font-size: 15px; font-weight: 800;
+  margin: 32px 0 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-title::before {
+  content: ""; width: 4px; height: 16px; border-radius: 2px;
+  background: var(--md-primary); flex-shrink: 0;
+}
+.dim-card {
+  background: var(--md-surface);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.dim-card-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 12px;
+}
+.dim-card-name { font-size: 14px; font-weight: 800; }
+.dim-level {
+  font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+.level-high { background: var(--c-d5-container); color: var(--md-on-surface); }
+.level-mid  { background: var(--md-secondary-container); color: var(--md-on-secondary-container); }
+.level-low   { background: var(--md-surface-container-high); color: var(--md-on-surface-variant); }
+.bar-track {
+  height: 10px; border-radius: var(--radius-pill);
+  background: var(--md-surface-container-high);
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%; border-radius: var(--radius-pill);
+  width: 0;
+  transition: width .6s cubic-bezier(.2,.8,.2,1);
+}
+.dim-card.d1 .bar-fill { background: var(--c-d1); }
+.dim-card.d2 .bar-fill { background: var(--c-d2); }
+.dim-card.d3 .bar-fill { background: var(--c-d3); }
+.dim-card.d4 .bar-fill { background: var(--c-d4); }
+.dim-card.d5 .bar-fill { background: var(--c-d5); }
+.dim-score-line {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--md-on-surface-variant);
+  margin-top: 6px;
+}
+.dim-advice {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px dashed var(--md-outline-variant);
+  font-size: 13px; color: var(--md-on-surface-variant);
+}
+.dim-advice b { color: var(--md-on-surface); }
+.disclaimer {
+  margin-top: 32px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  background: var(--md-error-container);
+  color: var(--md-on-error-container);
+  font-size: 13px;
+}
+.result-actions {
+  display: grid; gap: 12px;
+  margin-top: 24px;
+}
+
+/* ================= 阶段徽标与过渡面板 ================= */
+.phase-badge {
+  display: inline-flex; align-items: center;
+  font-size: 12px; font-weight: 700;
+  padding: 3px 10px; border-radius: var(--radius-pill);
+  background: var(--md-secondary-container); color: var(--md-on-secondary-container);
+  white-space: nowrap; margin-left: auto;
+}
+.trans-score {
+  font-size: 44px; font-weight: 800; line-height: 1.1;
+  color: var(--md-primary);
+}
+/* ================= 类型卡（分类区块） ================= */
+.type-card {
+  background: var(--md-surface);
+  border: 2px solid var(--md-primary);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.type-card-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px; margin-bottom: 4px;
+}
+.type-card-name { font-size: 16px; font-weight: 800; color: var(--md-primary); }
+.type-card-score { font-size: 13px; color: var(--md-on-surface-variant); white-space: nowrap; }
+.type-card-sub { font-size: 13px; color: var(--md-on-surface-variant); margin-bottom: 12px; }
+.type-card-advice {
+  margin-top: 12px; padding-top: 12px;
+  border-top: 1px dashed var(--md-outline-variant);
+  font-size: 13px; color: var(--md-on-surface-variant);
+}
+.type-card-advice b { color: var(--md-on-surface); }
+.type-card-alt {
+  background: var(--md-surface-container-low);
+  border: 1px solid var(--md-outline-variant);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  font-size: 13px; color: var(--md-on-surface-variant);
+}
+.type-card .bar-fill { background: var(--md-primary); }
+
+/* ================= 页脚 ================= */
+footer {
+  padding: 24px 16px 40px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--md-on-surface-variant);
+  border-top: 1px solid var(--md-outline-variant);
+}
+
+/* ================= ADHD 友好：尊重系统减弱动效 ================= */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* ================= 移动端响应式（8dp 网格收缩） ================= */
+@media (max-width: 600px) {
+  main { padding: 16px 12px 48px; }
+  .card { padding: 24px 16px; }
+  h1 { font-size: 24px; }
+  .result-score { font-size: 44px; }
+  .opt { padding: 14px; }
+}
+
+/* ================= 电脑端左右分栏（参考微信桌面端） ================= */
+.layout { flex: 1; display: block; }
+.sidebar { display: none; }
+
+@media (max-width: 1024px) {
+  .layout { display: block; }
+  .sidebar { display: none !important; }
+}
+
+@media (min-width: 1025px) {
+  .appbar { display: none; }
+  .layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    align-items: start;
+  }
+  .sidebar {
+    display: block;
+    position: sticky; top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    background: var(--md-surface-container-high);
+    border-right: 1px solid var(--md-outline-variant);
+    padding: 28px 20px;
+  }
+  .layout-main {
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0 24px 0 16px;
+  }
+  .layout-main main {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+}
+
+/* 左栏头部 */
+.side-head { padding: 6px 8px 20px; }
+.side-title { font-size: 17px; font-weight: 700; color: var(--md-on-surface); line-height: 1.35; }
+.side-sub { font-size: 12px; color: var(--md-on-surface-variant); margin-top: 4px; }
+
+/* 步骤列表 */
+.step-list {
+  display: flex; flex-direction: column; gap: 6px;
+  margin: 0; padding: 0; list-style: none;
+}
+.step-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: transparent;
+  transition: background .2s ease-out, color .2s ease-out;
+}
+.step-item.step-active { background: var(--md-secondary-container); }
+.step-dot {
+  flex: none;
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--md-surface);
+  border: 1px solid var(--md-outline-variant);
+  color: var(--md-on-surface-variant);
+  font-size: 13px; font-weight: 700;
+}
+.step-item.step-active .step-dot {
+  background: var(--md-primary);
+  border-color: var(--md-primary);
+  color: var(--md-on-primary);
+}
+.step-item.step-done .step-dot span { display: none; }
+.step-item.step-done .step-dot::before { content: '✓'; }
+.step-item.step-done .step-dot {
+  background: var(--md-primary-container);
+  border-color: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+.step-item.step-active .step-title,
+.step-item.step-done .step-title { color: var(--md-on-secondary-container); }
+.step-item.step-active .step-sub,
+.step-item.step-done .step-sub { color: var(--md-on-secondary-container); opacity: .8; }
+.step-item.step-na { opacity: .45; }
+.step-item.step-na .step-sub::after { content: ' · 未进入'; }
+.step-body { flex: 1; min-width: 0; }
+.step-title { font-size: 15px; font-weight: 600; color: var(--md-on-surface); line-height: 1.3; }
+.step-sub { font-size: 12px; color: var(--md-on-surface-variant); margin-top: 2px; line-height: 1.45; }
+.step-progress { font-size: 11px; font-weight: 600; color: var(--md-primary); margin-top: 5px; }
+.step-mini {
+  height: 4px; border-radius: 2px;
+  background: var(--md-surface-container);
+  margin-top: 4px; overflow: hidden;
+}
+.step-mini-fill {
+  height: 100%; width: 0%;
+  background: var(--md-primary);
+  border-radius: 2px;
+  transition: width .3s ease-out;
+}
+
+/* 类型细分展开子区块：5 类型实时得分条 */
+.step-toggle {
+  display: inline-block;
+  font-size: 12px;
+  margin-left: 6px;
+  color: inherit;
+  transition: transform .2s ease-out;
+}
+.step-item.step-open .step-toggle { transform: rotate(180deg); }
+.step-type-bars {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--md-outline-variant);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.step-type-bars[hidden] { display: none; }
+.type-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.type-bar-name {
+  flex: none;
+  width: 72px;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--md-on-surface-variant);
+}
+.type-bar-row.type-active .type-bar-name { color: var(--md-primary); font-weight: 700; }
+.type-bar-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--md-surface-container);
+  overflow: hidden;
+}
+.type-bar-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  transition: width .3s ease-out;
+}
+.type-bar-score {
+  flex: none;
+  width: 52px;
+  text-align: right;
+  font-size: 11px;
+  color: var(--md-on-surface-variant);
+  font-variant-numeric: tabular-nums;
+}
+.type-bar-row.type-active .type-bar-score { color: var(--md-primary); font-weight: 700; }
+.tb-0 { background: var(--c-d1); }
+.tb-1 { background: var(--c-d2); }
+.tb-2 { background: var(--c-d3); }
+.tb-3 { background: var(--c-d4); }
+.tb-4 { background: var(--c-d5); }
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <div class="appbar-inner">
+    <span class="appbar-logo">高</span>
+    <span class="appbar-title">你是高需求朋友吗</span>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="测试步骤导航">
+    <div class="side-head">
+      <div class="side-title">你是高需求朋友吗</div>
+      <div class="side-sub">两阶段自评测试</div>
+    </div>
+    <nav class="step-list">
+      <div class="step-item" id="step-1">
+        <div class="step-dot"><span>1</span></div>
+        <div class="step-body">
+          <div class="step-title">开始</div>
+          <div class="step-sub">了解测试 · 阅读说明后开始</div>
+        </div>
+      </div>
+      <div class="step-item" id="step-2">
+        <div class="step-dot"><span>2</span></div>
+        <div class="step-body">
+          <div class="step-title">筛查</div>
+          <div class="step-sub">判断是不是 · 25 题 · 阶段 1/2</div>
+          <div class="step-progress" id="step-progress-2"></div>
+          <div class="step-mini"><div class="step-mini-fill" id="step-mini-fill-2"></div></div>
+        </div>
+      </div>
+      <div class="step-item" id="step-3">
+        <div class="step-dot"><span>3</span></div>
+        <div class="step-body">
+          <div class="step-title">类型细分 <span class="step-toggle" id="step-toggle-3" aria-hidden="true">▾</span></div>
+          <div class="step-sub">属于哪种 · 25 题 · 阶段 2/2</div>
+          <div class="step-progress" id="step-progress-3"></div>
+          <div class="step-mini"><div class="step-mini-fill" id="step-mini-fill-3"></div></div>
+          <div class="step-type-bars" id="step-type-bars" hidden>
+            <div class="type-bar-row" id="type-bar-row-0"><span class="type-bar-name" id="type-bar-name-0"></span><div class="type-bar-track"><div class="type-bar-fill tb-0" id="type-bar-fill-0"></div></div><span class="type-bar-score" id="type-bar-score-0"></span></div>
+            <div class="type-bar-row" id="type-bar-row-1"><span class="type-bar-name" id="type-bar-name-1"></span><div class="type-bar-track"><div class="type-bar-fill tb-1" id="type-bar-fill-1"></div></div><span class="type-bar-score" id="type-bar-score-1"></span></div>
+            <div class="type-bar-row" id="type-bar-row-2"><span class="type-bar-name" id="type-bar-name-2"></span><div class="type-bar-track"><div class="type-bar-fill tb-2" id="type-bar-fill-2"></div></div><span class="type-bar-score" id="type-bar-score-2"></span></div>
+            <div class="type-bar-row" id="type-bar-row-3"><span class="type-bar-name" id="type-bar-name-3"></span><div class="type-bar-track"><div class="type-bar-fill tb-3" id="type-bar-fill-3"></div></div><span class="type-bar-score" id="type-bar-score-3"></span></div>
+            <div class="type-bar-row" id="type-bar-row-4"><span class="type-bar-name" id="type-bar-name-4"></span><div class="type-bar-track"><div class="type-bar-fill tb-4" id="type-bar-fill-4"></div></div><span class="type-bar-score" id="type-bar-score-4"></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="step-item" id="step-4">
+        <div class="step-dot"><span>4</span></div>
+        <div class="step-body">
+          <div class="step-title">结果</div>
+          <div class="step-sub">解读与建议 · 总评 · 类型 · 五维</div>
+        </div>
+      </div>
+    </nav>
+  </aside>
+  <div class="layout-main">
+<main>
+  <!-- ============ 开始页 ============ -->
+  <section id="start" class="card">
+    <span class="hero-badge">自我觉察 · 非诊断工具</span>
+    <h1>你是「高需求朋友」吗？</h1>
+    <p class="hero-sub">50 道题 · 约 10 分钟 · 两阶段：筛查 + 类型细分，看看你在友谊中习惯扮演怎样的角色。</p>
+    <hr class="divider">
+    <ul class="dim-list">
+      <li><span class="dim-dot d1"></span><div><span class="dim-name">情感索取</span> <span class="dim-desc">——希望对方随时回应你的情绪</span></div></li>
+      <li><span class="dim-dot d2"></span><div><span class="dim-name">自我中心</span> <span class="dim-desc">——话题与关注总围绕自己</span></div></li>
+      <li><span class="dim-dot d3"></span><div><span class="dim-name">边界模糊</span> <span class="dim-desc">——难以接受对方的独立空间</span></div></li>
+      <li><span class="dim-dot d4"></span><div><span class="dim-name">制造危机</span> <span class="dim-desc">——习惯放大冲突与低谷</span></div></li>
+      <li><span class="dim-dot d5"></span><div><span class="dim-name">抗拒意见</span> <span class="dim-desc">——把建议与拒绝读作否定</span></div></li>
+    </ul>
+    <hr class="divider">
+    <button class="btn btn-primary btn-block" id="btn-start">开始测试</button>
+  </section>
+
+  <!-- ============ 答题页 ============ -->
+  <section id="quiz" class="card" hidden>
+    <div class="quiz-top">
+      <span id="q-count">第 1 / 25 题</span>
+      <span id="q-dim-name"></span>
+      <span class="phase-badge" id="q-phase"></span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="q-dim" id="q-dim-chip">维度</div>
+    <p class="q-text" id="q-text"></p>
+    <div class="options" id="options"></div>
+  </section>
+
+  <!-- ============ 过渡面板 ============ -->
+  <section id="transition" class="card" hidden>
+    <div class="result-head">
+      <div class="trans-score" id="trans-percent">--</div>
+      <div class="result-percent">筛查完成</div>
+    </div>
+    <p class="band-text">检测到较高的高需求倾向，进入类型细分，看看你更接近哪种类型。</p>
+    <div class="result-actions">
+      <button class="btn btn-primary btn-block" id="btn-type-next">进入类型细分</button>
+    </div>
+  </section>
+
+  <!-- ============ 结果页 ============ -->
+  <section id="result" class="card" hidden>
+    <div class="result-head">
+      <div class="result-score" id="res-score">--</div>
+      <div class="result-percent" id="res-percent"></div>
+      <div class="result-band" id="res-band"></div>
+    </div>
+    <p class="band-text" id="res-text"></p>
+    <h2 class="section-title" id="type-title">你的高需求类型</h2>
+    <div id="type-cards"></div>
+    <h2 class="section-title">五个维度详情</h2>
+    <div id="dim-cards"></div>
+    <h2 class="section-title">改进小建议</h2>
+    <div class="disclaimer">
+      <b>免责声明：</b>本测试仅供自我觉察与娱乐参考，不构成心理诊断或医学建议。如果你在关系中感到持续困扰，建议与信任的人聊聊，或寻求专业心理咨询支持。
+    </div>
+    <div class="result-actions">
+      <button class="btn btn-primary btn-block" id="btn-retry">重新测试</button>
+    </div>
+  </section>
+</main>
+
+<footer>你是高需求朋友吗 · 一个关于友谊模式的温和小测试</footer>
+  </div>
+</div>
+
+<script>
+/* ================= 题目数据 ================= */
+var DIMS = [
+  { key: 'd1', name: '情感索取', color: 'var(--c-d1)',
+    advice: '试着练习「延迟满足」：朋友没有秒回时，先给自己 10 分钟再决定是否追问。把情绪出口分散给多个渠道（运动、日记、其他朋友），而不是只盯住一个人。' },
+  { key: 'd2', name: '自我中心', color: 'var(--c-d2)',
+    advice: '下次聊天时先问对方「你今天过得怎么样」，并坚持听完再开口。把「听」当成练习目标：每次对话至少留一半时间给对方。' },
+  { key: 'd3', name: '边界模糊', color: 'var(--c-d3)',
+    advice: '提醒自己：朋友有其他亲密关系、有独处时间，不等于「你不重要」。可以主动给对方留出空间，并试着发展自己的独立圈子。' },
+  { key: 'd4', name: '制造危机', color: 'var(--c-d4)',
+    advice: '遇到摩擦时先暂停 20 分钟再回应，问自己「这件事 3 天后还重要吗」。把需要朋友介入的「大事」筛选掉那些其实是「小事」的。' },
+  { key: 'd5', name: '抗拒意见', color: 'var(--c-d5)',
+    advice: '把建议理解为「对方在乎你」而非「对方否定你」。收到委婉拒绝时，默念「拒绝的是这件事，不是我这个人」，再给彼此一点缓冲。' }
+];
+
+var SCREEN_QUESTIONS = [
+  { dim: 0, text: '朋友回复我消息稍微慢一点，我就会开始担心是不是得罪了对方。' },
+  { dim: 0, text: '我心情不好的时候，希望朋友立刻放下手头的事来陪我、安慰我。' },
+  { dim: 0, text: '如果朋友一整天没有联系我，我会觉得对方在疏远我。' },
+  { dim: 0, text: '我需要朋友时，希望对方随叫随到，否则我会感到受伤。' },
+  { dim: 0, text: '朋友的态度稍微冷淡一点，我就会反复回想是不是自己做错了什么。' },
+  { dim: 1, text: '朋友找我倾诉时我会认真听，但听久了心里会不耐烦。' },
+  { dim: 1, text: '聊天时话题总是围绕我的事，朋友的事我很少主动关心。' },
+  { dim: 1, text: '朋友遇到困难找我帮忙时，我经常觉得对方在占用我的时间。' },
+  { dim: 1, text: '朋友分享好消息时，我常常把话题拉回自己的近况。' },
+  { dim: 1, text: '我需要帮助时希望朋友全力以赴，但朋友需要我时我常以忙为借口。' },
+  { dim: 2, text: '朋友和其他人走得太近，我会感到不舒服甚至吃醋。' },
+  { dim: 2, text: '我认为好朋友之间应该完全透明，对方有自己的小秘密会让我不安。' },
+  { dim: 2, text: '我会不自觉地翻看朋友与别人的互动，并暗自比较谁更亲近。' },
+  { dim: 2, text: '朋友临时和别人约好而取消与我的见面，我会很难接受。' },
+  { dim: 2, text: '我希望朋友把我看作最重要的人，排在其他朋友和家人之前。' },
+  { dim: 3, text: '我的生活里经常出现需要朋友紧急安慰的"大事"。' },
+  { dim: 3, text: '遇到人际摩擦时，我容易把小事越闹越大，最后需要朋友来调解。' },
+  { dim: 3, text: '情绪低谷时我会频繁向朋友求助，且短时间内很难走出来。' },
+  { dim: 3, text: '我经常在深夜或朋友忙碌时发长篇情绪消息，希望对方马上回应。' },
+  { dim: 3, text: '朋友如果不及时"救场"，我会觉得对方不够意思，并因此疏远对方。' },
+  { dim: 4, text: '朋友给我提建议时，我容易觉得对方是在否定我。' },
+  { dim: 4, text: '朋友委婉拒绝我的请求时，我会觉得对方不把我当朋友。' },
+  { dim: 4, text: '当我被指出做得不好的地方时，第一反应是辩解而不是反思。' },
+  { dim: 4, text: '即使心里知道朋友说得对，我也很难当面承认自己有问题。' },
+  { dim: 4, text: '朋友没有按我期望的方式安慰我时，我会觉得对方不关心我。' }
+];
+
+var TYPE_DEFS = [
+  { key: 'vampire', name: '情绪吸血型', sub: '情感宣泄者', advice: '你在压力大时容易把朋友当作情绪出口，习惯性倾倒烦恼，却较少关心对方的感受，友谊会慢慢变成单向输出。建议：倾诉前先问一句"你现在方便听吗"；每次倾诉后，试着关心对方最近怎么样；练习先自己消化一部分情绪，再向朋友求助。' },
+  { key: 'companion', name: '高频陪伴型', sub: '社交依赖者', advice: '你把陪伴看得非常重，安全感很大程度来自朋友的及时回应，当对方有自己的节奏时，你会感到被冷落。建议：把联系频率的预期降到更现实的水平；培养独处时的爱好，让陪伴成为加分项而非必需品；想念朋友时直接表达，而不是用追问和情绪试探。' },
+  { key: 'approval', name: '认同与赞赏渴求型', sub: '肯定寻求者', advice: '你很在意朋友的评价，需要通过对方的肯定来确认自己的价值，这让你容易患得患失，也给了朋友很大压力。建议：把自我肯定放在第一位，先问自己"我觉得自己做得怎么样"；记录自己做得好的小事，建立自己的评价系统；把朋友的意见当作参考，而不是判决。' },
+  { key: 'controller', name: '控制与介入型', sub: '界限模糊者', advice: '你希望关系按自己的期待发展，会不自觉地介入朋友的选择与生活，出发点也许是关心，但边界感不足会让对方想逃离。建议：练习"建议一次，尊重到底"；把"我认为"换成"你自己怎么看"；接受朋友有权做出与你不同的选择，这才是信任。' },
+  { key: 'taker', name: '单向索取型', sub: '资源与帮助依赖者', advice: '遇到困难时你会第一时间找朋友，但朋友需要你时你难以给出对等支持，关系长期失衡会让对方感到被消耗。建议：求助前先评估自己能否先尝试解决一部分；朋友帮过你的事记在心里并及时回应对方的求助；把"互相麻烦"变成有来有往。' }
+];
+
+var TYPE_QUESTIONS = [
+  { type: 0, text: '朋友跟我聊天时，我总会不自觉地把话题引向自己的烦恼，即使对方本来想分享开心的事。' },
+  { type: 0, text: '我会向朋友倾诉很具体的负面情绪细节，但很少问对方最近过得怎么样。' },
+  { type: 0, text: '朋友想转移话题或说点轻松的，我会觉得对方不理解我的痛苦，反而说得更多。' },
+  { type: 0, text: '朋友心情不好来找我时，我常常不知道怎么接，聊不了几句就又绕回自己的事。' },
+  { type: 0, text: '我对朋友的生活细节了解很少，但朋友对我最近的烦恼却几乎全知道。' },
+  { type: 1, text: '我需要每天和朋友保持联系，一天没聊天就会感到不安。' },
+  { type: 1, text: '朋友一整天没回复我，我就会反复查看手机，甚至想追问对方在忙什么。' },
+  { type: 1, text: '约朋友见面被拒绝时，我会很难过，并觉得对方不在乎我。' },
+  { type: 1, text: '我常常希望朋友在线上一直陪着我，即使没什么事要说。' },
+  { type: 1, text: '独自一人时我很容易感到无聊或焦虑，所以总想拉朋友一起。' },
+  { type: 2, text: '我发的朋友圈或动态，如果朋友没有点赞评论，我会觉得失落。' },
+  { type: 2, text: '做出决定后，我需要朋友明确支持我，否则我会反复犹豫。' },
+  { type: 2, text: '朋友没有及时夸我，我会怀疑自己是不是做得不够好。' },
+  { type: 2, text: '我常向朋友问"你觉得我行吗""我是不是很差"，需要对方一遍遍肯定。' },
+  { type: 2, text: '朋友指出我的小缺点时，即使语气温和，我也会难过很久。' },
+  { type: 3, text: '朋友做了我不认同的决定，我会忍不住反复劝阻，直到对方改变主意。' },
+  { type: 3, text: '我会对朋友的生活习惯提出很多要求。' },
+  { type: 3, text: '朋友交了我不太喜欢的新朋友，我会表达不满，希望对方少来往。' },
+  { type: 3, text: '朋友出去玩没带我，我会追问细节，并希望对方以后先考虑我。' },
+  { type: 3, text: '我认为真正的好朋友就应该听我的建议，不然就是不够信任我。' },
+  { type: 4, text: '遇到经济、工作或生活上的困难时，我第一反应是找朋友帮忙解决。' },
+  { type: 4, text: '朋友帮过我很多次，但我很少有机会回报对方。' },
+  { type: 4, text: '我需要朋友帮忙时觉得理所当然，但对方开口求助时我会觉得麻烦。' },
+  { type: 4, text: '我常向朋友借东西或借资源，归还和答谢经常被我不自觉地拖延。' },
+  { type: 4, text: '朋友拒绝我的求助时，我会觉得对方不够意思，而不是体谅对方也有难处。' }
+];
+
+var OPTIONS = [
+  { score: 1, label: '完全不符合', desc: '几乎从不会这样' },
+  { score: 2, label: '不太符合',   desc: '偶尔会这样' },
+  { score: 3, label: '一般',       desc: '有时会这样' },
+  { score: 4, label: '比较符合',   desc: '经常这样' },
+  { score: 5, label: '完全符合',   desc: '几乎总是这样' }
+];
+
+var BANDS = [
+  { min: 90, name: '高需求倾向明显', text: '你非常看重朋友之间的联结，也愿意为关系投入很多情绪。这份敏感与投入，说明友谊在你心里占据着重要的位置——这本身是好事。只是当「被回应」成为关系里唯一的支点，对方可能会感到吃力。试试把一部分期待收回来，放在自己身上：你不需要时刻被接住，才值得被爱。你已经在觉察，这就是改变的开始。' },
+  { min: 60, name: '有高需求倾向', text: '你在友谊中习惯付出也习惯索取，偶尔会把安全感押在对方的反应上。大多数时候关系是健康的，但在情绪低落或遇到摩擦时，你可能会不自觉地放大需要。这没有错，只是可以更温柔地对待自己：先安抚自己的情绪，再向朋友开口，你会发现自己比想象中更有力量。' },
+  { min: 25, name: '关系边界较健康', text: '你懂得给朋友空间，也懂得照顾自己的情绪，关系对你来说是滋养而非负担。即使如此，也请记得：健康不代表不需要——偶尔示弱、主动求助，同样是一种亲密。愿你继续保持这份清醒与温柔。' }
+];
+
+/* ================= 状态 ================= */
+var answers = [];
+var current = 0;
+var locked = false;
+var phase = 1;   // 1=阶段一筛查，2=阶段二分类
+
+var $ = function(id) { return document.getElementById(id); };
+
+/* ================= 侧栏步骤状态联动 ================= */
+function updateSidebar(step, opts) {
+  opts = opts || {};
+  var items = document.querySelectorAll('.step-item');
+  for (var i = 0; i < items.length; i++) {
+    items[i].classList.remove('step-active', 'step-done', 'step-na');
+  }
+  ['step-progress-2', 'step-progress-3'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = '';
+  });
+  ['step-mini-fill-2', 'step-mini-fill-3'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.width = '0%';
+  });
+  var done = opts.done || [];
+  var na = opts.na || [];
+  for (var d = 0; d < done.length; d++) document.getElementById('step-' + done[d]).classList.add('step-done');
+  for (var n = 0; n < na.length; n++) document.getElementById('step-' + na[n]).classList.add('step-na');
+  if (step) document.getElementById('step-' + step).classList.add('step-active');
+}
+
+/* ================= 类型细分实时得分条 ================= */
+function renderTypeBarNames() {
+  for (var t = 0; t < TYPE_DEFS.length; t++) {
+    var nm = document.getElementById('type-bar-name-' + t);
+    if (nm) nm.textContent = TYPE_DEFS[t].name;
+  }
+}
+function updateTypeBars(activeType) {
+  var typeScores = [0, 0, 0, 0, 0];
+  for (var i = 0; i < TYPE_QUESTIONS.length; i++) {
+    var ai = SCREEN_QUESTIONS.length + i;
+    if (ai < answers.length) typeScores[TYPE_QUESTIONS[i].type] += answers[ai];
+  }
+  for (var t = 0; t < typeScores.length; t++) {
+    var fill = document.getElementById('type-bar-fill-' + t);
+    var score = document.getElementById('type-bar-score-' + t);
+    var row = document.getElementById('type-bar-row-' + t);
+    if (fill) fill.style.width = (typeScores[t] / 25 * 100) + '%';
+    if (score) score.textContent = typeScores[t] + ' / 25';
+    if (row) row.classList.toggle('type-active', activeType === t);
+  }
+}
+function toggleTypeBars(forceOpen) {
+  var box = document.getElementById('step-type-bars');
+  var item = document.getElementById('step-3');
+  if (!box || !item) return;
+  var open = (forceOpen !== undefined) ? !!forceOpen : box.hidden;
+  box.hidden = !open;
+  item.classList.toggle('step-open', open);
+}
+document.getElementById('step-3').addEventListener('click', function() {
+  toggleTypeBars();
+});
+
+function show(id) {
+  ['start', 'quiz', 'transition', 'result'].forEach(function(s) { $(s).hidden = (s !== id); });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ================= 开始 ================= */
+$('btn-start').addEventListener('click', function() {
+  answers = [];
+  current = 0;
+  locked = false;
+  phase = 1;
+  $('quiz').classList.remove('quiz-lock');
+  updateSidebar(2);
+  show('quiz');
+  renderQuestion();
+});
+
+/* ================= 渲染题目 ================= */
+function renderQuestion() {
+  var list = (phase === 1) ? SCREEN_QUESTIONS : TYPE_QUESTIONS;
+  var q = list[current];
+  locked = false;
+  $('quiz').classList.remove('quiz-lock');
+
+  // 阶段徽标
+  $('q-phase').textContent = '阶段 ' + phase + ' / 2 · ' + (phase === 1 ? '筛查' : '分类');
+  $('q-count').textContent = '第 ' + (current + 1) + ' / ' + list.length + ' 题';
+
+  // 侧栏实时进度（步骤2/3进行中显示）
+  var progId = (phase === 1) ? 2 : 3;
+  var progEl = document.getElementById('step-progress-' + progId);
+  var fillEl = document.getElementById('step-mini-fill-' + progId);
+  if (progEl) progEl.textContent = '第 ' + (current + 1) + ' / ' + list.length + ' 题';
+  if (fillEl) fillEl.style.width = (current / list.length * 100) + '%';
+
+  // 阶段二：侧栏类型实时得分条（当前作答类型高亮）
+  if (phase === 2) updateTypeBars(q.type);
+
+  if (phase === 1) {
+    var dim = DIMS[q.dim];
+    $('q-dim-name').textContent = dim.name;
+    $('q-dim-chip').textContent = '维度' + (q.dim + 1) + ' · ' + dim.name;
+    $('q-dim-chip').className = 'q-dim d' + (q.dim + 1);
+  } else {
+    var td = TYPE_DEFS[q.type];
+    $('q-dim-name').textContent = td.name;
+    $('q-dim-chip').textContent = '类型' + (q.type + 1) + ' · ' + td.name;
+    $('q-dim-chip').className = 'q-dim d' + ((q.type % 5) + 1);
+  }
+  $('q-text').textContent = q.text;
+  $('progress-fill').style.width = ((current / list.length) * 100) + '%';
+
+  var wrap = $('options');
+  wrap.innerHTML = '';
+  OPTIONS.forEach(function(opt) {
+    var btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.type = 'button';
+    btn.innerHTML = '<span class="opt-score">' + opt.score + '</span>' +
+      '<span class="opt-label">' + opt.label + '<small>' + opt.desc + '</small></span>';
+    btn.addEventListener('click', function() { choose(opt.score, btn); });
+    wrap.appendChild(btn);
+  });
+}
+
+/* ================= 选择答案（自动下一题） ================= */
+function choose(score, btn) {
+  if (locked) return;
+  locked = true;
+
+  // 高亮所选选项
+  var opts = $('options').children;
+  for (var i = 0; i < opts.length; i++) opts[i].classList.remove('selected');
+  btn.classList.add('selected');
+  $('quiz').classList.add('quiz-lock');
+
+  // 跨阶段连续存储：阶段一存 0-24，阶段二存 25-49
+  var base = (phase === 1) ? 0 : SCREEN_QUESTIONS.length;
+  answers[base + current] = score;
+
+  // 阶段二：选择后立即刷新侧栏类型得分条（300ms 反馈期内保持实时）
+  if (phase === 2) updateTypeBars(TYPE_QUESTIONS[current].type);
+
+  // 短暂反馈后自动进入下一题
+  setTimeout(function() {
+    current++;
+    var list = (phase === 1) ? SCREEN_QUESTIONS : TYPE_QUESTIONS;
+    if (current < list.length) {
+      renderQuestion();
+    } else if (phase === 1) {
+      finishScreen();
+    } else {
+      showResult();
+    }
+  }, 300);
+}
+
+/* ================= 计算与结果 ================= */
+function computeResult() {
+  var dimScores = [0, 0, 0, 0, 0];
+  for (var i = 0; i < SCREEN_QUESTIONS.length; i++) {
+    dimScores[SCREEN_QUESTIONS[i].dim] += answers[i];
+  }
+  var total = dimScores.reduce(function(a, b) { return a + b; }, 0);
+  return { dimScores: dimScores, total: total };
+}
+
+function levelOf(score) {
+  if (score >= 20) return { key: 'high', label: '高', cls: 'level-high' };
+  if (score >= 10) return { key: 'mid', label: '中', cls: 'level-mid' };
+  return { key: 'low', label: '低', cls: 'level-low' };
+}
+
+function showResult() {
+  var r = computeResult();
+  var total = r.total;
+
+  $('res-score').textContent = total;
+  $('res-percent').textContent = '总分 ' + total + ' / 125 · 百分比 ' + Math.round(total / 125 * 100) + '%';
+
+  var band = null;
+  for (var i = 0; i < BANDS.length; i++) {
+    if (total >= BANDS[i].min) { band = BANDS[i]; break; }
+  }
+  if (!band) band = BANDS[BANDS.length - 1];
+  $('res-band').textContent = band.name;
+  $('res-text').textContent = band.text;
+
+  // 维度卡片 + 条形图
+  var wrap = $('dim-cards');
+  wrap.innerHTML = '';
+  DIMS.forEach(function(dim, idx) {
+    var score = r.dimScores[idx];
+    var lv = levelOf(score);
+    var card = document.createElement('div');
+    card.className = 'dim-card ' + dim.key;
+    card.innerHTML =
+      '<div class="dim-card-header">' +
+        '<span class="dim-card-name">' + dim.name + '</span>' +
+        '<span class="dim-level ' + lv.cls + '">' + lv.label + '（' + score + ' 分）</span>' +
+      '</div>' +
+      '<div class="bar-track"><div class="bar-fill" data-w="' + (score / 25 * 100) + '%"></div></div>' +
+      '<div class="dim-score-line"><span>低</span><span>中</span><span>高</span></div>' +
+      '<div class="dim-advice"><b>建议：</b>' + dim.advice + '</div>';
+    wrap.appendChild(card);
+  });
+
+  // 分类区块（仅进入过阶段二时渲染）
+  var typeWrap = $('type-cards');
+  typeWrap.innerHTML = '';
+  $('type-title').hidden = (phase !== 2);
+  if (phase === 2) {
+    var tr = computeTypeResult();
+    var pt = TYPE_DEFS[tr.primary];
+    typeWrap.innerHTML =
+      '<div class="type-card">' +
+        '<div class="type-card-head">' +
+          '<span class="type-card-name">' + pt.name + '</span>' +
+          '<span class="type-card-score">' + tr.typeScores[tr.primary] + ' / 25 分</span>' +
+        '</div>' +
+        '<div class="type-card-sub">' + pt.sub + '</div>' +
+        '<div class="bar-track"><div class="bar-fill" data-w="' + (tr.typeScores[tr.primary] / 25 * 100) + '%"></div></div>' +
+        '<div class="type-card-advice"><b>解读与建议：</b>' + pt.advice + '</div>' +
+      '</div>';
+    if (tr.secondary !== -1 && tr.secondary !== tr.primary && tr.typeScores[tr.secondary] > 0) {
+      var st = TYPE_DEFS[tr.secondary];
+      typeWrap.innerHTML += '<div class="type-card-alt">其次接近：' + st.name + '（得分 ' + tr.typeScores[tr.secondary] + ' / 25）</div>';
+    }
+  }
+
+  if (phase === 2) updateSidebar(4, { done: [2, 3] });
+  if (phase === 2) updateTypeBars(-1);
+  show('result');
+
+  // 等卡片渲染后动画条形图（维度 + 类型共用）
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      var fills = document.querySelectorAll('.bar-fill');
+      for (var j = 0; j < fills.length; j++) {
+        fills[j].style.width = fills[j].getAttribute('data-w');
+      }
+    });
+  });
+}
+
+/* ================= 阶段衔接 ================= */
+function finishScreen() {
+  var total = 0;
+  for (var i = 0; i < SCREEN_QUESTIONS.length; i++) total += answers[i];
+  var percent = Math.round(total / 125 * 100);
+  if (percent >= 50) {
+    updateSidebar(3, { done: [2] });
+    $('trans-percent').textContent = '相似度约 ' + percent + '%';
+    show('transition');
+  } else {
+    updateSidebar(4, { done: [2], na: [3] });
+    showResult();
+  }
+}
+
+/* ================= 类型计算 ================= */
+function computeTypeResult() {
+  var typeScores = [0, 0, 0, 0, 0];
+  for (var i = 0; i < TYPE_QUESTIONS.length; i++) {
+    typeScores[TYPE_QUESTIONS[i].type] += answers[SCREEN_QUESTIONS.length + i];
+  }
+  var primary = 0;
+  for (var t = 1; t < typeScores.length; t++) {
+    if (typeScores[t] > typeScores[primary]) primary = t;
+  }
+  var secondary = -1;
+  for (var t2 = 0; t2 < typeScores.length; t2++) {
+    if (t2 === primary) continue;
+    if (secondary === -1 || typeScores[t2] > typeScores[secondary]) secondary = t2;
+  }
+  return { typeScores: typeScores, primary: primary, secondary: secondary };
+}
+
+/* ================= 过渡面板 ================= */
+$('btn-type-next').addEventListener('click', function() {
+  phase = 2;
+  current = 0;
+  locked = false;
+  updateSidebar(3, { done: [2] });
+  toggleTypeBars(true);
+  renderTypeBarNames();
+  updateTypeBars(-1);
+  show('quiz');
+  renderQuestion();
+});
+
+/* ================= 重新测试 ================= */
+$('btn-retry').addEventListener('click', function() {
+  answers = [];
+  current = 0;
+  locked = false;
+  phase = 1;
+  $('quiz').classList.remove('quiz-lock');
+  $('type-cards').innerHTML = '';
+  updateSidebar(1);
+  toggleTypeBars(false);
+  updateTypeBars(-1);
+  show('start');
+});
+
+/* ================= 初始化侧栏 ================= */
+updateSidebar(1);
+renderTypeBarNames();
+</script>
+</body>
+</html>
