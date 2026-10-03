@@ -3210,6 +3210,14 @@
     root.setAttribute('data-adhd', on ? 'on' : 'off');
     window.__mbtiAdhd = on;
     try { localStorage.setItem(KEY, on ? '1' : '0'); } catch(e) {}
+    if (on) {
+      var bgmAudioEl = document.getElementById('bgmAudio');
+      var bgmToggleEl = document.getElementById('bgmToggle');
+      if (bgmAudioEl && !bgmAudioEl.paused) {
+        bgmAudioEl.pause();
+        if (bgmToggleEl) bgmToggleEl.textContent = '播放';
+      }
+    }
   };
 })();
 </script>
