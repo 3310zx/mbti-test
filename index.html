@@ -3423,6 +3423,73 @@
     </a>
   </section>
 
+  <section style="max-width:1280px;margin:0 auto;padding:0 24px 56px;">
+    <div class="card bgm-card" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 24px;margin:0;">
+      <div style="min-width:0;">
+        <div style="font-size:14px;font-weight:600;color:var(--md-on-surface);margin-bottom:4px;">背景音乐</div>
+        <div id="bgmTitle" style="font-size:13px;opacity:.72;color:var(--md-on-surface);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cognitive Blue</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <button type="button" class="btn btn-tonal bgm-btn" id="bgmPrev" aria-label="上一首" style="width:auto;padding:0 16px;height:40px;">上一首</button>
+        <button type="button" class="btn btn-filled bgm-btn" id="bgmToggle" aria-label="播放或暂停" style="width:auto;padding:0 20px;height:40px;">播放</button>
+        <button type="button" class="btn btn-tonal bgm-btn" id="bgmNext" aria-label="下一首" style="width:auto;padding:0 16px;height:40px;">下一首</button>
+      </div>
+    </div>
+    <audio id="bgmAudio" preload="metadata" loop></audio>
+    <script>
+    (function(){
+      var BGM_TRACKS = [
+        { src: 'assets/bgm/cognitive-blue.mp3', title: 'Cognitive Blue' },
+        { src: 'assets/bgm/cognitive-blue-female-vocal.mp3', title: 'Cognitive Blue (Female Vocal)' },
+        { src: 'assets/bgm/cognitive-sax.mp3', title: 'Cognitive Sax' }
+      ];
+      var audio = document.getElementById('bgmAudio');
+      var titleEl = document.getElementById('bgmTitle');
+      var toggleBtn = document.getElementById('bgmToggle');
+      var prevBtn = document.getElementById('bgmPrev');
+      var nextBtn = document.getElementById('bgmNext');
+      var idx = 0;
+      function syncToggle(){
+        toggleBtn.textContent = audio.paused ? '播放' : '暂停';
+      }
+      function loadTrack(i, autoplay){
+        idx = (i + BGM_TRACKS.length) % BGM_TRACKS.length;
+        var t = BGM_TRACKS[idx];
+        titleEl.textContent = t.title;
+        audio.src = t.src;
+        audio.load();
+        if(autoplay){
+          var p = audio.play();
+          if(p && p.catch){ p.catch(function(){}); }
+        }
+        syncToggle();
+      }
+      toggleBtn.addEventListener('click', function(){
+        if(audio.paused){
+          if(!audio.src){ loadTrack(idx, true); return; }
+          var p = audio.play();
+          if(p && p.catch){ p.catch(function(){}); }
+        } else {
+          audio.pause();
+        }
+        syncToggle();
+      });
+      prevBtn.addEventListener('click', function(){
+        var playing = !audio.paused;
+        loadTrack(idx - 1, playing);
+      });
+      nextBtn.addEventListener('click', function(){
+        var playing = !audio.paused;
+        loadTrack(idx + 1, playing);
+      });
+      audio.addEventListener('play', syncToggle);
+      audio.addEventListener('pause', syncToggle);
+      audio.volume = 0.6;
+      loadTrack(0, false);
+    })();
+    </script>
+  </section>
+
   <footer class="site-footer">
     <div>© 2026 MBTI 认知功能测试</div>
     <div><a href="privacy.html">隐私政策</a></div>
