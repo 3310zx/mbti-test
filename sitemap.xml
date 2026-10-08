@@ -16,6 +16,16 @@
     <priority>0.3</priority>
   </url>
   <url>
+    <loc>https://3310zx.github.io/mbti-test/en/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://3310zx.github.io/mbti-test/en/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://3310zx.github.io/mbti-test/types/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
