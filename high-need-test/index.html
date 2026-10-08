@@ -29,12 +29,24 @@
 <title>你是高需求朋友吗 - 互动测试</title>
 <meta name="description" content="一个温和的自我觉察小测试：通过两阶段共 50 道题，先筛查你在友谊中的高需求倾向，再细分你更接近哪种类型。结果仅供参考，不构成心理诊断。">
 <link rel="canonical" href="https://3310zx.github.io/mbti-test/high-need-test/">
+<link rel="alternate" hreflang="zh-CN" href="https://3310zx.github.io/mbti-test/high-need-test/">
+<link rel="alternate" hreflang="en" href="https://3310zx.github.io/mbti-test/high-need-test/">
+<link rel="alternate" hreflang="ja" href="https://3310zx.github.io/mbti-test/ja/index.html">
+<link rel="alternate" hreflang="ko" href="https://3310zx.github.io/mbti-test/ko/index.html">
+<link rel="alternate" hreflang="fr" href="https://3310zx.github.io/mbti-test/fr/index.html">
+<link rel="alternate" hreflang="ru" href="https://3310zx.github.io/mbti-test/ru/index.html">
+<link rel="alternate" hreflang="bo" href="https://3310zx.github.io/mbti-test/bo/index.html">
+<link rel="alternate" hreflang="yue" href="https://3310zx.github.io/mbti-test/yue/index.html">
+<link rel="alternate" hreflang="es" href="https://3310zx.github.io/mbti-test/es/index.html">
+<link rel="alternate" hreflang="pt" href="https://3310zx.github.io/mbti-test/pt/index.html">
+<link rel="alternate" hreflang="x-default" href="https://3310zx.github.io/mbti-test/high-need-test/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="你是高需求朋友吗 - 互动测试">
 <meta property="og:title" content="你是高需求朋友吗 - 互动测试">
 <meta property="og:description" content="一个温和的自我觉察小测试：通过两阶段共 50 道题，先筛查你在友谊中的高需求倾向，再细分你更接近哪种类型。结果仅供参考，不构成心理诊断。">
 <meta property="og:url" content="https://3310zx.github.io/mbti-test/high-need-test/">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:image" content="https://3310zx.github.io/mbti-test/high-need-test/images/og.png">
 <meta property="og:image:width" content="630">
 <meta property="og:image:height" content="1200">
@@ -681,7 +693,7 @@ footer {
 .step-item.step-active .step-sub,
 .step-item.step-done .step-sub { color: var(--md-on-secondary-container); opacity: .8; }
 .step-item.step-na { opacity: .45; }
-.step-item.step-na .step-sub::after { content: ' · 未进入'; }
+.step-item.step-na .step-sub::after { content: ' · ' var(--i18n-na-text, '未进入'); }
 .step-body { flex: 1; min-width: 0; }
 .step-title { font-size: 15px; font-weight: 600; color: var(--md-on-surface); line-height: 1.3; }
 .step-sub { font-size: 12px; color: var(--md-on-surface-variant); margin-top: 2px; line-height: 1.45; }
@@ -823,34 +835,42 @@ body.share-capture {
 
 <header class="appbar">
   <div class="appbar-inner">
-    <span class="appbar-logo">高</span>
-    <span class="appbar-title">你是高需求朋友吗</span>
-    <button class="adhd-toggle" id="adhd-toggle" type="button" aria-label="ADHD友好专注模式" title="ADHD友好专注模式：减弱动效、放大文字、单题聚焦" aria-pressed="false">🧠</button>
-    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式">🌙</button>
+    <span class="appbar-logo" data-i18n="appbarLogo">高</span>
+    <span class="appbar-title" data-i18n="appbarTitle">你是高需求朋友吗</span>
+    <button class="adhd-toggle" id="adhd-toggle" type="button" aria-label="ADHD友好专注模式" title="ADHD友好专注模式：减弱动效、放大文字、单题聚焦" aria-pressed="false" data-i18n-aria="adhdAria" data-i18n-title="adhdTitle">🧠</button>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式" data-i18n-aria="themeAria" data-i18n-title="themeTitle">🌙</button>
+    <select class="lang-switch" id="lang-switch" aria-label="Language" style="height:38px;padding:0 12px;border-radius:980px;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-on-surface);font-size:13px;font-weight:500;cursor:pointer;outline:none;max-width:132px;" onchange="applyLang(this.value)">
+      <option value="zh">简体中文</option>
+      <option value="en">English</option>
+    </select>
   </div>
 </header>
 
 <div class="layout">
-  <aside class="sidebar" aria-label="测试步骤导航">
+  <aside class="sidebar" aria-label="测试步骤导航" data-i18n-aria="sidebarAria">
     <div class="side-head">
-      <div class="side-title">你是高需求朋友吗</div>
-      <div class="side-sub">两阶段自评测试</div>
-      <button class="adhd-toggle side-adhd-toggle" id="adhd-toggle-side" type="button" aria-label="ADHD友好专注模式" title="ADHD友好专注模式：减弱动效、放大文字、单题聚焦" aria-pressed="false">🧠</button>
-      <button class="theme-toggle side-theme-toggle" id="theme-toggle-side" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式">🌙</button>
+      <div class="side-title" data-i18n="sideTitle">你是高需求朋友吗</div>
+      <div class="side-sub" data-i18n="sideSub">两阶段自评测试</div>
+      <button class="adhd-toggle side-adhd-toggle" id="adhd-toggle-side" type="button" aria-label="ADHD友好专注模式" title="ADHD友好专注模式：减弱动效、放大文字、单题聚焦" aria-pressed="false" data-i18n-aria="adhdAria" data-i18n-title="adhdTitle">🧠</button>
+      <button class="theme-toggle side-theme-toggle" id="theme-toggle-side" type="button" aria-label="切换白天黑夜模式" title="切换白天/黑夜模式" data-i18n-aria="themeAria" data-i18n-title="themeTitle">🌙</button>
+      <select class="lang-switch" id="lang-switch-side" aria-label="Language" style="width:132px;padding:0 12px;border-radius:980px;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-on-surface);font-size:13px;font-weight:500;cursor:pointer;outline:none;" onchange="applyLang(this.value)">
+        <option value="zh">简体中文</option>
+        <option value="en">English</option>
+      </select>
     </div>
     <nav class="step-list">
       <div class="step-item" id="step-1">
         <div class="step-dot"><span>1</span></div>
         <div class="step-body">
-          <div class="step-title">开始</div>
-          <div class="step-sub">了解测试 · 阅读说明后开始</div>
+          <div class="step-title" data-i18n="step1Title">开始</div>
+          <div class="step-sub" data-i18n="step1Sub">了解测试 · 阅读说明后开始</div>
         </div>
       </div>
       <div class="step-item" id="step-2">
         <div class="step-dot"><span>2</span></div>
         <div class="step-body">
-          <div class="step-title">筛查</div>
-          <div class="step-sub">判断是不是 · 25 题 · 阶段 1/2</div>
+          <div class="step-title" data-i18n="step2Title">筛查</div>
+          <div class="step-sub" data-i18n="step2Sub">判断是不是 · 25 题 · 阶段 1/2</div>
           <div class="step-progress" id="step-progress-2"></div>
           <div class="step-mini"><div class="step-mini-fill" id="step-mini-fill-2"></div></div>
         </div>
@@ -858,8 +878,8 @@ body.share-capture {
       <div class="step-item" id="step-3">
         <div class="step-dot"><span>3</span></div>
         <div class="step-body">
-          <div class="step-title">类型细分 <span class="step-toggle" id="step-toggle-3" aria-hidden="true">▾</span></div>
-          <div class="step-sub">属于哪种 · 25 题 · 阶段 2/2</div>
+          <div class="step-title" data-i18n-html="step3Html">类型细分 <span class="step-toggle" id="step-toggle-3" aria-hidden="true">▾</span></div>
+          <div class="step-sub" data-i18n="step3Sub">属于哪种 · 25 题 · 阶段 2/2</div>
           <div class="step-progress" id="step-progress-3"></div>
           <div class="step-mini"><div class="step-mini-fill" id="step-mini-fill-3"></div></div>
           <div class="step-type-bars" id="step-type-bars" hidden>
@@ -874,8 +894,8 @@ body.share-capture {
       <div class="step-item" id="step-4">
         <div class="step-dot"><span>4</span></div>
         <div class="step-body">
-          <div class="step-title">结果</div>
-          <div class="step-sub">解读与建议 · 总评 · 类型 · 五维</div>
+          <div class="step-title" data-i18n="step4Title">结果</div>
+          <div class="step-sub" data-i18n="step4Sub">解读与建议 · 总评 · 类型 · 五维</div>
         </div>
       </div>
     </nav>
@@ -884,19 +904,19 @@ body.share-capture {
 <main>
   <!-- ============ 开始页 ============ -->
   <section id="start" class="card">
-    <span class="hero-badge">自我觉察 · 非诊断工具</span>
-    <h1>你是「高需求朋友」吗？</h1>
-    <p class="hero-sub">50 道题 · 约 10 分钟 · 两阶段：筛查 + 类型细分，看看你在友谊中习惯扮演怎样的角色。</p>
+    <span class="hero-badge" data-i18n="heroBadge">自我觉察 · 非诊断工具</span>
+    <h1 data-i18n="heroTitle">你是「高需求朋友」吗？</h1>
+    <p class="hero-sub" data-i18n="heroSub">50 道题 · 约 10 分钟 · 两阶段：筛查 + 类型细分，看看你在友谊中习惯扮演怎样的角色。</p>
     <hr class="divider">
     <ul class="dim-list">
-      <li><span class="dim-dot d1"></span><div><span class="dim-name">情感索取</span> <span class="dim-desc">——希望对方随时回应你的情绪</span></div></li>
-      <li><span class="dim-dot d2"></span><div><span class="dim-name">自我中心</span> <span class="dim-desc">——话题与关注总围绕自己</span></div></li>
-      <li><span class="dim-dot d3"></span><div><span class="dim-name">边界模糊</span> <span class="dim-desc">——难以接受对方的独立空间</span></div></li>
-      <li><span class="dim-dot d4"></span><div><span class="dim-name">制造危机</span> <span class="dim-desc">——习惯放大冲突与低谷</span></div></li>
-      <li><span class="dim-dot d5"></span><div><span class="dim-name">抗拒意见</span> <span class="dim-desc">——把建议与拒绝读作否定</span></div></li>
+      <li><span class="dim-dot d1"></span><div><span class="dim-name" data-i18n="dimName1">情感索取</span> <span class="dim-desc" data-i18n="dimDesc1">——希望对方随时回应你的情绪</span></div></li>
+      <li><span class="dim-dot d2"></span><div><span class="dim-name" data-i18n="dimName2">自我中心</span> <span class="dim-desc" data-i18n="dimDesc2">——话题与关注总围绕自己</span></div></li>
+      <li><span class="dim-dot d3"></span><div><span class="dim-name" data-i18n="dimName3">边界模糊</span> <span class="dim-desc" data-i18n="dimDesc3">——难以接受对方的独立空间</span></div></li>
+      <li><span class="dim-dot d4"></span><div><span class="dim-name" data-i18n="dimName4">制造危机</span> <span class="dim-desc" data-i18n="dimDesc4">——习惯放大冲突与低谷</span></div></li>
+      <li><span class="dim-dot d5"></span><div><span class="dim-name" data-i18n="dimName5">抗拒意见</span> <span class="dim-desc" data-i18n="dimDesc5">——把建议与拒绝读作否定</span></div></li>
     </ul>
     <hr class="divider">
-    <button class="btn btn-primary btn-block" id="btn-start">开始测试</button>
+    <button class="btn btn-primary btn-block" id="btn-start" data-i18n="btnStart">开始测试</button>
   </section>
 
   <!-- ============ 答题页 ============ -->
@@ -907,7 +927,7 @@ body.share-capture {
       <span class="phase-badge" id="q-phase"></span>
     </div>
     <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
-    <div class="q-dim" id="q-dim-chip">维度</div>
+    <div class="q-dim" id="q-dim-chip" data-i18n="qDimDefault">维度</div>
     <p class="q-text" id="q-text"></p>
     <div class="options" id="options"></div>
   </section>
@@ -916,11 +936,11 @@ body.share-capture {
   <section id="transition" class="card" hidden>
     <div class="result-head">
       <div class="trans-score" id="trans-percent">--</div>
-      <div class="result-percent">筛查完成</div>
+      <div class="result-percent" data-i18n="transDone">筛查完成</div>
     </div>
-    <p class="band-text">检测到较高的高需求倾向，进入类型细分，看看你更接近哪种类型。</p>
+    <p class="band-text" data-i18n="transBandText">检测到较高的高需求倾向，进入类型细分，看看你更接近哪种类型。</p>
     <div class="result-actions">
-      <button class="btn btn-primary btn-block" id="btn-type-next">进入类型细分</button>
+      <button class="btn btn-primary btn-block" id="btn-type-next" data-i18n="btnTypeNext">进入类型细分</button>
     </div>
   </section>
 
@@ -932,22 +952,22 @@ body.share-capture {
       <div class="result-band" id="res-band"></div>
     </div>
     <p class="band-text" id="res-text"></p>
-    <h2 class="section-title" id="type-title">你的高需求类型</h2>
+    <h2 class="section-title" id="type-title" data-i18n="typeTitle">你的高需求类型</h2>
     <div id="type-cards"></div>
-    <h2 class="section-title">五个维度详情</h2>
+    <h2 class="section-title" data-i18n="dimsTitle">五个维度详情</h2>
     <div id="dim-cards"></div>
-    <h2 class="section-title">改进小建议</h2>
-    <div class="disclaimer">
+    <h2 class="section-title" data-i18n="tipsTitle">改进小建议</h2>
+    <div class="disclaimer" data-i18n-html="disclaimHtml">
       <b>免责声明：</b>本测试仅供自我觉察与娱乐参考，不构成心理诊断或医学建议。如果你在关系中感到持续困扰，建议与信任的人聊聊，或寻求专业心理咨询支持。
     </div>
     <div class="result-actions">
-      <button class="btn btn-primary btn-block" id="btn-share">生成分享卡片</button>
-      <button class="btn btn-secondary btn-block" id="btn-retry">重新测试</button>
+      <button class="btn btn-primary btn-block" id="btn-share" data-i18n="btnShare">生成分享卡片</button>
+      <button class="btn btn-secondary btn-block" id="btn-retry" data-i18n="btnRetry">重新测试</button>
     </div>
   </section>
 </main>
 
-<footer>你是高需求朋友吗 · 一个关于友谊模式的温和小测试</footer>
+<footer data-i18n="footerText">你是高需求朋友吗 · 一个关于友谊模式的温和小测试</footer>
   </div>
 </div>
 
@@ -1105,6 +1125,297 @@ var BANDS = [
   { min: 25, name: '关系边界较健康', text: '你懂得给朋友空间，也懂得照顾自己的情绪，关系对你来说是滋养而非负担。即使如此，也请记得：健康不代表不需要——偶尔示弱、主动求助，同样是一种亲密。愿你继续保持这份清醒与温柔。' }
 ];
 
+/* ================= i18n: 英文数据与文案字典 ================= */
+var I18N_DATA = {
+  en: {
+    DIMS: [
+      { key: 'd1', name: 'Emotional Demandingness', color: 'var(--c-d1)',
+        advice: 'Try practicing “delayed gratification”: when a friend doesn\'t reply instantly, give yourself 10 minutes before deciding whether to follow up. Spread your emotional outlets across multiple channels (exercise, journaling, other friends) instead of fixating on one person.' },
+      { key: 'd2', name: 'Self-Centeredness', color: 'var(--c-d2)',
+        advice: 'Practice asking about your friends\' lives: before sharing your own news, ask “how have you been lately?” and genuinely listen. Try making at least half of each conversation about the other person.' },
+      { key: 'd3', name: 'Blurred Boundaries', color: 'var(--c-d3)',
+        advice: 'Remind yourself: a friend having other close relationships or wanting alone time doesn\'t mean “you are not important.” Take the initiative to give them space, and try developing your own independent circle.' },
+      { key: 'd4', name: 'Crisis-Making', color: 'var(--c-d4)',
+        advice: 'When friction arises, pause for 20 minutes before responding and ask yourself “will this still matter in three days?” Filter out the “big issues” that are actually small ones before asking friends to step in.' },
+      { key: 'd5', name: 'Resisting Feedback', color: 'var(--c-d5)',
+        advice: 'Understand advice as “they care about you” rather than “they are judging you.” When you receive a gentle rejection, repeat to yourself “what is being declined is this request, not me as a person,” then give each other some breathing room.' }
+    ],
+    SCREEN_QUESTIONS: [
+      { dim: 0, text: 'When a friend replies to my messages a little slowly, I start worrying that I might have upset them.' },
+      { dim: 0, text: 'When I am in a bad mood, I want friends to drop everything immediately to keep me company and comfort me.' },
+      { dim: 0, text: 'If a friend doesn\'t contact me all day, I feel like they are distancing themselves from me.' },
+      { dim: 0, text: 'When I need a friend, I want them to be available at any time, otherwise I feel hurt.' },
+      { dim: 0, text: 'If a friend\'s attitude is a little cold, I keep replaying in my head whether I did something wrong.' },
+      { dim: 1, text: 'When friends come to me to vent, I listen at first, but after a while I feel impatient inside.' },
+      { dim: 1, text: 'In conversations, topics always revolve around my own life; I rarely take the initiative to care about my friends\' matters.' },
+      { dim: 1, text: 'When friends ask me for help with their difficulties, I often feel they are taking up my time.' },
+      { dim: 1, text: 'When friends share good news, I often steer the topic back to my own situation.' },
+      { dim: 1, text: 'When I need help, I want friends to give their all, but when they need me, I often use being busy as an excuse.' },
+      { dim: 2, text: 'If a friend gets too close to other people, I feel uncomfortable or even jealous.' },
+      { dim: 2, text: 'I believe close friends should be completely transparent with each other; it makes me uneasy when they have little secrets.' },
+      { dim: 2, text: 'I unconsciously check my friend\'s interactions with others and privately compare who is closer.' },
+      { dim: 2, text: 'If a friend cancels plans with me for someone else at the last minute, I find it hard to accept.' },
+      { dim: 2, text: 'I want friends to see me as the most important person, ahead of other friends and family.' },
+      { dim: 3, text: '“Emergencies” that require a friend\'s urgent comfort frequently appear in my life.' },
+      { dim: 3, text: 'When interpersonal friction occurs, I tend to make small issues bigger and bigger until a friend has to mediate.' },
+      { dim: 3, text: 'During emotional lows I frequently turn to friends for help and find it hard to bounce back in a short time.' },
+      { dim: 3, text: 'I often send long emotional messages late at night or when friends are busy, expecting them to respond right away.' },
+      { dim: 3, text: 'If a friend doesn\'t “rescue” me in time, I feel they don\'t care about me enough and may distance myself from them.' },
+      { dim: 4, text: 'When friends give me advice, I easily feel they are disapproving of me.' },
+      { dim: 4, text: 'When a friend gently declines my request, I feel they don\'t treat me as a friend.' },
+      { dim: 4, text: 'When I am pointed out for doing something poorly, my first reaction is to defend myself rather than reflect.' },
+      { dim: 4, text: 'Even when I know deep down that my friend is right, I find it hard to admit my own problems face to face.' },
+      { dim: 4, text: 'When a friend doesn\'t comfort me the way I expected, I feel they don\'t care about me.' }
+    ],
+    TYPE_DEFS: [
+      { key: 'vampire', name: 'Emotional Vampire', sub: 'Emotion Dumper', advice: 'Under pressure you tend to use friends as an emotional outlet, habitually pouring out worries while rarely caring about their feelings — friendship can slowly become one-way. Suggestions: before venting, ask “is now a good time for you to listen?” After each vent, try to care about how your friend is doing. Practice digesting part of your emotions yourself before turning to friends.' },
+      { key: 'companion', name: 'High-Frequency Companion', sub: 'Social Dependent', advice: 'You value companionship highly; your sense of security depends heavily on your friends\' timely responses. When they move at their own pace, you feel neglected. Suggestions: lower your expectation of contact frequency to a more realistic level. Develop hobbies for alone time so companionship becomes a bonus rather than a necessity. When you miss a friend, say so directly instead of probing with questions and emotional testing.' },
+      { key: 'approval', name: 'Approval-Seeking', sub: 'Validation Seeker', advice: 'You care a lot about friends\' opinions and need their affirmation to confirm your own value, which makes you anxious and puts pressure on friends. Suggestions: put self-affirmation first — ask yourself “how do I think I did?” Keep a record of small things you did well and build your own evaluation system. Treat friends\' opinions as references, not verdicts.' },
+      { key: 'controller', name: 'Controller', sub: 'Boundary-Blurring', advice: 'You want relationships to develop the way you expect and unconsciously intervene in friends\' choices and lives. Your intention may be caring, but insufficient boundaries can make others want to escape. Suggestions: practice “suggest once, then respect fully.” Replace “I think” with “what do you think?” Accept that friends have the right to make different choices — that is what trust means.' },
+      { key: 'taker', name: 'One-Way Taker', sub: 'Resource & Help Dependent', advice: 'When you face difficulties you turn to friends first, but when they need you, you find it hard to give equal support. Long-term imbalance makes others feel drained. Suggestions: before asking for help, assess whether you can try to solve part of it yourself. Remember what friends have done for you and respond to their needs in time. Turn “mutual trouble” into give-and-take.' }
+    ],
+    TYPE_QUESTIONS: [
+      { type: 0, text: 'When chatting with a friend, I unconsciously steer the topic to my own worries, even when they wanted to share something happy.' },
+      { type: 0, text: 'I vent very specific negative emotional details to friends but rarely ask how they have been lately.' },
+      { type: 0, text: 'If a friend tries to change the subject or say something light, I feel they don\'t understand my pain and talk even more.' },
+      { type: 0, text: 'When a friend comes to me in a bad mood, I often don\'t know how to respond and quickly circle back to my own issues.' },
+      { type: 0, text: 'I know little about the details of my friends\' lives, but they know almost everything about my recent troubles.' },
+      { type: 1, text: 'I need to stay in touch with friends every day; going a day without chatting makes me anxious.' },
+      { type: 1, text: 'If a friend hasn\'t replied all day, I keep checking my phone and even want to ask what they are busy with.' },
+      { type: 1, text: 'When a friend turns down a meetup, I get very sad and feel they don\'t care about me.' },
+      { type: 1, text: 'I often wish friends would stay online with me all the time, even when there is nothing to say.' },
+      { type: 1, text: 'Being alone makes me easily bored or anxious, so I always want to bring a friend along.' },
+      { type: 2, text: 'If friends don\'t like or comment on my posts, I feel disappointed.' },
+      { type: 2, text: 'After making a decision, I need friends to clearly support me, otherwise I hesitate back and forth.' },
+      { type: 2, text: 'When friends don\'t praise me in time, I doubt whether I did well enough.' },
+      { type: 2, text: 'I often ask friends “do you think I can do it?” or “am I not good enough?”, needing repeated reassurance.' },
+      { type: 2, text: 'When friends point out a small flaw of mine, even gently, I feel sad for a long time.' },
+      { type: 3, text: 'When a friend makes a decision I disagree with, I can\'t help repeatedly discouraging them until they change their mind.' },
+      { type: 3, text: 'I make many demands about friends\' lifestyle habits.' },
+      { type: 3, text: 'When a friend makes new friends I don\'t like, I express my displeasure and hope they see them less.' },
+      { type: 3, text: 'When friends go out without me, I ask for details and hope they consider me first next time.' },
+      { type: 3, text: 'I believe a true good friend should take my advice; otherwise they don\'t trust me enough.' },
+      { type: 4, text: 'When facing financial, work, or life difficulties, my first reaction is to ask friends to help solve them.' },
+      { type: 4, text: 'Friends have helped me many times, but I rarely get the chance to return the favor.' },
+      { type: 4, text: 'I take it for granted when I need friends\' help, but find it troublesome when they ask me.' },
+      { type: 4, text: 'I often borrow things or resources from friends, and returning or thanking is unconsciously delayed.' },
+      { type: 4, text: 'When a friend declines my request for help, I feel they don\'t care enough, instead of understanding they have their own struggles.' }
+    ],
+    OPTIONS: [
+      { score: 1, label: 'Strongly Disagree', desc: 'Almost never like this' },
+      { score: 2, label: 'Disagree', desc: 'Occasionally like this' },
+      { score: 3, label: 'Neutral', desc: 'Sometimes like this' },
+      { score: 4, label: 'Agree', desc: 'Often like this' },
+      { score: 5, label: 'Strongly Agree', desc: 'Almost always like this' }
+    ],
+    BANDS: [
+      { min: 90, name: 'Pronounced High-Need Tendency', text: 'You greatly value the connection between friends and invest a lot of emotion in relationships. This sensitivity and investment shows that friendship holds an important place in your heart — that itself is a good thing. But when “being responded to” becomes the only pillar of your relationships, the other person may feel strained. Try pulling some of those expectations back onto yourself: you don\'t need to be caught at all times to be worthy of love. You are already aware — and that is the beginning of change.' },
+      { min: 60, name: 'Moderate High-Need Tendency', text: 'In friendships you are used to both giving and taking, and sometimes you pin your sense of security on others\' reactions. Most of the time your relationships are healthy, but during emotional lows or friction, you may unconsciously amplify your needs. That is not wrong — you can just be gentler with yourself: soothe your own emotions first, then reach out to friends. You will find you are stronger than you think.' },
+      { min: 25, name: 'Relatively Healthy Relationship Boundaries', text: 'You know how to give friends space and how to take care of your own emotions; relationships nourish you rather than burden you. Even so, remember: being healthy doesn\'t mean having no needs — showing vulnerability and asking for help once in a while is also a form of intimacy. May you keep this clarity and gentleness.' }
+    ]
+  }
+};
+
+/* ================= i18n: 双语文案字典（静态 + 渲染模板） ================= */
+var I18N_TEXT = {
+  zh: {
+    appbarLogo: '高',
+    appbarTitle: '你是高需求朋友吗',
+    adhdAria: 'ADHD友好专注模式',
+    adhdTitle: 'ADHD友好专注模式：减弱动效、放大文字、单题聚焦',
+    themeAria: '切换白天黑夜模式',
+    themeTitle: '切换白天/黑夜模式',
+    sidebarAria: '测试步骤导航',
+    sideTitle: '你是高需求朋友吗',
+    sideSub: '两阶段自评测试',
+    step1Title: '开始',
+    step1Sub: '了解测试 · 阅读说明后开始',
+    step2Title: '筛查',
+    step2Sub: '判断是不是 · 25 题 · 阶段 1/2',
+    step3Html: '类型细分 <span class="step-toggle" id="step-toggle-3" aria-hidden="true">▾</span>',
+    step3Sub: '属于哪种 · 25 题 · 阶段 2/2',
+    step4Title: '结果',
+    step4Sub: '解读与建议 · 总评 · 类型 · 五维',
+    heroBadge: '自我觉察 · 非诊断工具',
+    heroTitle: '你是「高需求朋友」吗？',
+    heroSub: '50 道题 · 约 10 分钟 · 两阶段：筛查 + 类型细分，看看你在友谊中习惯扮演怎样的角色。',
+    dimName1: '情感索取', dimDesc1: '——希望对方随时回应你的情绪',
+    dimName2: '自我中心', dimDesc2: '——话题与关注总围绕自己',
+    dimName3: '边界模糊', dimDesc3: '——难以接受对方的独立空间',
+    dimName4: '制造危机', dimDesc4: '——习惯放大冲突与低谷',
+    dimName5: '抗拒意见', dimDesc5: '——把建议与拒绝读作否定',
+    btnStart: '开始测试',
+    qDimDefault: '维度',
+    transDone: '筛查完成',
+    stepNaText: '未进入',
+    transBandText: '检测到较高的高需求倾向，进入类型细分，看看你更接近哪种类型。',
+    btnTypeNext: '进入类型细分',
+    typeTitle: '你的高需求类型',
+    dimsTitle: '五个维度详情',
+    tipsTitle: '改进小建议',
+    disclaimHtml: '<b>免责声明：</b>本测试仅供自我觉察与娱乐参考，不构成心理诊断或医学建议。如果你在关系中感到持续困扰，建议与信任的人聊聊，或寻求专业心理咨询支持。',
+    btnShare: '生成分享卡片',
+    btnRetry: '重新测试',
+    footerText: '你是高需求朋友吗 · 一个关于友谊模式的温和小测试',
+    phaseLabel: function (phase) { return '阶段 ' + phase + ' / 2 · ' + (phase === 1 ? '筛查' : '分类'); },
+    qCount: function (n, total) { return '第 ' + n + ' / ' + total + ' 题'; },
+    dimChip: function (num, name) { return '维度' + num + ' · ' + name; },
+    typeChip: function (num, name) { return '类型' + num + ' · ' + name; },
+    scoreOf25: function (score) { return score + ' / 25'; },
+    scoreOf25Full: function (score) { return score + ' / 25 分'; },
+    totalPercent: function (total, pct) { return '总分 ' + total + ' / 125 · 百分比 ' + pct + '%'; },
+    scoreParen: function (score) { return '（' + score + ' 分）'; },
+    levelHigh: '高', levelMid: '中', levelLow: '低',
+    adviceLabel: '建议：',
+    typeAdviceLabel: '解读与建议：',
+    secondaryType: function (name, score) { return '其次接近：' + name + '（得分 ' + score + ' / 25）'; },
+    similarity: function (pct) { return '相似度约 ' + pct + '%'; },
+    shareTitle: '你是高需求朋友吗',
+    shareSub: '高需求自评测试 · 结果分享',
+    shareMeta: function (total, pct) { return '总分 ' + total + ' / 125 · 相似度 ' + pct + '%'; },
+    shareDimsTitle: '五维分析摘要',
+    shareSite: '扫码进入测试<br>https://3310zx.github.io/mbti-test/high-need-test/',
+    shareFileName: '高需求朋友测试-我的结果.png',
+    shareLoadFail: '分享组件加载失败，请检查网络后重试',
+    shareGenFail: '生成分享卡片失败：'
+  },
+  en: {
+    appbarLogo: 'H',
+    appbarTitle: 'Are You a High-Need Friend?',
+    adhdAria: 'ADHD-friendly focus mode',
+    adhdTitle: 'ADHD-friendly focus mode: fewer animations, larger text, one question at a time',
+    themeAria: 'Toggle light/dark mode',
+    themeTitle: 'Toggle day/night mode',
+    sidebarAria: 'Test step navigation',
+    sideTitle: 'Are You a High-Need Friend?',
+    sideSub: 'Two-stage self-assessment',
+    step1Title: 'Start',
+    step1Sub: 'About the test · read before starting',
+    step2Title: 'Screen',
+    step2Sub: 'Screen your tendency · 25 questions · Stage 1/2',
+    step3Html: 'Type Breakdown <span class="step-toggle" id="step-toggle-3" aria-hidden="true">▾</span>',
+    step3Sub: 'Which type · 25 questions · Stage 2/2',
+    step4Title: 'Result',
+    step4Sub: 'Insights & advice · Overall · Type · 5 dimensions',
+    heroBadge: 'Self-reflection · Not a diagnostic tool',
+    heroTitle: 'Are you a “high-need friend”?',
+    heroSub: '50 questions · about 10 minutes · two stages: screening + type breakdown — see the role you tend to play in friendship.',
+    dimName1: 'Emotional Demandingness', dimDesc1: '— expecting others to respond to your emotions anytime',
+    dimName2: 'Self-Centeredness', dimDesc2: '— conversations and attention always circle back to you',
+    dimName3: 'Blurred Boundaries', dimDesc3: '— struggling to accept the other person\'s independence',
+    dimName4: 'Crisis-Making', dimDesc4: '— habitually amplifying conflict and lows',
+    dimName5: 'Resisting Feedback', dimDesc5: '— reading advice and rejection as disapproval',
+    btnStart: 'Start the Test',
+    qDimDefault: 'Dimension',
+    transDone: 'Screening complete',
+    stepNaText: 'not entered',
+    transBandText: 'A notable high-need tendency was detected. Continue to the type breakdown to see which type you are closest to.',
+    btnTypeNext: 'Continue to Type Breakdown',
+    typeTitle: 'Your High-Need Type',
+    dimsTitle: 'Five Dimensions in Detail',
+    tipsTitle: 'Small Improvements to Try',
+    disclaimHtml: '<b>Disclaimer: </b>This test is for self-reflection and entertainment only. It is not a psychological diagnosis or medical advice. If you feel persistently distressed in your relationships, consider talking to someone you trust or seeking professional counseling support.',
+    btnShare: 'Generate Share Card',
+    btnRetry: 'Retake the Test',
+    footerText: 'Are You a High-Need Friend? · A gentle quiz about friendship patterns',
+    phaseLabel: function (phase) { return 'Stage ' + phase + ' / 2 · ' + (phase === 1 ? 'Screening' : 'Type Breakdown'); },
+    qCount: function (n, total) { return 'Q ' + n + ' / ' + total; },
+    dimChip: function (num, name) { return 'Dimension ' + num + ' · ' + name; },
+    typeChip: function (num, name) { return 'Type ' + num + ' · ' + name; },
+    scoreOf25: function (score) { return score + ' / 25'; },
+    scoreOf25Full: function (score) { return score + ' / 25 pts'; },
+    totalPercent: function (total, pct) { return 'Total ' + total + ' / 125 · Percent ' + pct + '%'; },
+    scoreParen: function (score) { return ' (' + score + ' pts)'; },
+    levelHigh: 'High', levelMid: 'Moderate', levelLow: 'Low',
+    adviceLabel: 'Suggestion: ',
+    typeAdviceLabel: 'Insights & advice: ',
+    secondaryType: function (name, score) { return 'Also close to: ' + name + ' (' + score + ' / 25)'; },
+    similarity: function (pct) { return 'Similarity approx ' + pct + '%'; },
+    shareTitle: 'Are You a High-Need Friend?',
+    shareSub: 'High-Need Self-Assessment · Result Sharing',
+    shareMeta: function (total, pct) { return 'Total ' + total + ' / 125 · Similarity ' + pct + '%'; },
+    shareDimsTitle: 'Five-Dimension Analysis Summary',
+    shareSite: 'Scan to take the test<br>https://3310zx.github.io/mbti-test/high-need-test/',
+    shareFileName: 'high-need-friend-test-my-result.png',
+    shareLoadFail: 'Share component failed to load. Please check your network and try again.',
+    shareGenFail: 'Failed to generate share card: '
+  }
+};
+
+/* ================= i18n: 运行时 ================= */
+var ZH_DATA = {
+  DIMS: DIMS.slice(),
+  SCREEN_QUESTIONS: SCREEN_QUESTIONS.slice(),
+  TYPE_DEFS: TYPE_DEFS.slice(),
+  TYPE_QUESTIONS: TYPE_QUESTIONS.slice(),
+  OPTIONS: OPTIONS.slice(),
+  BANDS: BANDS.slice()
+};
+var CUR_LANG = 'zh';
+function T(key) {
+  var table = I18N_TEXT[CUR_LANG] || I18N_TEXT.zh;
+  var v = table[key];
+  var args = Array.prototype.slice.call(arguments, 1);
+  return typeof v === 'function' ? v.apply(null, args) : v;
+}
+function applyStatic(lang) {
+  var table = I18N_TEXT[lang] || I18N_TEXT.zh;
+  var els = document.querySelectorAll('[data-i18n]');
+  for (var i = 0; i < els.length; i++) {
+    var k = els[i].getAttribute('data-i18n');
+    if (table[k] !== undefined) els[i].textContent = table[k];
+  }
+  els = document.querySelectorAll('[data-i18n-html]');
+  for (var j = 0; j < els.length; j++) {
+    var k2 = els[j].getAttribute('data-i18n-html');
+    if (table[k2] !== undefined) els[j].innerHTML = table[k2];
+  }
+  els = document.querySelectorAll('[data-i18n-aria]');
+  for (var m = 0; m < els.length; m++) {
+    var k3 = els[m].getAttribute('data-i18n-aria');
+    if (table[k3] !== undefined) els[m].setAttribute('aria-label', table[k3]);
+  }
+  els = document.querySelectorAll('[data-i18n-title]');
+  for (var n = 0; n < els.length; n++) {
+    var k4 = els[n].getAttribute('data-i18n-title');
+    if (table[k4] !== undefined) els[n].setAttribute('title', table[k4]);
+  }
+  if (table.stepNaText !== undefined) {
+    document.documentElement.style.setProperty('--i18n-na-text', table.stepNaText);
+  }
+}
+function applyLang(lang) {
+  if (lang !== 'en' && lang !== 'zh') lang = 'zh';
+  if (lang === CUR_LANG) return;
+  CUR_LANG = lang;
+  var d = (lang === 'zh') ? ZH_DATA : (I18N_DATA[lang] || ZH_DATA);
+  DIMS = d.DIMS;
+  SCREEN_QUESTIONS = d.SCREEN_QUESTIONS;
+  TYPE_DEFS = d.TYPE_DEFS;
+  TYPE_QUESTIONS = d.TYPE_QUESTIONS;
+  OPTIONS = d.OPTIONS;
+  BANDS = d.BANDS;
+  try { localStorage.setItem('high-need-lang', lang); } catch (e) {}
+  var sels = document.querySelectorAll('.lang-switch');
+  for (var si = 0; si < sels.length; si++) sels[si].value = lang;
+  applyStatic(lang);
+  renderTypeBarNames();
+  var quizEl = document.getElementById('quiz');
+  var transEl = document.getElementById('transition');
+  var resultEl = document.getElementById('result');
+  if (quizEl && !quizEl.hidden) {
+    renderQuestion();
+  } else if (transEl && !transEl.hidden) {
+    var total = 0;
+    for (var i = 0; i < SCREEN_QUESTIONS.length; i++) total += answers[i];
+    transEl = null;
+    document.getElementById('trans-percent').textContent = T('similarity', Math.round(total / 125 * 100));
+  } else if (resultEl && !resultEl.hidden) {
+    showResult();
+  }
+  if (phase === 2) updateTypeBars(-1);
+}
+
 /* ================= 状态 ================= */
 var answers = [];
 var current = 0;
@@ -1153,7 +1464,7 @@ function updateTypeBars(activeType) {
     var score = document.getElementById('type-bar-score-' + t);
     var row = document.getElementById('type-bar-row-' + t);
     if (fill) fill.style.width = (typeScores[t] / 25 * 100) + '%';
-    if (score) score.textContent = typeScores[t] + ' / 25';
+    if (score) score.textContent = T('scoreOf25', typeScores[t]);
     if (row) row.classList.toggle('type-active', activeType === t);
   }
 }
@@ -1194,14 +1505,14 @@ function renderQuestion() {
   $('quiz').classList.remove('quiz-lock');
 
   // 阶段徽标
-  $('q-phase').textContent = '阶段 ' + phase + ' / 2 · ' + (phase === 1 ? '筛查' : '分类');
-  $('q-count').textContent = '第 ' + (current + 1) + ' / ' + list.length + ' 题';
+  $('q-phase').textContent = T('phaseLabel', phase);
+  $('q-count').textContent = T('qCount', current + 1, list.length);
 
   // 侧栏实时进度（步骤2/3进行中显示）
   var progId = (phase === 1) ? 2 : 3;
   var progEl = document.getElementById('step-progress-' + progId);
   var fillEl = document.getElementById('step-mini-fill-' + progId);
-  if (progEl) progEl.textContent = '第 ' + (current + 1) + ' / ' + list.length + ' 题';
+  if (progEl) progEl.textContent = T('qCount', current + 1, list.length);
   if (fillEl) fillEl.style.width = (current / list.length * 100) + '%';
 
   // 阶段二：侧栏类型实时得分条（当前作答类型高亮）
@@ -1210,12 +1521,12 @@ function renderQuestion() {
   if (phase === 1) {
     var dim = DIMS[q.dim];
     $('q-dim-name').textContent = dim.name;
-    $('q-dim-chip').textContent = '维度' + (q.dim + 1) + ' · ' + dim.name;
+    $('q-dim-chip').textContent = T('dimChip', q.dim + 1, dim.name);
     $('q-dim-chip').className = 'q-dim d' + (q.dim + 1);
   } else {
     var td = TYPE_DEFS[q.type];
     $('q-dim-name').textContent = td.name;
-    $('q-dim-chip').textContent = '类型' + (q.type + 1) + ' · ' + td.name;
+    $('q-dim-chip').textContent = T('typeChip', q.type + 1, td.name);
     $('q-dim-chip').className = 'q-dim d' + ((q.type % 5) + 1);
   }
   $('q-text').textContent = q.text;
@@ -1277,9 +1588,9 @@ function computeResult() {
 }
 
 function levelOf(score) {
-  if (score >= 20) return { key: 'high', label: '高', cls: 'level-high' };
-  if (score >= 10) return { key: 'mid', label: '中', cls: 'level-mid' };
-  return { key: 'low', label: '低', cls: 'level-low' };
+  if (score >= 20) return { key: 'high', label: T('levelHigh'), cls: 'level-high' };
+  if (score >= 10) return { key: 'mid', label: T('levelMid'), cls: 'level-mid' };
+  return { key: 'low', label: T('levelLow'), cls: 'level-low' };
 }
 
 function showResult() {
@@ -1287,7 +1598,7 @@ function showResult() {
   var total = r.total;
 
   $('res-score').textContent = total;
-  $('res-percent').textContent = '总分 ' + total + ' / 125 · 百分比 ' + Math.round(total / 125 * 100) + '%';
+  $('res-percent').textContent = T('totalPercent', total, Math.round(total / 125 * 100));
 
   var band = null;
   for (var i = 0; i < BANDS.length; i++) {
@@ -1308,11 +1619,11 @@ function showResult() {
     card.innerHTML =
       '<div class="dim-card-header">' +
         '<span class="dim-card-name">' + dim.name + '</span>' +
-        '<span class="dim-level ' + lv.cls + '">' + lv.label + '（' + score + ' 分）</span>' +
+        '<span class="dim-level ' + lv.cls + '">' + lv.label + T('scoreParen', score) + '</span>' +
       '</div>' +
       '<div class="bar-track"><div class="bar-fill" data-w="' + (score / 25 * 100) + '%"></div></div>' +
-      '<div class="dim-score-line"><span>低</span><span>中</span><span>高</span></div>' +
-      '<div class="dim-advice"><b>建议：</b>' + dim.advice + '</div>';
+      '<div class="dim-score-line"><span>' + T('levelLow') + '</span><span>' + T('levelMid') + '</span><span>' + T('levelHigh') + '</span></div>' +
+      '<div class="dim-advice"><b>' + T('adviceLabel') + '</b>' + dim.advice + '</div>';
     wrap.appendChild(card);
   });
 
@@ -1327,15 +1638,15 @@ function showResult() {
       '<div class="type-card">' +
         '<div class="type-card-head">' +
           '<span class="type-card-name">' + pt.name + '</span>' +
-          '<span class="type-card-score">' + tr.typeScores[tr.primary] + ' / 25 分</span>' +
+          '<span class="type-card-score">' + T('scoreOf25Full', tr.typeScores[tr.primary]) + '</span>' +
         '</div>' +
         '<div class="type-card-sub">' + pt.sub + '</div>' +
         '<div class="bar-track"><div class="bar-fill" data-w="' + (tr.typeScores[tr.primary] / 25 * 100) + '%"></div></div>' +
-        '<div class="type-card-advice"><b>解读与建议：</b>' + pt.advice + '</div>' +
+        '<div class="type-card-advice"><b>' + T('typeAdviceLabel') + '</b>' + pt.advice + '</div>' +
       '</div>';
     if (tr.secondary !== -1 && tr.secondary !== tr.primary && tr.typeScores[tr.secondary] > 0) {
       var st = TYPE_DEFS[tr.secondary];
-      typeWrap.innerHTML += '<div class="type-card-alt">其次接近：' + st.name + '（得分 ' + tr.typeScores[tr.secondary] + ' / 25）</div>';
+      typeWrap.innerHTML += '<div class="type-card-alt">' + T('secondaryType', st.name, tr.typeScores[tr.secondary]) + '</div>';
     }
   }
 
@@ -1361,7 +1672,7 @@ function finishScreen() {
   var percent = Math.round(total / 125 * 100);
   if (percent >= 50) {
     updateSidebar(3, { done: [2] });
-    $('trans-percent').textContent = '相似度约 ' + percent + '%';
+    $('trans-percent').textContent = T('similarity', percent);
     show('transition');
   } else {
     updateSidebar(4, { done: [2], na: [3] });
@@ -1426,7 +1737,7 @@ function loadHtmlToImage(cb) {
   s.src = SHARE_CDN;
   s.onload = function() { cb(); };
   s.onerror = function() {
-    alert('分享组件加载失败，请检查网络后重试');
+    alert(T('shareLoadFail'));
   };
   document.head.appendChild(s);
 }
@@ -1445,7 +1756,7 @@ function buildShareCard() {
     dimsHtml += '<div class="share-dim-row">' +
       '<span class="share-dim-name">' + dim.name + '</span>' +
       '<div class="share-dim-track"><div class="share-dim-fill" style="width:' + (score / 25 * 100) + '%;background:' + dim.color + '"></div></div>' +
-      '<span class="share-dim-score">' + score + ' / 25</span></div>';
+      '<span class="share-dim-score">' + T('scoreOf25', score) + '</span></div>';
   });
   var typesHtml = '';
   if (phase === 2) {
@@ -1457,22 +1768,22 @@ function buildShareCard() {
       '<div class="share-type-advice">' + pt.advice + '</div></div>';
     if (tr.secondary !== -1 && tr.secondary !== tr.primary && tr.typeScores[tr.secondary] > 0) {
       var st = TYPE_DEFS[tr.secondary];
-      typesHtml += '<div class="share-type-alt">其次接近：' + st.name + '（得分 ' + tr.typeScores[tr.secondary] + ' / 25）</div>';
+      typesHtml += '<div class="share-type-alt">' + T('secondaryType', st.name, tr.typeScores[tr.secondary]) + '</div>';
     }
   }
   return '<div class="share-card" id="share-card">' +
     '<div class="share-head">' +
-      '<div class="share-title">你是高需求朋友吗</div>' +
-      '<div class="share-sub">高需求自评测试 · 结果分享</div>' +
+      '<div class="share-title">' + T('shareTitle') + '</div>' +
+      '<div class="share-sub">' + T('shareSub') + '</div>' +
     '</div>' +
-    '<div class="share-score-row"><span class="share-score">' + total + '</span><span class="share-meta">总分 ' + total + ' / 125 · 相似度 ' + percent + '%</span></div>' +
+    '<div class="share-score-row"><span class="share-score">' + total + '</span><span class="share-meta">' + T('shareMeta', total, percent) + '</span></div>' +
     '<div style="text-align:center"><span class="share-band">' + band.name + '</span></div>' +
     '<p class="share-text">' + band.text + '</p>' +
-    '<div class="share-dims"><div class="share-type-name" style="font-size:14px;margin-bottom:12px">五维分析摘要</div>' + dimsHtml + '</div>' +
+    '<div class="share-dims"><div class="share-type-name" style="font-size:14px;margin-bottom:12px">' + T('shareDimsTitle') + '</div>' + dimsHtml + '</div>' +
     typesHtml +
     '<div class="share-foot">' +
-      '<img class="share-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAAGkCAYAAAB+TFE1AAAACXBIWXMAAAAAAAAAAQCEeRdzAAACtHRFWHRBSUdDAHsiTGFiZWwiOiIxIiwiQ29udGVudFByb2R1Y2VyIjoiMDAxMTkxNDQwMzAwNzA4NDYxMTM2VDFYR1czIiwiUHJvZHVjZUlEIjoiYzI0NjY3OGEzOGE5NGJmMmU4MzlmNGFkODg2NWY1MzNfZmRkYjJmODRiNDJmMTFmMWExYTE1MjU0MDAzOTM3MDYiLCJSZXNlcnZlZENvZGUxIjoiZXpsN29XS2ZJRVU4Tkxnb0t5RHNmREx2Mm5LZ2VldERqYlozZS9VQkNTQlEwNFc0dkJxa0srdEFGTlJDQzYyNGRNMGZTS282SWE4dU91eXpMaWJVOFkwVk0wVDNud2psSzVVeitZQitjNVIzTmRBZnMrbjlTZCsrY1d0YStuL3h5RDVYdmVKOUJjYUtab2IzVE9RSDNmTFkxYUZSdEdyOGhPczZKTXZIWHpFOFBuTXFiMm1pYU1hMytqRT0iLCJDb250ZW50UHJvcGFnYXRvciI6IjAwMTE5MTQ0MDMwMDcwODQ2MTEzNlQxWEdXMyIsIlByb3BhZ2F0ZUlEIjoiYzI0NjY3OGEzOGE5NGJmMmU4MzlmNGFkODg2NWY1MzNfZmRkYjJmODRiNDJmMTFmMWExYTE1MjU0MDAzOTM3MDYiLCJSZXNlcnZlZENvZGUyIjoiZXpsN29XS2ZJRVU4Tkxnb0t5RHNmREx2Mm5LZ2VldERqYlozZS9VQkNTQlEwNFc0dkJxa0srdEFGTlJDQzYyNGRNMGZTS282SWE4dU91eXpMaWJVOFkwVk0wVDNud2psSzVVeitZQitjNVIzTmRBZnMrbjlTZCsrY1d0YStuL3h5RDVYdmVKOUJjYUtab2IzVE9RSDNmTFkxYUZSdEdyOGhPczZKTXZIWHpFOFBuTXFiMm1pYU1hMytqRT0ifUCUon4AABAASURBVHic7V35r51XdeWvoJCEAKEkzgSkzWBwBghOcCZmqFLaAj+0iJYWoUp0UisqtZWq/taqgFpKoVCBSqGtWjI5zhwyEjIozuQkzujEdux4TOIknL79vXzX9z4/v+fNPevutb+zlrQV5w37rbP2Pnu977vfue91RRAEQRAI8LpoAoIgCIJgkCEJ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" alt="二维码">' +
-      '<span class="share-site">扫码进入测试<br>https://3310zx.github.io/mbti-test/high-need-test/</span>' +
+      '<img class="share-qr" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAAGkCAYAAAB+TFE1AAAACXBIWXMAAAAAAAAAAQCEeRdzAAACtHRFWHRBSUdDAHsiTGFiZWwiOiIxIiwiQ29udGVudFByb2R1Y2VyIjoiMDAxMTkxNDQwMzAwNzA4NDYxMTM2VDFYR1czIiwiUHJvZHVjZUlEIjoiYzI0NjY3OGEzOGE5NGJmMmU4MzlmNGFkODg2NWY1MzNfZmRkYjJmODRiNDJmMTFmMWExYTE1MjU0MDAzOTM3MDYiLCJSZXNlcnZlZENvZGUxIjoiZXpsN29XS2ZJRVU4Tkxnb0t5RHNmREx2Mm5LZ2VldERqYlozZS9VQkNTQlEwNFc0dkJxa0srdEFGTlJDQzYyNGRNMGZTS282SWE4dU91eXpMaWJVOFkwVk0wVDNud2psSzVVeitZQitjNVIzTmRBZnMrbjlTZCsrY1d0YStuL3h5RDVYdmVKOUJjYUtab2IzVE9RSDNmTFkxYUZSdEdyOGhPczZKTXZIWHpFOFBuTXFiMm1pYU1hMytqRT0iLCJDb250ZW50UHJvcGFnYXRvciI6IjAwMTE5MTQ0MDMwMDcwODQ2MTEzNlQxWEdXMyIsIlByb3BhZ2F0ZUlEIjoiYzI0NjY3OGEzOGE5NGJmMmU4MzlmNGFkODg2NWY1MzNfZmRkYjJmODRiNDJmMTFmMWExYTE1MjU0MDAzOTM3MDYiLCJSZXNlcnZlZENvZGUyIjoiZXpsN29XS2ZJRVU4Tkxnb0t5RHNmREx2Mm5LZ2VldERqYlozZS9VQkNTQlEwNFc0dkJxa0srdEFGTlJDQzYyNGRNMGZTS282SWE4dU91eXpMaWJVOFkwVk0wVDNud2psSzVVeitZQitjNVIzTmRBZnMrbjlTZCsrY1d0YStuL3h5RDVYdmVKOUJjYUtab2IzVE9RSDNmTFkxYUZSdEdyOGhPczZKTXZIWHpFOFBuTXFiMm1pYU1hMytqRT0ifUCUon4AABAASURBVHic7V35r51XdeWvoJCEAKEkzgSkzWBwBghOcCZmqFLaAj+0iJYWoUp0UisqtZWq/taqgFpKoVCBSqGtWjI5zhwyEjIozuQkzujEdux4TOIknL79vXzX9z4/v+fNPevutb+zlrQV5w37rbP2Pnu977vfue91RRAEQRAI8LpoAoIgCIJgkCEJ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" alt="QR code">' +
+      '<span class="share-site">' + T('shareSite') + '</span>' +
     '</div>' +
   '</div>';
 }
@@ -1486,7 +1797,7 @@ function generateShareCard() {
       .then(function(dataUrl) {
         var a = document.createElement('a');
         a.href = dataUrl;
-        a.download = '高需求朋友测试-我的结果.png';
+        a.download = T('shareFileName');
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -1496,11 +1807,18 @@ function generateShareCard() {
       .catch(function(err) {
         document.body.classList.remove('share-capture');
         stage.innerHTML = '';
-        alert('生成分享卡片失败：' + ((err && (err.message || err.name)) || String(err)));
+        alert(T('shareGenFail') + ((err && (err.message || err.name)) || String(err)));
       });
   });
 }
 document.getElementById('btn-share').addEventListener('click', generateShareCard);
+
+/* ================= i18n 初始化 ================= */
+(function () {
+  var saved = null;
+  try { saved = localStorage.getItem('high-need-lang'); } catch (e) {}
+  if (saved === 'en') { CUR_LANG = 'zh'; applyLang('en'); }
+})();
 </script>
 <!-- 分享卡片舞台（屏幕外渲染，生成图片用） -->
 <div id="share-stage" aria-hidden="true"></div>
