@@ -3543,7 +3543,7 @@ function initAds(){
     document.querySelectorAll('.ad-box').forEach(function(box){
       box.innerHTML = '<div class="ad-placeholder">광고 영역 (Google AdSense · '
         + (ADS_CLIENT ? '광고 단위 ADS_SLOT 설정 대기 중' : 'ADS_CLIENT 설정 후 활성화됩니다')
-        + '）</div>';
+        + ')</div>';
     });
     return;
   }
@@ -3958,7 +3958,7 @@ function showResult(){
   var atCard = document.getElementById('atCard');
   if(atCard){
     atCard.style.display = 'block';
-    document.getElementById('atBranch').textContent = atName + '（' + atLetter + '）';
+    document.getElementById('atBranch').textContent = atName + '(' + atLetter + ')';
     document.getElementById('atDesc').textContent = atLetter === 'A'
       ? '확신형은 자신의 속도와 목표에 더 집중하며 압박과 외부 평가에 덜 흔들린다. 감정이 안정적이고 내적 갈등이 적다. 결단력 있게 나아가지만, 때로 외부 피드백과 잠재적 위험을 놓칠 수 있다.'
       : '민감형은 자신의 성과와 외부 평가에 더 민감하고, 더 높은 기준을 위해 되돌아보고 자기 발전을 반복하는 경향이 있다. 불안과 내적 갈등을 겪기 쉬운 반면, 더 신중하고 성장 의지가 강하며 타인의 감정에도 더 민감하다.';
@@ -4019,7 +4019,7 @@ function showResult(){
   var tie = document.getElementById('tieNote');
   if(weakDims.length > 0){
     tie.style.display = 'block';
-    tie.innerHTML = '<b>참고:</b> "' + weakDims.join('、') + '" 차원의 기울기가 58% 미만으로 다소 약한 영역입니다.' +
+    tie.innerHTML = '<b>참고:</b> "' + weakDims.join(', ') + '" 차원의 기울기가 58% 미만으로 다소 약한 영역입니다.' +
       '결과는 평소 기울기대로 표시되지만, 기능 설명을 확인하거나 다른 날 다시 테스트해 보시길 권합니다.';
   } else {
     tie.style.display = 'none';
@@ -4292,7 +4292,7 @@ function renderShareShot(){
         var fileName = 'mbti-result-' + (rr.type || 'unknown') + '.png';
         var file = new File([blob], fileName, { type: 'image/png' });
         if(navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share){
-          navigator.share({ files: [file], title: '내 MBTI 결과', text: '내 MBTI 인지 기능 테스트 결과: ' + rr.type + (rr.at || '') + ' ' + rr.name + '。' }).catch(function(){});
+          navigator.share({ files: [file], title: '내 MBTI 결과', text: '내 MBTI 인지 기능 테스트 결과: ' + rr.type + (rr.at || '') + ' ' + rr.name + '.' }).catch(function(){});
         } else {
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');

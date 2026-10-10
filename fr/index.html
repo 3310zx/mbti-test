@@ -3543,7 +3543,7 @@ function initAds(){
     document.querySelectorAll('.ad-box').forEach(function(box){
       box.innerHTML = '<div class="ad-placeholder">Espace publicitaire (Google AdSense · '
         + (ADS_CLIENT ? 'Bloc publicitaire ADS_SLOT en attente de configuration' : 's\'active après la configuration de ADS_CLIENT')
-        + '）</div>';
+        + ')</div>';
     });
     return;
   }
@@ -3958,7 +3958,7 @@ function showResult(){
   var atCard = document.getElementById('atCard');
   if(atCard){
     atCard.style.display = 'block';
-    document.getElementById('atBranch').textContent = atName + '（' + atLetter + '）';
+    document.getElementById('atBranch').textContent = atName + '(' + atLetter + ')';
     document.getElementById('atDesc').textContent = atLetter === 'A'
       ? 'Le type Assertif est davantage accordé à son propre rythme et à ses objectifs, moins sensible à la pression et au regard extérieur, avec des émotions plus stables et moins de friction interne. Il avance avec détermination, mais peut parfois négliger les retours extérieurs et les risques potentiels.'
       : 'Le type Turbulent est plus sensible à sa propre performance et au regard extérieur, souvent poussé à se remettre en question et à s\'améliorer dans la poursuite d\'exigences plus élevées. Enclin à l\'anxiété et à la friction interne, il est aussi plus prudent, plus ouvert à la croissance et plus attentif aux émotions des autres.';
@@ -4019,7 +4019,7 @@ function showResult(){
   var tie = document.getElementById('tieNote');
   if(weakDims.length > 0){
     tie.style.display = 'block';
-    tie.innerHTML = '<b>Note :</b> la dimension "' + weakDims.join('、') + '" présente une inclinaison inférieure à 58 %, une zone plus faible.' +
+    tie.innerHTML = '<b>Note :</b> la dimension "' + weakDims.join(', ') + '" présente une inclinaison inférieure à 58 %, une zone plus faible.' +
       'Le résultat reste affiché selon l\'inclinaison habituelle ; nous vous suggérons de revoir la description des fonctions ou de refaire le test un autre jour.';
   } else {
     tie.style.display = 'none';
@@ -4292,7 +4292,7 @@ function renderShareShot(){
         var fileName = 'mbti-result-' + (rr.type || 'unknown') + '.png';
         var file = new File([blob], fileName, { type: 'image/png' });
         if(navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share){
-          navigator.share({ files: [file], title: 'Mon résultat MBTI', text: 'Mon résultat au test MBTI des fonctions cognitives : ' + rr.type + (rr.at || '') + ' ' + rr.name + '。' }).catch(function(){});
+          navigator.share({ files: [file], title: 'Mon résultat MBTI', text: 'Mon résultat au test MBTI des fonctions cognitives : ' + rr.type + (rr.at || '') + ' ' + rr.name + '.' }).catch(function(){});
         } else {
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');

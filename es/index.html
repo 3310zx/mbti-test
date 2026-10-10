@@ -3958,7 +3958,7 @@ function showResult(){
   var atCard = document.getElementById('atCard');
   if(atCard){
     atCard.style.display = 'block';
-    document.getElementById('atBranch').textContent = atName + '（' + atLetter + '）';
+    document.getElementById('atBranch').textContent = atName + '(' + atLetter + ')';
     document.getElementById('atDesc').textContent = atLetter === 'A'
       ? 'El tipo asertivo está más en sintonía con su propio ritmo y sus metas, es menos sensible a la presión y a la evaluación externa, con emociones más estables y menos fricción interna. Avanza con decisión, pero a veces puede pasar por alto la retroalimentación externa y los riesgos potenciales.'
       : 'El tipo turbulento es más sensible a su propio rendimiento y a la evaluación externa, a menudo se siente impulsado a revisarse y a mejorar en busca de estándares más altos. Propenso a la ansiedad y a la fricción interna, pero también más cauto, más dispuesto a crecer y más atento a las emociones ajenas.';
@@ -4019,7 +4019,7 @@ function showResult(){
   var tie = document.getElementById('tieNote');
   if(weakDims.length > 0){
     tie.style.display = 'block';
-    tie.innerHTML = '<b>Nota:</b> la inclinación de la dimensión "' + weakDims.join('、') + '" es inferior al 58%, una zona más débil.' +
+    tie.innerHTML = '<b>Nota:</b> la inclinación de la dimensión "' + weakDims.join(', ') + '" es inferior al 58%, una zona más débil.' +
       'El resultado se sigue dando por la inclinación habitual; te sugerimos revisar la descripción de las funciones o repetir el test otro día.';
   } else {
     tie.style.display = 'none';

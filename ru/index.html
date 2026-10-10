@@ -3543,7 +3543,7 @@ function initAds(){
     document.querySelectorAll('.ad-box').forEach(function(box){
       box.innerHTML = '<div class="ad-placeholder">Рекламное место (Google AdSense · '
         + (ADS_CLIENT ? 'Рекламный блок ADS_SLOT ожидает настройки' : 'активируется после настройки ADS_CLIENT')
-        + '）</div>';
+        + ')</div>';
     });
     return;
   }
@@ -3958,7 +3958,7 @@ function showResult(){
   var atCard = document.getElementById('atCard');
   if(atCard){
     atCard.style.display = 'block';
-    document.getElementById('atBranch').textContent = atName + '（' + atLetter + '）';
+    document.getElementById('atBranch').textContent = atName + '(' + atLetter + ')';
     document.getElementById('atDesc').textContent = atLetter === 'A'
       ? 'Ассертивный тип больше сосредоточен на собственном темпе и целях, менее чувствителен к давлению и внешней оценке, эмоции стабильнее, внутренних трений меньше. Он решительно движется вперёд, но иногда может упускать из виду внешнюю обратную связь и потенциальные риски.'
       : 'Турбулентный тип более чувствителен к собственной результативности и внешней оценке, часто стремится пересматривать и совершенствовать себя в погоне за более высокими стандартами. Склонен к тревожности и внутренним трениям, но при этом более осторожен, более готов расти и лучше чувствует эмоции других.';
@@ -4019,7 +4019,7 @@ function showResult(){
   var tie = document.getElementById('tieNote');
   if(weakDims.length > 0){
     tie.style.display = 'block';
-    tie.innerHTML = '<b>Примечание:</b> наклон по измерению "' + weakDims.join('、') + '" составляет менее 58% — это более слабая зона.' +
+    tie.innerHTML = '<b>Примечание:</b> наклон по измерению "' + weakDims.join(', ') + '" составляет менее 58% — это более слабая зона.' +
       'Результат по-прежнему определяется обычным наклоном; рекомендуем посмотреть описание функций или пройти тест заново в другой день.';
   } else {
     tie.style.display = 'none';
@@ -4292,7 +4292,7 @@ function renderShareShot(){
         var fileName = 'mbti-result-' + (rr.type || 'unknown') + '.png';
         var file = new File([blob], fileName, { type: 'image/png' });
         if(navigator.canShare && navigator.canShare({ files: [file] }) && navigator.share){
-          navigator.share({ files: [file], title: 'Мой результат MBTI', text: 'Мой результат теста MBTI когнитивных функций: ' + rr.type + (rr.at || '') + ' ' + rr.name + '。' }).catch(function(){});
+          navigator.share({ files: [file], title: 'Мой результат MBTI', text: 'Мой результат теста MBTI когнитивных функций: ' + rr.type + (rr.at || '') + ' ' + rr.name + '.' }).catch(function(){});
         } else {
           var url = URL.createObjectURL(blob);
           var a = document.createElement('a');
