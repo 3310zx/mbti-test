@@ -3418,7 +3418,24 @@
         <div id="bars" class="rv" style="animation-delay:1.65s"></div>
         <div id="tieNote" class="tie-note rv" style="display:none;animation-delay:1.75s;"></div>
       </div>
-      <div class="ad-box rv" id="ad-result" style="animation-delay:1.9s"></div>
+<div class="type-links rv" id="typeLinks" style="display:none;animation-delay:1.8s">
+          <style>
+            .type-links{margin-top:24px;padding-top:20px;border-top:1px solid var(--md-outline-variant,rgba(0,0,0,.08))}
+            .type-wiki-link{display:inline-block;background:var(--md-primary,#0071e3);color:var(--md-on-primary,#fff);text-decoration:none;font-size:15px;font-weight:600;padding:11px 22px;border-radius:980px;transition:opacity .2s}
+            .type-wiki-link:hover{opacity:.88}
+            .type-rel-title{margin:20px 0 10px;font-size:13px;font-weight:600;color:var(--md-on-surface-variant,#6e6e73);letter-spacing:.02em}
+            .type-rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(146px,1fr));gap:10px}
+            .type-rel-card{display:block;text-decoration:none;background:var(--md-surface-container-low,#f5f5f7);border:1px solid var(--md-outline-variant,rgba(0,0,0,.08));border-radius:14px;padding:12px 14px;transition:border-color .2s,transform .2s}
+            .type-rel-card:hover{border-color:var(--md-primary,#0071e3);transform:translateY(-2px)}
+            .type-rel-code{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--md-primary,#0071e3)}
+            .type-rel-name{font-size:14px;font-weight:600;margin-top:3px;color:var(--md-on-surface,#1d1d1f)}
+            .type-rel-stack{font-size:12px;margin-top:4px;color:var(--md-on-surface-variant,#6e6e73)}
+          </style>
+          <a class="type-wiki-link" id="typeWikiLink" href="types/index.html">Voir l'analyse complète du type →</a>
+          <div class="type-rel-title">Comparer des types proches</div>
+          <div class="type-rel-grid" id="relTypes"></div>
+        </div>
+            <div class="ad-box rv" id="ad-result" style="animation-delay:1.9s"></div>
       <div class="disclaimer rv" style="animation-delay:2.05s">
         <b>Note :</b>Le MBTI est un outil d\'orientation professionnelle, pas un diagnostic psychologique ; les résultats n\'ont qu\'une valeur de connaissance de soi et ne constituent pas une conclusion scientifique.
         L\'évaluation graduée réduit le bruit de réponse mais reste soumise à un biais subjectif ; si l\'inclinaison d\'une dimension est inférieure à 58 %, consultez la description des fonctions ou refaites le test un autre jour.
@@ -3442,6 +3459,69 @@
       </div>
     </aside>
   </div>
+
+  <section class="home-hub" style="max-width:1280px;margin:0 auto;padding:0 24px 56px;">
+    <style>
+          .home-hub{color:var(--md-on-surface,#1d1d1f)}
+          .home-hub .hub-inner{max-width:880px}
+          .home-hub h1{font-size:clamp(24px,3.2vw,32px);line-height:1.26;letter-spacing:-.015em;font-weight:700;margin:0 0 16px}
+          .home-hub .hub-lead{font-size:16px;line-height:1.8;color:var(--md-on-surface-variant,#6e6e73);margin:0 0 26px}
+          .home-hub h2{font-size:19px;line-height:1.45;font-weight:650;margin:30px 0 10px;letter-spacing:-.005em;color:var(--md-on-surface,#1d1d1f)}
+          .home-hub p{font-size:15px;line-height:1.85;color:var(--md-on-surface-variant,#6e6e73);margin:0 0 12px}
+          .home-hub .hub-sub{font-weight:600;color:var(--md-on-surface,#1d1d1f)}
+          .home-hub .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:12px;margin-top:16px}
+          .home-hub .hub-card{display:block;text-decoration:none;background:var(--md-surface-container-low,#f5f5f7);border:1px solid var(--md-outline-variant,rgba(0,0,0,.08));border-radius:16px;padding:16px 18px;transition:border-color .2s,transform .2s,box-shadow .2s}
+          .home-hub .hub-card:hover{border-color:var(--md-primary,#0071e3);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,113,227,.10)}
+          .home-hub .hub-code{font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--md-primary,#0071e3)}
+          .home-hub .hub-name{font-size:15px;font-weight:600;color:var(--md-on-surface,#1d1d1f);margin:4px 0 6px}
+          .home-hub .hub-desc{font-size:13px;line-height:1.65;color:var(--md-on-surface-variant,#6e6e73)}
+          .home-hub .hub-more{display:inline-block;margin-top:24px;font-size:14px;font-weight:600;color:var(--md-primary,#0071e3);text-decoration:none}
+          @media (max-width:600px){.home-hub{padding-left:18px;padding-right:18px}}
+        </style>
+
+    <div class="hub-inner">
+      <h1>Test MBTI des fonctions cognitives : les huit fonctions qui composent votre type</h1>
+      <p class="hub-lead">Ce test n'est pas un générateur d'étiquettes en quatre lettres de plus. Trente-huit questions mesurent l'intensité avec laquelle vous vous appuyez sur chacune des huit fonctions cognitives, puis déduisent votre type de l'ordre de cette pile. La page de résultats explique pourquoi vous raisonnez comme vous le faites, et pourquoi certaines situations vous épuisent beaucoup plus vite que d'autres.</p>
+      <h2>1. En quoi ce test diffère d'un quiz MBTI classique</h2>
+      <p>La plupart des quiz gratuits demandent si vous aimez les soirées ou le calme, puis collent quatre lettres ensemble. Un test de fonctions cognitives part d'une autre hypothèse : ce qui distingue les gens, c'est le processus mental qu'ils saisissent en premier. Collectez-vous des faits concrets, ou repérez-vous la structure cachée sous ces faits ? Tranchez-vous par logique objective, ou par valeurs et ressenti ? Deux personnes qui obtiennent INTJ peuvent se comporter très différemment selon l'écart de développement entre leur fonction dominante et leur fonction auxiliaire. C'est précisément cet écart qui explique pourquoi tant de gens lisent un profil standard et pensent : ce n'est pas vraiment moi.</p>
+      <p>Cette lecture répond aussi à une frustration courante. Deux personnes du même type peuvent diverger sur la manière de décider, parce que l'une s'appuie sur sa fonction auxiliaire tandis que l'autre a passé des années à fortifier sa tertiaire. Une lecture par les fonctions permet de décrire cette nuance sans jeter le type aux orties.</p>
+      <p>L'effet Barnum joue ici un rôle décisif. Les formules vagues paraissent justes à presque tout le monde ; à l'inverse, une description attachée à un ordre de fonctions précis est beaucoup plus difficile à valider par hasard. Si un profil vous semble faux, c'est une information, pas un échec personnel.</p>
+      <h2>2. Les huit fonctions : quatre façons de percevoir, quatre façons de juger</h2>
+      <p>Les fonctions de perception captent l'information. <span class="hub-sub">Se</span> reste collée au réel concret de l'instant ; <span class="hub-sub">Si</span> archive l'expérience vécue et la compare au présent ; <span class="hub-sub">Ne</span> rayonne vers les possibles ; <span class="hub-sub">Ni</span> converge vers les tendances et l'intuition synthétique. Les fonctions de jugement décident. <span class="hub-sub">Te</span> classe selon des critères externes et l'efficacité ; <span class="hub-sub">Ti</span> exige une cohérence logique interne ; <span class="hub-sub">Fe</span> ajuste l'ambiance d'un groupe et les émotions d'autrui ; <span class="hub-sub">Fi</span> reste fidèle aux valeurs personnelles et à ce qui sonne vrai. Aucune fonction n'est supérieure à une autre : seule change la place que vous lui accordez.</p>
+      <p>Chaque type possède une pile : dominante, auxiliaire, tertiaire, inférieure. La dominante est celle qui vous coûte le moins d'effort ; elle tourne presque sans y penser. L'auxiliaire la seconde et équilibre le regard vers l'extérieur ou vers l'intérieur. La tertiaire se développe plus tard, souvent à l'adolescence et au début de l'âge adulte. L'inférieure est généralement le point de rupture lorsque la pression dure : c'est elle qui produit les réactions dont on n'est pas fier.</p>
+      <p>Tout le monde utilise les huit fonctions. Ce qui change, c'est le classement : la première tourne automatiquement, tandis que la dernière reste maladroite, saturée vite, et ressemble souvent au comportement que vous aimez le moins chez vous. Un test pratique consiste à lire d'abord la fonction inférieure : si elle pique un peu, vous êtes probablement sur la bonne pile.</p>
+      <h2>3. Des huit fonctions aux seize types</h2>
+      <p>Les quatre lettres ne sont pas quatre interrupteurs indépendants. E/I indique si votre fonction dominante se tourne vers l'extérieur ou vers l'intérieur. S/N détermine le type de fonction perceptive que vous utilisez. T/F détermine le type de fonction de jugement. J/P précise si cette dominante est montrée au monde ou gardée à l'intérieur. Quatre paires binaires produisent exactement seize arrangements stables : les seize types.</p>
+      <p>Le J/P est la lettre la plus souvent mal lue. Elle ne dit rien sur l'ordre ni sur la spontanéité. Elle enregistre si la fonction que vous montrez au monde relève du jugement (Te ou Fe) ou de la perception (Ne ou Se). Voilà pourquoi certaines personnes très organisées obtiennent P, et d'autres très adaptables obtiennent J.</p>
+      <p>Cette grille explique aussi pourquoi deux types voisins se ressemblent tant, et pourquoi une seule lettre suffit à tout déplacer : elle ne change pas une étiquette, elle change l'ordre des fonctions.</p>
+      <h2>4. Comment passer le test : 38 questions et reprise en cours de route</h2>
+      <p>Trente-huit questions au total : huit par dimension sur quatre dimensions, plus six questions d'auto-évaluation. Chacune utilise une échelle graduée en six points, sans option neutre centrale : il faut donc trancher. Comptez environ cinq minutes. Si vous rafraîchissez la page ou fermez l'onglet à mi-chemin, votre progression reste enregistrée dans le navigateur et vous reprenez là où vous vous êtes arrêté ; elle est effacée une fois le test envoyé, et rien n'est conservé sur un serveur. Répondez à la première réaction plutôt que de vous corriger vers un profil plus flatteur.</p>
+      <p>La notation n'est pas une simple addition. Chaque item est pondéré par dimension et par sens, puis recoupé. Quand une dimension penche à moins de 58 %, la page de résultats la signale comme limite : c'est le moment de lire les descriptions de fonctions et de juger par vous-même, au lieu de défendre quatre lettres.</p>
+      <p>Une réserve, dite clairement : il s'agit d'un instrument d'auto-évaluation, pas d'un bilan clinique. Il mesure la manière dont vous décrivez vos habitudes à cet instant, et l'humeur, la charge de travail ou la saison de vie déplacent les chiffres. Prenez le résultat comme un vocabulaire pour vous observer, et refaites le test quelques mois plus tard si quelque chose cloche encore.</p>
+      <h2>5. Les seize types en un coup d'œil</h2>
+      <p>Les cartes ci-dessous suivent les quatre familles : Analystes (NT), Diplomates (NF), Sentinelles (SJ), Explorateurs (SP). Ouvrez n'importe quelle carte pour la pile de fonctions complète, les traits principaux, la façon dont ses figures marquantes ont réellement travaillé et les orientations qui lui conviennent.</p>
+      <p>Si une dimension est sortie limite, lisez les deux types voisins de part et d'autre du signal avant de trancher. La réponse utile se trouve généralement dans la comparaison plutôt que dans un mot de quatre lettres. Chaque fiche s'ouvre sur la pile de fonctions, puis présente les traits, les figures marquantes et leur manière de travailler, le style professionnel, les relations proches, les schémas de stress et les pistes de progression.</p>
+      <div class="hub-grid">
+        <a class="hub-card" href="types/intj.html"><div class="hub-code">INTJ</div><div class="hub-name">Architecte</div><div class="hub-desc">Ni lit la vue d'ensemble et la direction à long terme ; Te transforme la vision en plans exécutables.</div></a>
+        <a class="hub-card" href="types/intp.html"><div class="hub-code">INTP</div><div class="hub-name">Logicien</div><div class="hub-desc">Ti exige la cohérence des concepts ; Ne relance sans cesse de nouvelles possibilités.</div></a>
+        <a class="hub-card" href="types/entj.html"><div class="hub-code">ENTJ</div><div class="hub-name">Commandant</div><div class="hub-desc">Te fait avancer les objectifs par l'exécution et l'organisation ; Ni fournit la stratégie.</div></a>
+        <a class="hub-card" href="types/entp.html"><div class="hub-code">ENTP</div><div class="hub-name">Innovateur</div><div class="hub-desc">Ne produit des idées sans fin ; Ti les aiguise en arguments rigoureux.</div></a>
+        <a class="hub-card" href="types/infj.html"><div class="hub-code">INFJ</div><div class="hub-name">Avocat</div><div class="hub-desc">Ni lit les personnes et les courants souterrains ; Fe pousse les autres à grandir en douceur.</div></a>
+        <a class="hub-card" href="types/infp.html"><div class="hub-code">INFP</div><div class="hub-name">Médiateur</div><div class="hub-desc">Fi reste fidèle aux valeurs intérieures ; Ne cherche du sens entre l'idéal et le réel.</div></a>
+        <a class="hub-card" href="types/enfj.html"><div class="hub-code">ENFJ</div><div class="hub-name">Protagoniste</div><div class="hub-desc">Fe rassemble et motive ; Ni maintient le groupe dans une même direction.</div></a>
+        <a class="hub-card" href="types/enfp.html"><div class="hub-code">ENFP</div><div class="hub-name">Campagneur</div><div class="hub-desc">Ne est curieux et enthousiaste ; Fi ne retient que ce qui touche vraiment.</div></a>
+        <a class="hub-card" href="types/istj.html"><div class="hub-code">ISTJ</div><div class="hub-name">Logisticien</div><div class="hub-desc">Si fait confiance à l'expérience et aux procédures ; Te plante les standards dans le concret.</div></a>
+        <a class="hub-card" href="types/isfj.html"><div class="hub-code">ISFJ</div><div class="hub-name">Défenseur</div><div class="hub-desc">Si honore les engagements et le détail ; Fe veille discrètement sur les proches.</div></a>
+        <a class="hub-card" href="types/estj.html"><div class="hub-code">ESTJ</div><div class="hub-name">Directeur</div><div class="hub-desc">Te privilégie l'ordre et les résultats ; Si apporte une base d'expérience solide.</div></a>
+        <a class="hub-card" href="types/esfj.html"><div class="hub-code">ESFJ</div><div class="hub-name">Consul</div><div class="hub-desc">Fe entretient les liens et l'atmosphère ; Si transmet des pratiques fiables.</div></a>
+        <a class="hub-card" href="types/istp.html"><div class="hub-code">ISTP</div><div class="hub-name">Virtuose</div><div class="hub-desc">Ti démonte le mécanisme ; Se s'adapte sur le moment même.</div></a>
+        <a class="hub-card" href="types/isfp.html"><div class="hub-code">ISFP</div><div class="hub-name">Aventurier</div><div class="hub-desc">Fi suit le ressenti authentique ; Se saisit la beauté de l'instant.</div></a>
+        <a class="hub-card" href="types/estp.html"><div class="hub-code">ESTP</div><div class="hub-name">Entrepreneur</div><div class="hub-desc">Se attrape l'ouverture devant soi ; Ti pèse vite le risque et le gain.</div></a>
+        <a class="hub-card" href="types/esfp.html"><div class="hub-code">ESFP</div><div class="hub-name">Amuseur</div><div class="hub-desc">Se vit au présent ; Fi réchauffe la pièce par sa sincérité.</div></a>
+      </div>
+      <a class="hub-more" href="#start">Pas encore fait ? Commencez les 38 questions →</a>
+    </div>
+  </section>
 
   <section style="max-width:1280px;margin:0 auto;padding:0 24px 56px;">
     <a class="card" href="https://3310zx.github.io/mbti-test/high-need-test/" style="display:block;text-decoration:none;padding:28px 32px;margin:0;">
@@ -3888,6 +3968,54 @@ function prev(){
   if(cur>0){ cur--; render(); saveProgress(); }
 }
 
+/* 結果区深链：跳转到对应类型百科 + 3 个相近类型推荐 */
+var REL_TYPES = {
+  INTJ:['INTP','INFJ','ENTJ'],
+  INTP:['INTJ','ENTP','INFP'],
+  ENTJ:['INTJ','ENTP','ESTJ'],
+  ENTP:['INTP','ENTJ','ENFP'],
+  INFJ:['INFP','INTJ','ENFJ'],
+  INFP:['INFJ','ENFP','INTP'],
+  ENFJ:['ENFP','INFJ','ENTJ'],
+  ENFP:['ENFJ','INFP','ENTP'],
+  ISTJ:['ISFJ','ESTJ','INTJ'],
+  ISFJ:['ISTJ','ESFJ','INFJ'],
+  ESTJ:['ISTJ','ENTJ','ESFJ'],
+  ESFJ:['ISFJ','ESTJ','ENFJ'],
+  ISTP:['ISFP','ESTP','INTP'],
+  ISFP:['ISTP','ESFP','INFP'],
+  ESTP:['ISTP','ESFP','ENTJ'],
+  ESFP:['ISFP','ESTP','ENFP']
+};
+var TYPE_NAMES = {'INTJ':'Architecte', 'INTP':'Logicien', 'ENTJ':'Commandant', 'ENTP':'Innovateur', 'INFJ':'Avocat', 'INFP':'Médiateur', 'ENFJ':'Protagoniste', 'ENFP':'Campagneur', 'ISTJ':'Logisticien', 'ISFJ':'Défenseur', 'ESTJ':'Directeur', 'ESFJ':'Consul', 'ISTP':'Virtuose', 'ISFP':'Aventurier', 'ESTP':'Entrepreneur', 'ESFP':'Amuseur'};
+function typeName(code){
+  var info = TYPE_INFO[code] || {};
+  return TYPE_NAMES[code] || info.name || '';
+}
+function renderTypeLinks(type){
+  var box = document.getElementById('typeLinks');
+  if(!box){ return; }
+  var wiki = document.getElementById('typeWikiLink');
+  if(wiki){
+    wiki.href = 'types/' + type.toLowerCase() + '.html';
+    wiki.textContent = "Voir l'analyse complète du type " + type + ' ' + typeName(type) + ' →';
+  }
+  var grid = document.getElementById('relTypes');
+  if(grid){
+    grid.innerHTML = '';
+    var rel = REL_TYPES[type] || [];
+    rel.forEach(function(code){
+      var card = document.createElement('a');
+      card.className = 'type-rel-card';
+      card.href = 'types/' + code.toLowerCase() + '.html';
+      var stackTxt = (STACKS[code] || []).join(' · ');
+      card.innerHTML = '<div class="type-rel-code">' + code + '</div><div class="type-rel-name">' + typeName(code) + '</div><div class="type-rel-stack">' + stackTxt + '</div>';
+      grid.appendChild(card);
+    });
+  }
+  box.style.display = 'block';
+}
+
 function showResult(){
   clearProgress();
   document.getElementById('quiz').style.display = 'none';
@@ -3955,6 +4083,7 @@ function showResult(){
   tlEl.appendChild(atSpan);
   document.getElementById('typeName').textContent = info.name;
   document.getElementById('typeDesc').innerHTML = info.desc;
+  renderTypeLinks(type);
   var atCard = document.getElementById('atCard');
   if(atCard){
     atCard.style.display = 'block';

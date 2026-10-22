@@ -36,12 +36,12 @@ LANGS = {
     "en": {"dir": "en", "home": "Home", "crumb": "Breadcrumb", "types": "All 16 Types", "privacy": "Privacy Policy", "hn": "High-Need Friend Test"},
     "ja": {"dir": "ja", "home": "ホーム", "crumb": "パンくずリスト", "types": "16タイプ一覧", "privacy": "プライバシーポリシー", "hn": "高需要な友人テスト"},
     "ko": {"dir": "ko", "home": "홈", "crumb": "브레드크럼", "types": "16유형 백과", "privacy": "개인정보 처리방침", "hn": "높은 요구 친구 테스트"},
-    "fr": {"dir": "fr", "home": "Accueil", "types": "Les 16 types", "privacy": "Confidentialité", "hn": "Test de l'ami exigeant"},
+    "fr": {"dir": "fr", "home": "Accueil", "crumb": "Fil d'Ariane", "types": "Les 16 types", "privacy": "Confidentialité", "hn": "Test de l'ami exigeant"},
     "ru": {"dir": "ru", "home": "Главная", "types": "Все 16 типов", "privacy": "Конфиденциальность", "hn": "Тест требовательного друга"},
     "bo": {"dir": "bo", "home": "གཙོ་ངོས།", "types": "རིགས་ 16", "privacy": "གསང་བའི་སྲོལ་ཡིག", "hn": "དགོས་མཁོ་ཆེ་བའི་གྲོགས་པོའི་བརྟག་དཔྱད།"},
     "yue": {"dir": "yue", "home": "首頁", "types": "16 型百科", "privacy": "私隱政策", "hn": "高需求朋友測試"},
-    "es": {"dir": "es", "home": "Inicio", "types": "Los 16 tipos", "privacy": "Privacidad", "hn": "Test del amigo exigente"},
-    "pt": {"dir": "pt", "home": "Início", "types": "Os 16 tipos", "privacy": "Privacidade", "hn": "Teste do amigo exigente"},
+    "es": {"dir": "es", "home": "Inicio", "crumb": "Ruta de navegación", "types": "Los 16 tipos", "privacy": "Privacidad", "hn": "Test del amigo exigente"},
+    "pt": {"dir": "pt", "home": "Início", "crumb": "Trilha de navegação", "types": "Os 16 tipos", "privacy": "Privacidade", "hn": "Teste do amigo exigente"},
 }
 
 CRUMB_STYLE = (
