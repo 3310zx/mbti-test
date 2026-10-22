@@ -3418,6 +3418,23 @@
         <div id="bars" class="rv" style="animation-delay:1.65s"></div>
         <div id="tieNote" class="tie-note rv" style="display:none;animation-delay:1.75s;"></div>
       </div>
+<div class="type-links rv" id="typeLinks" style="display:none;animation-delay:1.8s">
+          <style>
+            .type-links{margin-top:24px;padding-top:20px;border-top:1px solid var(--md-outline-variant,rgba(0,0,0,.08))}
+            .type-wiki-link{display:inline-block;background:var(--md-primary,#0071e3);color:var(--md-on-primary,#fff);text-decoration:none;font-size:15px;font-weight:600;padding:11px 22px;border-radius:980px;transition:opacity .2s}
+            .type-wiki-link:hover{opacity:.88}
+            .type-rel-title{margin:20px 0 10px;font-size:13px;font-weight:600;color:var(--md-on-surface-variant,#6e6e73);letter-spacing:.02em}
+            .type-rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(146px,1fr));gap:10px}
+            .type-rel-card{display:block;text-decoration:none;background:var(--md-surface-container-low,#f5f5f7);border:1px solid var(--md-outline-variant,rgba(0,0,0,.08));border-radius:14px;padding:12px 14px;transition:border-color .2s,transform .2s}
+            .type-rel-card:hover{border-color:var(--md-primary,#0071e3);transform:translateY(-2px)}
+            .type-rel-code{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--md-primary,#0071e3)}
+            .type-rel-name{font-size:14px;font-weight:600;margin-top:3px;color:var(--md-on-surface,#1d1d1f)}
+            .type-rel-stack{font-size:12px;margin-top:4px;color:var(--md-on-surface-variant,#6e6e73)}
+          </style>
+          <a class="type-wiki-link" id="typeWikiLink" href="types/index.html">睇 →</a>
+          <div class="type-rel-title">比較相近嘅型</div>
+          <div class="type-rel-grid" id="relTypes"></div>
+        </div>
       <div class="ad-box rv" id="ad-result" style="animation-delay:1.9s"></div>
       <div class="disclaimer rv" style="animation-delay:2.05s">
         <b>注意：</b>MBTI 係職業評估工具，唔係心理診斷；結果只係用嚟自我認識，唔係科學結論。
@@ -3442,6 +3459,66 @@
       </div>
     </aside>
   </div>
+
+  <section class="home-hub" style="max-width:1280px;margin:0 auto;padding:0 24px 56px;">
+    <style>
+          .home-hub{color:var(--md-on-surface,#1d1d1f)}
+          .home-hub .hub-inner{max-width:880px}
+          .home-hub h1{font-size:clamp(24px,3.2vw,32px);line-height:1.26;letter-spacing:-.015em;font-weight:700;margin:0 0 16px}
+          .home-hub .hub-lead{font-size:16px;line-height:1.8;color:var(--md-on-surface-variant,#6e6e73);margin:0 0 26px}
+          .home-hub h2{font-size:19px;line-height:1.45;font-weight:650;margin:30px 0 10px;letter-spacing:-.005em;color:var(--md-on-surface,#1d1d1f)}
+          .home-hub p{font-size:15px;line-height:1.85;color:var(--md-on-surface-variant,#6e6e73);margin:0 0 12px}
+          .home-hub .hub-sub{font-weight:600;color:var(--md-on-surface,#1d1d1f)}
+          .home-hub .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:12px;margin-top:16px}
+          .home-hub .hub-card{display:block;text-decoration:none;background:var(--md-surface-container-low,#f5f5f7);border:1px solid var(--md-outline-variant,rgba(0,0,0,.08));border-radius:16px;padding:16px 18px;transition:border-color .2s,transform .2s,box-shadow .2s}
+          .home-hub .hub-card:hover{border-color:var(--md-primary,#0071e3);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,113,227,.10)}
+          .home-hub .hub-code{font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--md-primary,#0071e3)}
+          .home-hub .hub-name{font-size:15px;font-weight:600;color:var(--md-on-surface,#1d1d1f);margin:4px 0 6px}
+          .home-hub .hub-desc{font-size:13px;line-height:1.65;color:var(--md-on-surface-variant,#6e6e73)}
+          .home-hub .hub-more{display:inline-block;margin-top:24px;font-size:14px;font-weight:600;color:var(--md-primary,#0071e3);text-decoration:none}
+          @media (max-width:600px){.home-hub{padding-left:18px;padding-right:18px}}
+        </style>
+
+    <div class="hub-inner">
+      <h1>MBTI 認知功能測試：組成你嗰個型嘅八種認知功能</h1>
+      <p class="hub-lead">呢個唔係又多一個幫你貼四隻字標籤嘅測驗。38 條題目量度你幾咁倚重八種認知功能，再按你嗰個功能棧嘅次序推返你嘅型。結果頁會解釋你點解會咁樣思考，同埋點解有啲場面會令你比其他人更快冇電。</p>
+      <h2>1. 同一般 MBTI 測驗有咩分別</h2>
+      <p>大部分免費測驗問你鍾唔鍾意熱鬧、鍾唔鍾意獨處，然後就拼埋四隻字。認知功能測試由另一個前提出發：人同人唔同，唔係在於行為，而在於佢哋最先拎起邊個思考過程。你係先收集具體事實，定係先睇到事實底下嘅結構？你係按客觀邏輯落決定，定係按價值同感受？兩個同樣測到 INTJ 嘅人，行為可以差好遠——差別在於佢哋嘅主導功能同輔助功能發展得幾平均。正正係呢個落差，解釋咗點解咁多人睇完標準描述之後會諗：呢個唔係真係我。</p>
+      <p>巴納姆效應喺呢度影響好大。含糊嘅講法幾乎人人都覺得中；但一串綁實喺特定功能次序嘅描述，要撞中就好難。如果你覺得個描述唔啱你，呢個係資訊，唔係你嘅問題。</p>
+      <h2>2. 八種認知功能：四種感知，四種判斷</h2>
+      <p>感知功能負責收料。<span class="hub-sub">Se</span> 貼住當下嘅具體現實；<span class="hub-sub">Si</span> 儲起親身經驗，再同現在對照；<span class="hub-sub">Ne</span> 向四面八方開可能性；<span class="hub-sub">Ni</span> 收窄去趨勢同綜合直覺。判斷功能負責落決定。<span class="hub-sub">Te</span> 按外在標準同效率排次序；<span class="hub-sub">Ti</span> 要求內部邏輯自洽；<span class="hub-sub">Fe</span> 調節成班人嘅氣氛同其他人嘅情緒；<span class="hub-sub">Fi</span> 忠於自己嘅價值同「係真嘅」感覺。冇邊一種功能高級啲，變嘅只係你俾佢嘅位置。</p>
+      <p>每個型都有一條棧：主導、輔助、第三、最低。主導功能最省力，幾乎唔使叫都會自己運作。輔助功能幫手平衡，將視角拉向外面或者裏面。第三功能遲啲先成熟，通常喺青春期到初出社會嗰幾年。最低功能就係壓力一耐就會爆嘅位，你最唔想承認嘅反應多數由佢出。</p>
+      <p>八種功能人人都有。分別在於次序：第一位自動運作，最後一位就笨手笨腳、好快頂唔順，而且通常就係你最唔鍾意自己嘅嗰種表現。有個實用做法：先讀最低功能嘅描述。如果讀落有啲刺，你條棧多數就係啱嘅。</p>
+      <h2>3. 由八種功能到十六個型</h2>
+      <p>四隻字唔係四個獨立開關。E/I 講你嘅主導功能係向外定向內。S/N 決定你用邊類感知功能。T/F 決定你用邊類判斷功能。J/P 就講你俾世界睇嘅係主導功能，定係收埋喺裏面運作。四對二元組合，剛剛好得出十六個穩定組合，就係十六型。</p>
+      <p>最常被誤讀嘅係 J/P。佢唔係講你有冇條理，亦都唔係講你鍾唔鍾意即興。佢記錄嘅係：你俾世界睇嗰個功能，屬於判斷（Te 或 Fe）定感知（Ne 或 Se）。所以有啲好有條理嘅人會測到 P，有啲好隨機應變嘅人會測到 J。</p>
+      <h2>4. 點樣做：38 條題目同中途續答</h2>
+      <p>總共 38 條：四個維度各八條，再加六條自評。每條都用六級程度評分，中間冇中立選項，所以一定要揀邊一邊。大約五分鐘做完。如果你中途重新載入頁面或者熄咗分頁，進度會留喺你部機嘅瀏覽器，返嚟可以喺停低嗰題繼續；一送出就會清走，伺服器唔會存任何嘢。答嘅時候用第一反應，唔好一路修到自己覺得好聽啲。</p>
+      <p>計分唔係單純加埋。每條會按維度同方向加權，再互相對照。如果某個維度嘅傾向低過 58%，結果頁會標明佢係邊界情況：呢個時候最好去讀功能描述，自己判斷，而唔係死守四隻字。</p>
+      <h2>5. 十六型一覽</h2>
+      <p>下面嘅卡片按四個家族排：分析家（NT）、外交家（NF）、守護者（SJ）、探索者（SP）。撳入任何一張，可以睇到完整功能棧、主要特質、代表人物實際做嘢嘅方式，同埋幾適合嘅方向。</p>
+      <p>如果某個維度啱啱踩界，先讀嗰個訊號兩邊嘅型，再決定貼邊個標籤。有用嘅答案通常喺比較裏面，而唔喺四隻字裏面。每一頁都由功能棧開始，跟住講特質、代表人物同佢哋真實嘅工作方式、職業風格、親密關係、壓力下嘅模式同成長方向。</p>
+      <div class="hub-grid">
+        <a class="hub-card" href="types/intj.html"><div class="hub-code">INTJ</div><div class="hub-name">建築師</div><div class="hub-desc">Ni 睇全局同長遠方向；Te 將構想拆成做得到嘅計劃。</div></a>
+        <a class="hub-card" href="types/intp.html"><div class="hub-code">INTP</div><div class="hub-name">邏輯學家</div><div class="hub-desc">Ti 要求概念自洽；Ne 不停開新嘅可能性。</div></a>
+        <a class="hub-card" href="types/entj.html"><div class="hub-code">ENTJ</div><div class="hub-name">指揮官</div><div class="hub-desc">Te 靠執行同組織推目標；Ni 供策略方向。</div></a>
+        <a class="hub-card" href="types/entp.html"><div class="hub-code">ENTP</div><div class="hub-name">辯論家</div><div class="hub-desc">Ne 出橋唔會停；Ti 將佢磨成嚴謹嘅論證。</div></a>
+        <a class="hub-card" href="types/infj.html"><div class="hub-code">INFJ</div><div class="hub-name">倡議者</div><div class="hub-desc">Ni 讀人同底下嘅暗流；Fe 溫柔咁推人成長。</div></a>
+        <a class="hub-card" href="types/infp.html"><div class="hub-code">INFP</div><div class="hub-name">調解者</div><div class="hub-desc">Fi 忠於內心價值；Ne 喺理想同現實之間搵意義。</div></a>
+        <a class="hub-card" href="types/enfj.html"><div class="hub-code">ENFJ</div><div class="hub-name">主人公</div><div class="hub-desc">Fe 凝聚同帶動人；Ni 令成班人朝同一個方向。</div></a>
+        <a class="hub-card" href="types/enfp.html"><div class="hub-code">ENFP</div><div class="hub-name">競選者</div><div class="hub-desc">Ne 好奇又感染人；Fi 只留低真正觸動佢嘅嘢。</div></a>
+        <a class="hub-card" href="types/istj.html"><div class="hub-code">ISTJ</div><div class="hub-name">後勤者</div><div class="hub-desc">Si 信經驗同程序；Te 將標準落實到具體。</div></a>
+        <a class="hub-card" href="types/isfj.html"><div class="hub-code">ISFJ</div><div class="hub-name">守衛者</div><div class="hub-desc">Si 守住承諾同細節；Fe 靜靜照顧身邊人。</div></a>
+        <a class="hub-card" href="types/estj.html"><div class="hub-code">ESTJ</div><div class="hub-name">總經理</div><div class="hub-desc">Te 最重視秩序同成果；Si 提供穩陣嘅經驗底。</div></a>
+        <a class="hub-card" href="types/esfj.html"><div class="hub-code">ESFJ</div><div class="hub-name">執政官</div><div class="hub-desc">Fe 維繫關係同氣氛；Si 傳遞可靠嘅做法。</div></a>
+        <a class="hub-card" href="types/istp.html"><div class="hub-code">ISTP</div><div class="hub-name">鑑賞家</div><div class="hub-desc">Ti 拆開個機制；Se 即場應變。</div></a>
+        <a class="hub-card" href="types/isfp.html"><div class="hub-code">ISFP</div><div class="hub-name">探險家</div><div class="hub-desc">Fi 跟真實感受；Se 捉住當下嘅美。</div></a>
+        <a class="hub-card" href="types/estp.html"><div class="hub-code">ESTP</div><div class="hub-name">企業家</div><div class="hub-desc">Se 抓實眼前機會；Ti 快速秤風險同回報。</div></a>
+        <a class="hub-card" href="types/esfp.html"><div class="hub-code">ESFP</div><div class="hub-name">表演者</div><div class="hub-desc">Se 活在當下；Fi 用真誠搞熱個場。</div></a>
+      </div>
+      <a class="hub-more" href="#start">仲未做？開始 38 條題目 →</a>
+    </div>
+  </section>
 
   <section style="max-width:1280px;margin:0 auto;padding:0 24px 56px;">
     <a class="card" href="https://3310zx.github.io/mbti-test/high-need-test/" style="display:block;text-decoration:none;padding:28px 32px;margin:0;">
@@ -3888,6 +3965,54 @@ function prev(){
   if(cur>0){ cur--; render(); saveProgress(); }
 }
 
+/* 結果区深链：跳转到对应类型百科 + 3 个相近类型推荐 */
+var REL_TYPES = {
+  INTJ:['INTP','INFJ','ENTJ'],
+  INTP:['INTJ','ENTP','INFP'],
+  ENTJ:['INTJ','ENTP','ESTJ'],
+  ENTP:['INTP','ENTJ','ENFP'],
+  INFJ:['INFP','INTJ','ENFJ'],
+  INFP:['INFJ','ENFP','INTP'],
+  ENFJ:['ENFP','INFJ','ENTJ'],
+  ENFP:['ENFJ','INFP','ENTP'],
+  ISTJ:['ISFJ','ESTJ','INTJ'],
+  ISFJ:['ISTJ','ESFJ','INFJ'],
+  ESTJ:['ISTJ','ENTJ','ESFJ'],
+  ESFJ:['ISFJ','ESTJ','ENFJ'],
+  ISTP:['ISFP','ESTP','INTP'],
+  ISFP:['ISTP','ESFP','INFP'],
+  ESTP:['ISTP','ESFP','ENTJ'],
+  ESFP:['ISFP','ESTP','ENFP']
+};
+var TYPE_NAMES = {'INTJ':'建築師', 'INTP':'邏輯學家', 'ENTJ':'指揮官', 'ENTP':'辯論家', 'INFJ':'倡議者', 'INFP':'調解者', 'ENFJ':'主人公', 'ENFP':'競選者', 'ISTJ':'後勤者', 'ISFJ':'守衛者', 'ESTJ':'總經理', 'ESFJ':'執政官', 'ISTP':'鑑賞家', 'ISFP':'探險家', 'ESTP':'企業家', 'ESFP':'表演者'};
+function typeName(code){
+  var info = TYPE_INFO[code] || {};
+  return TYPE_NAMES[code] || info.name || '';
+}
+function renderTypeLinks(type){
+  var box = document.getElementById('typeLinks');
+  if(!box){ return; }
+  var wiki = document.getElementById('typeWikiLink');
+  if(wiki){
+    wiki.href = 'types/' + type.toLowerCase() + '.html';
+    wiki.textContent = "睇 " + type + ' ' + typeName(type) + ' →';
+  }
+  var grid = document.getElementById('relTypes');
+  if(grid){
+    grid.innerHTML = '';
+    var rel = REL_TYPES[type] || [];
+    rel.forEach(function(code){
+      var card = document.createElement('a');
+      card.className = 'type-rel-card';
+      card.href = 'types/' + code.toLowerCase() + '.html';
+      var stackTxt = (STACKS[code] || []).join(' · ');
+      card.innerHTML = '<div class="type-rel-code">' + code + '</div><div class="type-rel-name">' + typeName(code) + '</div><div class="type-rel-stack">' + stackTxt + '</div>';
+      grid.appendChild(card);
+    });
+  }
+  box.style.display = 'block';
+}
+
 function showResult(){
   clearProgress();
   document.getElementById('quiz').style.display = 'none';
@@ -3955,6 +4080,7 @@ function showResult(){
   tlEl.appendChild(atSpan);
   document.getElementById('typeName').textContent = info.name;
   document.getElementById('typeDesc').innerHTML = info.desc;
+  renderTypeLinks(type);
   var atCard = document.getElementById('atCard');
   if(atCard){
     atCard.style.display = 'block';
