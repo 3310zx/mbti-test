@@ -32,10 +32,10 @@ TYPES = sorted(
 
 # 每种语言的目录前缀与文案（新增语言只需在此登记）
 LANGS = {
-    "zh": {"dir": "", "home": "首页", "types": "16 型百科", "privacy": "隐私政策", "hn": "高需求朋友测试"},
-    "en": {"dir": "en", "home": "Home", "types": "All 16 Types", "privacy": "Privacy Policy", "hn": "High-Need Friend Test"},
-    "ja": {"dir": "ja", "home": "ホーム", "types": "16タイプ一覧", "privacy": "プライバシーポリシー", "hn": "高需要な友人テスト"},
-    "ko": {"dir": "ko", "home": "홈", "types": "16유형 백과", "privacy": "개인정보 처리방침", "hn": "높은 요구 친구 테스트"},
+    "zh": {"dir": "", "home": "首页", "crumb": "面包屑导航", "types": "16 型百科", "privacy": "隐私政策", "hn": "高需求朋友测试"},
+    "en": {"dir": "en", "home": "Home", "crumb": "Breadcrumb", "types": "All 16 Types", "privacy": "Privacy Policy", "hn": "High-Need Friend Test"},
+    "ja": {"dir": "ja", "home": "ホーム", "crumb": "パンくずリスト", "types": "16タイプ一覧", "privacy": "プライバシーポリシー", "hn": "高需要な友人テスト"},
+    "ko": {"dir": "ko", "home": "홈", "crumb": "브레드크럼", "types": "16유형 백과", "privacy": "개인정보 처리방침", "hn": "높은 요구 친구 테스트"},
     "fr": {"dir": "fr", "home": "Accueil", "types": "Les 16 types", "privacy": "Confidentialité", "hn": "Test de l'ami exigeant"},
     "ru": {"dir": "ru", "home": "Главная", "types": "Все 16 типов", "privacy": "Конфиденциальность", "hn": "Тест требовательного друга"},
     "bo": {"dir": "bo", "home": "གཙོ་ངོས།", "types": "རིགས་ 16", "privacy": "གསང་བའི་སྲོལ་ཡིག", "hn": "དགོས་མཁོ་ཆེ་བའི་གྲོགས་པོའི་བརྟག་དཔྱད།"},
@@ -93,7 +93,7 @@ def build_items(text, rel_path, cfg):
     return None
 
 
-def build_nav(items, extra_style=""):
+def build_nav(items, extra_style="", label="面包屑导航"):
     parts = []
     for i, (name, _abs, href) in enumerate(items):
         if href:
@@ -103,8 +103,8 @@ def build_nav(items, extra_style=""):
         if i < len(items) - 1:
             parts.append(SEP)
     return (
-        '    <nav class="breadcrumb-nav" aria-label="面包屑导航" style="%s%s">\n      %s\n    </nav>\n'
-        % (CRUMB_STYLE, extra_style, "\n      ".join(parts))
+        '    <nav class="breadcrumb-nav" aria-label="%s" style="%s%s">\n      %s\n    </nav>\n'
+        % (label, CRUMB_STYLE, extra_style, "\n      ".join(parts))
     )
 
 
@@ -128,12 +128,13 @@ def process(path, cfg, dry_run):
     text = open(path, encoding="utf-8").read()
     if '"BreadcrumbList"' in text:
         return "skip(已存在)"
-    items = build_items(text, rel_path, cfg)
+    local_rel = rel_path[len(cfg["dir"]) + 1:] if cfg["dir"] else rel_path
+    items = build_items(text, local_rel, cfg)
     if not items:
         return "skip(不在范围)"
     if "high-need-test" in rel_path:
         anchor = "</header>"
-        nav = build_nav(items, "margin:0;padding:12px 22px 0;max-width:1100px;margin:0 auto;")
+        nav = build_nav(items, "margin:0;padding:12px 22px 0;max-width:1100px;margin:0 auto;", cfg.get("crumb", "面包屑导航"))
         if text.count(anchor) < 1:
             return "skip(无锚点)"
         new = text.replace(anchor, anchor + "\n" + nav.rstrip("\n"), 1)
@@ -141,7 +142,7 @@ def process(path, cfg, dry_run):
         anchor = '<div class="wrap">'
         if text.count(anchor) != 1:
             return "skip(wrap 锚点 %d 个)" % text.count(anchor)
-        nav = build_nav(items)
+        nav = build_nav(items, "", cfg.get("crumb", "面包屑导航"))
         new = text.replace(anchor, anchor + "\n" + nav, 1)
 
     if "</head>" not in new:
