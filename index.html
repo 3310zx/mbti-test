@@ -3417,6 +3417,23 @@
         <div class="fn-detail" id="fnDetail"></div>
         <div id="bars" class="rv" style="animation-delay:1.65s"></div>
         <div id="tieNote" class="tie-note rv" style="display:none;animation-delay:1.75s;"></div>
+        <div class="type-links rv" id="typeLinks" style="display:none;animation-delay:1.8s">
+          <style>
+            .type-links{margin-top:24px;padding-top:20px;border-top:1px solid var(--md-outline-variant,rgba(0,0,0,.08))}
+            .type-wiki-link{display:inline-block;background:var(--md-primary,#0071e3);color:var(--md-on-primary,#fff);text-decoration:none;font-size:15px;font-weight:600;padding:11px 22px;border-radius:980px;transition:opacity .2s}
+            .type-wiki-link:hover{opacity:.88}
+            .type-rel-title{margin:20px 0 10px;font-size:13px;font-weight:600;color:var(--md-on-surface-variant,#6e6e73);letter-spacing:.02em}
+            .type-rel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(146px,1fr));gap:10px}
+            .type-rel-card{display:block;text-decoration:none;background:var(--md-surface-container-low,#f5f5f7);border:1px solid var(--md-outline-variant,rgba(0,0,0,.08));border-radius:14px;padding:12px 14px;transition:border-color .2s,transform .2s}
+            .type-rel-card:hover{border-color:var(--md-primary,#0071e3);transform:translateY(-2px)}
+            .type-rel-code{font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--md-primary,#0071e3)}
+            .type-rel-name{font-size:14px;font-weight:600;margin-top:3px;color:var(--md-on-surface,#1d1d1f)}
+            .type-rel-stack{font-size:12px;margin-top:4px;color:var(--md-on-surface-variant,#6e6e73)}
+          </style>
+          <a class="type-wiki-link" id="typeWikiLink" href="types/index.html">查看完整类型解析 →</a>
+          <div class="type-rel-title">相近类型对比</div>
+          <div class="type-rel-grid" id="relTypes"></div>
+        </div>
       </div>
       <div class="ad-box rv" id="ad-result" style="animation-delay:1.9s"></div>
       <div class="disclaimer rv" style="animation-delay:2.05s">
@@ -3442,6 +3459,67 @@
       </div>
     </aside>
   </div>
+
+  <section class="home-hub" style="max-width:1280px;margin:0 auto;padding:0 24px 56px;">
+    <style>
+      .home-hub{color:var(--md-on-surface,#1d1d1f)}
+      .home-hub .hub-inner{max-width:880px}
+      .home-hub h1{font-size:clamp(24px,3.2vw,32px);line-height:1.26;letter-spacing:-.015em;font-weight:700;margin:0 0 16px}
+      .home-hub .hub-lead{font-size:16px;line-height:1.8;color:var(--md-on-surface-variant,#6e6e73);margin:0 0 26px}
+      .home-hub h2{font-size:19px;line-height:1.45;font-weight:650;margin:30px 0 10px;letter-spacing:-.005em;color:var(--md-on-surface,#1d1d1f)}
+      .home-hub p{font-size:15px;line-height:1.85;color:var(--md-on-surface-variant,#6e6e73);margin:0 0 12px}
+      .home-hub .hub-sub{font-weight:600;color:var(--md-on-surface,#1d1d1f)}
+      .home-hub .hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:12px;margin-top:16px}
+      .home-hub .hub-card{display:block;text-decoration:none;background:var(--md-surface-container-low,#f5f5f7);border:1px solid var(--md-outline-variant,rgba(0,0,0,.08));border-radius:16px;padding:16px 18px;transition:border-color .2s,transform .2s,box-shadow .2s}
+      .home-hub .hub-card:hover{border-color:var(--md-primary,#0071e3);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,113,227,.10)}
+      .home-hub .hub-code{font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--md-primary,#0071e3)}
+      .home-hub .hub-name{font-size:15px;font-weight:600;color:var(--md-on-surface,#1d1d1f);margin:4px 0 6px}
+      .home-hub .hub-desc{font-size:13px;line-height:1.65;color:var(--md-on-surface-variant,#6e6e73)}
+      .home-hub .hub-more{display:inline-block;margin-top:24px;font-size:14px;font-weight:600;color:var(--md-primary,#0071e3);text-decoration:none}
+      @media (max-width:600px){.home-hub{padding-left:18px;padding-right:18px}}
+    </style>
+
+    <div class="hub-inner">
+      <h1>MBTI 认知功能测试：看懂 8 种认知功能，找到你的 16 型人格</h1>
+      <p class="hub-lead">本站不是一份"贴标签"的性格问卷。38 道题测量你使用八种认知功能的相对强度，据此推导出你的类型，并在结果页给出完整的功能栈解读——你为什么会这样思考，又为什么会在某些场景里格外消耗。</p>
+
+      <h2>一、认知功能测试，和常见 MBTI 问卷有什么不同</h2>
+      <p>大多数免费测试只问"你更喜欢社交还是独处"，再把四个字母直接拼起来。认知功能测试走的是另一条路径：它假设人格差异的根源，在于你更习惯调用哪一种心理功能——是收集具体事实，还是捕捉潜在模式；是依据客观逻辑，还是依据价值与感受。同样是 INTJ，主导功能与辅助功能的强弱配比不同，日常表现就可能相差很远。这也是很多人在普通测试里"越看越不像自己"的原因。</p>
+
+      <h2>二、八种认知功能：四种感知，四种判断</h2>
+      <p>感知功能负责接收信息。<span class="hub-sub">Se</span> 关注当下具体的感官现实，<span class="hub-sub">Si</span> 保存并比对过往经验，<span class="hub-sub">Ne</span> 向外发散各种可能性，<span class="hub-sub">Ni</span> 向内收束成趋势与洞察。判断功能负责做出决定：<span class="hub-sub">Te</span> 用外部标准与效率排序，<span class="hub-sub">Ti</span> 追求内部逻辑自洽，<span class="hub-sub">Fe</span> 协调群体氛围与他人感受，<span class="hub-sub">Fi</span> 忠于个人价值与真实感受。八种功能没有高下之分，区别只在于使用顺序。</p>
+      <p>每种类型都有一条功能栈：主导、辅助、第三、劣势。主导功能是最自然、最不费力的方式；劣势功能则常常是压力之下最先失控的地方。</p>
+
+      <h2>三、从八种功能到十六型人格</h2>
+      <p>四个字母并不是四个独立的开关。第一组 E/I 描述主导功能朝外还是朝内；第二组 S/N 决定你使用哪种感知功能；第三组 T/F 决定你使用哪种判断功能；第四组 J/P 则规定主导功能是对外展示还是对内运转。四组两两组合，恰好形成十六种稳定的功能排列，也就是十六型人格。</p>
+
+      <h2>四、这份测试怎么用</h2>
+      <p>全卷 38 题：四个维度各 8 题，另加 6 题自我评估，采用六级程度评分，不设"不确定"中间项，逼你做出倾向。全程约五分钟。作答中途刷新或离开，进度会存在本地浏览器里，回来可以接着答，交卷后自动清空，不会留下记录。建议按第一反应作答，不必反复修改。</p>
+      <p>计分不是简单数选项，而是按每题所属维度与方向加权，再做交叉校验。任一维度的倾向低于 58% 时，结果页会标注"边界型"，这时更该结合功能描述自行复核，而不是死守四个字母。</p>
+
+      <h2>五、十六型人格全览</h2>
+      <p>下面按四大族群列出全部类型：分析家（NT）、外交家（NF）、守护者（SJ）、探索者（SP）。点开任意一张卡片，可以看到该类型的完整功能栈、性格特征要点、代表人物的做事方式，以及适合的方向。</p>
+      <div class="hub-grid">
+        <a class="hub-card" href="types/intj.html"><div class="hub-code">INTJ</div><div class="hub-name">建筑师型人格</div><div class="hub-desc">Ni 洞察全局与长期走向，Te 把构想拆成可执行方案。</div></a>
+        <a class="hub-card" href="types/intp.html"><div class="hub-code">INTP</div><div class="hub-name">逻辑学家型人格</div><div class="hub-desc">Ti 追求概念自洽，Ne 不断抛出新的可能性。</div></a>
+        <a class="hub-card" href="types/entj.html"><div class="hub-code">ENTJ</div><div class="hub-name">指挥官型人格</div><div class="hub-desc">Te 高效推进目标，Ni 提供长期战略眼光。</div></a>
+        <a class="hub-card" href="types/entp.html"><div class="hub-code">ENTP</div><div class="hub-name">辩论家型人格</div><div class="hub-desc">Ne 点子层出不穷，Ti 把想法打磨成严密论证。</div></a>
+        <a class="hub-card" href="types/infj.html"><div class="hub-code">INFJ</div><div class="hub-name">提倡者型人格</div><div class="hub-desc">Ni 洞察人心与趋势，Fe 温和地推动他人成长。</div></a>
+        <a class="hub-card" href="types/infp.html"><div class="hub-code">INFP</div><div class="hub-name">调停者型人格</div><div class="hub-desc">Fi 忠于内心价值，Ne 在理想与现实之间寻找意义。</div></a>
+        <a class="hub-card" href="types/enfj.html"><div class="hub-code">ENFJ</div><div class="hub-name">主人公型人格</div><div class="hub-desc">Fe 凝聚并激励他人，Ni 看清团队要走的方向。</div></a>
+        <a class="hub-card" href="types/enfp.html"><div class="hub-code">ENFP</div><div class="hub-name">竞选者型人格</div><div class="hub-desc">Ne 热情好奇，Fi 只做真正打动自己的那件事。</div></a>
+        <a class="hub-card" href="types/istj.html"><div class="hub-code">ISTJ</div><div class="hub-name">物流师型人格</div><div class="hub-desc">Si 依赖经验与流程，Te 把标准稳稳落到地面。</div></a>
+        <a class="hub-card" href="types/isfj.html"><div class="hub-code">ISFJ</div><div class="hub-name">守卫者型人格</div><div class="hub-desc">Si 重视承诺与细节，Fe 默默照顾身边的人。</div></a>
+        <a class="hub-card" href="types/estj.html"><div class="hub-code">ESTJ</div><div class="hub-name">总经理型人格</div><div class="hub-desc">Te 讲秩序重结果，Si 提供扎实的经验参照。</div></a>
+        <a class="hub-card" href="types/esfj.html"><div class="hub-code">ESFJ</div><div class="hub-name">执政官型人格</div><div class="hub-desc">Fe 维系关系与氛围，Si 延续可靠的传统做法。</div></a>
+        <a class="hub-card" href="types/istp.html"><div class="hub-code">ISTP</div><div class="hub-name">鉴赏家型人格</div><div class="hub-desc">Ti 拆解原理，Se 在真实场景里灵活应对。</div></a>
+        <a class="hub-card" href="types/isfp.html"><div class="hub-code">ISFP</div><div class="hub-name">探险家型人格</div><div class="hub-desc">Fi 忠于自身感受，Se 敏锐捕捉当下的细节之美。</div></a>
+        <a class="hub-card" href="types/estp.html"><div class="hub-code">ESTP</div><div class="hub-name">企业家型人格</div><div class="hub-desc">Se 抓住现场机会，Ti 快速判断风险与收益。</div></a>
+        <a class="hub-card" href="types/esfp.html"><div class="hub-code">ESFP</div><div class="hub-name">表演者型人格</div><div class="hub-desc">Se 活在当下，Fi 用真诚感染身边的人。</div></a>
+      </div>
+      <a class="hub-more" href="#start">还没测过？先做一次 38 题测试 →</a>
+    </div>
+  </section>
 
   <section style="max-width:1280px;margin:0 auto;padding:0 24px 56px;">
     <a class="card" href="https://3310zx.github.io/mbti-test/high-need-test/" style="display:block;text-decoration:none;padding:28px 32px;margin:0;">
@@ -3888,6 +3966,44 @@ function prev(){
   if(cur>0){ cur--; render(); saveProgress(); }
 }
 
+var REL_TYPES = {
+  INTJ:['INTP','INFJ','ENTJ'], INTP:['INTJ','ENTP','INFP'],
+  ENTJ:['INTJ','ENTP','ESTJ'], ENTP:['INTP','ENTJ','ENFP'],
+  INFJ:['INFP','INTJ','ENFJ'], INFP:['INFJ','ENFP','INTP'],
+  ENFJ:['ENFP','INFJ','ENTJ'], ENFP:['ENFJ','INFP','ENTP'],
+  ISTJ:['ISFJ','ESTJ','INTJ'], ISFJ:['ISTJ','ESFJ','INFJ'],
+  ESTJ:['ISTJ','ENTJ','ESFJ'], ESFJ:['ISFJ','ESTJ','ENFJ'],
+  ISTP:['ISFP','ESTP','INTP'], ISFP:['ISTP','ESFP','INFP'],
+  ESTP:['ISTP','ESFP','ENTJ'], ESFP:['ISFP','ESTP','ENFP'],
+};
+
+/* 结果区深链：跳转对应类型百科 + 2~3 个相近类型推荐 */
+function renderTypeLinks(type){
+  var box = document.getElementById('typeLinks');
+  if(!box){ return; }
+  var info = TYPE_INFO[type] || {};
+  var wiki = document.getElementById('typeWikiLink');
+  if(wiki){
+    wiki.href = 'types/' + type.toLowerCase() + '.html';
+    wiki.textContent = '查看 ' + type + ' ' + (info.name || '') + ' 完整解析 →';
+  }
+  var grid = document.getElementById('relTypes');
+  if(grid){
+    grid.innerHTML = '';
+    var rel = REL_TYPES[type] || [];
+    rel.forEach(function(code){
+      var ri = TYPE_INFO[code] || {};
+      var card = document.createElement('a');
+      card.className = 'type-rel-card';
+      card.href = 'types/' + code.toLowerCase() + '.html';
+      var stackTxt = (STACKS[code] || []).join(' · ');
+      card.innerHTML = '<div class="type-rel-code">' + code + '</div><div class="type-rel-name">' + (ri.name || '') + '</div><div class="type-rel-stack">' + stackTxt + '</div>';
+      grid.appendChild(card);
+    });
+  }
+  box.style.display = 'block';
+}
+
 function showResult(){
   clearProgress();
   document.getElementById('quiz').style.display = 'none';
@@ -3955,6 +4071,7 @@ function showResult(){
   tlEl.appendChild(atSpan);
   document.getElementById('typeName').textContent = info.name;
   document.getElementById('typeDesc').innerHTML = info.desc;
+  renderTypeLinks(type);
   var atCard = document.getElementById('atCard');
   if(atCard){
     atCard.style.display = 'block';
