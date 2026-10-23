@@ -41,9 +41,17 @@ def check_links():
 
 
 def check_hreflang():
-    """每页 hreflang 必须 11 条（10 语言 + x-default）。"""
+    """多语言页面 hreflang 必须 11 条（10 语言 + x-default）。
+
+    ai/ 下的页面（ai/index.html、ai/score.html）是面向 LLM/Agent 的
+    单语言（英文）接口文档，不存在 10 个语言变体，故不做 hreflang 要求；
+    其唯一性由 canonical 声明。给这类页面硬凑 11 条 hreflang 反而会向
+    搜索引擎传递错误的多语言信号。
+    """
     for page in sorted(glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True)):
         rel = os.path.relpath(page, ROOT)
+        if rel.startswith("ai" + os.sep):
+            continue
         text = open(page, encoding="utf-8").read()
         n = len(re.findall(r"hreflang=", text))
         if n != 11:
