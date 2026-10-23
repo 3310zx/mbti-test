@@ -13,6 +13,14 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKIP_PREFIX = ("http://", "https://", "mailto:", "tel:", "javascript:", "data:", "//", "#")
 
+# hreflang 校验豁免白名单（相对仓库根目录的 POSIX 路径）。
+# 只按文件名逐个列出，不做目录级放行：新增页面默认回到 11 条校验范围，
+# 必须显式登记才会被豁免，避免 ai/ 之外的新页面因目录前缀被误放行。
+HREFLANG_EXEMPT = {
+    "ai/index.html",
+    "ai/score.html",
+}
+
 errors = []
 warnings = []
 
@@ -43,14 +51,18 @@ def check_links():
 def check_hreflang():
     """多语言页面 hreflang 必须 11 条（10 语言 + x-default）。
 
-    ai/ 下的页面（ai/index.html、ai/score.html）是面向 LLM/Agent 的
-    单语言（英文）接口文档，不存在 10 个语言变体，故不做 hreflang 要求；
-    其唯一性由 canonical 声明。给这类页面硬凑 11 条 hreflang 反而会向
-    搜索引擎传递错误的多语言信号。
+    豁免范围由模块级常量 HREFLANG_EXEMPT 显式给出，当前仅两项：
+    ai/index.html 与 ai/score.html。这两个页面是面向 LLM/Agent 的
+    单语言（英文）接口文档，没有 zh/en/ja/... 等 10 个语言变体，
+    页面唯一性由各自的 canonical 声明；给它们硬凑 11 条 hreflang
+    只会向搜索引擎传递"存在多语言版本"的错误信号，故不校验。
+
+    豁免是逐文件白名单而非目录前缀放行：在该目录下新增任何页面都会
+    自动回到 11 条校验范围，必须显式加入白名单才可豁免。
     """
     for page in sorted(glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True)):
-        rel = os.path.relpath(page, ROOT)
-        if rel.startswith("ai" + os.sep):
+        rel = os.path.relpath(page, ROOT).replace(os.sep, "/")
+        if rel in HREFLANG_EXEMPT:
             continue
         text = open(page, encoding="utf-8").read()
         n = len(re.findall(r"hreflang=", text))
