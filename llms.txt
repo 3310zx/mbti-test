@@ -1,0 +1,41 @@
+# MBTI Cognitive Function Test
+
+> A free 38-item cognitive-function MBTI test (EI / SN / TF / JP plus an A-T turbulence axis) that runs entirely in the browser. Any LLM or agent can take it through static GET endpoints only: no API key, no backend, no rate limit. Entertainment-grade self-assessment, not a clinical or diagnostic instrument.
+
+## For AI agents
+- [Agent index](https://3310zx.github.io/mbti-test/ai/llms.txt): machine-facing index of everything under /ai/.
+- [Specification](https://3310zx.github.io/mbti-test/ai/spec.md): authoritative scale, 38 questions, scoring algorithm, JSON schema, answer modes and a copy-paste agent prompt.
+- [Questions JSON](https://3310zx.github.io/mbti-test/ai/questions.json): all 38 items with id, dimension, direction and English/Chinese text.
+- [Score endpoint](https://3310zx.github.io/mbti-test/ai/score.html): GET ?a=3,2,5,... with 38 integers 1-6 (comma or dash separated) and receive the result JSON.
+- [Result profiles](https://3310zx.github.io/mbti-test/ai/result/intj.json): 16 static per-type JSON files (e.g. intj.json, enfp.json) with stack, names and descriptions.
+- [Agent card](https://3310zx.github.io/mbti-test/agent-card.json): minimal A2A-style capability declaration for the mbti-test skill.
+
+## Test pages
+- [Chinese (Simplified) test](https://3310zx.github.io/mbti-test/): the same 38-question test, Chinese (Simplified) interface.
+- [English test](https://3310zx.github.io/mbti-test/en/): the same 38-question test, English interface.
+- [Japanese test](https://3310zx.github.io/mbti-test/ja/): the same 38-question test, Japanese interface.
+- [Korean test](https://3310zx.github.io/mbti-test/ko/): the same 38-question test, Korean interface.
+- [French test](https://3310zx.github.io/mbti-test/fr/): the same 38-question test, French interface.
+- [Russian test](https://3310zx.github.io/mbti-test/ru/): the same 38-question test, Russian interface.
+- [Tibetan test](https://3310zx.github.io/mbti-test/bo/): the same 38-question test, Tibetan interface.
+- [Cantonese test](https://3310zx.github.io/mbti-test/yue/): the same 38-question test, Cantonese interface.
+- [Spanish test](https://3310zx.github.io/mbti-test/es/): the same 38-question test, Spanish interface.
+- [Portuguese test](https://3310zx.github.io/mbti-test/pt/): the same 38-question test, Portuguese interface.
+
+## Type profiles
+- [INTJ — INTJ Architect](https://3310zx.github.io/mbti-test/types/intj.html): Ni · Te · Fi · Se cognitive function stack, traits, strengths and notable figures.
+- [INTP — INTP Logician](https://3310zx.github.io/mbti-test/types/intp.html): Ti · Ne · Si · Fe cognitive function stack, traits, strengths and notable figures.
+- [ENTJ — ENTJ Commander](https://3310zx.github.io/mbti-test/types/entj.html): Te · Ni · Se · Fi cognitive function stack, traits, strengths and notable figures.
+- [ENTP — ENTP Debater](https://3310zx.github.io/mbti-test/types/entp.html): Ne · Ti · Fe · Si cognitive function stack, traits, strengths and notable figures.
+- [INFJ — INFJ Advocate](https://3310zx.github.io/mbti-test/types/infj.html): Ni · Fe · Ti · Se cognitive function stack, traits, strengths and notable figures.
+- [INFP — INFP Mediator](https://3310zx.github.io/mbti-test/types/infp.html): Fi · Ne · Si · Te cognitive function stack, traits, strengths and notable figures.
+- [ENFJ — ENFJ Protagonist](https://3310zx.github.io/mbti-test/types/enfj.html): Fe · Ni · Se · Ti cognitive function stack, traits, strengths and notable figures.
+- [ENFP — ENFP Campaigner](https://3310zx.github.io/mbti-test/types/enfp.html): Ne · Fi · Te · Si cognitive function stack, traits, strengths and notable figures.
+- [ISTJ — ISTJ Logistician](https://3310zx.github.io/mbti-test/types/istj.html): Si · Te · Fi · Ne cognitive function stack, traits, strengths and notable figures.
+- [ISFJ — ISFJ Defender](https://3310zx.github.io/mbti-test/types/isfj.html): Si · Fe · Ti · Ne cognitive function stack, traits, strengths and notable figures.
+- [ESTJ — ESTJ Executive](https://3310zx.github.io/mbti-test/types/estj.html): Te · Si · Ne · Fi cognitive function stack, traits, strengths and notable figures.
+- [ESFJ — ESFJ Consul](https://3310zx.github.io/mbti-test/types/esfj.html): Fe · Si · Ne · Ti cognitive function stack, traits, strengths and notable figures.
+- [ISTP — ISTP Virtuoso](https://3310zx.github.io/mbti-test/types/istp.html): Ti · Se · Ni · Fe cognitive function stack, traits, strengths and notable figures.
+- [ISFP — ISFP Adventurer](https://3310zx.github.io/mbti-test/types/isfp.html): Fi · Se · Ni · Te cognitive function stack, traits, strengths and notable figures.
+- [ESTP — ESTP Entrepreneur](https://3310zx.github.io/mbti-test/types/estp.html): Se · Ti · Fe · Ni cognitive function stack, traits, strengths and notable figures.
+- [ESFP — ESFP Entertainer](https://3310zx.github.io/mbti-test/types/esfp.html): Se · Fi · Te · Ni cognitive function stack, traits, strengths and notable figures.

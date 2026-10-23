@@ -1,0 +1,16 @@
+{
+ "type": "ISFJ",
+ "name_en": "Defender",
+ "name_zh": "守卫者",
+ "stack": [
+  "Si",
+  "Fe",
+  "Ti",
+  "Ne"
+ ],
+ "desc_en": "Si-dominant: values tradition and commitment, caring attentively for those around. Fe-auxiliary is highly sensitive to others’ needs — quietly devoted, reliable and low-key, a trustworthy backbone.",
+ "desc_zh": "Si 主导：重视传统与承诺，细心体贴地照顾身边人。Fe 辅助对他人需求高度敏感，默默付出、可靠低调，是值得信赖的后盾。",
+ "url_en": "https://3310zx.github.io/mbti-test/en/types/isfj.html",
+ "url_zh": "https://3310zx.github.io/mbti-test/types/isfj.html",
+ "verified": true
+}

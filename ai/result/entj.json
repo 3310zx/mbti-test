@@ -1,0 +1,16 @@
+{
+ "type": "ENTJ",
+ "name_en": "Commander",
+ "name_zh": "指挥官",
+ "stack": [
+  "Te",
+  "Ni",
+  "Se",
+  "Fi"
+ ],
+ "desc_en": "Te-dominant: outstanding execution and organizational ability, skilled at mobilizing resources and driving goals forward. Ni-auxiliary provides strategic vision — born to lead teams and tackle hard problems, with a low tolerance for chaos and inefficiency.",
+ "desc_zh": "Te 主导：执行力与组织力突出，善于调动资源、推进目标。Ni 辅助提供战略眼光，天生适合带团队和攻坚，讨厌失控与低效。",
+ "url_en": "https://3310zx.github.io/mbti-test/en/types/entj.html",
+ "url_zh": "https://3310zx.github.io/mbti-test/types/entj.html",
+ "verified": true
+}

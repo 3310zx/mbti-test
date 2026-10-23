@@ -1,0 +1,16 @@
+{
+ "type": "ISTJ",
+ "name_en": "Logistician",
+ "name_zh": "物流师",
+ "stack": [
+  "Si",
+  "Te",
+  "Fi",
+  "Ne"
+ ],
+ "desc_en": "Si-dominant: relies on experience and established procedures, steady and detail-oriented. Te-auxiliary executes standards efficiently — the team’s “say it, do it” stabilizer.",
+ "desc_zh": "Si 主导：依赖经验与既定流程，做事稳妥可靠、注重细节。Te 辅助把标准高效落地，是团队里\"说到做到\"的稳定器。",
+ "url_en": "https://3310zx.github.io/mbti-test/en/types/istj.html",
+ "url_zh": "https://3310zx.github.io/mbti-test/types/istj.html",
+ "verified": true
+}

@@ -1,0 +1,97 @@
+{
+  "name": "mbti-test",
+  "description": "MBTI Cognitive Function Test — a free 38-item test (EI/SN/TF/JP + A/T) that an AI agent can complete using static GET endpoints only: fetch questions, answer on a 6-point Likert scale, post answers to a JS-rendered scoring endpoint, receive structured result JSON.",
+  "url": "https://3310zx.github.io/mbti-test/",
+  "version": "1.0",
+  "provider": {
+    "name": "3310zx",
+    "url": "https://3310zx.github.io/mbti-test/"
+  },
+  "documentationUrl": "https://3310zx.github.io/mbti-test/ai/spec.md",
+  "capabilities": {
+    "skills": [
+      {
+        "id": "mbti-test",
+        "name": "MBTI Cognitive Function Test",
+        "description": "Score a complete 38-item MBTI cognitive-function test and return a typed result with dimension ratios, A/T branch, cognitive function stack and profile links. Entertainment self-assessment, not a clinical instrument.",
+        "input": {
+          "type": "array",
+          "length": 38,
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "description": "38 Likert answers in question-id order (ids 1-38 from ai/questions.json). 1 = strongly agree, 2 = agree, 3 = slightly agree, 4 = slightly disagree, 5 = disagree, 6 = strongly disagree. Directions (dir) are applied server-side.",
+          "example": [
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3,
+            3
+          ]
+        },
+        "output": {
+          "type": "object",
+          "description": "Result JSON: spec_version, mode, type, at, code, name_zh, name_en, stack, ratio{EI,SN,TF,JP,AT}, weak_dims, profile_url_zh, profile_url_en, cite.",
+          "schema": "https://3310zx.github.io/mbti-test/ai/spec.md#5-output-json-schema"
+        },
+        "endpoints": [
+          {
+            "method": "GET",
+            "url": "https://3310zx.github.io/mbti-test/ai/spec.md",
+            "description": "Authoritative specification: scale, 38 questions, algorithm, schema, modes, agent prompt."
+          },
+          {
+            "method": "GET",
+            "url": "https://3310zx.github.io/mbti-test/ai/questions.json",
+            "description": "Question list: id, dim, dir, en, zh (version 1.0)."
+          },
+          {
+            "method": "GET",
+            "url": "https://3310zx.github.io/mbti-test/ai/score.html?a=<38 integers 1-6>",
+            "description": "Scoring endpoint; returns result JSON as text (and in meta[name=mbti-result]). Optional &lang=zh|en."
+          },
+          {
+            "method": "GET",
+            "url": "https://3310zx.github.io/mbti-test/ai/result/<type>.json",
+            "description": "One of 16 static type profiles, e.g. intj.json: stack, names, descriptions, profile URLs."
+          }
+        ]
+      }
+    ]
+  }
+}

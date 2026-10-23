@@ -1,0 +1,33 @@
+# MBTI Cognitive Function Test — /ai/
+
+> Machine-readable interface for the MBTI Cognitive Function Test. Everything here is static, public and key-free; start with the specification, then fetch questions, then score.
+
+## For AI agents
+- [Specification](https://3310zx.github.io/mbti-test/ai/spec.md): the single authoritative document — endpoints, 38 questions, Likert scale, exact scoring algorithm, JSON schema, likert / forced modes, self-checks and a copy-paste prompt.
+- [Questions JSON](https://3310zx.github.io/mbti-test/ai/questions.json): version 1.0, scale map, dimension map and all 38 questions (id, dim, dir, en, zh).
+- [Score endpoint](https://3310zx.github.io/mbti-test/ai/score.html): GET ?a=3,2,5,... (38 integers 1-6, ',' or '-' separated; optional &lang=zh) returns result JSON; errors are JSON too, HTTP stays 200.
+- [Human landing page](https://3310zx.github.io/mbti-test/ai/index.html): what this is, how to use it, copy-ready prompt.
+- [Agent card](https://3310zx.github.io/mbti-test/agent-card.json): A2A-style capability declaration for the mbti-test skill.
+- [Site index](https://3310zx.github.io/mbti-test/llms.txt): top-level site index.
+
+## Type result JSON
+- [INTJ](https://3310zx.github.io/mbti-test/ai/result/intj.json): INTJ Architect — stack Ni, Te, Fi, Se, English description, profile links, verified flag.
+- [INTP](https://3310zx.github.io/mbti-test/ai/result/intp.json): INTP Logician — stack Ti, Ne, Si, Fe, English description, profile links, verified flag.
+- [ENTJ](https://3310zx.github.io/mbti-test/ai/result/entj.json): ENTJ Commander — stack Te, Ni, Se, Fi, English description, profile links, verified flag.
+- [ENTP](https://3310zx.github.io/mbti-test/ai/result/entp.json): ENTP Debater — stack Ne, Ti, Fe, Si, English description, profile links, verified flag.
+- [INFJ](https://3310zx.github.io/mbti-test/ai/result/infj.json): INFJ Advocate — stack Ni, Fe, Ti, Se, English description, profile links, verified flag.
+- [INFP](https://3310zx.github.io/mbti-test/ai/result/infp.json): INFP Mediator — stack Fi, Ne, Si, Te, English description, profile links, verified flag.
+- [ENFJ](https://3310zx.github.io/mbti-test/ai/result/enfj.json): ENFJ Protagonist — stack Fe, Ni, Se, Ti, English description, profile links, verified flag.
+- [ENFP](https://3310zx.github.io/mbti-test/ai/result/enfp.json): ENFP Campaigner — stack Ne, Fi, Te, Si, English description, profile links, verified flag.
+- [ISTJ](https://3310zx.github.io/mbti-test/ai/result/istj.json): ISTJ Logistician — stack Si, Te, Fi, Ne, English description, profile links, verified flag.
+- [ISFJ](https://3310zx.github.io/mbti-test/ai/result/isfj.json): ISFJ Defender — stack Si, Fe, Ti, Ne, English description, profile links, verified flag.
+- [ESTJ](https://3310zx.github.io/mbti-test/ai/result/estj.json): ESTJ Executive — stack Te, Si, Ne, Fi, English description, profile links, verified flag.
+- [ESFJ](https://3310zx.github.io/mbti-test/ai/result/esfj.json): ESFJ Consul — stack Fe, Si, Ne, Ti, English description, profile links, verified flag.
+- [ISTP](https://3310zx.github.io/mbti-test/ai/result/istp.json): ISTP Virtuoso — stack Ti, Se, Ni, Fe, English description, profile links, verified flag.
+- [ISFP](https://3310zx.github.io/mbti-test/ai/result/isfp.json): ISFP Adventurer — stack Fi, Se, Ni, Te, English description, profile links, verified flag.
+- [ESTP](https://3310zx.github.io/mbti-test/ai/result/estp.json): ESTP Entrepreneur — stack Se, Ti, Fe, Ni, English description, profile links, verified flag.
+- [ESFP](https://3310zx.github.io/mbti-test/ai/result/esfp.json): ESFP Entertainer — stack Se, Fi, Te, Ni, English description, profile links, verified flag.
+
+## Notes
+- All endpoints are GET and CORS-open static files (GitHub Pages). No authentication, no cookies.
+- The test is entertainment / self-reflection material, not a clinical psychological assessment.

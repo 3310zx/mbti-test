@@ -1,0 +1,16 @@
+{
+ "type": "ENFJ",
+ "name_en": "Protagonist",
+ "name_zh": "主人公",
+ "stack": [
+  "Fe",
+  "Ni",
+  "Se",
+  "Ti"
+ ],
+ "desc_en": "Fe-dominant: naturally skilled at understanding, inspiring and bringing people together — a born organizer and motivator. Ni-auxiliary helps see the team’s direction, enjoys helping others succeed, and carries a warm presence in social settings.",
+ "desc_zh": "Fe 主导：擅长理解、感染并凝聚他人，是天生的组织者与激励者。Ni 辅助看清团队方向，乐于成就别人，社交中自带温暖气场。",
+ "url_en": "https://3310zx.github.io/mbti-test/en/types/enfj.html",
+ "url_zh": "https://3310zx.github.io/mbti-test/types/enfj.html",
+ "verified": true
+}

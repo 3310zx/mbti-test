@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI / Agent API — MBTI Cognitive Function Test</title>
+<meta name="description" content="Let any LLM or agent take the MBTI Cognitive Function Test over plain HTTP: fetch questions, answer 38 items, call a static scoring endpoint, get result JSON. Free, no API key, no backend.">
+<link rel="canonical" href="https://3310zx.github.io/mbti-test/ai/index.html">
+<meta name="robots" content="index,follow">
+<style>
+  :root { color-scheme: light dark; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB",sans-serif; color:#1c1b1f; background:#fdfcff; }
+  main { max-width: 820px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 1.9rem; line-height:1.3; margin: 0 0 12px; letter-spacing:-.01em; }
+  h2 { font-size: 1.15rem; margin: 40px 0 12px; padding-top: 8px; border-top:1px solid #e5e1e9; }
+  p, li { color:#3b3841; }
+  .lead { font-size:1.05rem; color:#4a4650; margin:0 0 8px; }
+  .zh { color:#615d68; }
+  code, pre { font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:.88rem; }
+  code { background:#f1eef6; padding:.1em .38em; border-radius:4px; }
+  pre { background:#f6f3fa; border:1px solid #e5e1e9; border-radius:10px; padding:14px 16px; overflow:auto; white-space:pre-wrap; word-break:break-word; }
+  ul { padding-left: 1.2em; }
+  li { margin: 6px 0; }
+  .row { display:flex; flex-wrap:wrap; gap:10px; margin:16px 0 0; }
+  button { font:inherit; font-weight:600; cursor:pointer; border:0; border-radius:999px; padding:11px 20px; background:#4f378b; color:#fff; }
+  button:active { transform: translateY(1px); }
+  .alt { background:#e8e0f5; color:#3f2f6b; }
+  .note { font-size:.9rem; color:#726c7a; margin-top:14px; }
+  a { color:#4f378b; }
+  .grid { display:grid; gap:10px; }
+  .card { border:1px solid #e5e1e9; border-radius:12px; padding:14px 16px; background:#fff; }
+  .k { font-weight:600; }
+  footer { margin-top:48px; font-size:.88rem; color:#726c7a; border-top:1px solid #e5e1e9; padding-top:16px; }
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"AI / Agent API for the MBTI Cognitive Function Test","description":"Static, key-free HTTP interface that lets an LLM or agent take a 38-item MBTI cognitive function test and receive structured result JSON.","url":"https://3310zx.github.io/mbti-test/ai/index.html","inLanguage":["en","zh"],"isPartOf":{"@id":"https://3310zx.github.io/mbti-test/#website"},"about":{"@type":"WebAPI","name":"MBTI Cognitive Function Test API","documentation":"https://3310zx.github.io/mbti-test/ai/spec.md","provider":{"@type":"Organization","name":"3310zx"}}}
+</script>
+</head>
+<body>
+<main>
+  <h1>Let an AI take this test</h1>
+  <p class="lead">A tiny static interface so any LLM, agent or script can complete the 38-item MBTI cognitive function test over plain HTTP and get structured JSON back. No API key, no backend, no rate limit — it is just files on GitHub Pages.</p>
+  <p class="zh">给 AI / Agent 用的静态接口：读题 → 自主作答 → 拿到结构化结果 JSON。全部是静态文件，无需注册、无需 API Key、无调用限制。</p>
+
+  <h2>What you get / 你能拿到什么</h2>
+  <div class="grid">
+    <div class="card"><span class="k">38 questions</span> — every item with id, dimension (EI / SN / TF / JP / AT), direction and English + Chinese text.</div>
+    <div class="card"><span class="k">One scoring call</span> — post 38 answers on a 1-6 scale, receive type, ratios, weak dimensions and profile links.</div>
+    <div class="card"><span class="k">16 type profiles</span> — static JSON per type with cognitive function stack and descriptions, plus canonical pages to cite.</div>
+  </div>
+
+  <h2>How to use / 怎么用</h2>
+  <ul>
+    <li><b>1.</b> Read the spec: <a href="spec.md">ai/spec.md</a> — algorithm, scale, schema, answer modes.</li>
+    <li><b>2.</b> Read the questions: <a href="questions.json">ai/questions.json</a>.</li>
+    <li><b>3.</b> Answer all 38 items, then call the score endpoint:<br><code>ai/score.html?a=3,2,5,...</code> (38 integers 1-6, comma or dash separated).</li>
+    <li><b>4.</b> Fetch the matching profile: <code>ai/result/{type}.json</code>, e.g. <a href="result/intj.json">intj.json</a>.</li>
+  </ul>
+  <p class="note">Try a live example: <a href="score.html?a=3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3">score.html with 38 × 3</a> — every ratio is a 0.5 tie, so the result is ESTJ-A.</p>
+
+  <h2>Copy this prompt into your AI / 把这段 prompt 复制给 AI</h2>
+  <pre id="prompt">You are taking the MBTI Cognitive Function Test published at https://3310zx.github.io/mbti-test/ .
+
+Steps:
+1. Fetch https://3310zx.github.io/mbti-test/ai/spec.md and https://3310zx.github.io/mbti-test/ai/questions.json.
+2. Answer all 38 questions honestly and independently, in question-id order, using the 6-point scale
+   (1 = strongly agree, 2 = agree, 3 = slightly agree, 4 = slightly disagree, 5 = disagree,
+   6 = strongly disagree). Judge each statement on its own; do not aim for a particular type.
+3. Output the full answer array as 38 integers, comma separated, and nothing else on that line.
+4. Fetch https://3310zx.github.io/mbti-test/ai/score.html?a=<your 38 values> and read the returned JSON.
+5. Report back: the code (e.g. INTJ-A), name_en, stack, the five ratios, weak_dims, and one sentence
+   summarising the type. Then append the profile link (profile_url_en) and the cite line.
+Rules: quote mode and code exactly as returned; never invent cognitive functions beyond stack;
+if the response contains "error", fix the answer array and retry once; note that this is an
+entertainment self-assessment, not a clinical assessment.</pre>
+  <div class="row">
+    <button id="copy" type="button">Copy prompt</button>
+    <a class="alt" href="spec.md" style="border-radius:999px;padding:11px 20px;text-decoration:none;font-weight:600;">Read full spec</a>
+  </div>
+  <p class="note" id="msg" aria-live="polite"></p>
+
+  <h2>Endpoints</h2>
+  <ul>
+    <li><code>GET ai/spec.md</code> — authoritative spec (this is the source of truth)</li>
+    <li><code>GET ai/questions.json</code> — 38 questions + scale + dimension map</li>
+    <li><code>GET ai/score.html?a=...</code> — result JSON (JS-rendered; errors are JSON too)</li>
+    <li><code>GET ai/result/{intj…esfp}.json</code> — 16 type profiles</li>
+    <li><code>GET agent-card.json</code> — minimal A2A-style capability declaration</li>
+    <li><code>GET llms.txt</code>, <code>GET ai/llms.txt</code> — LLM index files</li>
+  </ul>
+
+  <h2>Why is it free? / 为什么免费</h2>
+  <p>It is a static site with no compute cost per call, so there is nothing to meter. The only ask is that you cite the source and do not present the output as a clinical or diagnostic assessment. 站点是纯静态托管，调用不产生服务端成本，因此不设限；只要求引用来源，并且不要把结果当作临床或诊断结论。</p>
+
+  <footer>
+    <div>MBTI Cognitive Function Test — <a href="../index.html">take the test</a> · <a href="spec.md">spec</a> · <a href="questions.json">questions.json</a> · <a href="llms.txt">ai/llms.txt</a></div>
+    <div style="margin-top:6px;">Entertainment self-assessment only, not a clinical psychological instrument. 娱乐自测性质，非临床心理测评。</div>
+  </footer>
+</main>
+<script>
+(function(){
+  var btn = document.getElementById('copy');
+  var msg = document.getElementById('msg');
+  var text = document.getElementById('prompt').textContent;
+  function done(ok){
+    msg.textContent = ok ? 'Prompt copied. Paste it into any AI that can fetch URLs.' : 'Copy failed — select the prompt text manually.';
+  }
+  btn.addEventListener('click', function(){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function(){ done(true); }, function(){ done(false); });
+      return;
+    }
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.setAttribute('readonly',''); ta.style.position='absolute'; ta.style.left='-9999px';
+      document.body.appendChild(ta); ta.select(); var ok = document.execCommand('copy');
+      document.body.removeChild(ta); done(ok);
+    } catch (e) { done(false); }
+  });
+})();
+</script>
+</body>
+</html>

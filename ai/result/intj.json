@@ -1,0 +1,16 @@
+{
+ "type": "INTJ",
+ "name_en": "Architect",
+ "name_zh": "建筑师",
+ "stack": [
+  "Ni",
+  "Te",
+  "Fi",
+  "Se"
+ ],
+ "desc_en": "Ni-dominant: uses intuition to see the big picture and long-term direction, with Te-auxiliary turning ideas into executable plans. Independent and goal-driven, prefers to think things through alone before acting, and has little patience for inefficiency and ambiguity.",
+ "desc_zh": "Ni 主导：习惯用直觉洞察全局与长远走向，Te 辅助把构想拆成可执行方案。独立、目标感强，倾向于自己把事想透再行动，对低效和含糊缺乏耐心。",
+ "url_en": "https://3310zx.github.io/mbti-test/en/types/intj.html",
+ "url_zh": "https://3310zx.github.io/mbti-test/types/intj.html",
+ "verified": true
+}

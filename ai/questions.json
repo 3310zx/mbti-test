@@ -1,0 +1,363 @@
+{
+ "version": "1.0",
+ "scale": {
+  "type": "likert",
+  "min": 1,
+  "max": 6,
+  "points": 6,
+  "midpoint": null,
+  "instruction": "1 = strongly agree ... 6 = strongly disagree. No neutral midpoint by design.",
+  "labels": [
+   {
+    "value": 1,
+    "key": "strongly_agree",
+    "en": "Strongly agree",
+    "zh": "完全同意"
+   },
+   {
+    "value": 2,
+    "key": "agree",
+    "en": "Agree",
+    "zh": "同意"
+   },
+   {
+    "value": 3,
+    "key": "slightly_agree",
+    "en": "Slightly agree",
+    "zh": "略同意"
+   },
+   {
+    "value": 4,
+    "key": "slightly_disagree",
+    "en": "Slightly disagree",
+    "zh": "略不同意"
+   },
+   {
+    "value": 5,
+    "key": "disagree",
+    "en": "Disagree",
+    "zh": "不同意"
+   },
+   {
+    "value": 6,
+    "key": "strongly_disagree",
+    "en": "Strongly disagree",
+    "zh": "完全不同意"
+   }
+  ]
+ },
+ "dimension_order": [
+  "EI",
+  "SN",
+  "TF",
+  "JP",
+  "AT"
+ ],
+ "scoring": {
+  "answer_order": "question id 1..38",
+  "agreement_strength": "s_i = 7 - a_i",
+  "dimension_total": "total[dim] = sum(s_i * dir_i)",
+  "ratio": {
+   "EI": "(total + 48) / 96",
+   "SN": "(total + 48) / 96",
+   "TF": "(total + 48) / 96",
+   "JP": "(total + 48) / 96",
+   "AT": "(total + 36) / 72"
+  },
+  "letters": "first letter if ratio >= 0.5 else second letter; AT: A if ratio >= 0.5 else T",
+  "weak_dims": "0.42 < ratio < 0.58",
+  "rounding": "half-up to 4 decimals",
+  "endpoint": "https://3310zx.github.io/mbti-test/ai/score.html?a=<38 integers 1-6>",
+  "spec": "https://3310zx.github.io/mbti-test/ai/spec.md"
+ },
+ "dimensions": {
+  "EI": [
+   "E",
+   "I"
+  ],
+  "SN": [
+   "S",
+   "N"
+  ],
+  "TF": [
+   "T",
+   "F"
+  ],
+  "JP": [
+   "J",
+   "P"
+  ],
+  "AT": [
+   "A",
+   "T"
+  ]
+ },
+ "questions": [
+  {
+   "id": 1,
+   "dim": "EI",
+   "dir": 1,
+   "en": "Parties and talking with people recharge me rather than drain me.",
+   "zh": "参加聚会、和人交流能让我恢复精力，而不是消耗精力。"
+  },
+  {
+   "id": 2,
+   "dim": "EI",
+   "dir": -1,
+   "en": "After spending a long time with people, I urgently need time alone to recharge.",
+   "zh": "长时间与人相处后，我迫切需要独处来\"回血\"。"
+  },
+  {
+   "id": 3,
+   "dim": "EI",
+   "dir": 1,
+   "en": "When I run into a problem, I tend to talk it over with someone and clarify my thinking as I talk.",
+   "zh": "遇到问题，我倾向于找人讨论，边聊边理清思路。"
+  },
+  {
+   "id": 4,
+   "dim": "EI",
+   "dir": -1,
+   "en": "Before I open my mouth, I usually get my thoughts straight in my head first.",
+   "zh": "开口前，我通常先在脑子里把话想清楚再说。"
+  },
+  {
+   "id": 5,
+   "dim": "EI",
+   "dir": 1,
+   "en": "Lively gatherings excite me, and after they end I still want to keep talking to people.",
+   "zh": "热闹的场合让我兴奋，结束后我还想继续找人聊。"
+  },
+  {
+   "id": 6,
+   "dim": "EI",
+   "dir": -1,
+   "en": "Spending a whole day alone does not bore me; I actually find it very comfortable.",
+   "zh": "一个人待一整天我也不会觉得无聊，反而很自在。"
+  },
+  {
+   "id": 7,
+   "dim": "EI",
+   "dir": 1,
+   "en": "In team discussions I am often the one who throws out topics and sets the pace.",
+   "zh": "团队讨论时，我常主动抛话题、带节奏。"
+  },
+  {
+   "id": 8,
+   "dim": "EI",
+   "dir": -1,
+   "en": "In a crowd I am more often the listener than the speaker.",
+   "zh": "在人群中，我更多时候是倾听者而不是发言者。"
+  },
+  {
+   "id": 9,
+   "dim": "SN",
+   "dir": 1,
+   "en": "When making decisions, I mainly rely on practical experience and solid data.",
+   "zh": "做决定时，我主要依赖实际经验和确凿的数据。"
+  },
+  {
+   "id": 10,
+   "dim": "SN",
+   "dir": -1,
+   "en": "When making decisions, I trust my intuition and my sense of where things are heading.",
+   "zh": "做决定时，我更相信自己的直觉和对未来的预感。"
+  },
+  {
+   "id": 11,
+   "dim": "SN",
+   "dir": 1,
+   "en": "When reviewing a plan, I focus first on concrete details and actionable steps.",
+   "zh": "看方案时，我优先关注具体细节和可落地的步骤。"
+  },
+  {
+   "id": 12,
+   "dim": "SN",
+   "dir": -1,
+   "en": "When reviewing a plan, I tend to think of the overall approach and the potential possibilities first.",
+   "zh": "看方案时，我更容易先想到整体思路和潜在可能性。"
+  },
+  {
+   "id": 13,
+   "dim": "SN",
+   "dir": 1,
+   "en": "When learning something new, I follow the steps hands-on and memorize the details.",
+   "zh": "学新东西时，我习惯按步骤实操、把细节记牢。"
+  },
+  {
+   "id": 14,
+   "dim": "SN",
+   "dir": -1,
+   "en": "When learning something new, I build the overall framework first and understand the principles behind it.",
+   "zh": "学新东西时，我习惯先搭整体框架、理解背后原理。"
+  },
+  {
+   "id": 15,
+   "dim": "SN",
+   "dir": 1,
+   "en": "Recalling an event, I can often remember specific scene details and the exact words used.",
+   "zh": "回忆一件事时，我常能想起具体的场景细节和原话。"
+  },
+  {
+   "id": 16,
+   "dim": "SN",
+   "dir": -1,
+   "en": "I am often dissatisfied with current practice and always want to try newer, better ways.",
+   "zh": "我对现有做法常常不满，总想尝试更新更好的方式。"
+  },
+  {
+   "id": 17,
+   "dim": "TF",
+   "dir": 1,
+   "en": "When a friend confides in me, I tend to give analysis and solutions directly.",
+   "zh": "朋友倾诉时，我更倾向于直接给分析和解决办法。"
+  },
+  {
+   "id": 18,
+   "dim": "TF",
+   "dir": -1,
+   "en": "When a friend confides in me, I tend to comfort them first so they feel understood.",
+   "zh": "朋友倾诉时，我更倾向于先安慰、让他感觉被理解。"
+  },
+  {
+   "id": 19,
+   "dim": "TF",
+   "dir": 1,
+   "en": "For important decisions, I care most about soundness: whether the reasoning holds up.",
+   "zh": "做重要决定时，我最看重合理性、是否经得起推敲。"
+  },
+  {
+   "id": 20,
+   "dim": "TF",
+   "dir": -1,
+   "en": "For important decisions, I care most about whether it matches what my heart truly wants.",
+   "zh": "做重要决定时，我最看重是否符合自己的心意。"
+  },
+  {
+   "id": 21,
+   "dim": "TF",
+   "dir": 1,
+   "en": "When rules clash with human considerations, I believe fairness and principle come first.",
+   "zh": "当规则与人情冲突时，我认为公平和原则优先。"
+  },
+  {
+   "id": 22,
+   "dim": "TF",
+   "dir": -1,
+   "en": "When rules clash with human considerations, I believe the specific situation and human feelings should be accommodated.",
+   "zh": "当规则与人情冲突时，我认为应照顾具体情况与人情。"
+  },
+  {
+   "id": 23,
+   "dim": "TF",
+   "dir": 1,
+   "en": "When helping someone decide, I would rather tell the truth even if it is unpleasant to hear.",
+   "zh": "帮人拿主意时，我宁可说真话，哪怕话不顺耳。"
+  },
+  {
+   "id": 24,
+   "dim": "TF",
+   "dir": -1,
+   "en": "In an argument, I care a lot about the atmosphere and the other person's feelings.",
+   "zh": "与人争论时，我很在意气氛和对方的感受。"
+  },
+  {
+   "id": 25,
+   "dim": "JP",
+   "dir": 1,
+   "en": "I like to plan things ahead of time and push forward according to the plan.",
+   "zh": "我习惯把事情提前规划好，并按计划推进。"
+  },
+  {
+   "id": 26,
+   "dim": "JP",
+   "dir": -1,
+   "en": "I prefer to respond flexibly and dislike being boxed in by a plan.",
+   "zh": "我更喜欢灵活应对，不喜欢被计划框死。"
+  },
+  {
+   "id": 27,
+   "dim": "JP",
+   "dir": 1,
+   "en": "My desk / workspace is usually well organized and I know exactly where things stand.",
+   "zh": "我的桌面/工作区通常井然有序、心里有数。"
+  },
+  {
+   "id": 28,
+   "dim": "JP",
+   "dir": -1,
+   "en": "I often have several things open at once, and changing my mind midway is common for me.",
+   "zh": "我常同时开着好几件事，中途改主意很常见。"
+  },
+  {
+   "id": 29,
+   "dim": "JP",
+   "dir": 1,
+   "en": "Before traveling, I carefully book the itinerary and study the guides.",
+   "zh": "旅行前，我会仔细订好行程和攻略。"
+  },
+  {
+   "id": 30,
+   "dim": "JP",
+   "dir": -1,
+   "en": "When traveling, I prefer to set only a rough direction and decide the rest when I get there.",
+   "zh": "旅行时，我倾向只定个大方向，到了再说。"
+  },
+  {
+   "id": 31,
+   "dim": "JP",
+   "dir": 1,
+   "en": "When tasks pile up, I like to make a list and handle them one by one by priority.",
+   "zh": "任务多时，我喜欢列清单、按优先级一件件处理。"
+  },
+  {
+   "id": 32,
+   "dim": "JP",
+   "dir": -1,
+   "en": "For me, plans cannot keep up with change, so even when I make them I often do not follow through.",
+   "zh": "对我来说，计划赶不上变化，订了也常不执行。"
+  },
+  {
+   "id": 33,
+   "dim": "AT",
+   "dir": 1,
+   "en": "When I hit a setback, I can adjust my mindset fairly quickly and do not sink into self-doubt for long.",
+   "zh": "遇到挫折时，我能较快调整心态，不会长时间陷入自我怀疑。"
+  },
+  {
+   "id": 34,
+   "dim": "AT",
+   "dir": 1,
+   "en": "Facing criticism, I can usually treat it as a reference rather than let it shake my emotions.",
+   "zh": "面对批评，我通常能把它当参考，而不是被它动摇情绪。"
+  },
+  {
+   "id": 35,
+   "dim": "AT",
+   "dir": 1,
+   "en": "I am generally confident in my abilities and decisions and rarely go back and forth.",
+   "zh": "我对自己的能力和决定总体很有信心，很少反复纠结。"
+  },
+  {
+   "id": 36,
+   "dim": "AT",
+   "dir": -1,
+   "en": "I often reflect on my performance and worry whether I am doing well enough.",
+   "zh": "我常常反思自己的表现，担心自己是不是做得不够好。"
+  },
+  {
+   "id": 37,
+   "dim": "AT",
+   "dir": -1,
+   "en": "After making a decision, I sometimes replay it and wonder whether I chose wrong.",
+   "zh": "做完决定后，我偶尔会反复回想，琢磨是不是选错了。"
+  },
+  {
+   "id": 38,
+   "dim": "AT",
+   "dir": -1,
+   "en": "Other people's opinions affect my mood and confidence to some extent.",
+   "zh": "周围人的评价会在一定程度上影响我的状态和信心。"
+  }
+ ]
+}

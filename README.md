@@ -48,4 +48,15 @@ var ADS_SLOT   = '1234567890';           // 广告单元 slot（可留空）
 - 留空则页面不加载任何广告代码
 - 广告位位于：开始页底部 / 答题页底部 / 结果页下方
 - 需先通过 Google AdSense 审核，并在仓库根目录放置后台生成的 `ads.txt`
+
+## For AI agents
+
+An LLM or agent can take the whole test over plain HTTP — no API key, no backend, no rate limit:
+read [`ai/spec.md`](https://3310zx.github.io/mbti-test/ai/spec.md), fetch [`ai/questions.json`](https://3310zx.github.io/mbti-test/ai/questions.json),
+answer the 38 items on the 1-6 scale, then call
+[`ai/score.html?a=...`](https://3310zx.github.io/mbti-test/ai/score.html) to get structured result JSON.
+Per-type profiles (cognitive function stack, English & Chinese descriptions, canonical page URLs)
+live in 16 static files at [`ai/result/`](https://3310zx.github.io/mbti-test/ai/result/intj.json), e.g. `intj.json` … `esfp.json`.
+Index files: [`llms.txt`](https://3310zx.github.io/mbti-test/llms.txt) and [`ai/llms.txt`](https://3310zx.github.io/mbti-test/ai/llms.txt).
+
 *（内容由AI生成，仅供参考）*
