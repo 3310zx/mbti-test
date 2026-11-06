@@ -2,6 +2,8 @@
   --navy:#1b2a41; --navy-2:#24395a; --gold:#c9a96a; --gold-soft:#e3d3b4;
   --paper:#f7f5f0; --card:#ffffff; --line:#ded8c9; --line-soft:#ece7da;
   --ink:#1b2a41; --body:#39424f; --muted:#6d7480;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --t-fast:140ms; --t-base:220ms; --t-slow:340ms;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -295,12 +297,15 @@ table.grid a:hover{border-bottom-color:var(--navy)}
 .bar-cell em{font-style:normal;font-size:13px;color:var(--muted);min-width:26px;text-align:right;font-variant-numeric:tabular-nums}
 .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0}
 .tag{display:inline-block;padding:5px 11px;border-radius:99px;background:#f1ece0;border:1px solid var(--line);font-size:13px;color:var(--navy-2)}
-.city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
-.city{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-.city h4{margin:0 0 4px;font-size:16px}
-.city .rent{font-family:Georgia,serif;font-size:22px;color:var(--navy)}
-.city .rent small{font-size:12px;color:var(--muted);font-family:inherit}
-.city .tier{font-size:12px;color:var(--gold);letter-spacing:.06em}
+.city-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:16px}
+.city{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px 20px;
+  transition:border-color var(--t-base) var(--ease-out),box-shadow var(--t-base) var(--ease-out)}
+.city:hover{border-color:var(--gold-soft);box-shadow:0 3px 14px rgba(27,42,65,.06)}
+.city h4{margin:4px 0 10px;font-size:17px;letter-spacing:.01em}
+.city .rent{font-family:Georgia,serif;font-size:22px;color:var(--navy);margin:0;line-height:1.3}
+.city .rent small{font-size:12px;color:var(--muted);font-family:inherit;letter-spacing:0}
+.city .tier{display:inline-block;margin:0;padding:3px 9px;font-size:11px;letter-spacing:.12em;color:#8a7b5a;
+  background:#f6f1e4;border:1px solid var(--line-soft);border-radius:99px}
 .callout{background:#fbf8f0;border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 18px;margin:18px 0;font-size:14.5px}
 .callout b{color:var(--navy)}
 .next-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:14px}
@@ -330,8 +335,14 @@ table.grid a:hover{border-bottom-color:var(--navy)}
 .data-fail{max-width:640px;margin:20px auto;padding:16px 18px;border:1px solid #e0c9a6;background:#fdf7ee;border-radius:12px;color:#7a5a26;font-size:14.5px}
 body.sharing .ad-type-box,body.sharing .mbti-cta,body.sharing #resultActions,body.sharing #weightCtl,body.sharing .hero-actions{display:none!important}
 body.sharing .country-card{page-break-inside:avoid}
-.cc-city{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+.cc-city{margin-top:28px;padding-top:24px;border-top:1px dashed var(--line)}
 .cc-city .block-label{margin-top:0}
+/* 结果卡内容器较窄：三列会被挤扁，改为整行列表，档位—城市—租金三段对齐 */
+.cc-city .city-grid{grid-template-columns:1fr;gap:10px;margin-top:14px}
+.cc-city .city{display:flex;align-items:center;flex-wrap:wrap;gap:6px 14px;padding:15px 18px;border-radius:12px}
+.cc-city .city .tier{flex:0 0 auto}
+.cc-city .city h4{flex:1 1 auto;margin:0;font-size:16.5px;color:var(--ink)}
+.cc-city .city .rent{flex:0 0 auto;margin:0 0 0 auto;font-size:21px;white-space:nowrap}
 @media (max-width:520px){.ctl-row{grid-template-columns:80px 1fr 40px;gap:8px}}
 
 /* ---------- 静态内容页（c/ rank/ compare/） ---------- */
@@ -374,4 +385,49 @@ table.sortable th[data-dir=asc]::after{content:" \2191";color:var(--gold)}
   .split,.split.three{grid-template-columns:1fr}
   .page-hero h1{font-size:25px}
   .vs-head{grid-template-columns:1fr}
+}
+
+/* ---------- Motion：短、ease-out、只动 transform/opacity，origin 对齐触发源 ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes cardIn{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:none}}
+@keyframes barIn{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* 按压反馈：位移下沉而非缩放整体 */
+.btn{transition:background var(--t-fast) linear,color var(--t-fast) linear,border-color var(--t-fast) linear,transform var(--t-fast) var(--ease-out)}
+.btn:active{transform:scale(.97)}
+
+/* 结果区入场：仅一次，卡片错峰 60ms */
+#result:not([hidden]) .result-head{animation:fadeUp var(--t-slow) var(--ease-out) both}
+#result:not([hidden]) .country-card{animation:cardIn var(--t-slow) var(--ease-out) both}
+#result:not([hidden]) .country-card:nth-child(2){animation-delay:70ms}
+#result:not([hidden]) .country-card:nth-child(3){animation-delay:140ms}
+#result:not([hidden]) #weightCtl:not([hidden]),#result:not([hidden]) .mbti-pref{animation:fadeUp var(--t-base) var(--ease-out) both}
+
+/* 维度条：从触发点（左侧标签）向右生长 */
+.bar-fill{transform-origin:left center;animation:barIn 520ms var(--ease-out) both}
+.bar-row:nth-child(2) .bar-fill{animation-delay:45ms}
+.bar-row:nth-child(3) .bar-fill{animation-delay:90ms}
+.bar-row:nth-child(4) .bar-fill{animation-delay:135ms}
+.bar-row:nth-child(5) .bar-fill{animation-delay:180ms}
+.bar-row:nth-child(6) .bar-fill{animation-delay:225ms}
+
+/* 悬停：1px 上浮 + 边框暖色，不用阴影堆叠 */
+.peer,.next-grid a,.tag{transition:transform var(--t-base) var(--ease-out),border-color var(--t-base) var(--ease-out),background-color var(--t-base) var(--ease-out)}
+.peer:hover,.next-grid a:hover{transform:translateY(-1px)}
+.tag:hover{transform:translateY(-1px);border-color:var(--gold-soft)}
+
+/* 表格与折叠内容 */
+.metrics tbody tr{transition:background-color var(--t-fast) linear}
+.metrics tbody tr:hover{background:#fbf8f0}
+details[open]>.method-body,details[open]>.faq-body{animation:fadeUp var(--t-base) var(--ease-out) both}
+summary{transition:color var(--t-fast) linear}
+summary:hover{color:var(--navy-2)}
+
+/* 存图时冻结动效，避免截到中间态 */
+body.sharing .country-card,body.sharing .bar-fill,body.sharing .result-head{animation:none!important;opacity:1!important;transform:none!important}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .btn:active{transform:none}
+  .bar-fill{transform:none}
 }
