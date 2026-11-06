@@ -1,0 +1,45 @@
+name: 国际动态候选抓取
+
+# 方案 B 半自动：每周抓一批候选新闻，人工核对后再并入 data.js
+# 本 workflow 只更新候选池 country/updates/candidates.json，不会改动线上 data.js
+
+on:
+  schedule:
+    # 每周一 01:00 UTC = 北京时间周一 09:00
+    - cron: '0 1 * * 1'
+  workflow_dispatch: {}   # 支持在 Actions 页面手动点一次
+
+permissions:
+  contents: write
+
+concurrency:
+  group: updates-fetch
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 抓取候选
+        run: python3 country/scripts/fetch_updates.py
+
+      - name: 提交候选文件
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add country/updates/candidates.json
+          if git diff --staged --quiet; then
+            echo "候选无变化，跳过提交"
+          else
+            git commit -m "chore(updates): 抓取国际动态候选 $(date -u +%Y-%m-%d)"
+            git push
+          fi

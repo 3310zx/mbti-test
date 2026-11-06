@@ -19,6 +19,10 @@ SKIP_PREFIX = ("http://", "https://", "mailto:", "tel:", "javascript:", "data:",
 HREFLANG_EXEMPT = {
     "ai/index.html",
     "ai/score.html",
+    # country/ 为中文单语言测试站（暂无多语言镜像），同属单语言页，
+    # 硬凑 11 条 hreflang 会向搜索引擎传递"存在 10 个语言变体"的错误信号。
+    "country/index.html",
+    "country/updates/index.html",
 }
 
 errors = []
@@ -51,9 +55,10 @@ def check_links():
 def check_hreflang():
     """多语言页面 hreflang 必须 11 条（10 语言 + x-default）。
 
-    豁免范围由模块级常量 HREFLANG_EXEMPT 显式给出，当前仅两项：
-    ai/index.html 与 ai/score.html。这两个页面是面向 LLM/Agent 的
-    单语言（英文）接口文档，没有 zh/en/ja/... 等 10 个语言变体，
+    豁免范围由模块级常量 HREFLANG_EXEMPT 显式给出：ai/index.html 与
+    ai/score.html 是面向 LLM/Agent 的单语言（英文）接口文档；
+    country/index.html 与 country/updates/index.html 是中文单语言测试页。
+    这些页面都没有 zh/en/ja/... 等 10 个语言变体，
     页面唯一性由各自的 canonical 声明；给它们硬凑 11 条 hreflang
     只会向搜索引擎传递"存在多语言版本"的错误信号，故不校验。
 
