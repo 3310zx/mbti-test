@@ -4300,7 +4300,7 @@ function renderShareShot(){
     foot.className = 'share-qr-footer';
     foot.innerHTML =
       '<div class="sqr-copy">扫码立即测试 · 看看你的隐藏人格</div>' +
-      '<img class="sqr-img" alt="扫码测试">';
+      '<img class="sqr-img" alt="扫码测试二维码">';
     res.appendChild(foot);
   }
   var sqImg = foot.querySelector('.sqr-img');
@@ -4429,7 +4429,7 @@ function renderShareShot(){
   });
   } // end renderShot
 
-  /* 3.2 等待所有本地 <img> 加载完成后再开始截图（file:// 下 html-to-image fetch 本地文件
+  /* 3.2 等待所有本地 img 标签加载完成后再开始截图（file:// 下 html-to-image fetch 本地文件
          会被 CORS 拦截；加载完成的图会在 renderShot 内被内联为 dataURL，从而规避拦截） */
   function _waitImgs(){
     var _ps = [];
