@@ -25,6 +25,14 @@ HREFLANG_EXEMPT = {
     "country/updates/index.html",
 }
 
+# country/ 下由 scripts/build_*.py 静态生成的子目录（国家数据 / 维度榜单 / 两国对比），
+# 同为中文单语言页，按目录前缀整体豁免 11 条 hreflang 校验。
+HREFLANG_EXEMPT_PREFIX = (
+    "country/c/",
+    "country/rank/",
+    "country/compare/",
+)
+
 errors = []
 warnings = []
 
@@ -67,7 +75,7 @@ def check_hreflang():
     """
     for page in sorted(glob.glob(os.path.join(ROOT, "**", "*.html"), recursive=True)):
         rel = os.path.relpath(page, ROOT).replace(os.sep, "/")
-        if rel in HREFLANG_EXEMPT:
+        if rel in HREFLANG_EXEMPT or rel.startswith(HREFLANG_EXEMPT_PREFIX):
             continue
         text = open(page, encoding="utf-8").read()
         n = len(re.findall(r"hreflang=", text))
