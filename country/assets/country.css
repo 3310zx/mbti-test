@@ -323,7 +323,7 @@ table.grid a:hover{border-bottom-color:var(--navy)}
   .vs-head{grid-template-columns:1fr;gap:8px}
   .vs-head .vs-x{display:none}
 }
-.site-foot{border-top:1px solid var(--line);margin-top:56px}
+.site-foot{margin-top:56px}
 
 /* ---------- 结果页交互扩展 ---------- */
 .ctl{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:10px}
@@ -379,8 +379,11 @@ table.sortable th[data-dir=asc]::after{content:" \2191";color:var(--gold)}
 .cmp-pick select{font-size:15px;padding:7px 10px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);margin-left:6px}
 .cmp-pick .vs{font-family:Georgia,serif;color:var(--gold);font-size:15px}
 .vs-head{grid-template-columns:1fr 1fr;text-align:left}
-.site-foot .src,.site-foot .disc{font-size:12.5px;color:var(--muted);margin:6px 0}
-.site-foot .copy{font-size:12px;color:#9a958c;margin:10px 0 0}
+.site-foot .src{font-size:12.4px;color:#bdb7aa;margin:6px 0;line-height:1.8}
+.site-foot .disc{font-size:12.8px;color:#e6e0d3;margin:6px 0;line-height:1.8}
+.site-foot .copy{font-size:11.5px;letter-spacing:.12em;color:#8f95a1;margin:16px 0 0;padding-top:14px;border-top:1px solid rgba(201,169,106,.28)}
+.site-foot a{color:#ded3b8;text-decoration:none;border-bottom:1px solid #5c6472}
+.site-foot a:hover{color:var(--gold);border-bottom-color:var(--gold)}
 @media (max-width:760px){
   .split,.split.three{grid-template-columns:1fr}
   .page-hero h1{font-size:25px}
@@ -431,3 +434,129 @@ body.sharing .country-card,body.sharing .bar-fill,body.sharing .result-head{anim
   .btn:active{transform:none}
   .bar-fill{transform:none}
 }
+
+/* ================= 子页面统一层：对齐官方文件风与主页节奏 ================= */
+
+/* 1) 面包屑与内容区对齐（原先贴视口左缘） */
+.crumbs{max-width:980px;margin:0 auto;padding:20px 22px 0;width:100%;font-size:12.8px}
+@media (min-width:1000px){.crumbs{max-width:1140px}}
+@media (max-width:760px){.crumbs{padding:14px 16px 0;font-size:12.4px}}
+
+/* 2) 页头节奏：与主页 hero 同档，但留白更紧 */
+.page-hero,.page-head{padding:26px 0 22px;border-bottom:1px solid var(--line)}
+.page-hero h1,.page-head h1{font-size:clamp(27px,3.2vw,36px);line-height:1.3;margin:12px 0 14px;letter-spacing:-.005em}
+.page-hero .kicker,.page-head .kicker{margin:0}
+.page-hero .lede,.page-head .page-lede{font-size:16.3px;line-height:1.78;max-width:78ch;margin:0 0 14px}
+.page-hero .weight-note{margin:14px 0 0;padding:0;border:0;font-size:13.2px;color:var(--muted);line-height:1.75}
+.page-hero .hero-actions{margin:20px 0 2px}
+
+/* 3) 章节节奏与标题重音 */
+.section{padding:34px 0 12px;border-top:1px solid var(--line-soft)}
+.section:first-of-type{padding-top:30px}
+.section h2{font-size:22px;margin:0 0 16px;padding-left:14px;position:relative;line-height:1.4}
+.section h2::before{content:"";position:absolute;left:0;top:.3em;width:3px;height:1.02em;background:var(--gold)}
+
+/* 4) 卡片语言统一：2px 微圆角，细边框，悬停只换边框色 */
+.kv,.panel,.peer,.next,.city,.ctl,.vs-head .vs-a,.vs-head .vs-b,.callout,.cmp-pick select{border-radius:2px}
+.panel{padding:18px 20px}
+.panel h2,.panel h3{margin-top:0;line-height:1.4}
+.panel h3{font-size:17.5px;margin-bottom:8px}
+.panel .block-label{margin:0 0 8px}
+.panel p{margin:0 0 6px}
+.panel p:last-child{margin-bottom:0}
+.split .panel p strong{font-family:Georgia,"Songti SC",serif;font-size:21px;font-weight:normal;color:var(--navy)}
+.panel,.peer,.next,.city{transition:border-color var(--t-base) var(--ease-out),background-color var(--t-base) var(--ease-out),box-shadow var(--t-base) var(--ease-out)}
+.panel:hover{border-color:var(--gold-soft)}
+.peer:hover,.next:hover{transform:none;border-color:var(--gold);background:#fffdf6}
+
+/* 5) 表格：外框、表头加深、斑马纹、行高与前三名强调 */
+.section .tbl-wrap{background:var(--card);border:1px solid var(--line);padding:0}
+.section table.metrics{font-size:13.5px}
+.section table.metrics th{background:#f2eee4;color:var(--navy);font-weight:600;font-size:12.5px;letter-spacing:.04em;padding:11px 12px;border-bottom:1px solid var(--line)}
+.section table.metrics td{padding:9px 12px}
+.section table.metrics tbody tr:nth-child(even){background:#fcfbf8}
+.section table.metrics tbody tr:hover{background:#f8f2e4}
+.section table.metrics tbody tr:last-child td{border-bottom:0}
+.section table.metrics td.nm{white-space:nowrap}
+.section table.metrics td.nm a{text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+.section table.metrics td.nm a:hover{border-bottom-color:var(--navy)}
+.section table.metrics tbody tr:nth-child(-n+3) td{background:#fdf9f0}
+.section table.metrics:not(.sortable) tbody tr:nth-child(-n+3) td:first-child{color:#8a6d33;font-weight:600;font-size:14.5px}
+.section table.sortable th{cursor:pointer}
+.section table.sortable th:hover{background:#ebe3d1}
+
+/* 6) 小构件：城市、标签、提示、指标条 */
+.city-grid{gap:14px}
+.city{padding:16px 18px}
+.city h4{font-size:16.5px;margin:2px 0 9px}
+.city .rent{font-size:21px}
+.tag{border-radius:2px}
+.callout{padding:14px 18px}
+.kv{padding:14px 16px}
+.kv b{font-size:23px}
+.cmp-pick select{padding:7px 10px}
+
+/* 7) 子页面入场：一次、错峰 60ms，只动 opacity/transform */
+.page-hero .kicker,.page-hero h1,.page-hero .lede,.page-head h1{animation:fadeUp var(--t-slow) var(--ease-out) both}
+.page-hero h1,.page-head h1{animation-delay:40ms}
+.page-hero .lede{animation-delay:80ms}
+.section .split>.panel{animation:cardIn var(--t-base) var(--ease-out) both}
+.section .split>.panel:nth-child(2){animation-delay:60ms}
+.section .split>.panel:nth-child(3){animation-delay:120ms}
+.section .peer-grid>.peer{animation:fadeUp var(--t-base) var(--ease-out) both}
+.section .peer-grid>.peer:nth-child(2){animation-delay:50ms}
+.section .peer-grid>.peer:nth-child(3){animation-delay:100ms}
+.section .peer-grid>.peer:nth-child(4){animation-delay:150ms}
+.section .peer-grid>.peer:nth-child(5){animation-delay:200ms}
+.section .peer-grid>.peer:nth-child(6){animation-delay:250ms}
+@media (prefers-reduced-motion:reduce){
+  .page-hero .kicker,.page-hero h1,.page-hero .lede,.page-head h1,
+  .section .split>.panel,.section .peer-grid>.peer{animation:none!important}
+}
+
+/* 8) 移动端：更紧的节奏与可横滑的宽表 */
+@media (max-width:760px){
+  .page-hero,.page-head{padding:20px 0 16px}
+  .page-hero h1,.page-head h1{font-size:25px;margin:10px 0 12px}
+  .page-hero .lede,.page-head .page-lede{font-size:15.6px}
+  .section{padding:26px 0 8px}
+  .section h2{font-size:20px;padding-left:12px;margin-bottom:14px}
+  .section table.metrics{font-size:13px;min-width:640px}
+  .panel{padding:16px}
+  .city-grid{grid-template-columns:1fr}
+  .split{gap:12px}
+  .page-hero .hero-actions{margin:16px 0 0}
+}
+
+/* 9) 指标速览卡（单国页页头内的 kv-strip）：等高、底部信息对齐、与标题留白 */
+.page-hero .kv-strip{margin:24px 0 0;gap:12px}
+.kv{display:flex;flex-direction:column;min-height:94px}
+.kv .kv-k{margin:0;font-size:12.4px;color:var(--muted);line-height:1.5;letter-spacing:.02em}
+.kv .kv-v{margin:5px 0 0;font-family:Georgia,"Songti SC",serif;font-size:22px;color:var(--navy);line-height:1.25}
+.kv .kv-v small{font-size:11.5px;color:var(--muted);font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin-left:3px}
+.kv .kv-y{margin:auto 0 0;padding-top:8px;font-size:11.8px;color:var(--muted);line-height:1.5}
+
+/* 10) 章节内说明文字与表格来源行的对齐 */
+.section .weight-note{margin:16px 0 0}
+.section .tbl-src{padding:11px 2px 0;margin:0}
+.section:last-of-type{padding-bottom:40px}
+
+/* 11) 前三名 / 强项短板卡片：标题与正文层级收紧 */
+.section .split>.panel .block-label{margin:0 0 6px;font-size:11.5px;letter-spacing:.2em;color:#8a7b5a}
+.section .split>.panel h3{margin:0 0 8px;font-size:17.5px}
+.section .split>.panel h3 a{text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+.section .split>.panel h3 a:hover{border-bottom-color:var(--navy)}
+.section .split>.panel p{font-size:14.4px;line-height:1.7;color:var(--body)}
+
+@media (max-width:760px){
+  .page-hero .kv-strip{margin-top:18px}
+  .kv{min-height:0;padding:12px 14px}
+  .kv .kv-v{font-size:20px}
+  .section .split>.panel p{font-size:14px}
+}
+
+/* 12) 页头指标卡：单行截断，保证四个卡的数值与注释基线一致 */
+.page-hero .kv .kv-k,.page-hero .kv .kv-y{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.page-hero .kv .kv-v{white-space:nowrap}
+/* 13) 收录说明区标题节奏 */
+.panel h2{margin:30px 0 8px}

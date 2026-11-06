@@ -45,12 +45,12 @@ a{color:var(--navy)}
 .head-nav a:hover{color:var(--gold)}
 
 /* hero */
-.hero{padding:52px 22px 36px;border-bottom:1px solid var(--line)}
-.kicker{font-size:11.5px;letter-spacing:.22em;color:#8a7b5a;margin:0 0 18px;text-transform:uppercase}
-h1{font-size:40px;line-height:1.24;margin:0 0 18px;letter-spacing:-.01em}
-.lede{font-size:16.5px;margin:0 0 12px;max-width:700px}
+.hero{padding:32px 22px 30px;border-bottom:1px solid var(--line)}
+.kicker{font-size:11.5px;letter-spacing:.22em;color:#8a7b5a;margin:0 0 14px;text-transform:uppercase}
+h1{font-size:clamp(28px,3.4vw,37px);line-height:1.28;margin:0 0 16px;letter-spacing:-.008em}
+.lede{font-size:16.3px;line-height:1.78;margin:0 0 12px;max-width:76ch}
 .lede strong{color:var(--ink);font-weight:600}
-.stat-strip{display:flex;flex-wrap:wrap;gap:34px;margin:30px 0 0;padding:20px 0 0;border-top:1px solid var(--line);list-style:none}
+.stat-strip{display:flex;flex-wrap:wrap;gap:28px;margin:18px 0 0;padding:14px 0 0;border-top:1px solid var(--line);list-style:none}
 .stat-strip li{display:flex;flex-direction:column;gap:3px}
 .stat-strip b{font-family:Georgia,serif;font-size:24px;line-height:1;color:var(--ink);font-weight:normal}
 .stat-strip span{font-size:11.5px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
@@ -78,7 +78,8 @@ h1{font-size:40px;line-height:1.24;margin:0 0 18px;letter-spacing:-.01em}
 /* 条目列表 */
 .updates{padding:4px 22px 10px}
 .upd-count{font-size:12.5px;color:var(--muted);letter-spacing:.06em;margin:18px 0 0}
-.news-card{background:#fff;border:1px solid var(--line);margin:20px 0 0;padding:22px 26px 22px;border-left:3px solid var(--gold)}
+.news-card{background:#fff;border:1px solid var(--line);margin:16px 0 0;padding:22px 26px;border-left:3px solid var(--gold);transition:border-color .22s cubic-bezier(.16,1,.3,1),background-color .22s cubic-bezier(.16,1,.3,1)}
+.news-card:hover{border-color:var(--gold);border-left-color:var(--navy);background:#fffdf7}
 .nc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 12px;margin:0 0 10px;padding:0 0 12px;border-bottom:1px solid var(--line-soft)}
 .nc-date{font-family:Georgia,serif;font-size:15px;color:var(--navy);font-variant-numeric:tabular-nums;letter-spacing:.04em}
 .nc-country{font-size:14px;color:var(--ink);font-weight:600}
@@ -105,6 +106,22 @@ h1{font-size:40px;line-height:1.24;margin:0 0 18px;letter-spacing:-.01em}
 .src a{overflow-wrap:anywhere;word-break:break-all;text-decoration:underline;text-underline-offset:2px;text-decoration-color:#c8bfa9}
 .src a:hover{text-decoration-color:var(--navy)}
 .empty{background:#fff;border:1px dashed var(--line);padding:26px;color:var(--muted);font-size:14px;margin:20px 0 0}
+
+/* 入场：一次、错峰 50ms，仅 opacity/transform */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.hero .kicker,.hero h1,.hero .lede,.hero .stat-strip{animation:fadeUp .34s cubic-bezier(.16,1,.3,1) both}
+.hero h1{animation-delay:40ms}
+.hero .lede{animation-delay:80ms}
+.hero .stat-strip{animation-delay:120ms}
+.news-card{animation:fadeUp .22s cubic-bezier(.16,1,.3,1) both}
+.updates .news-card:nth-of-type(2){animation-delay:50ms}
+.updates .news-card:nth-of-type(3){animation-delay:100ms}
+.updates .news-card:nth-of-type(4){animation-delay:150ms}
+.chip:active{transform:translateY(1px)}
+@media (prefers-reduced-motion:reduce){
+  .hero .kicker,.hero h1,.hero .lede,.hero .stat-strip,.news-card{animation:none!important}
+  .chip:active{transform:none}
+}
 
 /* 收录标准 / 核验说明 */
 .panel{padding:0 22px 44px}
@@ -144,8 +161,7 @@ h1{font-size:40px;line-height:1.24;margin:0 0 18px;letter-spacing:-.01em}
 }
 @media (max-width:760px){
   .wrap{padding:0 16px}
-  .hero{padding:38px 16px 28px}
-  h1{font-size:30px}
+  .hero{padding:26px 16px 24px}
   .lede{font-size:15.5px}
   .stat-strip{gap:22px;margin-top:24px}
   .stat-strip b{font-size:21px}
