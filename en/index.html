@@ -2898,6 +2898,7 @@
   body.share-mode .col-right { display: none !important; }
   body.share-mode .layout { display: block; padding: 0; }
   body.share-mode .col-main { max-width: 680px; margin: 0 auto; }
+  body.share-mode .wrap { padding: 24px 16px 32px; }
   body.share-mode .bg-layer { position: absolute; inset: 0; }
   .share-qr-footer {
     margin-top: 28px; padding: 36px 28px 42px; text-align: center;
@@ -4253,7 +4254,7 @@ function shareResult(){
      加载完成后重入 shareResult 继续；已加载则直接跳过。 */
   if(!window.htmlToImage){
     var _h2iS = document.createElement('script');
-    _h2iS.src = 'assets/html-to-image.min.js';
+    _h2iS.src = '../assets/html-to-image.min.js';
     _h2iS.onload = function(){ shareResult(); };
     _h2iS.onerror = function(){
       showToast('Share component failed to load. Check your network and try again.');
@@ -4317,7 +4318,6 @@ function renderShareShot(){
   foot.style.display = '';
 
   /* 2. 记录 footer 底部文档坐标 → 进入分享模式（隐藏广告/操作区、背景铺满） */
-  var footBottom = foot.getBoundingClientRect().bottom + window.scrollY;
   document.body.classList.add('share-mode');
   window.scrollTo(0, 0);
   /* 2.0 关键修复：html-to-image 克隆 body 时保留其原始布局宽度（桌面为视口宽，如 1265px），
@@ -4331,7 +4331,8 @@ function renderShareShot(){
   var hideStack = [];
   var hideNodes = [];
   /* 桌面端三栏布局：除广告/操作区外，一并隐藏左右侧栏（在 #result 外部，故用 document 查询） */
-  var hideAll = document.querySelectorAll('.ad-box, .side-ad, .again, .disclaimer, .col-side, .col-right');
+  var hideAll = document.querySelectorAll('.ad-box, .side-ad, .again, .disclaimer, .col-side, .col-right, ' +
+    '.appbar, .home-hub, .site-footer, #cookieBanner, body > section');
   for(var hi = 0; hi < hideAll.length; hi++){
     hideNodes.push(hideAll[hi]);
   }
@@ -4339,6 +4340,9 @@ function renderShareShot(){
     hideStack.push({ el: hideNodes[hq], prev: hideNodes[hq].style.display });
     hideNodes[hq].style.display = 'none';
   }
+
+  /* 画布高度锁定到二维码 footer 底部（隐藏页面级区块后重算） */
+  var _shotH = Math.ceil(foot.getBoundingClientRect().bottom + window.scrollY + 24);
 
   function restore(){
     for(var hr = 0; hr < hideStack.length; hr++){
@@ -4377,6 +4381,7 @@ function renderShareShot(){
   if(!_h2iBg || _h2iBg === 'transparent' || _h2iBg === 'rgba(0, 0, 0, 0)'){ _h2iBg = '#101013'; }
   window.htmlToImage.toCanvas(document.body, {
     width: 700,
+    height: _shotH,
     pixelRatio: 2,
     skipFonts: true,
     backgroundColor: _h2iBg,
@@ -4385,7 +4390,9 @@ function renderShareShot(){
       if(node.classList){
         if(node.classList.contains('ad-box') || node.classList.contains('side-ad') ||
            node.classList.contains('again') || node.classList.contains('disclaimer') ||
-           node.classList.contains('col-side') || node.classList.contains('col-right')){
+           node.classList.contains('col-side') || node.classList.contains('col-right') ||
+           node.classList.contains('appbar') || node.classList.contains('home-hub') ||
+           node.classList.contains('site-footer') || node.id === 'cookieBanner'){
           return false;
         }
       }
@@ -4395,19 +4402,7 @@ function renderShareShot(){
     try{
       if(!canvas || canvas.width < 10){ showToast('Failed to generate the share image. Please try again.'); return; }
       /* 4. 裁切：扫描 canvas 最底部非透明像素行（含二维码 footer），保留底部少量留白 */
-      var scale = canvas.width / 700;
-      var cctx = canvas.getContext('2d');
-      var imgd = cctx.getImageData(0, 0, canvas.width, canvas.height).data;
-      var lastRow = 0;
-      for(var yy = canvas.height - 1; yy >= 0; yy--){
-        var has = false;
-        var base = yy * canvas.width * 4;
-        for(var xx = 0; xx < canvas.width; xx += 6){
-          if(imgd[base + xx * 4 + 3] > 12){ has = true; break; }
-        }
-        if(has){ lastRow = yy; break; }
-      }
-      var cropH = Math.min(lastRow + Math.round(28 * scale), canvas.height);
+      var cropH = canvas.height;
       var out = document.createElement('canvas');
       out.width = canvas.width;
       out.height = Math.max(1, cropH);
