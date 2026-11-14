@@ -25,10 +25,11 @@ def rank_table(dim, rows, cp="../../"):
             f = fact(k, c["metrics"].get(k))
             if f:
                 v += f + "；"
-        out.append(f'<tr><td class="num">{i+1}</td>'
-                   f'<td class="nm"><a href="{cp}c/{iso.lower()}/">{c["zh"]}</a></td>'
-                   f'<td class="num">{s:.0f}</td><td class="dim">{c["region"]}</td>'
-                   f'<td class="dim">{v.rstrip("；")}</td></tr>')
+        out.append(f'<tr><td class="num" data-label="排名">{i+1}</td>'
+                   f'<td class="nm" data-label="国家"><a href="{cp}c/{iso.lower()}/">{c["zh"]}</a></td>'
+                   f'<td class="num" data-label="分数">{s:.0f}</td>'
+                   f'<td class="dim" data-label="区域">{c["region"]}</td>'
+                   f'<td class="dim" data-label="原始指标">{v.rstrip("；")}</td></tr>')
     return "".join(out)
 
 
@@ -77,7 +78,7 @@ def dim_page(dim):
 
 <section class="wrap section">
   <h2>55 国完整榜单</h2>
-  <div class="tbl-wrap"><table class="metrics">
+  <div class="tbl-wrap"><table class="metrics stack rank-list">
   <thead><tr><th style="text-align:right">排名</th><th>国家</th><th style="text-align:right">分数</th>
   <th>区域</th><th>原始指标（含年份）</th></tr></thead>
   <tbody>{rank_table(dim, rows, cp)}</tbody></table></div>
@@ -108,9 +109,11 @@ def index_page():
     top15 = ""
     for i, iso in enumerate(TOTAL[:15]):
         c = COUNTRY[iso]
-        cells = "".join(f'<td class="num">{int(round(dim_score(iso, d)))}</td>' for d in DIMS)
-        top15 += (f'<tr><td class="num">{i+1}</td><td class="nm"><a href="../c/{iso.lower()}/">{c["zh"]}</a></td>'
-                  f'<td class="num">{total_score(iso):.1f}</td>{cells}</tr>')
+        cells = "".join(f'<td class="num" data-label="{d["zh"]}">{int(round(dim_score(iso, d)))}</td>'
+                         for d in DIMS)
+        top15 += (f'<tr><td class="num" data-label="排名">{i+1}</td>'
+                  f'<td class="nm" data-label="国家"><a href="../c/{iso.lower()}/">{c["zh"]}</a></td>'
+                  f'<td class="num" data-label="综合分">{total_score(iso):.1f}</td>{cells}</tr>')
     thead = ('<tr><th style="text-align:right">排名</th><th>国家</th>'
              '<th style="text-align:right">综合分</th>'
              + "".join(f'<th style="text-align:right">{d["zh"]}</th>' for d in DIMS) + "</tr>")
@@ -132,7 +135,7 @@ def index_page():
 
 <section class="wrap section">
   <h2>等权综合分前 15 名</h2>
-  <div class="tbl-wrap"><table class="metrics"><thead>{thead}</thead><tbody>{top15}</tbody></table></div>
+  <div class="tbl-wrap"><table class="metrics stack dims-list"><thead>{thead}</thead><tbody>{top15}</tbody></table></div>
   <p class="tbl-src">综合分为六个维度的等权平均。想换成自己的权重，<a href="{sr}#intro">答完 18 道题</a>后在结果页拖动滑块即可重算。</p>
 </section>
 
