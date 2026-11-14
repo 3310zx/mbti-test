@@ -177,6 +177,21 @@ h1{font-size:clamp(28px,3.4vw,37px);line-height:1.28;margin:0 0 16px;letter-spac
   .note-box{padding:16px 16px}
   .panel h2{font-size:21px}
   .site-foot{padding:30px 0 34px}
+  /* 吸顶头部 + 抽屉导航，与其他 country 页面一致 */
+  .site-head{position:sticky;top:0;z-index:80}
+  .head-inner{height:56px;gap:10px}
+  .brand{font-size:14px;letter-spacing:.05em}
+  .nav-toggle{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:5px;width:44px;height:44px;margin-left:auto;padding:0;background:transparent;border:0;border-radius:8px;cursor:pointer}
+  .nav-toggle i{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:transform .22s ease,opacity .16s linear}
+  .nav-toggle[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] i:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .head-nav{position:absolute;left:0;right:0;top:100%;display:none;flex-direction:column;
+    background:var(--navy-2);border-top:1px solid rgba(255,255,255,.14);box-shadow:0 16px 32px rgba(10,18,30,.3)}
+  .head-nav.open{display:flex}
+  .head-nav a{margin:0;padding:15px 20px;font-size:15.5px;letter-spacing:.04em;border-bottom:1px solid rgba(255,255,255,.08)}
+  .head-nav a:last-child{border-bottom:0}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;scroll-behavior:auto!important}
@@ -287,6 +302,7 @@ h1{font-size:clamp(28px,3.4vw,37px);line-height:1.28;margin:0 0 16px;letter-spac
   ]
 }
 </script>
+<script defer src="../assets/nav.js?v=20261114g"></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主内容</a>
@@ -294,7 +310,8 @@ h1{font-size:clamp(28px,3.4vw,37px);line-height:1.28;margin:0 0 16px;letter-spac
 <header class="site-head">
   <div class="wrap head-inner">
     <a class="brand" href="../../">MBTI<em>·</em>人生地理</a>
-    <nav class="head-nav">
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="打开导航"><i></i><i></i><i></i></button>
+    <nav class="head-nav" id="site-nav">
       <a href="../index.html">返回测试</a>
       <a href="#standard">收录标准</a>
       <a href="#verify">核验说明</a>

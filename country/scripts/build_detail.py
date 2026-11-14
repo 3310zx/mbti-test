@@ -223,12 +223,14 @@ def head(title, desc, canon, extra="", sr="../../", cp="../"):
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{e}">
 {share_image_meta()}{adsense_head()}{analytics()}<link rel="stylesheet" href="{cp}assets/country.css?v={CSSV}">
+<script defer src="{cp}assets/nav.js?v={CSSV}"></script>
 {extra}</head>
 <body>
 <header class="site-head">
   <div class="wrap head-inner">
     <a class="brand" href="{sr}">MBTI<em>·</em>人生地理</a>
-    <nav class="head-nav">
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="打开导航"><i></i><i></i><i></i></button>
+    <nav class="head-nav" id="site-nav">
       <a href="{cp}c/">国家数据</a>
       <a href="{cp}rank/">维度榜单</a>
       <a href="{cp}compare/">对比</a>

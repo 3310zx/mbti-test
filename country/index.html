@@ -31,7 +31,8 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JCKX59J312',{anonymize_ip:true});</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"最适合生活的国家：MBTI 人生地理测试","url":"https://3310zx.github.io/mbti-test/country/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","inLanguage":"zh-CN","isAccessibleForFree":true,"description":"18 道题、6 个维度，用 55 个国家的世界银行公开数据算出与你生活方式最契合的 3 个国家，并支持自己调整维度权重重算。","featureList":["18 道场景题推导 6 个维度权重","55 个国家、12 项世界银行指标","结果页可拖动滑块按自己的权重实时重算","两国任意组合的六维数据对比"],"offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@type":"Organization","name":"MBTI · 人生地理"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"这个测试要做多久、要注册吗？","acceptedAnswer":{"@type":"Answer","text":"18 道单选题，通常 3 到 5 分钟做完，不需要注册也不需要填邮箱；结果只存在你自己的浏览器里，可以随时用同样的答案恢复。"}},{"@type":"Question","name":"结果是怎么算出来的？","acceptedAnswer":{"@type":"Answer","text":"每道题的选择会累加到六个维度（生活成本、收入机会、安全治安、医疗健康、自然环境、社会与数字化）的权重上，权重范围 0.4 到 2.6；再用这套权重把 55 个国家的世界银行指标折算成分位分并加权求和，得到前三名。结果页可以手动拖动滑块改权重，排序会实时重算。"}},{"@type":"Question","name":"数据从哪里来、可信吗？","acceptedAnswer":{"@type":"Answer","text":"12 项指标全部取自世界银行公开数据（CC BY 4.0），每项都标注原始值与年份，未做估算、插值或填充；城市租金与签证标签是编辑整理，不是官方统计。所有指标都是国家级统计平均，不构成移民、法律或税务建议。"}}]}</script>
-<link rel="stylesheet" href="assets/country.css?v=20261114f">
+<link rel="stylesheet" href="assets/country.css?v=20261114g">
+<script defer src="assets/nav.js?v=20261114g"></script>
 </head>
 <body>
 <a class="skip" href="#main">跳到主内容</a>
@@ -39,7 +40,8 @@
 <header class="site-head">
   <div class="wrap head-inner">
     <a class="brand" href="../">MBTI<em>·</em>人生地理</a>
-    <nav class="head-nav">
+    <button class="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="打开导航"><i></i><i></i><i></i></button>
+    <nav class="head-nav" id="site-nav">
       <a href="rank/">维度榜单</a>
       <a href="c/">国家数据</a>
       <a href="compare/">两国对比</a>
