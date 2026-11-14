@@ -408,6 +408,64 @@ def page(a, b):
     return head(title, desc, canon, ld, sr="../../../", cp="../../") + body + FOOT
 
 
+def index_page():
+    groups = []
+    seen = {}
+    for a, b in PAIRS:
+        key = COUNTRY[a]["region"]
+        if key not in seen:
+            seen[key] = []
+            groups.append((key, seen[key]))
+        seen[key].append((a, b))
+
+    blocks = ""
+    for region, pairs in groups:
+        cards = "".join(
+            f'<a class="peer" href="./{pair_slug(a, b)}/">{COUNTRY[a]["zh"]} vs {COUNTRY[b]["zh"]}'
+            f'<span>综合分 {total_score(a):.1f} 对 {total_score(b):.1f}</span></a>' for a, b in pairs)
+        blocks += (f'<section class="wrap section">\n  <h2>{region}</h2>\n'
+                   f'  <div class="peer-grid">{cards}</div>\n</section>\n\n')
+
+    title = f"{len(PAIRS)} 组国家对比：同一套六维度数据横向比"
+    desc = (f"按地区整理 {len(PAIRS)} 组国家两两对比：综合分、六个维度分位分、12 项世界银行原始指标与年份，"
+            f"每组对比独立成页，可直接看差值与占优方。")
+    canon = f"{SITE}/country/compare/"
+    crumbjson = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "MBTI 人生地理", "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": "国家数据", "item": f"{SITE}/country/c/"},
+            {"@type": "ListItem", "position": 3, "name": "国家对比", "item": canon},
+        ],
+    }
+    ld = '<script type="application/ld+json">' + json.dumps(crumbjson, ensure_ascii=False) + '</script>\n'
+
+    body = f"""{crumbs([("首页", "../../"), ("国家数据", "../c/"), ("国家对比", "")])}
+<section class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Head to Head · {len(PAIRS)} 组</p>
+    <h1>国家对比：同一套数据，两组数字摆在一起</h1>
+    <p class="lede">每个国家单独看分数容易失真，两两对比才看得出取舍。下面 {len(PAIRS)} 组对比全部用同一套世界银行数据、
+    同一套六维度权重计算，差值为正表示前者更高；分位分是该国在 {len(COUNTRY)} 个候选国家中的相对位置，不是国际通行评级。</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="../#intro">测一测我更适合哪个</a>
+      <a class="btn ghost" href="../c/">按国家看明细</a>
+    </div>
+  </div>
+</section>
+
+{blocks}<section class="wrap section">
+  <h2>怎么读这些对比</h2>
+  <div class="panel">
+    <p>先看综合分差距，再看六个维度里哪几项拉开了距离。综合分接近（差 2 分以内）时，两者的差异通常集中在两三个具体维度上，
+    直接跳到该维度所在的分项榜单比看总分更有用。</p>
+    <p>分位分只表示在候选国家内部的相对位置，不能跨维度比较绝对优劣；成本、凶杀率、PM2.5 分数越高代表越便宜、越安全、空气越好。</p>
+  </div>
+</section>
+"""
+    return head(title, desc, canon, ld, sr="../../", cp="../") + body + FOOT
+
 def main():
     outdir = os.path.join(BASE, "compare")
     n = 0
@@ -416,7 +474,8 @@ def main():
         os.makedirs(d, exist_ok=True)
         open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(page(a, b))
         n += 1
-    print(f"generated {n} pair pages under compare/")
+    open(os.path.join(outdir, "index.html"), "w", encoding="utf-8").write(index_page())
+    print(f"generated {n} pair pages + compare index under compare/")
 
 
 if __name__ == "__main__":
