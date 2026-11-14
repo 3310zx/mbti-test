@@ -11,6 +11,27 @@ AIGC:
 
 # 更新日志
 
+## [2026-11-14] country 站变现与收录基建（AdSense + GA4 + 结构化数据 + 长尾对比页）
+
+### 背景
+`/country/` 子站 66 页此前只有 canonical/hreflang/description：没有广告位与统计，首页缺 og/twitter 卡，
+主站 ja/en/types 对内零内链，搜索侧只覆盖「国家 + 指标」短尾词。
+
+### 改动
+1. 新增 `country/scripts/site_meta.py`：GA4（G-JCKX59J312）、AdSense（ca-pub-8250844529483545 / 5966315493）、
+   分享图（复用主站 og-share.png 1200×630）、对比页配对表 PAIRS，统一供各生成脚本引用。
+2. 全站 head 接入 GA4 与 AdSense 脚本、og:image 全套 + `twitter:summary_large_image`、`max-image-preview:large`；
+   详情页/榜单页/对比页在正文段落间插入自适应广告单元（不打断首屏与表格）。
+3. 首页补 WebApplication + FAQPage 结构化数据、首页与结果页埋 `quiz_start` / `quiz_complete` / `quiz_restore` 事件。
+4. 新增 `country/scripts/build_pairs.py`：生成 49 组热门国家对比静态页 `/country/compare/<a>-vs-<b>/`，
+   每页含结论卡、六维对照表、逐维度解读、12 项原始指标差值、三种取舍场景、FAQPage + BreadcrumbList 结构化数据。
+5. 对比页与详情页互链（详情页新增「与本国相关的对比」区块），对比入口页列出全部 49 组。
+6. 主站内链：`/`(zh) 新增「最适合生活的国家」推广卡与 3 张入口卡，`/ja/`、`/en/` 新增同一卡（标注 lang="zh-CN"），
+   `/types/` 页脚补链接；`sitemap.xml` 追加 49 条对比页 URL（总 317 条）。
+
+### 校验
+`python3 scripts/check_site.py` → 310 个 HTML 的死链 / hreflang / lang-switch / 标签配对 全部通过。
+
 ## [2026-09-15] AdSense 网站审核整改（commit 2b9062b）
 
 ### 背景

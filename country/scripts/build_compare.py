@@ -4,6 +4,7 @@
 import os, json
 from build_detail import (BASE, SITE, data, ed, INDS, COUNTRY, ED, DIMS, RANK, TOTAL, TRANK,
                           SCORES, dim_score, total_score, fmt, UNIT_TAIL, head, crumbs, FOOT)
+from site_meta import ad_unit, PAIRS, pair_slug
 
 A, B = TOTAL[0], TOTAL[1]
 
@@ -59,6 +60,9 @@ def page():
     desc = (f"{COUNTRY[A]['zh']}与{COUNTRY[B]['zh']}逐项对比：六维度分位分、12 项世界银行指标原始值与年份、"
             f"城市一居室租金与签证标签。支持切换任意两国。")
     hr, dr, mr = static_block(A, B)
+    pair_links = "".join(
+        f'<a class="peer" href="{pair_slug(x, y)}/">{COUNTRY[x]["zh"]} vs {COUNTRY[y]["zh"]}'
+        f'<span>综合分 {total_score(x):.1f} 对 {total_score(y):.1f}</span></a>' for x, y in PAIRS)
     opts = "".join(f'<option value="{c["iso3"]}">{c["zh"]}</option>' for c in data["countries"])
     body = f"""{crumbs([("首页", sr), ("国家对比", "")])}
 <section class="page-hero">
@@ -102,6 +106,14 @@ def page():
   如果你更在意收入，就把收入机会看得更重；如果预算紧张，成本维度的差距往往比其它五项加起来更能决定体验。
   想按自己的权重算，<a href="{cp}#intro">做 18 道题</a>后在结果页拖动滑块重算。</p>
 </section>
+
+<section class="wrap section">
+  <h2>热门国家直接对比</h2>
+  <div class="peer-grid">{pair_links}</div>
+  <p class="weight-note">每页都是独立地址、可直接分享，正文固定两人的六维分数、12 项原始指标与差值解读。</p>
+</section>
+
+{ad_unit("广告")}
 
 <script>
 window.CMP = {json.dumps(payload(), ensure_ascii=False)};

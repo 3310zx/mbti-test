@@ -560,3 +560,9 @@ body.sharing .country-card,body.sharing .bar-fill,body.sharing .result-head{anim
 .page-hero .kv .kv-v{white-space:nowrap}
 /* 13) 收录说明区标题节奏 */
 .panel h2{margin:30px 0 8px}
+
+/* ---------- 广告位（AdSense 自适应单元） ---------- */
+.ad-slot{max-width:980px;margin:38px auto;padding:0 22px}
+.ad-label{font-size:10.5px;letter-spacing:.2em;color:#9a9384;margin:0 0 8px;text-transform:uppercase}
+.ad-slot .adsbygoogle{display:block;min-height:96px;background:var(--card);border:1px solid var(--line-soft);border-radius:12px}
+@media (max-width:720px){.ad-slot{padding:0 20px;margin:30px auto}}

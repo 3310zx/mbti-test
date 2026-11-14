@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 """生成 /country/rank/ 榜单总览与 6 个维度榜单页。"""
 import os
+from site_meta import ad_unit
 from build_detail import (BASE, SITE, data, ed, INDS, COUNTRY, ED, DIMS, RANK, TOTAL, TRANK,
                           SCORES, dim_score, total_score, fmt, fact, UNIT_TAIL, head, crumbs, FOOT)
 
@@ -72,6 +73,8 @@ def dim_page(dim):
   <div class="split three">{"".join(cards)}</div>
 </section>
 
+{ad_unit("广告 · 下方是 55 国完整榜单")}
+
 <section class="wrap section">
   <h2>55 国完整榜单</h2>
   <div class="tbl-wrap"><table class="metrics">
@@ -132,6 +135,8 @@ def index_page():
   <div class="tbl-wrap"><table class="metrics"><thead>{thead}</thead><tbody>{top15}</tbody></table></div>
   <p class="tbl-src">综合分为六个维度的等权平均。想换成自己的权重，<a href="{sr}#intro">答完 18 道题</a>后在结果页拖动滑块即可重算。</p>
 </section>
+
+{ad_unit("广告 · 下方可进入单国详情")}
 """
     return head(title, desc, canon, sr=sr, cp=cp) + body + FOOT
 

@@ -9,7 +9,29 @@
 <link rel="alternate" hreflang="zh-CN" href="https://3310zx.github.io/mbti-test/country/">
 <link rel="alternate" hreflang="x-default" href="https://3310zx.github.io/mbti-test/country/">
 <meta name="color-scheme" content="light">
-<link rel="stylesheet" href="assets/country.css?v=20261106b">
+<meta name="robots" content="max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:title" content="最适合生活的国家｜MBTI 人生地理测试">
+<meta property="og:description" content="18 道题，6 个维度，从 55 个国家的世界银行公开数据里，算出与你生活方式最契合的 3 个国家。">
+<meta property="og:url" content="https://3310zx.github.io/mbti-test/country/">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="最适合生活的国家">
+<meta property="og:image" content="https://3310zx.github.io/mbti-test/images/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="MBTI 人生地理：用世界银行数据算出最适合你生活的国家">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="最适合生活的国家｜MBTI 人生地理测试">
+<meta name="twitter:description" content="18 道题，6 个维度，从 55 个国家的世界银行公开数据里，算出与你生活方式最契合的 3 个国家。">
+<meta name="twitter:image" content="https://3310zx.github.io/mbti-test/images/og-share.png">
+<meta name="google-adsense-account" content="ca-pub-8250844529483545">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8250844529483545" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JCKX59J312"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JCKX59J312',{anonymize_ip:true});</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"最适合生活的国家：MBTI 人生地理测试","url":"https://3310zx.github.io/mbti-test/country/","applicationCategory":"LifestyleApplication","operatingSystem":"Web","inLanguage":"zh-CN","isAccessibleForFree":true,"description":"18 道题、6 个维度，用 55 个国家的世界银行公开数据算出与你生活方式最契合的 3 个国家，并支持自己调整维度权重重算。","featureList":["18 道场景题推导 6 个维度权重","55 个国家、12 项世界银行指标","结果页可拖动滑块按自己的权重实时重算","两国任意组合的六维数据对比"],"offers":{"@type":"Offer","price":"0","priceCurrency":"CNY"},"publisher":{"@type":"Organization","name":"MBTI · 人生地理"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"这个测试要做多久、要注册吗？","acceptedAnswer":{"@type":"Answer","text":"18 道单选题，通常 3 到 5 分钟做完，不需要注册也不需要填邮箱；结果只存在你自己的浏览器里，可以随时用同样的答案恢复。"}},{"@type":"Question","name":"结果是怎么算出来的？","acceptedAnswer":{"@type":"Answer","text":"每道题的选择会累加到六个维度（生活成本、收入机会、安全治安、医疗健康、自然环境、社会与数字化）的权重上，权重范围 0.4 到 2.6；再用这套权重把 55 个国家的世界银行指标折算成分位分并加权求和，得到前三名。结果页可以手动拖动滑块改权重，排序会实时重算。"}},{"@type":"Question","name":"数据从哪里来、可信吗？","acceptedAnswer":{"@type":"Answer","text":"12 项指标全部取自世界银行公开数据（CC BY 4.0），每项都标注原始值与年份，未做估算、插值或填充；城市租金与签证标签是编辑整理，不是官方统计。所有指标都是国家级统计平均，不构成移民、法律或税务建议。"}}]}</script>
+<link rel="stylesheet" href="assets/country.css?v=20261114a">
 </head>
 <body>
 <a class="skip" href="#main">跳到主内容</a>
@@ -128,6 +150,12 @@
 
     </div>
   </section>
+
+  <aside class="ad-slot" aria-label="广告">
+    <p class="ad-label">广告</p>
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8250844529483545" data-ad-slot="5966315493" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle=window.adsbygoogle||[]).push({});</script>
+  </aside>
 
   <section id="method">
     <div class="wrap method">
@@ -649,6 +677,7 @@ function bootMain(DATA, EDITORIAL) {
     elQuiz.hidden = false;
     state.idx = 0;
     renderQuestion(0);
+    if (window.gtag) gtag("event", "quiz_start", { event_category: "quiz" });
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 
@@ -926,6 +955,14 @@ function bootMain(DATA, EDITORIAL) {
       return a.c.iso3.localeCompare(b.c.iso3);
     });
     var top3 = scored.slice(0, 3);
+
+    if (window.gtag) gtag("event", restored ? "quiz_restore" : "quiz_complete", {
+      event_category: "quiz",
+      top1_iso: top3[0] ? top3[0].c.iso3 : "",
+      top1_zh: top3[0] ? top3[0].c.zh : "",
+      top1_score: top3[0] ? Math.round(top3[0].total * 10) / 10 : 0,
+      top_dim: pref.topKey || ""
+    });
 
     var topDim = dimByKey(pref.topKey);
     var wSorted = DIMS.slice().sort(function (a, b) { return weights[b.key] - weights[a.key]; });

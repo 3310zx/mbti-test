@@ -3,6 +3,9 @@
 """生成 /country/c/ 国家数据索引与 55 个单国详情页（静态直出，含 Dataset/FAQPage 结构化数据）。"""
 import json, os, html, datetime
 
+from site_meta import (analytics, adsense_head, ad_unit, share_image_meta, CSSV,
+                       pairs_for, pair_slug)
+
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(BASE)
 SITE = "https://3310zx.github.io/mbti-test"
@@ -206,6 +209,7 @@ def head(title, desc, canon, extra="", sr="../../", cp="../"):
 <title>{t}</title>
 <meta name="description" content="{e}">
 <meta name="color-scheme" content="light">
+<meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="{canon}">
 <link rel="alternate" hreflang="zh-CN" href="{canon}">
 <link rel="alternate" hreflang="x-default" href="{canon}">
@@ -215,10 +219,10 @@ def head(title, desc, canon, extra="", sr="../../", cp="../"):
 <meta property="og:url" content="{canon}">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:site_name" content="最适合生活的国家">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{t}">
 <meta name="twitter:description" content="{e}">
-<link rel="stylesheet" href="{cp}assets/country.css">
+{share_image_meta()}{adsense_head()}{analytics()}<link rel="stylesheet" href="{cp}assets/country.css?v={CSSV}">
 {extra}</head>
 <body>
 <header class="site-head">
@@ -346,6 +350,17 @@ def country_page(iso):
                          f'<span>{total_score(p):.0f} 分</span></a>' for p in peers)
     compare_url = cp + f"compare/?a={iso}"
 
+    pl = pairs_for(iso)
+    pair_html = ""
+    if pl:
+        links = "".join(
+            f'<a class="peer" href="{cp}compare/{pair_slug(x, y)}/">{COUNTRY[x]["zh"]} vs {COUNTRY[y]["zh"]}'
+            f'<span>综合分 {total_score(x):.1f} 对 {total_score(y):.1f}</span></a>' for x, y in pl)
+        pair_html = (f'<section class="wrap section">\n  <h2>与{zh}直接对比的国家</h2>\n'
+                     f'  <div class="peer-grid">{links}</div>\n'
+                     f'  <p class="weight-note">每一页都把两个国家的六个维度分数、12 项世界银行原始指标与年份放在同一张表里逐行对照，'
+                     f'并算出成本与收入的实际落差，用来判断「多花的钱换到了什么」。</p>\n</section>\n\n')
+
     ind_high = max(SCORES[k].get(iso, -1) for k in SCORES)
     body = f"""{crumbs([("首页", sr), ("国家数据", cp + "c/"), (zh, "")])}
 <section class="page-hero">
@@ -395,6 +410,8 @@ def country_page(iso):
   <p class="weight-note">{e.get("hook", "")}</p>
 </section>
 
+{ad_unit("广告 · 下方继续看城市租金与签证门槛")}
+
 <section class="wrap section">
   <h2>城市生活成本：一居室月租参考</h2>
   {city_block(iso)}
@@ -423,6 +440,7 @@ def country_page(iso):
   <p class="weight-note">分数为六维等权下的综合匹配分。想看单一维度的完整排序，可到<a href="{cp}rank/">维度榜单</a>；想按自己的权重算，<a href="{sr}#intro">做 18 道题</a>后可以拖动滑块重算。</p>
 </section>
 
+{pair_html}{ad_unit("广告 · 下方为常见问题")}
 <section class="wrap section">
   <h2>常见问题</h2>
   <div class="faq-grid">
