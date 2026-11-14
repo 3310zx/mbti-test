@@ -171,15 +171,15 @@ def metrics_rows(iso):
     for ind in data["indicators"]:
         m = c["metrics"].get(ind["key"])
         if not m or not isinstance(m.get("value"), (int, float)):
-            rows.append(f'<tr><td>{ind["zh"]}</td><td class="num na">缺失</td><td class="num">—</td>'
-                        f'<td class="num na">—</td></tr>')
+            rows.append(f'<tr><td data-label="指标">{ind["zh"]}</td><td class="num na" data-label="数值">缺失</td>'
+                        f'<td class="num" data-label="年份">—</td><td class="num na" data-label="分位分">—</td></tr>')
             continue
         q = SCORES[ind["key"]].get(iso)
         qtxt = "—" if q is None else str(int(round(q)))
         rows.append(
-            f'<tr><td>{ind["zh"]}<span class="dim"> · {ind["code"]}</span></td>'
-            f'<td class="num">{fmt(ind["key"], m["value"])}{UNIT_TAIL.get(ind["key"], "")}</td>'
-            f'<td class="num">{m["year"]}</td><td class="num">{qtxt}</td></tr>')
+            f'<tr><td data-label="指标">{ind["zh"]}<span class="dim"> · {ind["code"]}</span></td>'
+            f'<td class="num" data-label="数值">{fmt(ind["key"], m["value"])}{UNIT_TAIL.get(ind["key"], "")}</td>'
+            f'<td class="num" data-label="年份">{m["year"]}</td><td class="num" data-label="分位分">{qtxt}</td></tr>')
     return "".join(rows)
 
 
@@ -341,9 +341,10 @@ def country_page(iso):
 
     ds_sorted = sorted([(d, dim_score(iso, d)) for d in DIMS if dim_score(iso, d) is not None], key=lambda x: -x[1])
     dim_rows = "".join(
-        f'<tr><td><a href="{cp}rank/{d["key"]}/">{d["zh"]}</a></td>'
-        f'<td class="num">{s:.0f}</td><td class="num">第 {RANK[d["key"]][iso]} / {RANK[d["key"]]["_n"]}</td>'
-        f'<td class="dim">{d["note"]}</td></tr>' for d, s in ds_sorted)
+        f'<tr><td data-label="维度"><a href="{cp}rank/{d["key"]}/">{d["zh"]}</a></td>'
+        f'<td class="num" data-label="分数">{s:.0f}</td>'
+        f'<td class="num" data-label="排名">第 {RANK[d["key"]][iso]} / {RANK[d["key"]]["_n"]}</td>'
+        f'<td class="dim" data-label="衡量什么">{d["note"]}</td></tr>' for d, s in ds_sorted)
 
     peers = [x for x in REGION[c["region"]] if x != iso][:6]
     peer_links = "".join(f'<a class="peer" href="../{p.lower()}/">{COUNTRY[p]["zh"]}'
@@ -388,7 +389,7 @@ def country_page(iso):
     </div>
     <div class="panel">
       <p class="block-label">维度明细与排名</p>
-      <div class="tbl-wrap"><table class="metrics"><thead><tr><th>维度</th><th style="text-align:right">分数</th>
+      <div class="tbl-wrap"><table class="metrics stack"><thead><tr><th>维度</th><th style="text-align:right">分数</th>
       <th style="text-align:right">排名</th><th>衡量什么</th></tr></thead><tbody>{dim_rows}</tbody></table></div>
     </div>
   </div>
@@ -427,7 +428,7 @@ def country_page(iso):
 
 <section class="wrap section">
   <h2>12 项原始数据与年份</h2>
-  <div class="tbl-wrap"><table class="metrics">
+  <div class="tbl-wrap"><table class="metrics stack">
   <thead><tr><th>指标</th><th style="text-align:right">数值</th><th style="text-align:right">年份</th>
   <th style="text-align:right">55 国分位分</th></tr></thead>
   <tbody>{metrics_rows(iso)}</tbody></table></div>

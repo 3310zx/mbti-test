@@ -107,10 +107,11 @@ def metrics_rows_pair(a, b):
             dtxt = f"{diff:+.1f}{unit}" if abs(diff) < 100 else f"{diff:+.0f}{unit}"
         else:
             dtxt = "—"
-        rows += (f'<tr><td>{ind["zh"]}'
+        rows += (f'<tr><td data-label="指标">{ind["zh"]}'
                  f'<span class="dim"> · {ind["code"]}</span></td>'
-                 f'<td class="num">{fa}{ya}</td><td class="num">{fb}{yb}</td>'
-                 f'<td class="num">{dtxt}</td></tr>')
+                 f'<td class="num" data-label="{COUNTRY[a]["zh"]}">{fa}{ya}</td>'
+                 f'<td class="num" data-label="{COUNTRY[b]["zh"]}">{fb}{yb}</td>'
+                 f'<td class="num" data-label="差值">{dtxt}</td></tr>')
     return rows
 
 
@@ -296,9 +297,9 @@ def page(a, b):
         xb = "—" if r["xb"] is None else f"{r['xb']:.0f}"
         gap = "—" if r["gap"] is None else f"{r['gap']:+.0f}"
         win = "—" if r["win"] is None else COUNTRY[r["win"]]["zh"]
-        dim_rows += (f'<tr><td class="dim"><a href="../../rank/{d["key"]}/">{d["zh"]}</a></td>'
-                     f'<td class="num">{xa}</td><td class="num">{xb}</td>'
-                     f'<td class="num">{gap}</td><td>{win}</td></tr>')
+        dim_rows += (f'<tr><td class="dim" data-label="维度"><a href="../../rank/{d["key"]}/">{d["zh"]}</a></td>'
+                     f'<td class="num" data-label="{zh_a}">{xa}</td><td class="num" data-label="{zh_b}">{xb}</td>'
+                     f'<td class="num" data-label="差值">{gap}</td><td data-label="占优">{win}</td></tr>')
 
     dim_text = "".join(f"<p>{dim_sentence(a, b, r)}</p>" for r in rows)
 
@@ -356,7 +357,7 @@ def page(a, b):
 
 <section class="wrap section">
   <h2>六个维度对照</h2>
-  <div class="tbl-wrap"><table class="metrics">
+  <div class="tbl-wrap"><table class="metrics stack">
   <thead><tr><th>维度</th><th style="text-align:right">{zh_a}</th><th style="text-align:right">{zh_b}</th>
   <th style="text-align:right">差值</th><th>占优</th></tr></thead>
   <tbody>{dim_rows}</tbody></table></div>
@@ -374,7 +375,7 @@ def page(a, b):
 
 <section class="wrap section">
   <h2>12 项原始指标与年份</h2>
-  <div class="tbl-wrap"><table class="metrics">
+  <div class="tbl-wrap"><table class="metrics stack">
   <thead><tr><th>指标</th><th style="text-align:right">{zh_a}</th><th style="text-align:right">{zh_b}</th>
   <th style="text-align:right">差值</th></tr></thead>
   <tbody>{metrics_rows_pair(a, b)}</tbody></table></div>
