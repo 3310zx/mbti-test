@@ -23,6 +23,7 @@ HREFLANG_EXEMPT = {
     # 硬凑 11 条 hreflang 会向搜索引擎传递"存在 10 个语言变体"的错误信号。
     "country/index.html",
     "country/updates/index.html",
+    "zh/index.html",
 }
 
 # country/ 下由 scripts/build_*.py 静态生成的子目录（国家数据 / 维度榜单 / 两国对比），
