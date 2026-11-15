@@ -4,7 +4,7 @@
 用法：python3 scripts/indexnow.py [--dry]
 密钥文件：仓库根目录 <key>.txt，key 从环境变量 INDEXNOW_KEY 读取，缺省读取仓库内唯一 32 位 hex 文件名。
 """
-import json, os, re, sys, urllib.request
+import json, os, re, sys, time, urllib.error, urllib.request
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 HOST = "3310zx.github.io"
@@ -31,6 +31,47 @@ def urls():
     return out
 
 
+def wait_key(key, timeout=300):
+    """等 Pages 部署完成、keyLocation 可访问（否则 IndexNow 会拒绝）"""
+    kl = f"https://{HOST}/mbti-test/{key}.txt"
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        try:
+            with urllib.request.urlopen(kl, timeout=15) as r:
+                if r.status == 200 and key in r.read().decode("utf-8", "ignore"):
+                    print("keyLocation 已可访问：", kl)
+                    return True
+        except Exception:
+            pass
+        print("等待 keyLocation 上线… %ds" % int(time.time() - t0))
+        time.sleep(15)
+    return False
+
+
+def post(payload, attempts=3):
+    req = urllib.request.Request(
+        ENDPOINT,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        method="POST",
+    )
+    for i in range(1, attempts + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                print("HTTP", r.status, "提交", len(payload["urlList"]), "条 URL")
+                body = r.read().decode("utf-8", "ignore").strip()
+                if body:
+                    print(body[:300])
+                return True
+        except urllib.error.HTTPError as e:
+            print("第 %d 次尝试 HTTP %s: %s" % (i, e.code, e.read().decode("utf-8", "ignore")[:200]))
+        except Exception as e:
+            print("第 %d 次尝试失败: %s" % (i, e))
+        if i < attempts:
+            time.sleep(20)
+    return False
+
+
 def main():
     key = find_key()
     url_list = urls()
@@ -38,20 +79,10 @@ def main():
     if "--dry" in sys.argv:
         print(json.dumps(payload, ensure_ascii=False)[:600], "\n共", len(url_list), "条")
         return
-    req = urllib.request.Request(
-        ENDPOINT,
-        data=json.dumps(payload).encode("utf-8"),
-        headers={"Content-Type": "application/json; charset=utf-8"},
-        method="POST",
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            print("HTTP", r.status, "提交", len(url_list), "条 URL")
-            body = r.read().decode("utf-8", "ignore").strip()
-            if body:
-                print(body[:300])
-    except urllib.error.HTTPError as e:
-        print("HTTP", e.code, e.read().decode("utf-8", "ignore")[:300])
+    if "--no-wait" not in sys.argv and not wait_key(key):
+        print("keyLocation 300s 内仍未上线，跳过本次提交")
+        sys.exit(1)
+    if not post(payload):
         sys.exit(1)
 
 
