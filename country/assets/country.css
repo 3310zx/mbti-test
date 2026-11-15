@@ -752,5 +752,9 @@ body.sharing .country-card,body.sharing .bar-fill,body.sharing .result-head{anim
   .faq-body{padding:16px 18px 18px}
   .faq-body p{font-size:14px;line-height:1.9}
   .kv-strip{gap:14px}
+  table.metrics.stack{margin-top:6px}
+  table.metrics.stack tr{margin:0 0 14px;padding:8px 2px;border-radius:14px}
+  table.metrics.stack td,table.metrics.stack td:not([data-label]){padding:9px 14px;line-height:1.7}
+  table.metrics.stack tr:last-child{margin-bottom:0}
   .crumbs{padding:14px 18px 2px}
 }
