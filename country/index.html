@@ -142,7 +142,8 @@
 
 
       <div class="hero-actions" id="resultActions" style="margin:30px 0 0" hidden>
-        <button class="btn primary" id="shareBtn" type="button">保存结果图片</button>
+        <button class="btn primary" id="shareBtn" type="button">分享结果</button>
+        <button class="btn" id="saveCardBtn" type="button">保存护照卡</button>
         <button class="btn" id="copyBtn" type="button">复制结果链接</button>
       </div>
       <div class="hero-actions" style="margin:14px 0 0">
@@ -1045,6 +1046,12 @@ function bootMain(DATA, EDITORIAL) {
     document.getElementById("cards").innerHTML = cards;
 
     window.__lastTop3 = top3.map(function (x) { return x.c.iso3; });
+    window.__shareData = {
+      countries: top3.map(function (x) { return { zh: x.c.zh, iso3: x.c.iso3, score: x.total }; }),
+      topDim: { zh: topDim.zh, weight: weights[topDim.key] },
+      date: new Date().toISOString().slice(0, 10),
+      url: "3310zx.github.io/mbti-test/country/"
+    };
     currentState = { weights: weights, topKey: topDim.key, top3: top3 };
     syncURL();
     persist();
@@ -1214,6 +1221,25 @@ function bootMain(DATA, EDITORIAL) {
       .catch(function () { alert("生成图片失败，可改用「复制结果链接」分享。"); })
       .then(restore, restore);
   }
+  function shareResult() {
+    var d = window.__shareData;
+    var top = d && d.countries[0] ? d.countries[0] : null;
+    var title = top ? "我的地理护照：" + top.zh : "国家匹配测试";
+    var text = d ? "我最契合的三个地方：" + d.countries.slice(0, 3).map(function (c) { return c.zh; }).join(" / ") : "";
+    if (navigator.share) {
+      navigator.share({ title: title, text: text, url: location.href }).catch(function () {});
+      return;
+    }
+    copyLink();
+  }
+  function saveCard() {
+    if (!window.PassportCard || !window.__shareData) {
+      alert("分享卡组件未就绪，可先点「复制结果链接」分享。");
+      return;
+    }
+    try { window.PassportCard.download(window.__shareData); }
+    catch (e) { alert("生成失败，可改用「复制结果链接」分享。"); }
+  }
   function copyLink() {
     var url = location.href;
     var btn = document.getElementById("copyBtn");
@@ -1236,7 +1262,9 @@ function bootMain(DATA, EDITORIAL) {
 
   function setupExtras() {
     var shareBtn = document.getElementById("shareBtn");
-    if (shareBtn) shareBtn.addEventListener("click", saveImage);
+    if (shareBtn) shareBtn.addEventListener("click", shareResult);
+    var saveCardBtn = document.getElementById("saveCardBtn");
+    if (saveCardBtn) saveCardBtn.addEventListener("click", saveCard);
     var copyBtn = document.getElementById("copyBtn");
     if (copyBtn) copyBtn.addEventListener("click", copyLink);
     var retake2 = document.getElementById("retake2");
@@ -1290,5 +1318,6 @@ function bootMain(DATA, EDITORIAL) {
     });
 })();
 </script>
+<script src="assets/passport-card.js?v=20261115c" defer></script>
 </body>
 </html>

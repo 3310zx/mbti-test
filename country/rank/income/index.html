@@ -29,8 +29,8 @@
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JCKX59J312"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JCKX59J312',{anonymize_ip:true});</script>
-<link rel="stylesheet" href="../../assets/country.css?v=20261115b">
-<script defer src="../../assets/nav.js?v=20261115b"></script>
+<link rel="stylesheet" href="../../assets/country.css?v=20261115c">
+<script defer src="../../assets/nav.js?v=20261115c"></script>
 </head>
 <body>
 <header class="site-head">
@@ -84,6 +84,34 @@
 <section class="wrap section">
   <h2>其它维度</h2>
   <div class="peer-grid"><a class="peer" href="../cost/">生活成本<span>榜单</span></a><a class="peer" href="../safety/">安全治安<span>榜单</span></a><a class="peer" href="../health/">医疗健康<span>榜单</span></a><a class="peer" href="../nature/">自然环境<span>榜单</span></a><a class="peer" href="../society/">社会与数字化<span>榜单</span></a></div>
+</section>
+<section class="wrap section">
+  <h2>把这一页分享出去</h2>
+  <div class="hero-actions" style="margin:0">
+    <button class="btn primary" id="sharePage" type="button" data-t="分享本页">分享本页</button>
+    <button class="btn" id="copyPage" type="button" data-t="复制链接">复制链接</button>
+  </div>
+  <p class="weight-note">分享后对方打开的是同一份公开数据页，不含任何个人信息。</p>
+  <script>
+(function(){
+  var u = location.href;
+  function done(b, m){ b.textContent = m; setTimeout(function(){ b.textContent = b.dataset.t; }, 2000); }
+  function cp(b){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(u).then(function(){ done(b, "链接已复制"); }, function(){ done(b, "复制失败"); });
+      return;
+    }
+    var t = document.createElement("textarea"); t.value = u; document.body.appendChild(t); t.select();
+    try { done(b, document.execCommand("copy") ? "链接已复制" : "复制失败"); } catch (e) { done(b, "复制失败"); }
+    t.parentNode && t.parentNode.removeChild(t);
+  }
+  var s = document.getElementById("sharePage"), c = document.getElementById("copyPage");
+  if (s) s.addEventListener("click", function(){
+    if (navigator.share) { navigator.share({ title: document.title, url: u }).catch(function(){}); } else { cp(s); }
+  });
+  if (c) c.addEventListener("click", function(){ cp(c); });
+})();
+</script>
 </section>
 </main>
 <footer class="site-foot">

@@ -19,7 +19,7 @@ OG_IMAGE_W, OG_IMAGE_H = 1200, 630
 OG_IMAGE_ALT = "MBTI 人生地理：用世界银行数据算出最适合你生活的国家"
 
 # CSS 缓存版本：改 country.css 时同步 +1
-CSSV = "20261115b"
+CSSV = "20261115c"
 
 
 def analytics():

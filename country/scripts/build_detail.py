@@ -243,7 +243,37 @@ def head(title, desc, canon, extra="", sr="../../", cp="../"):
 
 UPDATED = ed.get("updated") or "2026-11"
 
-FOOT = f"""</main>
+SHARE_JS = """
+(function(){
+  var u = location.href;
+  function done(b, m){ b.textContent = m; setTimeout(function(){ b.textContent = b.dataset.t; }, 2000); }
+  function cp(b){
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(u).then(function(){ done(b, "链接已复制"); }, function(){ done(b, "复制失败"); });
+      return;
+    }
+    var t = document.createElement("textarea"); t.value = u; document.body.appendChild(t); t.select();
+    try { done(b, document.execCommand("copy") ? "链接已复制" : "复制失败"); } catch (e) { done(b, "复制失败"); }
+    t.parentNode && t.parentNode.removeChild(t);
+  }
+  var s = document.getElementById("sharePage"), c = document.getElementById("copyPage");
+  if (s) s.addEventListener("click", function(){
+    if (navigator.share) { navigator.share({ title: document.title, url: u }).catch(function(){}); } else { cp(s); }
+  });
+  if (c) c.addEventListener("click", function(){ cp(c); });
+})();
+"""
+
+FOOT = f"""<section class="wrap section">
+  <h2>把这一页分享出去</h2>
+  <div class="hero-actions" style="margin:0">
+    <button class="btn primary" id="sharePage" type="button" data-t="分享本页">分享本页</button>
+    <button class="btn" id="copyPage" type="button" data-t="复制链接">复制链接</button>
+  </div>
+  <p class="weight-note">分享后对方打开的是同一份公开数据页，不含任何个人信息。</p>
+  <script>{SHARE_JS}</script>
+</section>
+</main>
 <footer class="site-foot">
   <div class="wrap">
     <p class="disc">免责声明：本页基于公开统计数据整理，非移民、法律或税务建议。任何迁居、签证、税务安排请咨询持牌专业人士。</p>
@@ -430,7 +460,7 @@ def country_page(iso):
 
 <section class="wrap section">
   <h2>12 项原始数据与年份</h2>
-  <div class="tbl-wrap"><table class="metrics stack">
+  <div class="tbl-wrap"><table class="metrics stack plain">
   <thead><tr><th>指标</th><th style="text-align:right">数值</th><th style="text-align:right">年份</th>
   <th style="text-align:right">55 国分位分</th></tr></thead>
   <tbody>{metrics_rows(iso)}</tbody></table></div>

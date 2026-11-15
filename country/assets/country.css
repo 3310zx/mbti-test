@@ -758,3 +758,13 @@ body.sharing .country-card,body.sharing .bar-fill,body.sharing .result-head{anim
   table.metrics.stack tr:last-child{margin-bottom:0}
   .crumbs{padding:14px 18px 2px}
 }
+
+/* 12 项原始数据表：去掉白色卡片框，改为细分隔线（移动端堆叠同样生效） */
+.tbl-wrap table.metrics.stack.plain tr{background:transparent;border:0;border-radius:0;margin:0;padding:0}
+.tbl-wrap table.metrics.stack.plain tr+tr{border-top:1px solid var(--line-soft)}
+.tbl-wrap table.metrics.stack.plain td,.tbl-wrap table.metrics.stack.plain td:not([data-label]){
+  background:transparent!important;border-bottom:0;padding:8px 4px}
+@media (max-width:760px){
+  .tbl-wrap table.metrics.stack.plain{margin-top:4px}
+  .tbl-wrap table.metrics.stack.plain td[data-label]{font-size:12.2px}
+}
