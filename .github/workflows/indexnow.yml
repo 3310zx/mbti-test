@@ -7,6 +7,8 @@ on:
       - "**.html"
       - "sitemap.xml"
       - "country/sitemap*.xml"
+      - "scripts/indexnow.py"
+      - ".github/workflows/indexnow.yml"
   workflow_dispatch:
 
 jobs:
