@@ -1,13 +1,293 @@
 {
-  "generated_at": "2026-11-09T07:20:37Z",
+  "generated_at": "2026-11-16T07:26:03Z",
   "note": "本文件为自动抓取的候选池，未收录。人工核对后把要收录条目的 approved 改为 true，运行 merge_candidates.py 并入 data.js。",
   "candidates": [
+    {
+      "title": "Is Vietnam Still an Affordable Place to Live? What the 2026 Expat Index Tells Us - Vietcetera",
+      "source": "Vietcetera",
+      "date": "2026-11-16",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNSHd4WTI1Umt2ZnB1X2NHM083OTlLNld0RnFPck1wREFvb3VVS1NZYXg1QlV0bWMySE5yYnJIUWNfYlV1Wmh3bmQ0WmRKTDVaUzJNbENQVVBLY1VXQmYtaHZlMTY3UGF2MEpERXJxWVp4ZEdDWXFsbVlnQ0UybWRYYjljRWp4d3hWZkMwWGFyQTc1YWtGeVZqTkllYVU1YzlKbEVVQmFCT1_SAa4BQVVfeXFMTzhCeVJyMTVKR2xySnJrMDdXcWRPSll2UkRZbElOd2V0QWg0NlFZTFF4Wmh3WWRfSm9zWHZ0ZkdlbWQ3QUtyWndVWW1fTzJOWFkzcEZzNHlxSy1RekZ6V1oxRGdrcXFSMDU2VWwtNnZfRVlEdzEyTlR5aTFXNnQwSmJEb2VIOGlIY1pDaXlvS3lOX1hvWDNkUE9WUkJOU0NMX3NONTRkR1ZPQzdjUXJ3?oc=5",
+      "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "AD to facilitate Golden Visa investment in social funds - Essential Business",
+      "source": "Essential Business",
+      "date": "2026-11-15",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPYlBXUW0yQnBtYU5NOEZ1d2lXQ0I4QUw2Rnp1YlhCa3VER3BrZ19FYmp5eUM3eVdKSDNyTFJ5MlFMVG1Ya0g5aDVzbk5zSVlyUFh3bzVCU2s0TXh2ODk1OXhNQTZQZkRfV2kzR05vSGV1SnZVNDc3N3BmWERNS2NrcHFjdFNLTDlwM0pzSkdzZ2dVY0EtUU5CaTdxdE91SHk0bWVR?oc=5",
+      "query": "\"golden visa\" OR \"citizenship by investment\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "Could Budapest be the next digital nomad hotspot? - CNBC",
+      "source": "CNBC",
+      "date": "2026-11-15",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPMVdZQjViVWh6UFJnbzVCSVpSaWQzOEFOcW1vWUQta3hsMl8tMUItQjBGUnhMTVJWTmJ1Zl83QTVhc1gyS2c3OTNycllGdkZRMkNFSjdXTHBWa3hlQXFVVzJrUFU2UmdJZTJJdjdYb0JGWUJjNWtPb0w2ZW94TllRNEpZcHoxc2PSAYwBQVVfeXFMTzAtMjNUYzR2LWk4VFhHZzljUHFoSnhOZWU0OERoWUtpSlJfX1dXblVIWm5TZkhoVXN2LVlXejVZZkN5NDd3bWxoeG9FOW5pa29GdjctYXR3d0pMak94UExTdkxBcWYxem11M21BTVgtU3NrN0NJd25BNEtrYVBrYjRITm5qQWdQczI4Wl8?oc=5",
+      "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
+      "approved": false
+    },
+    {
+      "title": "Expat Tales: The honest trade-offs of moving from Wellington to Canada - Stuff",
+      "source": "Stuff",
+      "date": "2026-11-14",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNTVlVT2VqUTNCQ3JiSElfakRfRHlwbGhvMmxOVHBsQUVHMFZVSjBGNTFLNmVha01VOGxWaFU5SjlJT0g2VXk4NVE4QlJvYnRwbzJDRDZsVENNNjlqUTAta1JVOVZNcXp1VE5zX1R3WnZvZVRjQWRvYnNjUkNfbmc0Qm95WjNJOVlOZlF0UGVZQ0Z6ODNfak0zcE5GTkFNZGE1UVlLVFA3Q3hTTXZtTlZMSFhDazFZdF9rMEdfY2JJcV8yWjQ?oc=5",
+      "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "\"Visa of Life\" Recipient Honored for Preserving Diplomat's Legacy - Nippon.com",
+      "source": "Nippon.com",
+      "date": "2026-11-14",
+      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFA0MjJ5aHplUnQ5eUFYMzFTMjQ1Q1ptN0NkYzBjTWpLYTdjMktHdWI0R21YWl9HSnhNSjlHYVpfMlQxY0oyN2hJb2lHcFVTWTVNekN2aA?oc=5",
+      "query": "Japan OR Korea OR Taiwan OR Singapore visa OR residence when:14d",
+      "approved": false
+    },
+    {
+      "title": "Thousands of Finnish residence permit applications exceed legal deadlines - Helsinki Times",
+      "source": "Helsinki Times",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxOSjdIam5lRnc5SlRtbnFURTFCbXhrMm82aVJQcU5NQVdUZEVxdVJHUTZGbkhldVRZXzllQ3liQ3M5NzVXV3UwYU5ZbGFoVmdXaGNCckZXZXVvQ3I3bVUzc1p0VkFUNVB0SmxTWF9NUDdXNEtzdjRwTW5vWnFmZVpkeU1sTkJWZWV5aUZ4T1M2MWs1STBKZTcxSjFJZU9fZi1KcEM2S0VWdmtzWDlsSXJIbE9WZHhUaEpYT2RHb3pmNjVnWWljeGsydXpYWUxZZW9BeFpudDN0RVk0SzQ?oc=5",
+      "query": "\"digital nomad visa\" OR \"residence permit\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "Portugal Golden Visa 2026 : Complete Guide to EU Residency - Get Golden Visa",
+      "source": "Get Golden Visa",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE5TeUtqSkwxS05VMGVGTG1sbHlvdlhwOEMtdFR2TG5rNm1PTnVDR0ctdExhTVdEQTJ6NWJRSDlEaHFTS0t0UzB1b003b25nN0hlQlB1djZpckxJd2h2MXZ6MFVEdjU?oc=5",
+      "query": "\"golden visa\" OR \"citizenship by investment\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "From Protections to Restrictions: State Immigration Policy Trends in 2026 - American Immigration Council",
+      "source": "American Immigration Council",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQVExuMFpNRTBRMXRwbk1yTTljWEdsNVdMRzVhcHZnczN6RnlFV01TYnB2Nkx6ekxBT2QtZlFqWXFRbnJBWDRPajlZemtwVnZneFN1Z1o0ODNhR2xyMXlPYnU4SGwweGswRnhXbWV6X0wwd2l3cFNzblVtdWE1U2FjS0NaeVo3VDdVTTRxc0FkbDEwQQ?oc=5",
+      "query": "\"visa policy\" OR \"immigration policy\" changes when:14d",
+      "approved": false
+    },
+    {
+      "title": "hyan adapts 1970s timber frame into live-work residence on the hills of hayama - Designboom",
+      "source": "Designboom",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOalQwUi1kaTZGdjlZMlk3bnFud0VjTHFWVFR0eGYxUW9WMEZQNElCYUQtclRWcmFDV1Brd09YXzh0RDRhR3pZRjd5U2dOVWExdHV4ajdpLTkxVWxUTzJJaXNNb0twU2l5a0VqODJkTmRRVFA1dGQ1UHRmdFhUckhzVHVINTNRNUdnMWtJczMxbkQ4UURCVV9taEp6djl3aGZNNDljUDdEeldzYUhpOU9oaGlZWHh4NGhKbmc?oc=5",
+      "query": "Japan OR Korea OR Taiwan OR Singapore visa OR residence when:14d",
+      "approved": false
+    },
+    {
+      "title": "Is it legal to collect rainwater in Georgia? Here's what to know - Savannah Morning News",
+      "source": "Savannah Morning News",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNSERmOVAteWFSZk9uc0IzNmRpcVFGNTdIVGNjRzVuWFVmNUQwMDA4UHVHRWMtU0ZUNm05UDJuQVZadEZ3T3dreld1QUtza01OLWtDVC1uNE5YN0pmMDZhTnNZeUF5aGxiNGppREFDaU9CbGRuekRfaDhXS1lPUjRWb1EtM05pcmdzWlNDTU1YY1BJcWpBNEgwbFdhNzQxSlJ1ZW1nNklfejRFbDl4Y2hwelNYOFRHY0J0MjJ0TWRIcUlXSy1Ha2Z3bEV3?oc=5",
+      "query": "Mexico OR Panama OR Georgia OR Serbia residence permit when:14d",
+      "approved": false
+    },
+    {
+      "title": "Dreaming of a Vacation Home? 7 Easy Countries and 10 Hardest - Yahoo",
+      "source": "Yahoo",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNM2t0Z3hiMlc4ZXNEUzJMQXJNN0VBbmZLaGRXMGdkVWJMMHRWS0owdUVwWGxMVURYYWlhczhDZUNOWWtqZ25WbFFEamFyazgzR3g3R3hoQUhXNHVtQkJrX0FMLXZFVlNVWHJFR0t1ZTJTcGtfWEJzNW9jMm5GTGlrcFNZNlhERlhJVW8xQTNB?oc=5",
+      "query": "Mexico OR Panama OR Georgia OR Serbia residence permit when:14d",
+      "approved": false
+    },
+    {
+      "title": "Senate advances permitting bill that could weaken historic preservation reviews | Here's what that means - 13WMAZ",
+      "source": "13WMAZ",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPMVRwVnRmT0JDUG1MSFRBV0tTRXJzNGY4TkFsYWpOZ3ctdFotZjl2cV8tbXJvMkFETVhLSXRpZHQ5YUpwQWhTeU9nSEdxZGY3SDZNeFNidnlnX1pKeVdCRkJsSnB2UjEwVzJkdHdidHdzTnJ4eTVIMnhyYk9MNGV4UUF3Q2tEN0VUM1J3T0Qtbm0zTTdqSU9SS2ZySk9udEN6cndPQ0dOQ0tyLWo5NHVOTk1RTlRxVEQ1MGJEb0FBOEhuMkdReUlVbzhCOUhad21aaXB1UGpOaHZtVm02dEMxNjdjNlNKeEUwMG1ldjNxTDhqUFE?oc=5",
+      "query": "Mexico OR Panama OR Georgia OR Serbia residence permit when:14d",
+      "approved": false
+    },
+    {
+      "title": "PP election manifesto: Mandatory Spanish tests to renew residency and 48-hour squatter evictions - Olive Press News Spain",
+      "source": "Olive Press News Spain",
+      "date": "2026-11-13",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQXzZwamVRcGZCRDRCZjFobHY4NlhQYm9yNmRLdnEzVDQ5YXJFUzNLZ0RrN2luYzdmTDZ4WnFibXcyRGFuT0xia1k0NGtaQi02alc1Wk9WVXpyRmIxV29ab2d1Q3MySFhtQWV3LURoZ2IzQngzTENpZHdzdnE4UDVrMjh3Qlo3U1B0LS13clE1MlBNNXJtNWs5ejRqRVFHVjdMVVBpSGdUOVRNYlZFeEE?oc=5",
+      "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
+      "approved": false
+    },
+    {
+      "title": "Africa's largest economy remains among Portugal's top eight Golden Visa investors behind the US, China, UK and others, but new €500,000 rules could change the picture - Business Insider Africa",
+      "source": "Business Insider Africa",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPRmpMN2RaSTQ2ZmcyZy1fRy11T1ZUbFNCRFRmS1RBWno1d1NWdFJHSHlOcHVOd0lEb2RzSWZ1Mnh0T0JqQVZWVmhtbnp3dGVXWDFMbzF1V3VYQ3dKY0pJcVhMRnk3NnJaQWlpX3ZyMGtxWVUzTXprXzZUM29wY2N4Xzk4VHhwZUlOc3UxT3VNeDJzN0c3QmNHVnBEN2dCSHF2dFM5ekl2Qmsxa09sNE52M2hVMmh1eUVVZ0xkdjNRMzh0VFBWR1o1Qko3WnhUakV1Smc?oc=5",
+      "query": "\"golden visa\" OR \"citizenship by investment\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "Rapid-Fire Wednesdays Podcast | 2026 Midterm Elections: Immigration Policy Impact - WR Immigration",
+      "source": "WR Immigration",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNTXR1NjFyT1Jkd1pRZlJiV0FlSGt1OTJoUTRsSTVUZXhlRlZZUFlKWEZmaDB2RFB4ZWJ2MVZhMUNqUkR1dHlUQngzSUpQWWtPS2FNdU94c1hsU1RGQm5EdlpyR1c1bmJ6MDgydHZaTFJSQmZXUkc2TmEza2FoSjNWR1E1RHMyZi1rb1JTYkt2NXg3azZZdEJWSEVB?oc=5",
+      "query": "\"visa policy\" OR \"immigration policy\" changes when:14d",
+      "approved": false
+    },
+    {
+      "title": "Editorial: Immigration policy unlikely to change - American Press",
+      "source": "American Press",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNRlZEeU9OMkhaelEzXzh4XzFyQ2RuMXVLN2ppZ3ZvSVduZ0lOd0VjVEdiZWZGZXM1bFRuaVZKUmdrVXgyWmxOV1lkUDR5RFpkb0dUclBud0daMnpyY0xwYWpGeFJTWF9Ic3lGOXB6NjRzSUpqdUNrdTVOSmJ1XzN3blBLNEVTdnZveUxoQmhB?oc=5",
+      "query": "\"visa policy\" OR \"immigration policy\" changes when:14d",
+      "approved": false
+    },
+    {
+      "title": "Discover an Affordable Retirement in This Charming Panama Town - Money Talks News",
+      "source": "Money Talks News",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQcms1aVRuemszekZ1VWItSy1xVVdjUHFQOG1qeFhqZ3Zjb3lyWXhPa1lSS2QtazhTREtlSF9HRjdFNG4wTDJRZmtkQnRSNkNtY1JQMTVNMFdFcVh1SXIwV3NmZllKZ1ZpLXVOcndVaVNaTnVhR1M3NzJnc3ZwcnRfLWdaOGFKUy15VDJ3ZTFjRUJOanBzYlFkYUxORVNzS2dyQ1p5N21fcG1zMV8walFDdHBn?oc=5",
+      "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "‘Burnt out’ Hills sisters sell up, buy one-way tickets to Italy - Adelaide Now",
+      "source": "Adelaide Now",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQamw4VVozOG5kNjE4MElqQmkzdWFSSWNjaDNISHd0bktmVnVobEVXWWxJTGtoUFo4NVU4akZNeHZwa0tvbWpKZUZ3bzVUTTZYekN3UmExMjRUc3M3WVdaZV84ZUlCMEZOQnpzWTBWOC13V1BQek1WRGsyODgzYll6UHIySzZETDlxYVV4MzV2dXBJZUJtZzA4ODU1S0k1VE11ZFlycGoyeTl2VTBqQmxHR05ncGRud3ZGSnpaSXIzenNFRkUzM2ktRExJakhEdmRIbUxJQUtKUEsweTFBWndHaUhxZ1o2SG1HWGdxckcyay1EbzIxNkE?oc=5",
+      "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "Siam Legal International Releases Thailand Privilege Visa Affixation Guide - The Des Moines Register",
+      "source": "The Des Moines Register",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPN0JBYWlfbG9DMElQUk50aFNXY0lYaVFGRWNpS3V2RDI3NnlxMElYa1AzMWZUbzYxZVZNWWVXYTE5Uzh4ZVpLa0RDTDExOGtsdzRvalRWMVBwaGxRRWRpdkE3WjlLVnZ5Tl9KWVZ4QmY1bDFVZzd0QWgtSE5OWFpqOXNuYkFYdngxNEhVdkhoSmVwTjhiTHFBbmpscVRrUDlWRWpuMU1vTldORkRJQUJhdnBPS3dVdnFfRm9RVzdjaEFTYllITkJIbno2Zko1M2JXNHc?oc=5",
+      "query": "Thailand OR Malaysia OR Portugal OR \"United Arab Emirates\" visa rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "Migration to rich countries falls under strict visa rules - Financial Times",
+      "source": "Financial Times",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxPa21vdDhScEk3cWNGRkFERHFfZmJISzJickRORDlZM2NXOVo3U1N0cURBV1k1d2xDN2FZeEl5VmpVYjZoN3ZLMFhrTVlPWWVZbFhReHNJRHRzYVdxdDRlOEtiYnhZaDQyRVJUcDZycVVWUnpsaWt2azNIcjhJS0txOUwyanc?oc=5",
+      "query": "Thailand OR Malaysia OR Portugal OR \"United Arab Emirates\" visa rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "India simplifies visa rules, cuts application fields by up to 70% - Human Resources Online",
+      "source": "Human Resources Online",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNUWd0OHA1b1BBbGpVelhRakU0b3dQTnc1N3N5VGJWWm1mYU9feDRvV2J6bE5YRHV3WVQtOHNvdk5PaDB3T3p2VEIwYnpkVzE1RjdLVnJkMVhzS2FhS1ZPRTV3X0lXLXFqalAxRngzcUd1bU4tc2t0M1padTlCQmlHWEdVcGhyVE4tZTZHWVF3QUlvZko3cU1HX21Eckg3ZXdTYnc?oc=5",
+      "query": "Thailand OR Malaysia OR Portugal OR \"United Arab Emirates\" visa rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "Singapore ups ante in fintech, AI innovation with Visa - CoinGeek",
+      "source": "CoinGeek",
+      "date": "2026-11-12",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNVVdtVnp6dG91WWMtOHBPQ0ViWEk4enl0QVBwV1E1eUZ3WS1JN0ZOdV9aaUxFWGkwSF9NV2ctS0tONTVxNEQ4NUdWZVNMaVZseVZ5ZlFiTGRPaHF2YzdITHJFVzd4RzBNNTZBTWdVR1EzLXF5WERZd0k3TEdFby1Paw?oc=5",
+      "query": "Japan OR Korea OR Taiwan OR Singapore visa OR residence when:14d",
+      "approved": false
+    },
+    {
+      "title": "St. Lucia responds to EU demands to end citizenship by investment program - Caribbean National Weekly",
+      "source": "Caribbean National Weekly",
+      "date": "2026-11-11",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOZGptMWd3NERMVC1ydkcyRWVfM0tqbEM0alRQREtCRmtHSUc4b1lYUVZvZ3VvbjZHTEdxMmJDQlVfQW1Yd2VTdENPeEsyR0dvcW1BQmZVVnp5TXJ4amh2UklnbjdDUTBLZlZ4d0dCRHBWUkZXV3J5bW03cnZNOURkRjkzRTFIYUdUSVRfRmlhNkJHcW5jNVJQWVpKNzdxQzhQZW4tZG1MMm1QdTR1QS02bFV1cm1pSjNXRFE?oc=5",
+      "query": "\"golden visa\" OR \"citizenship by investment\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "Beyond the Passport Ranking: Five Questions for Choosing Citizenship by Investment in the Caribbean - EIN Presswire",
+      "source": "EIN Presswire",
+      "date": "2026-11-11",
+      "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxONTc1ZW5WZkhhemQ2cmFubjB3VjRlTEFhMldFZjltSkNpeFQzaHliMDJhOVlUZWt6UUVBc2RuekRidG1ZTTJaeDBONW1uQ3hVbi1Fd25FOHp1VGtFandNa1h2RHRiRk9UOVhkcXNCblhJSDZRY3FJTTh1THREYjQwTTRkUFEzci1ON281a2VwNG1FbzF5ZVdPU2Z4b3ZiTVNMVS1KQ1JTc2xYWk5wRDJMNno1UUZZNFdTY3lYc0s5aDNrTXp2akloSk54WnNSRVNhVkQwLWYzeUlpSXM1emc?oc=5",
+      "query": "\"golden visa\" OR \"citizenship by investment\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "India's new visa rules: Tourist visa replaced, 70% less paperwork - Gulf News",
+      "source": "Gulf News",
+      "date": "2026-11-11",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQWXdJSkt1V1R6Y1UxTUxoMmRacnZ0RGpRV2FjSGdMalJkSnNxeDhZLUd0MXhUaDRVOEE2d1J3UkxWelNOTnFmUDZfWVp6UGRvUldNTl9fZDBJLVd1UzZiOU9FWEVfdlBpZ0FuLUxCaVU5Q3Fod2JVbWZyMHJfNU8yV0laam5UTFdZczZvYnhXVVc4YWxDdlZLclY5STlaeEFPUlVsalcteHJjc3VxNlhDTdIBxgFBVV95cUxObnZQY0xESzBCcDJVU29KVHFjU2dCeFBnVGREU2pvRER0S2FGc0Zjd0VXYll2ckJZZUZLQnZzV2xqbGJEQVQxb3E2RksxQjVRcm5nOERTM2owVkRBcUs0YTM5Nms3SXVyeE5IRjF3U1JIMzFKdDZzSXpFV0Y0dDBwNkNtM3pBekNYa2FJdjBLbFh3dUh4c2dpSzJBUzBFMl9BQ1VFeXA1WXZUalhia08tdm45U2N1RTAydUc4cFRtbGo2V1dXLXc?oc=5",
+      "query": "Thailand OR Malaysia OR Portugal OR \"United Arab Emirates\" visa rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "How have visa rules changed in Gibraltar, Italy and the USA? - The Times",
+      "source": "The Times",
+      "date": "2026-11-11",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOdHVqTDVnZ0ZNMDFYWWRBdFAyVTE4WEI1dzVpS2FZbXlibnlGN29UWkJZZEd5Y0dDdzgyZ05FQUM2bUpwQnQzeGxIdGdGYmhlbnYwZVpwZ3FuRXhMT1YwQTdmZ290ZHhlSFJGSDNEZDhHc21BaEtyel9kX0dhdjU0ZlRxcmM0MHdlR2RySThDWnZyTENEbkJzeFhMMW83clZIMFNxTHpVWmF4Zjk1MU8yMHVlWW1ZMjhEMWdYdTJvYmQ5dEZ4?oc=5",
+      "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
+      "approved": false
+    },
+    {
+      "title": "Ukraine extends temporary residence permit deadlines for foreign military personnel - Міністерство оборони України",
+      "source": "Міністерство оборони України",
+      "date": "2026-11-10",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNYUh6REs0VFlXaHFqaW55SGp2UzRycnVMZzBVd0tUTkdYQ0ItRjBJYnhJbUdtbTd0T2VuSEptejUwSjNXN3B4RUFQbEo0Ymg2aXRaS05FSHVFNzRwbEs1NTJ2SzRMdGJDc3hZc2RoNVJQMmEycUpYWFR2cVczeFplRGhzYw?oc=5",
+      "query": "\"digital nomad visa\" OR \"residence permit\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "OPINION | EDITORIAL: Perhaps there’ll be some changes on federal immigration policy - Northwest Arkansas Democrat-Gazette",
+      "source": "Northwest Arkansas Democrat-Gazette",
+      "date": "2026-11-10",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQQWxmUXhtT1FUVDJtVUN5VzVJcHRxZm1CeEJwOVBvc0IwQ1VlSFU5cER4cE1pZFo5dWxiWmZnZzJGcDVBRFRreEI1aEhxQUFHU3pIeDd5TnJldlBDQk8zOFVZUHNrZnBKRFY0N0xoU2hOaEVsUVprelloOUJ4U2tJcUJBOUJCcGJMamNpcDBvZmlhUQ?oc=5",
+      "query": "\"visa policy\" OR \"immigration policy\" changes when:14d",
+      "approved": false
+    },
+    {
+      "title": "Gov. Abbott shaped immigration enforcement. So will Gov. Hinojosa. | Opinion - Houston Chronicle",
+      "source": "Houston Chronicle",
+      "date": "2026-11-10",
+      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQekE0Wl9YYzhISEwtMDZyY1o3TDdhSE41RVhrcWI4eUVrOVRicjFzaVlNRmhudU9lX2l2Y0Q3STNFZ3AtelprajRaN1pZYnlmWUFnSDJXdTQxTzNiV0NCN2tFR3Nlc1FfWHVUQnhmelRoQ1BKVEZ2Q2w2Zmk0TU5KQ3RJZjU2YmFhY1l4dmF4ZVdaWS1LU1dBMGlMZDliVzJYYlVMaWxTbEtscmRrTmRzZnphR0xKaDRWOVE?oc=5",
+      "query": "\"visa policy\" OR \"immigration policy\" changes when:14d",
+      "approved": false
+    },
+    {
+      "title": "Legal Residency in Mexico: Residency-Related Fees for 2026 - Mexperience",
+      "source": "Mexperience",
+      "date": "2026-11-10",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE15RUFGQnRoYzlZTmI4SkUtN3RIQ0puSlQ4Umdna3VqUFZhSTRRQ2JLZkFqUW1kZjhidTBXTUtOY295ZTZNdUhjYV9aaTVTRENsa3NLaUFreENfZ0t3T0QwQkZ2OHRsLUVQX1E?oc=5",
+      "query": "Mexico OR Panama OR Georgia OR Serbia residence permit when:14d",
+      "approved": false
+    },
     {
       "title": "Feeling the pinch? A one-way ticket to Italy could be the answer - Adelaide Now",
       "source": "Adelaide Now",
       "date": "2026-11-09",
       "url": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQamw4VVozOG5kNjE4MElqQmkzdWFSSWNjaDNISHd0bktmVnVobEVXWWxJTGtoUFo4NVU4akZNeHZwa0tvbWpKZUZ3bzVUTTZYekN3UmExMjRUc3M3WVdaZV84ZUlCMEZOQnpzWTBWOC13V1BQek1WRGsyODgzYll6UHIySzZETDlxYVV4MzV2dXBJZUJtZzA4ODU1S0k1VE11ZFlycGoyeTl2VTBqQmxHR05ncGRud3ZGSnpaSXIzenNFRkUzM2ktRExJakhEdmRIbUxJQUtKUEsweTFBWndHaUhxZ1o2SG1HWGdxckcyay1EbzIxNkE?oc=5",
       "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "Oman: New Residence Permit and Workforce Rules for Investors and Property Owners in Special Economic Zones and Free Zones - Fragomen",
+      "source": "Fragomen",
+      "date": "2026-11-09",
+      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxQSDFicnBLdTh2THRpd2padkc1OXRDM2tocURSWWtCZDJsYUFwMlVZNjhsSzZhM18yMUh3cWZ1VHgxTlZTb09XMFFqWnBjb0RNME9mYVctckNfRGRaQ00yMk82dGk0Uk9RdTZ6blNqWFBpcXhmWS14OGtsYVR5QWlrZU9vUGdUS2oxWDFLSUFpUFdRN2RiQmRlQXFHMmZHeEdWU2o3VWVxUlhQNFZUNFEtS1lnWTEtY3BHZW1VMnVCVFFoME5jT0paaFRLMTdNQ2x4NGRsSnlhUGJkdFZ3ZjlNN1o2a0cwSy1tOUlMeGtWeU0?oc=5",
+      "query": "\"digital nomad visa\" OR \"residence permit\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "Trump tells ’60 Minutes’ immigration policy ‘too tough,’ open to making a deal with Democrats - OSV News",
+      "source": "OSV News",
+      "date": "2026-11-09",
+      "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQSzJfWmNkcFVqUzNQSDdtVEIwaHVtQ0tCSGtYRHozVWExUmIyaEV6N18zT2xiUWlDdFVyMFNWZ2RWeEdGWE1IS3dCN0RMQWxhbGdZWUlDV1o4QnoySWdnbktESU9sTEd0Y1lWRDVpZXd3VkJrUnE5a2NCX21oZE9wR1BNaE9icFYxazlyQTNZd1V6SFhWaGZhRFoydFVHZlBxZHVlOHNDU3h6VzBraHh0UDJfWQ?oc=5",
+      "query": "\"visa policy\" OR \"immigration policy\" changes when:14d",
+      "approved": false
+    },
+    {
+      "title": "Portugal's Governing Parties Propose Tighter Golden Visa Fund Rules, New €250,000 Social Route - IMI Daily",
+      "source": "IMI Daily",
+      "date": "2026-11-09",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNWjh6Y1lQNE15QnpCclJrMjl2ZUxueTA5WlRiZjFsNm1veEg3R0s3anJNQkxMbDFWQXVlZWNzN3VkMlZoUFkwX1RVUDFEaExrcTk5aEVSRER3OVlZZXk1cmRiak4xbnZwVFNsMFN2ckh1dEZidWRyVWNnR2tFT3ItRGVONGdNLWRkbl9IY3JDa1JJcmVUVVZTQ1MyM05PZVhVeEkwdVhDRUtKcll4ZUpCVHJobUp5SEN0RkFUaGRPY3hxQQ?oc=5",
+      "query": "Thailand OR Malaysia OR Portugal OR \"United Arab Emirates\" visa rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "US Senate advances New Mexico US Sen. Heinrich’s controversial permit reform bill - Source New Mexico",
+      "source": "Source New Mexico",
+      "date": "2026-11-09",
+      "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQSVZ6anVZczlHYUhRRi1ielZJa3cxUG01cUpCQ0JCZ0V0NDRBckNyalpOVjJEN3NNYTFsUVN1aU1SYjNFWWN6QnVZU0hlcmszcnZoN3QzOGxCOXVWMzlqVGxzV0htN3czV3gyaVJpckpva1VkeDVyNWlQdHUxdWdvWnVVZGtzWDhsWkhuREhYay0yRkF5by1jVUwtTkdSWmx4MU9tbHd1dVRnSWVOX0E0WmdR?oc=5",
+      "query": "Mexico OR Panama OR Georgia OR Serbia residence permit when:14d",
+      "approved": false
+    },
+    {
+      "title": "High-Profile Smuggling Raids in Hungary Point to Former PM's Brother - Organized Crime and Corruption Reporting Project | OCCRP",
+      "source": "Organized Crime and Corruption Reporting Project | OCCRP",
+      "date": "2026-11-09",
+      "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOSkF1NHlqTk1LZjJVWU92OVNZTDFEemNzVnpnQnA4UnBlQ2NXQUFXemFVNGp1T3RKLThnRkx3MHdpMGh3cm5KZldXdndjRXRuUnh6S1dXcllUVVdmM0dvaGVxQnNIUjctQVdtQWJvMmpweWpsdjhXV01NYnlPZnhzUnRub090SGRLN2RiSnRRSnpHSmJRNmRPVEFLSDd4dw?oc=5",
+      "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
       "approved": false
     },
     {
@@ -40,6 +320,14 @@
       "date": "2026-11-07",
       "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE5DMW5kWWJhS2NEU2ZFNzdLTmkyalU1YXc1NnJIV2E5N2pBZ1g2TFRJbHRGVnRYdWtrdGZYR2VDVW01S29CdDNySFNmM05fX1hPVWxqb0pNTWpuN3pjemR1RDFjRzhHQQ?oc=5",
       "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "Found memory card narrows Democrats state House margin - The Current",
+      "source": "The Current",
+      "date": "2026-11-07",
+      "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxQdWVpUGh3RV91WFktUEswRTlnenRrTXQ3d3NYVXFTT3VDaFhBUnNlRWdWVUtfdFdndC1NZTdmazJEd2lZbjcybjBDTEM2UVdaTGlMSW5FcWFkMkFfX2w5bFgxZmVRenowdnZ2cWpvRnItWFBsLVlOdl9IU1JwdEQwdVBQQmd3c1BlNl9XT0JIbFNNcHVYTXc?oc=5",
+      "query": "Mexico OR Panama OR Georgia OR Serbia residence permit when:14d",
       "approved": false
     },
     {
@@ -119,6 +407,22 @@
       "source": "MassLive",
       "date": "2026-11-06",
       "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNcktneFhFZWp3R0JQS2NfNHhHQ1RwWVludlVUblhPTlRraDZiRFhyRF9WanBxaFgwZVhfTGk5VF8wWGprbDFUYnUtNXJXeFBobHN0djUxa2NGdnV6dmlXWkJLUlBlZC1WMDI0QnhkSGdtTEw1VUNiaS1jdlAzWnE2WnBzdjc3WmdiUnJ5ZS01b3FxOUg4cXhyd0plX2R6OFZxSmJETl83RzRJZFhoeFhsU2FIeUt3S0XSAcsBQVVfeXFMT290OGNXUk55djVxX2NLOWdZVW9mdm5EbVpFZFBIVV80bG9hUjRTYkYzZXdpV2V1enk1QlM0Yl8tSTJGaVVWV1dqUGliX3R5ZXpGcWNpWVk2ZV8wd0lXTGN2OEtlb3F2dTB5ckN6aUItMlpPT3pkUlBPRnlVMV9ES2NWTHdzRUJBS1ZIRmlfQWplWGhiNG94NEstU0VwdW9KRUY3WDI1R2djVlF4RF9VWHZJS1RHN0E0V1JBcGR5eTBOb29qWkZZQV9yY1E?oc=5",
+      "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
+      "approved": false
+    },
+    {
+      "title": "Visa sets up six hubs in Singapore for AI and ‘next-generation payments’ - Electronic Payments International",
+      "source": "Electronic Payments International",
+      "date": "2026-11-06",
+      "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNd3NpRHF6blZFQThhWE51emczQWM1aWdCVnBrdnJEODJWSFhManhCeWRxdVA1eXZidDhqbTI5cW1JY0pGYnMtREstdEozdnVGNDhFUFpqMGpTdlE3dWs4cXRtTF9pVl9rTVNkOVVsQ3RjRm1pRWwtSmdBcjRLUWFKQkk5ZzdXd0ljOXBURXV2OTZwZFBRLUFoOUMwcmhhV2tWUUp3TjVsTVZEYzZVYldROW5SMjBwaVZaQmxoaVZwbW4yZw?oc=5",
+      "query": "Japan OR Korea OR Taiwan OR Singapore visa OR residence when:14d",
+      "approved": false
+    },
+    {
+      "title": "Hungary Proposes to Abolish Its Golden Visa Program from 2027 - IMI Daily",
+      "source": "IMI Daily",
+      "date": "2026-11-06",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQRGw1LTdtSTdiamNLcy1HVHh1S1JPNmVQNlVvV0VseFZzVl84UmlPaUNxNWRkV2loWVRrS1B4OWJ1TFJKNnMtdUV1SEpUU3NtVEMtNjBKZjBucVEwdlc5ZmRBZmMzb1oyaG9vSm5mMFJGQ3hiVGFoWUNjVXJ0U2hpcENOUG5GcGYxTV9XZzFSV2NKMlpPQWJ1S1JB?oc=5",
       "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
       "approved": false
     },
@@ -267,6 +571,14 @@
       "approved": false
     },
     {
+      "title": "Visa opens 6 global capability hubs in Singapore, bringing 1,500 technology staff to Paya Lebar Green - TNGlobal",
+      "source": "TNGlobal",
+      "date": "2026-11-05",
+      "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQNGpBTHVJY21fUmJwNDZ6bjFKWEhTekJUaXpHQnpzSy1UaWZRQzVnRDlBemN3ZTdsQVVLbWlXYWZYYUZnU25Kdlc4RlNiMjNIOVRDUEhsVUZKdlM4TGNhbzBnUk1ZYnhKNG9Hams1Z2RydVJhQWRVa0JITHBYcFJlbFpuTHV6RzFUV25rMEN6VmlpWVdUY1BuaUV1RzdPVTdmVEdlUWtnN2FtN3ZhMFltbmNjaFBtZWpLVlpvaGRhZnE5b195Nk0wMWVqN2lWeEFm?oc=5",
+      "query": "Japan OR Korea OR Taiwan OR Singapore visa OR residence when:14d",
+      "approved": false
+    },
+    {
       "title": "The Election’s Impact On U.S. Immigration Policy - Forbes",
       "source": "Forbes",
       "date": "2026-11-04",
@@ -331,6 +643,22 @@
       "approved": false
     },
     {
+      "title": "Expat Financial Planning in 2026 - WSJ",
+      "source": "WSJ",
+      "date": "2026-11-04",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTUYxeGY0S1VVU1pwTkpUQTlDU1RHTWpnM2dUWXhIODJ0QzF6c2N1dmliWFdYWFR5bUxzMnQxR0hpd1NZN1QzVVBWMjlVTUdmeHBSM0pnZWZfWFlFY3BBSi16Rk52M3FkbzBGbkM4YzdPZXhhTnJYT3BUYjJwendqUHpJNzBYQ0ltZ3ZEWU8xYktzUQ?oc=5",
+      "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "Japan unlikely to raise cap for foreign workers despite labor shortages - The Japan Times",
+      "source": "The Japan Times",
+      "date": "2026-11-04",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPeUl1ZUNIYVFMQWhJcVNLWFlBN2ROR2JiQmZSU2h3a2RYZTVrajAxOFo4MVV4V1F0ZkI4TEZ4d3g4R0RGRVloQm1rMi0wcjJDTVphZDFxVjR6Sk5sQ2lGeXJuOEdySXdCZ1g0Ym9FTlJqdHVIZFNqelJrcFlrWGhBVg?oc=5",
+      "query": "Japan OR Korea OR Taiwan OR Singapore visa OR residence when:14d",
+      "approved": false
+    },
+    {
       "title": "How much will I need to earn to apply for Spain's Digital Nomad Visa in 2027? - The Local Spain",
       "source": "The Local Spain",
       "date": "2026-11-03",
@@ -383,6 +711,22 @@
       "source": "Politico",
       "date": "2026-11-03",
       "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNN3Npc0c1STYtWEJqS3Z2bVN3ckJ0TUNtX1pLbXRxWkxlWlZCbkVza2FMOHAwd2tQRXgzdFVySkw3ekJZVU1qOFgxX2hmcVdjMVlCRlRfRF9wblA3dk1ndjdCZ28weW1xel8xdDgwMGd0Ul9mTG5YQTJ1V0dnQzZDdlJwMGtOYTdyQXNWSm83UXhaRHp0VlU3YTNR?oc=5",
+      "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
+      "approved": false
+    },
+    {
+      "title": "Digital Nomad Visa Portugal 2026: D8 Requirements, Simplified - Portugalist",
+      "source": "Portugalist",
+      "date": "2026-11-03",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5sZGRpOWtWSDhFWkptQ0NESF9WWi03LTQwOHd4VWN3M1pEUVhWQ0piLVRkdTdqOWpTLUVvVHZ0T2Y1cG4zR3ZtWHdIbEZfWGZ2YU9CLUYtMHlsaWJuNGt4N3BZZEY4U2s?oc=5",
+      "query": "\"digital nomad visa\" OR \"residence permit\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "IMI Exclusive: Demand for Italy’s Investor Visa Has Nearly Tripled in Two Years - IMI Daily",
+      "source": "IMI Daily",
+      "date": "2026-11-03",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOX21CekNmMFA0SHh4NDRwSWRDcXNQWmVyMTlxOXpQWXFsYm9GOThvQ2toRDBfazEyNy1VTkdMZDU4SGF0eFMwbExWc2Y1QnQtbjlaMDRUOXlCa3FCQ09QeExxaUtBY1BkMlpHRGFYdjFQcGlHTWk0TVE4SERPM2RPdzR5UGpiZDFKdS1WdWtzNDRDb3dvSm9GNWVZVWhTcDVkX0RNZ1p3VW1IOHZRTU1qbXB0RFBqZ2M?oc=5",
       "query": "Italy OR Spain OR Greece OR Hungary \"digital nomad\" OR visa when:14d",
       "approved": false
     },
@@ -440,6 +784,30 @@
       "date": "2026-11-02",
       "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxNcGhlU19qTFIzTHZVMHF3ZWVLcUlraXBocGQxS2FWeU1QVm1qaWpoUlphVE9PQTFVOTUyZFBHdUlzZGVrYldXaVFkVkQwS01zUkd5LXFablB3Z05tNEJ3XzNHdEFLNDRWTk5tTmZhaENYV29EWm5TSWx5R2syNjRjTElXRUw?oc=5",
       "query": "Mexico OR Panama OR Georgia OR Serbia residence permit when:14d",
+      "approved": false
+    },
+    {
+      "title": "Denmark Extends Ukraine Special Act Permits to March 2028 - Erickson Immigration Group",
+      "source": "Erickson Immigration Group",
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNSTdreWVrd0Y1NjR5bWs4ZWZtbUp6dU1pSGUzLWNVRi1MdFZ0VlFRclpnM05yS21PRlpqT1B1RFBXNnJsMDdTakh0TURhSHRrWTZBSFNLTTZnM3hENzQwM0VyUnU1UmNmR2d2QXc2YS1JN1lWRnN0bzlLczBhb2RzOWRkOA?oc=5",
+      "query": "\"digital nomad visa\" OR \"residence permit\" when:14d",
+      "approved": false
+    },
+    {
+      "title": "First Canadian winter guide for newcomers - Expatica",
+      "source": "Expatica",
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxNZE5QWFFpX29nRVE2dnptbGw3Q3JIcjFmeVhOSEdlenpNTXk5WVYyN2ROS3AzNy03SHFlV0F0UGYyRmdvNGlKb2tUNGFGX1g0SWx1SG5sRkJNZUdqV2dSRDhad1VYM3J0RWlULUdoSHhkcDA0Mjg1QVNuRHA3eWFIOVZrdFltZFFKMDVfTGZCWEVXVVJGU09iOEtJY2Y?oc=5",
+      "query": "\"cost of living\" expat policy OR rule when:14d",
+      "approved": false
+    },
+    {
+      "title": "Lawmakers' visa hurdles expose a wider problem in Korea-U.S. alliance as usual channels no longer work - Korea JoongAng Daily",
+      "source": "Korea JoongAng Daily",
+      "date": "2026-11-02",
+      "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPMXRGRWZYYkNCYzFkYzl4QlE1OUJLaFNjR1JGa2lTRUljd1lVUWtKWWFtQnVWdTF0bVU3VnktR09heVhzN21RVTNlZWxhYUtjcWNFNklndXhTdnozN1FqVDg2TkhzS3NpcXZRZTExY2JoQUtpTWdKcVVkOVdLbzQ1TnJrODdLYndVazFicERNUDFoMVhIYWQ3MC1HdF90UFk3RWZjUG1IMkJsMVpuYkk4amhpR3hqYXh3aTRVYm8yYzE2ZXQ2dS00V3BOYXdDYVc1VnR2bG9reVYtX1d2RDlyN3hn?oc=5",
+      "query": "Japan OR Korea OR Taiwan OR Singapore visa OR residence when:14d",
       "approved": false
     },
     {
