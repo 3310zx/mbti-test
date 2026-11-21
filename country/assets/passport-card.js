@@ -97,7 +97,7 @@
     spaced(ctx, "WHERE TO LIVE", 1016, 60, 3, "right");
     font(ctx, 13, "", '"PingFang SC",sans-serif');
     ctx.fillStyle = "rgba(255,255,255,0.6)";
-    spaced(ctx, "国家匹配测试 · 55 国 · 六维度", 1016, 92, 1.6, "right");
+    spaced(ctx, "国家匹配测试 · 55 国/地区 · 六维度", 1016, 92, 1.6, "right");
   }
   function checkDigit(str) {
     var total = 0, w = [7, 3, 1], i, ch, v;

@@ -318,12 +318,12 @@ def country_page(iso):
     tot = total_score(iso)
     best_d, best_s, best_fact, worst_d, worst_s, worst_fact = strength_text(iso)
     title = f"{zh}生活数据：物价、收入、治安、医疗、自然与社会六维度评分与排名"
-    desc = (f"{zh}在 55 个国家中综合匹配分 {tot:.1f}（六维等权），排第 {TRANK[iso]} 位；"
+    desc = (f"{zh}在 55 个国家与地区中综合匹配分 {tot:.1f}（六维等权），排第 {TRANK[iso]} 位；"
             f"最强的是{best_d['zh']}（{best_s:.0f} 分），最弱的是{worst_d['zh']}（{worst_s:.0f} 分）。"
             f"含 12 项世界银行指标原始值与年份、三大城市一居室租金参考与签证门槛标签。")
 
     faq = [
-        (f"{zh}在 55 个国家里综合排第几？",
+        (f"{zh}在 55 个国家与地区里综合排第几？",
          f"按六个维度等权计算，{zh}的综合匹配分是 {tot:.1f}，在 {len(TOTAL)} 个国家中排第 {TRANK[iso]} 位。"
          f"其中{best_d['zh']} {best_s:.0f} 分（{tier_word(best_s)}，第 {RANK[best_d['key']][iso]} 位），"
          f"{worst_d['zh']} {worst_s:.0f} 分（{tier_word(worst_s)}，第 {RANK[worst_d['key']][iso]} 位）。"
@@ -402,7 +402,7 @@ def country_page(iso):
     <h1>{zh}生活数据：六个维度到底强在哪、弱在哪</h1>
     <p class="lede">按六个维度等权计算，{zh}在 {len(TOTAL)} 个候选国家里综合匹配分 <strong>{tot:.1f}</strong>，排第 <strong>{TRANK[iso]}</strong> 位。
     最强的一项是{best_d["zh"]}（{best_s:.0f} 分，第 {RANK[best_d["key"]][iso]} 位），{worst_d["zh"]}是它的短板（{worst_s:.0f} 分，第 {RANK[worst_d["key"]][iso]} 位）。
-    下面每一项都标注了世界银行的原始值、年份与在 55 国中的分位分。</p>
+    下面每一项都标注了世界银行的原始值、年份与在 55 国/地区中的分位分。</p>
     <div class="hero-actions">
       <a class="btn primary" href="{sr}#intro">测一测我该去哪</a>
       <a class="btn ghost" href="{compare_url}">与其它国家对比</a>
@@ -462,7 +462,7 @@ def country_page(iso):
   <h2>12 项原始数据与年份</h2>
   <div class="tbl-wrap"><table class="metrics stack plain">
   <thead><tr><th>指标</th><th style="text-align:right">数值</th><th style="text-align:right">年份</th>
-  <th style="text-align:right">55 国分位分</th></tr></thead>
+  <th style="text-align:right">55 国/地区分位分</th></tr></thead>
   <tbody>{metrics_rows(iso)}</tbody></table></div>
   <p class="tbl-src">数据来源：世界银行公开数据 API（CC BY 4.0），取各国最新可用年份的原始值，未做估算、插值或填充；缺失值原样保留。分位分为候选国家内部相对位置，不是国际通行评级。</p>
 </section>
@@ -487,8 +487,8 @@ def country_page(iso):
 def index_page():
     sr, cp = "../../", "../"
     canon = f"{SITE}/country/c/"
-    title = "55 个国家的生活数据总表：六维度评分、排名与原始指标"
-    desc = ("55 个候选国家的生活条件总表：综合匹配分、六维度分数、区域与 12 项世界银行指标年份，"
+    title = "55 个国家与地区的生活数据总表：六维度评分、排名与原始指标"
+    desc = ("55 个候选国家与地区的生活条件总表：综合匹配分、六维度分数、区域与 12 项世界银行指标年份，"
             "按综合分排序，可点表头切换排序，每行进入单国详情页。")
     rows = []
     for iso in TOTAL:
@@ -507,15 +507,15 @@ def index_page():
     body = f"""{crumbs([("首页", sr), ("国家数据", "")])}
 <section class="page-hero">
   <div class="wrap">
-    <p class="kicker">55 Countries · 6 Dimensions</p>
-    <h1>55 个国家的生活数据总表</h1>
+    <p class="kicker">55 Countries &amp; Regions · 6 Dimensions</p>
+    <h1>55 个国家与地区的生活数据总表</h1>
     <p class="lede">综合分是六个维度的等权平均，只代表「默认权重下」的相对位置。真实排序取决于你更在意什么——
     到<a href="{sr}#intro">测试页</a>答完 18 道题，就能用你自己的权重重算；也可以直接进单国页看原始指标与年份。</p>
   </div>
 </section>
 <section class="wrap section">
   <div class="tbl-wrap"><table class="metrics sortable"><thead>{thead}</thead><tbody>{"".join(rows)}</tbody></table></div>
-  <p class="tbl-src">点击表头可切换排序。分数为该维度在 55 国中的分位分（0–100），"—" 表示世界银行未收录该国该项数据。</p>
+  <p class="tbl-src">点击表头可切换排序。分数为该维度在 55 国/地区中的分位分（0–100），"—" 表示世界银行未收录该国该项数据。</p>
 </section>
 <section class="wrap section">
   <h2>按维度看榜单</h2>

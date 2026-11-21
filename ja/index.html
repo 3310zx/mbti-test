@@ -834,7 +834,7 @@
   <option value="../es/index.html">スペイン語</option>
   <option value="../pt/index.html">ポルトガル語</option>
 </select>
-        <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙</button>
+        <button class="theme-toggle" id="themeToggle" type="button" onclick="toggleTheme()" aria-label="ダークモード切替">🌙</button>
       </div>
     </div>
   </div>
@@ -930,7 +930,7 @@
         </div>
         <div class="q-text" id="qText"></div>
         <div class="q-hint">この文にどの程度同意しますか：</div>
-        <div class="likert" id="likert"></div>
+        <div class="likert" id="likert" role="group" aria-label="回答の選択肢（1〜6）"></div>
       </div>
       <div id="progressNote" class="adhd-note"></div>
       <div class="nav">
@@ -1514,6 +1514,7 @@ function render(){
     var b = document.createElement('button');
     b.type = 'button';
     b.innerHTML = '<span class="v">' + opt.v + '</span><span class="l">' + opt.l + '</span>';
+    b.setAttribute('aria-pressed', answers[cur] === opt.v ? 'true' : 'false');
     if(answers[cur] === opt.v){ b.className = 'sel'; }
     b.onclick = (function(v){ return function(){ answer(v); }; })(opt.v);
     lb.appendChild(b);

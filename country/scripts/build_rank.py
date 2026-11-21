@@ -11,7 +11,7 @@ DIM_PAGE_EXTRA = {
     "income": "人均 GDP 按购买力平价折算，反映产出水平而不是到手工资；失业率取 ILO 模型估计口径，与各国社保申领条件无关。",
     "safety": "唯一的指标是每十万人故意杀人案件数，它不覆盖盗窃、诈骗、家暴等更常见的治安问题，也不能反映街区之间的巨大差异。",
     "health": "预期寿命反映的是历史死亡率的综合结果，医疗支出占 GDP 反映投入强度，两者都不直接等于医疗质量或可及性。",
-    "nature": "PM2.5 为国家年均人口加权浓度，森林覆盖率不区分原始林与人工林，人口密度是中性指标——按「接近 55 国中位数得分最高」计算。",
+    "nature": "PM2.5 为国家年均人口加权浓度，森林覆盖率不区分原始林与人工林，人口密度是中性指标——按「接近 55 国/地区中位数得分最高」计算。",
     "society": "互联网使用率、城市化率与女性劳动参与率都是结构性指标，它们与「社会包容度」相关但不能等同。",
 }
 
@@ -40,8 +40,8 @@ def dim_page(dim):
     rows = sorted([r for r in rows if r[1] is not None], key=lambda x: (-x[1], x[0]))
     top3 = rows[:3]
     canon = f"{SITE}/country/rank/{key}/"
-    title = f"{dim['zh']}最好的国家排名：55 国分位分榜单（{INDS[dim['inds'][0][0]]['zh']}等指标）"
-    desc = (f"按{dim['zh']}给 55 个国家排序：第 1 名 {COUNTRY[top3[0][0]]['zh']}（{top3[0][1]:.0f} 分），"
+    title = f"{dim['zh']}最好的国家排名：55 国/地区分位分榜单（{INDS[dim['inds'][0][0]]['zh']}等指标）"
+    desc = (f"按{dim['zh']}给 55 个国家与地区排序：第 1 名 {COUNTRY[top3[0][0]]['zh']}（{top3[0][1]:.0f} 分），"
             f"第 2 名 {COUNTRY[top3[1][0]]['zh']}（{top3[1][1]:.0f} 分），第 3 名 {COUNTRY[top3[2][0]]['zh']}（{top3[2][1]:.0f} 分）。"
             f"含每国原始指标值与年份，说明{dim['zh']}由哪些世行指标构成。")
 
@@ -58,7 +58,7 @@ def dim_page(dim):
 <section class="page-hero">
   <div class="wrap">
     <p class="kicker">Ranking · {dim["zh"]}</p>
-    <h1>{dim["zh"]}最好的国家：55 国完整排序</h1>
+    <h1>{dim["zh"]}最好的国家：55 国/地区完整排序</h1>
     <p class="lede">{dim["note"]}。本榜按该维度的分位分排序，第一名 {COUNTRY[top3[0][0]]["zh"]} 拿到 {top3[0][1]:.0f} 分，
     最后一名 {COUNTRY[rows[-1][0]]["zh"]} 只有 {rows[-1][1]:.0f} 分。分数是候选国家内部的相对位置，不是国际评级。</p>
     <p class="weight-note">这一维度怎么算：{comp}。</p>
@@ -74,10 +74,10 @@ def dim_page(dim):
   <div class="split three">{"".join(cards)}</div>
 </section>
 
-{ad_unit("广告 · 下方是 55 国完整榜单")}
+{ad_unit("广告 · 下方是 55 国/地区完整榜单")}
 
 <section class="wrap section">
-  <h2>55 国完整榜单</h2>
+  <h2>55 国/地区完整榜单</h2>
   <div class="tbl-wrap"><table class="metrics stack rank-list">
   <thead><tr><th style="text-align:right">排名</th><th>国家</th><th style="text-align:right">分数</th>
   <th>区域</th><th>原始指标（含年份）</th></tr></thead>
@@ -120,10 +120,10 @@ def index_page():
     body = f"""{crumbs([("首页", sr), ("维度榜单", "")])}
 <section class="page-hero">
   <div class="wrap">
-    <p class="kicker">6 Dimensions · 55 Countries</p>
+    <p class="kicker">6 Dimensions · 55 Countries &amp; Regions</p>
     <h1>六维度榜单</h1>
     <p class="lede">把「最适合生活」拆成六个可以单独比较的问题：哪里最便宜、哪里收入机会更好、哪里更安全、
-    哪里医疗更强、哪里自然环境更舒服、哪里社会与数字化程度更高。每个榜单都能看到完整 55 国排序与构成指标。</p>
+    哪里医疗更强、哪里自然环境更舒服、哪里社会与数字化程度更高。每个榜单都能看到完整 55 国/地区排序与构成指标。</p>
     <p class="weight-note">没有唯一的冠军，因为任何综合排名都必须先假设一套权重。下面的综合分用了最简单的等权平均，只作参照。</p>
   </div>
 </section>

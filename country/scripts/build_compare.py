@@ -80,6 +80,7 @@ def page():
 </section>
 
 <section class="wrap section">
+  <p class="same-note" id="sameNote" role="status" hidden>国家 A 与国家 B 选的是同一个国家/地区，对比结果必然全部持平。换一个国家就能看到真实的六维差距。</p>
   <div id="vsHead">{hr}</div>
   <div class="split">
     <div class="panel">
@@ -88,7 +89,7 @@ def page():
       <th style="text-align:right" id="thA">{COUNTRY[A]["zh"]}</th>
       <th style="text-align:right" id="thB">{COUNTRY[B]["zh"]}</th><th>占优</th></tr></thead>
       <tbody id="dimBody">{dr}</tbody></table></div>
-      <p class="weight-note">数字为该维度的 55 国分位分，越高表示在该维度越占优；成本维度分数高＝更便宜。</p>
+      <p class="weight-note">数字为该维度的 55 国/地区分位分，越高表示在该维度越占优；成本维度分数高＝更便宜。</p>
     </div>
     <div class="panel">
       <h2>12 项原始指标</h2>
@@ -102,7 +103,7 @@ def page():
 
 <section class="wrap section">
   <h2>怎么读这张对比表</h2>
-  <p class="weight-note">分位分只说明「在 55 个候选国家里的相对位置」，不能跨维度比较绝对优劣。
+  <p class="weight-note">分位分只说明「在 55 个候选国家与地区里的相对位置」，不能跨维度比较绝对优劣。
   如果你更在意收入，就把收入机会看得更重；如果预算紧张，成本维度的差距往往比其它五项加起来更能决定体验。
   想按自己的权重算，<a href="{cp}#intro">做 18 道题</a>后在结果页拖动滑块重算。</p>
 </section>
@@ -127,6 +128,14 @@ window.CMP = {json.dumps(payload(), ensure_ascii=False)};
   function num(v){{return v===null||v===undefined?"—":v;}}
   function render(){{
     var a=window.CMP[selA.value],b=window.CMP[selB.value];
+    var u=new URL(location.href);u.searchParams.set("a",selA.value);u.searchParams.set("b",selB.value);history.replaceState(null,"",u);
+    var same=selA.value===selB.value;
+    var note=document.getElementById("sameNote");
+    if(note)note.hidden=!same;
+    var head=document.getElementById("vsHead"),split=document.querySelector(".split");
+    if(head)head.style.display=same?"none":"";
+    if(split)split.style.display=same?"none":"";
+    if(same)return;
     if(!a||!b)return;
     var h='<div class="vs-head"><div><p class="kicker">'+a.region+'</p><h3><a href="../c/'+selA.value.toLowerCase()+'/">'+a.zh+'</a></h3><p class="big">'+a.total+'<small> 综合分 · 第 '+a.rank+' 位</small></p></div>'
       +'<div><p class="kicker">'+b.region+'</p><h3><a href="../c/'+selB.value.toLowerCase()+'/">'+b.zh+'</a></h3><p class="big">'+b.total+'<small> 综合分 · 第 '+b.rank+' 位</small></p></div></div>';
@@ -148,7 +157,6 @@ window.CMP = {json.dumps(payload(), ensure_ascii=False)};
       mr+='<tr><td class="dim">'+i.zh+'</td><td class="num">'+fa+'</td><td class="num">'+fb+'</td></tr>';
     }});
     document.getElementById("metBody").innerHTML=mr;
-    var u=new URL(location.href);u.searchParams.set("a",selA.value);u.searchParams.set("b",selB.value);history.replaceState(null,"",u);
   }}
   selA.addEventListener("change",render);selB.addEventListener("change",render);render();
 }})();

@@ -932,7 +932,7 @@
         </div>
         <div class="q-text" id="qText"></div>
         <div class="q-hint">你幾同意呢句陳述：</div>
-        <div class="likert" id="likert"></div>
+        <div class="likert" id="likert" role="group" aria-label="回答選項（1 到 6）"></div>
       </div>
       <div id="progressNote" class="adhd-note"></div>
       <div class="nav">
@@ -1495,6 +1495,7 @@ function render(){
     var b = document.createElement('button');
     b.type = 'button';
     b.innerHTML = '<span class="v">' + opt.v + '</span><span class="l">' + opt.l + '</span>';
+    b.setAttribute('aria-pressed', answers[cur] === opt.v ? 'true' : 'false');
     if(answers[cur] === opt.v){ b.className = 'sel'; }
     b.onclick = (function(v){ return function(){ answer(v); }; })(opt.v);
     lb.appendChild(b);
