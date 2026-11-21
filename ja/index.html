@@ -819,10 +819,10 @@
       </div>
       <div class="appbar-actions" style="display:flex;align-items:center;gap:10px;margin-left:auto;">
         <a href="types/index.html" class="appbar-link" style="display:inline-flex;align-items:center;height:38px;padding:0 16px;border-radius:980px;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-on-surface);font-size:13px;font-weight:500;text-decoration:none;transition:transform .15s ease,border-color .2s,color .2s;" onmouseover="this.style.borderColor='var(--md-primary)';this.style.color='var(--md-primary)';" onmouseout="this.style.borderColor='';this.style.color='';">タイプ百科事典</a>
-        <button class="adhd-toggle" id="adhdToggle" type="button" onclick="toggleAdhd()" aria-label="Toggle ADHD Focus Mode">
+        <button class="adhd-toggle" id="adhdToggle" type="button" onclick="toggleAdhd()" aria-label="ADHD フォーカスモード切替">
           <span class="adhd-dot"></span>ADHD
         </button>
-        <select class="lang-switch" aria-label="Language" style="height:38px;padding:0 12px;border-radius:980px;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-on-surface);font-size:13px;font-weight:500;cursor:pointer;outline:none;max-width:132px;" onchange="location.href=this.value">
+        <select class="lang-switch" aria-label="言語" style="height:38px;padding:0 12px;border-radius:980px;border:1px solid var(--md-outline-variant);background:var(--md-surface);color:var(--md-on-surface);font-size:13px;font-weight:500;cursor:pointer;outline:none;max-width:132px;" onchange="location.href=this.value">
   <option value="../index.html">中国語（簡体）</option>
   <option value="../en/index.html">英語</option>
   <option value="index.html" selected>日本語</option>
@@ -1120,9 +1120,9 @@
         <div id="bgmTitle" style="font-size:13px;opacity:.72;color:var(--md-on-surface);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Cognitive Blue</div>
       </div>
       <div style="display:flex;align-items:center;gap:8px;">
-        <button type="button" class="btn btn-tonal bgm-btn" id="bgmPrev" aria-label="Previous Track" style="width:auto;padding:0 16px;height:40px;">前の曲</button>
-        <button type="button" class="btn btn-filled bgm-btn" id="bgmToggle" aria-label="Play or pause" style="width:auto;padding:0 20px;height:40px;">再生</button>
-        <button type="button" class="btn btn-tonal bgm-btn" id="bgmNext" aria-label="Next Track" style="width:auto;padding:0 16px;height:40px;">次の曲</button>
+        <button type="button" class="btn btn-tonal bgm-btn" id="bgmPrev" aria-label="前の曲" style="width:auto;padding:0 16px;height:40px;">前の曲</button>
+        <button type="button" class="btn btn-filled bgm-btn" id="bgmToggle" aria-label="再生または一時停止" style="width:auto;padding:0 20px;height:40px;">再生</button>
+        <button type="button" class="btn btn-tonal bgm-btn" id="bgmNext" aria-label="次の曲" style="width:auto;padding:0 16px;height:40px;">次の曲</button>
       </div>
     </div>
     <audio id="bgmAudio" preload="metadata" loop></audio>
