@@ -6,6 +6,7 @@ on:
     paths:
       - "**.html"
       - "sitemap.xml"
+      - "sitemap-images.xml"
       - "country/sitemap*.xml"
       - "scripts/indexnow.py"
       - ".github/workflows/indexnow.yml"

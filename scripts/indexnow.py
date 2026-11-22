@@ -23,11 +23,15 @@ def find_key():
 
 
 def urls():
-    xml = open(SITEMAP, encoding="utf-8").read()
+    """汇总 sitemap.xml 页面 URL + sitemap-images.xml 中的图片 URL"""
     out = []
-    for loc in re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml):
-        if loc.startswith(f"https://{HOST}/") and loc not in out:
-            out.append(loc)
+    for path in (SITEMAP, os.path.join(BASE, "sitemap-images.xml")):
+        if not os.path.exists(path):
+            continue
+        xml = open(path, encoding="utf-8").read()
+        for loc in re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml):
+            if loc.startswith(f"https://{HOST}/") and loc not in out:
+                out.append(loc)
     return out
 
 
