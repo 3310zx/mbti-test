@@ -29,7 +29,9 @@ def urls():
         if not os.path.exists(path):
             continue
         xml = open(path, encoding="utf-8").read()
-        for loc in re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml):
+        locs = re.findall(r"<loc>\s*([^<\s]+)\s*</loc>", xml)
+        locs += re.findall(r"<image:loc>\s*([^<\s]+)\s*</image:loc>", xml)
+        for loc in locs:
             if loc.startswith(f"https://{HOST}/") and loc not in out:
                 out.append(loc)
     return out
