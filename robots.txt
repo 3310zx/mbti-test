@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://3310zx.github.io/mbti-test/sitemap.xml
+Sitemap: https://3310zx.github.io/mbti-test/sitemap-images.xml
 
 # LLM index: https://3310zx.github.io/mbti-test/llms.txt
 # Explicitly allow major AI crawlers to read the test interface.
