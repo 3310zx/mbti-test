@@ -24,6 +24,9 @@ HREFLANG_EXEMPT = {
     "country/index.html",
     "country/updates/index.html",
     "zh/index.html",
+    # portraits/ 图鉴页当前只上线中文版（P1）。P2 生成 9 个语言镜像后
+    # 必须把这一行从豁免名单移除，让 hreflang 11 条校验重新生效。
+    "portraits/index.html",
 }
 
 # country/ 下由 scripts/build_*.py 静态生成的子目录（国家数据 / 维度榜单 / 两国对比），

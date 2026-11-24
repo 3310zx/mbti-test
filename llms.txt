@@ -39,3 +39,6 @@
 - [ISFP — ISFP Adventurer](https://3310zx.github.io/mbti-test/types/isfp.html): Fi · Se · Ni · Te cognitive function stack, traits, strengths and notable figures.
 - [ESTP — ESTP Entrepreneur](https://3310zx.github.io/mbti-test/types/estp.html): Se · Ti · Fe · Ni cognitive function stack, traits, strengths and notable figures.
 - [ESFP — ESFP Entertainer](https://3310zx.github.io/mbti-test/types/esfp.html): Se · Fi · Te · Ni cognitive function stack, traits, strengths and notable figures.
+
+## Portrait gallery (Simplified Chinese)
+- [16 型人格代表人物图鉴](https://3310zx.github.io/mbti-test/portraits/): one male and one female representative figure for each of the 16 types (32 people total), with a portrait, three short write-ups on the primary figure, a text card for the secondary figure, the cognitive-function anchor and one takeaway reminder per type. Simplified Chinese only for now.
