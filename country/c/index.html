@@ -9,6 +9,7 @@
 <meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="https://3310zx.github.io/mbti-test/country/c/">
 <link rel="alternate" hreflang="zh-CN" href="https://3310zx.github.io/mbti-test/country/c/">
+<link rel="alternate" hreflang="ja" href="https://3310zx.github.io/mbti-test/country/ja/">
 <link rel="alternate" hreflang="x-default" href="https://3310zx.github.io/mbti-test/country/c/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="55 个国家与地区的生活数据总表：六维度评分、排名与原始指标">
@@ -41,6 +42,7 @@
       <a href="../c/">国家数据</a>
       <a href="../rank/">维度榜单</a>
       <a href="../compare/">对比</a>
+      <a href="../ja/" hreflang="ja" lang="ja">日本語</a>
     </nav>
   </div>
 </header>
@@ -97,14 +99,15 @@
   <script>
 (function(){
   var u = location.href;
+  var OK = "链接已复制", NG = "复制失败";
   function done(b, m){ b.textContent = m; setTimeout(function(){ b.textContent = b.dataset.t; }, 2000); }
   function cp(b){
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(u).then(function(){ done(b, "链接已复制"); }, function(){ done(b, "复制失败"); });
+      navigator.clipboard.writeText(u).then(function(){ done(b, OK); }, function(){ done(b, NG); });
       return;
     }
     var t = document.createElement("textarea"); t.value = u; document.body.appendChild(t); t.select();
-    try { done(b, document.execCommand("copy") ? "链接已复制" : "复制失败"); } catch (e) { done(b, "复制失败"); }
+    try { done(b, document.execCommand("copy") ? OK : NG); } catch (e) { done(b, NG); }
     t.parentNode && t.parentNode.removeChild(t);
   }
   var s = document.getElementById("sharePage"), c = document.getElementById("copyPage");

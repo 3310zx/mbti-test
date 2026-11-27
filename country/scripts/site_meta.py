@@ -17,6 +17,12 @@ AD_SLOT = "5966315493"
 OG_IMAGE = SITE + "/images/og-share.png"
 OG_IMAGE_W, OG_IMAGE_H = 1200, 630
 OG_IMAGE_ALT = "MBTI 人生地理：用世界银行数据算出最适合你生活的国家"
+# 日文页树（country/ja/）用日文 alt：分享卡出现在日语搜索结果与 SNS 卡片时，
+# 中文 alt 会削弱点击意愿，故按语言给两套文案。
+OG_IMAGE_ALT_BY_LANG = {
+    "zh": OG_IMAGE_ALT,
+    "ja": "MBTI人生地理：世界銀行データから自分に合う住む国を算出",
+}
 
 # CSS 缓存版本：改 country.css 时同步 +1
 CSSV = "20261115c"
@@ -51,12 +57,13 @@ def ad_unit(label="广告"):
 """
 
 
-def share_image_meta():
+def share_image_meta(lang="zh"):
+    alt = OG_IMAGE_ALT_BY_LANG.get(lang, OG_IMAGE_ALT)
     return (
         f'<meta property="og:image" content="{OG_IMAGE}">\n'
         f'<meta property="og:image:width" content="{OG_IMAGE_W}">\n'
         f'<meta property="og:image:height" content="{OG_IMAGE_H}">\n'
-        f'<meta property="og:image:alt" content="{OG_IMAGE_ALT}">\n'
+        f'<meta property="og:image:alt" content="{alt}">\n'
         f'<meta name="twitter:image" content="{OG_IMAGE}">\n'
     )
 

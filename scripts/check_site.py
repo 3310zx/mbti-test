@@ -35,6 +35,10 @@ HREFLANG_EXEMPT_PREFIX = (
     "country/c/",
     "country/rank/",
     "country/compare/",
+    # country/ja/ 为 country 子站的日文版页树（country/ja/index.html 与
+    # country/ja/c/<iso>/index.html），页内已声明 zh-CN / ja / x-default 三条互指
+    # 并各自带 canonical，不属于主站 10 语言镜像体系，故同样按前缀豁免。
+    "country/ja/",
 )
 
 errors = []
