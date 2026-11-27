@@ -39,6 +39,9 @@ HREFLANG_EXEMPT_PREFIX = (
     # country/ja/c/<iso>/index.html），页内已声明 zh-CN / ja / x-default 三条互指
     # 并各自带 canonical，不属于主站 10 语言镜像体系，故同样按前缀豁免。
     "country/ja/",
+    # country/en/ 为 country 子站英文版页树（布局与 ja 同构，页内声明
+    # zh-CN / ja / en / x-default 四条互指），同样按前缀豁免。
+    "country/en/",
 )
 
 errors = []

@@ -22,6 +22,7 @@ OG_IMAGE_ALT = "MBTI 人生地理：用世界银行数据算出最适合你生�
 OG_IMAGE_ALT_BY_LANG = {
     "zh": OG_IMAGE_ALT,
     "ja": "MBTI人生地理：世界銀行データから自分に合う住む国を算出",
+    "en": "MBTI Life Geography: World Bank country data on where you would live best",
 }
 
 # CSS 缓存版本：改 country.css 时同步 +1
@@ -47,9 +48,9 @@ def adsense_head():
     )
 
 
-def ad_unit(label="广告"):
+def ad_unit(label="广告", aria="广告"):
     """单个自适应广告单元。放在正文段落之间，不打断首屏与表格。"""
-    return f"""<aside class="ad-slot" aria-label="广告">
+    return f"""<aside class="ad-slot" aria-label="{aria}">
   <p class="ad-label">{label}</p>
   <ins class="adsbygoogle" style="display:block" data-ad-client="{ADS_CLIENT}" data-ad-slot="{AD_SLOT}" data-ad-format="auto" data-full-width-responsive="true"></ins>
   <script>(adsbygoogle=window.adsbygoogle||[]).push({{}});</script>

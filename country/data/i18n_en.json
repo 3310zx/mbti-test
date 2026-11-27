@@ -1,0 +1,1386 @@
+{
+  "lang": "en",
+  "html_lang": "en",
+  "og_locale": "en_US",
+  "disclaimer": "City rents and visa categories are editorial estimates rather than official data and may be out of date. For visa and residence rules, follow the issuing authority's latest publication. Rents are in US dollars per month for a central one-bedroom equivalent.",
+  "regions": {
+    "东亚": "East Asia",
+    "东南亚": "Southeast Asia",
+    "中东": "Middle East",
+    "南亚": "South Asia",
+    "中亚": "Central Asia",
+    "北欧": "Nordics",
+    "西欧": "Western Europe",
+    "南欧": "Southern Europe",
+    "中东欧": "Central & Eastern Europe",
+    "北美": "North America",
+    "拉美": "Latin America",
+    "大洋洲": "Oceania",
+    "非洲": "Africa",
+    "西亚": "West Asia",
+    "高加索": "Caucasus"
+  },
+  "units": {
+    "price_level": "",
+    "gdp_pc_ppp": " intl.$",
+    "life_expectancy": " yrs",
+    "homicide": " per 100k",
+    "pm25": " µg/m³",
+    "forest": "%",
+    "density": " /km²",
+    "female_labor": "%",
+    "health_spend": "%",
+    "internet": "%",
+    "unemployment": "%",
+    "urbanization": "%"
+  },
+  "indicators": {
+    "price_level": "Cost of living index (price level)",
+    "gdp_pc_ppp": "GDP per capita (PPP)",
+    "life_expectancy": "Life expectancy",
+    "homicide": "Homicides per 100,000 people",
+    "pm25": "PM2.5 annual mean concentration",
+    "forest": "Forest area share",
+    "density": "Population density",
+    "female_labor": "Female labour force participation",
+    "health_spend": "Health spending (% of GDP)",
+    "internet": "Internet users",
+    "unemployment": "Unemployment rate",
+    "urbanization": "Urban population share"
+  },
+  "dims": {
+    "cost": {
+      "name": "Cost of living",
+      "note": "Price level and everyday spending pressure — lower is easier on the household"
+    },
+    "income": {
+      "name": "Earning power",
+      "note": "Output per person and how open the job market is"
+    },
+    "safety": {
+      "name": "Safety",
+      "note": "Public safety measured by homicides per 100,000 people"
+    },
+    "health": {
+      "name": "Health",
+      "note": "Life expectancy and how much the system invests in care"
+    },
+    "nature": {
+      "name": "Environment",
+      "note": "Air quality, forest cover and population density combined"
+    },
+    "society": {
+      "name": "Society & digital",
+      "note": "Internet access, urbanisation and women's labour participation"
+    }
+  },
+  "ui": {
+    "brand_sep": " · ",
+    "site_name": "MBTI · Life Geography",
+    "nav_c": "Country data",
+    "nav_rank": "Rankings",
+    "nav_compare": "Compare",
+    "nav_toggle": "Open menu",
+    "lang_link_label": "中文",
+    "crumbs_home": "Home",
+    "crumbs_c": "Country data",
+    "crumbs_aria": "Breadcrumb",
+    "d_kicker": "{region} · World Bank data",
+    "d_title": "{name} Cost of Living & Quality of Life: Six Scores, Ranked {trank} of 55",
+    "d_desc": "{name} sits at {tot} on our six-dimension livability score, rank {trank} of 55 countries. Strongest dimension: {best} ({best_s}); weakest: {worst} ({worst_s}). Includes 12 World Bank indicators with source years, one-bedroom rents for three cities and the main visa routes.",
+    "d_h1": "Living in {name}: where the six dimensions hold up and where they don't",
+    "d_lede": "Weighting all six dimensions equally puts {name} at <strong>{tot}</strong>, rank <strong>{trank}</strong> of {n} candidate countries. The strongest dimension is {best} ({best_s}, rank {best_rank}); the soft spot is {worst} ({worst_s}, rank {worst_rank}). Every figure below carries its World Bank source value, year and percentile position.",
+    "kv_year": "{year} · World Bank",
+    "rank_of": "#{rank} of {n}",
+    "th_dim": "Dimension",
+    "th_score": "Score",
+    "th_rank": "Rank",
+    "th_what": "What it measures",
+    "sec_dims": "Six dimensions as percentile scores",
+    "block_dimdetail": "Dimension detail and ranks",
+    "note_dims": "How to read the score: each dimension converts your rank among the 55 candidates into a 0-100 percentile. Above 70 is a genuine strength, around 50 is mid-pack, below 40 means the country is clearly behind its peer group at that dimension.",
+    "btn_test": "Find the country that fits me",
+    "btn_compare": "Compare with another country",
+    "sec_sw": "Strengths and soft spots",
+    "block_best": "Strongest: {best} · {best_s}",
+    "block_worst": "Weakest: {worst} · {worst_s}",
+    "text_best": "{fact}. That is rank {rank} across the {n} countries reporting this indicator, and it is the main source of {name}'s overall score.",
+    "text_worst": "{fact}. It ranks {rank} here, so this is the trade-off you accept when you pick {name}.",
+    "ad1": "Advertisement · city rents and visa routes below",
+    "ad2": "Advertisement · FAQ below",
+    "sec_city": "City cost of living: one-bedroom rent, mid-market",
+    "rent_suffix": " / month",
+    "note_city": "Rents are mid-range asking prices for a central one-bedroom flat, grouped into three bands so you can feel the gap between cities. They are not official statistics and exclude utilities and deposits.",
+    "tier1": "Tier 1 · major city",
+    "tier2": "Tier 2 · regional hub",
+    "tier3": "Tier 3 · smaller city or suburb",
+    "sec_visa": "Visa and residence routes",
+    "tip_prefix": "Practical tip: ",
+    "note_visa": "The above is an editorial summary of common routes, not legal advice. Check the latest published requirements, quotas and processing times with each country's immigration authority.",
+    "sec_metrics": "All 12 indicators with source years",
+    "th_ind": "Indicator",
+    "th_val": "Value",
+    "th_year": "Year",
+    "th_pct": "Percentile within 55",
+    "tbl_src": "Source: World Bank Open Data API (CC BY 4.0). Latest available year per country, used as published — no estimates, interpolation or backfilling, and missing values stay missing. Percentiles show relative position among the candidates, not an international rating.",
+    "miss": "n/a",
+    "na": "—",
+    "sec_peer": "How it compares with nearby countries",
+    "peer_score": "{s} pts",
+    "note_peer": "Scores are the six-dimension equal-weight average. For a full single-dimension ordering go to <a href=\"{rank_href}\">the rankings</a>; to weight the dimensions your own way, take <a href=\"{test_href}\">the 18-question test</a> and rebuild the score with the sliders.",
+    "sec_pairs": "Compare {name} head to head",
+    "note_pairs": "Each comparison page puts two countries' six dimension scores and all 12 World Bank indicators, with years, into one row-by-row table, then works out what the cost and income gap actually amounts to.",
+    "pair_score": "Overall {a} vs {b}",
+    "sec_faq": "Frequently asked questions",
+    "tier_word_strong": "a strong point",
+    "tier_word_mid": "mid-pack",
+    "tier_word_weak": "clearly weak",
+    "fact_general": "{name}: {val}{unit} ({year})",
+    "fact_price": "{name}: {val} on the price level index (US=100, {year})",
+    "foot_share_h2": "Share this page",
+    "foot_share_btn": "Share this page",
+    "foot_copy_btn": "Copy link",
+    "foot_share_note": "Anyone you share it with opens the same public data page; no personal information is attached.",
+    "share_copied": "Link copied",
+    "share_failed": "Copy failed",
+    "foot_disc": "Disclaimer: this page summarises public statistics and is not immigration, legal or tax advice. Any relocation, visa or tax arrangement should be discussed with a licensed professional.",
+    "foot_src": "Data source: <a href=\"https://data.worldbank.org/\" target=\"_blank\" rel=\"noopener\">World Bank Open Data</a> (CC BY 4.0), with the year given for every indicator. City rents and visa tags are editorial estimates, not official data. Updated: {updated}",
+    "foot_copy": "MBTI · Life Geography / Where To Live",
+    "ds_name": "{name} living-conditions dataset: 12 World Bank indicators",
+    "ds_desc": "The latest available values and years for {name} across 12 indicators: price level index, GDP per capita (PPP), life expectancy, homicide rate, PM2.5, forest area, population density, female labour participation, health spending as a share of GDP, internet use, unemployment and urbanisation.",
+    "ds_var_desc": "{name}, data year {year}",
+    "faq_q1": "Where does {name} rank overall among the 55 countries?",
+    "faq_a1": "With all six dimensions weighted equally, {name} scores {tot} and ranks {trank} of {n}. {best} comes in at {best_s} ({best_word}, rank {best_rank}) and {worst} at {worst_s} ({worst_word}, rank {worst_rank}). These are percentiles of the candidate set, not absolute verdicts.",
+    "faq_q2": "How expensive is {name}, and what do people earn there?",
+    "faq_a2": "{price}; {gdp}. Both are macro averages: the price level index compares PPP conversion factors with market exchange rates and ignores individual spending patterns, while GDP per capita in PPP terms measures output rather than take-home pay.",
+    "faq_q3": "Can the data alone tell me whether to move to {name}?",
+    "faq_a3": "No. These are national statistical averages and cannot capture differences between cities and neighbourhoods, visa and tax rules, language and access to public services, or your own profession and family situation. Use them for shortlisting and cross-country comparison, and consult a licensed professional for the actual move, visa and tax arrangements.",
+    "faq_price_miss": "price level index not available",
+    "faq_gdp_miss": "GDP per capita not available",
+    "idx_title": "Cost of Living & Quality of Life in 55 Countries: Scores, Ranks, 12 Indicators",
+    "idx_desc": "A single table of living conditions across 55 countries: overall livability score, six dimension scores, region and the year behind each World Bank indicator, sorted by overall score. Click any header to re-sort, or open a country for the full breakdown.",
+    "idx_h1": "Living conditions in 55 countries and regions",
+    "idx_kicker": "55 Countries &amp; Regions / 6 Dimensions",
+    "idx_lede": "The overall score is the equal-weight average of six dimensions, so it only shows where a country sits at the default weighting. Your own ranking depends on what you care about — answer 18 questions on <a href=\"{test_href}\">the test page</a> to recalculate with your weights, or open a country page for raw indicators and years.",
+    "idx_note": "Click a column header to sort. Scores are percentiles (0-100) within the 55 countries; \"—\" means the World Bank does not publish that indicator for the country.",
+    "idx_sec_rank": "Browse rankings by dimension",
+    "idx_top20": "Top 20 list",
+    "th_region": "Region",
+    "th_country": "Country",
+    "th_total": "Overall",
+    "og_site_name": "Where To Live · Country Data",
+    "ad_aria": "Advertisement"
+  },
+  "countries": {
+    "USA": {
+      "name": "United States",
+      "tags": [
+        "H-1B employer-sponsored work visa",
+        "EB employment-based green card",
+        "EB-5 investor green card"
+      ],
+      "visa_note": "Most work visas go through a lottery and stay tied to one employer, and green-card backlogs swing wildly by country of birth and category.",
+      "cities": [
+        {
+          "name": "New York"
+        },
+        {
+          "name": "Austin"
+        },
+        {
+          "name": "Tucson"
+        }
+      ],
+      "hook": "The earning ceiling is the highest in this set, but health cover and schooling are the hidden line items.",
+      "tip": "Compare state income tax and insurance deductibles before you compare rent."
+    },
+    "CAN": {
+      "name": "Canada",
+      "tags": [
+        "Express Entry (economic class)",
+        "Provincial Nominee Program",
+        "Post-graduation work permit"
+      ],
+      "visa_note": "Selection is points-based, rewarding language scores and Canadian credentials, and cut-off scores have been climbing.",
+      "cities": [
+        {
+          "name": "Toronto"
+        },
+        {
+          "name": "Calgary"
+        },
+        {
+          "name": "Winnipeg"
+        }
+      ],
+      "hook": "The immigration pathway is unusually legible; housing costs and winter are what you pay for that clarity.",
+      "tip": "Budget winter heating and car insurance as fixed monthly costs, not seasonal extras."
+    },
+    "GBR": {
+      "name": "United Kingdom",
+      "tags": [
+        "Skilled Worker visa",
+        "Global Talent visa",
+        "Graduate route"
+      ],
+      "visa_note": "A licensed sponsor and a salary floor are both mandatory, and the rules have been tightened several times in recent years.",
+      "cities": [
+        {
+          "name": "London"
+        },
+        {
+          "name": "Manchester"
+        },
+        {
+          "name": "Newcastle"
+        }
+      ],
+      "hook": "London and the northern cities behave like two different countries on cost of living.",
+      "tip": "Outside London, income left after rent is often higher than inside it."
+    },
+    "IRL": {
+      "name": "Ireland",
+      "tags": [
+        "Critical Skills Employment Permit",
+        "General employment permit",
+        "Third Level Graduate Programme"
+      ],
+      "visa_note": "The Critical Skills occupation list decides how fast you are processed, and Dublin's rental market is brutally competitive.",
+      "cities": [
+        {
+          "name": "Dublin"
+        },
+        {
+          "name": "Cork"
+        },
+        {
+          "name": "Galway"
+        }
+      ],
+      "hook": "An English-speaking foothold inside the EU single market, with rent as the price of admission.",
+      "tip": "Secure long-term housing before signing the job contract."
+    },
+    "DEU": {
+      "name": "Germany",
+      "tags": [
+        "EU Blue Card",
+        "Skilled Immigration Act work visa",
+        "Opportunity Card (job-search visa)"
+      ],
+      "visa_note": "The Blue Card carries a minimum salary threshold and foreign degrees need Anabin recognition; German pays off for permanent residence.",
+      "cities": [
+        {
+          "name": "Munich"
+        },
+        {
+          "name": "Berlin"
+        },
+        {
+          "name": "Leipzig"
+        }
+      ],
+      "hook": "Engineering and manufacturing demand run deep, and rent regulation genuinely protects tenants.",
+      "tip": "Look at warm rent rather than cold rent: utilities are the part that surprises people."
+    },
+    "FRA": {
+      "name": "France",
+      "tags": [
+        "Passeport Talent",
+        "Work authorisation",
+        "Student-to-work permit"
+      ],
+      "visa_note": "Passeport Talent covers research, company founding and high-salary roles, though administrative processing is slow.",
+      "cities": [
+        {
+          "name": "Paris"
+        },
+        {
+          "name": "Lyon"
+        },
+        {
+          "name": "Nantes"
+        }
+      ],
+      "hook": "Public healthcare and childcare support are excellent; taxes and social contributions take a visible bite.",
+      "tip": "Compare countries on net pay after social contributions, never on gross salary."
+    },
+    "NLD": {
+      "name": "Netherlands",
+      "tags": [
+        "Highly Skilled Migrant (kennismigrant)",
+        "Orientation year",
+        "Startup visa"
+      ],
+      "visa_note": "Salary thresholds scale with age, and your employer has to be a recognised sponsor.",
+      "cities": [
+        {
+          "name": "Amsterdam"
+        },
+        {
+          "name": "Rotterdam"
+        },
+        {
+          "name": "Groningen"
+        }
+      ],
+      "hook": "English works as a working language almost everywhere, but the housing shortage is national rather than local.",
+      "tip": "Either accept the social-housing queue or budget for expensive private rent."
+    },
+    "BEL": {
+      "name": "Belgium",
+      "tags": [
+        "Single permit",
+        "EU Blue Card",
+        "Researcher visa"
+      ],
+      "visa_note": "Regionalised administration means Flanders, Wallonia and Brussels each run the process their own way.",
+      "cities": [
+        {
+          "name": "Brussels"
+        },
+        {
+          "name": "Antwerp"
+        },
+        {
+          "name": "Liège"
+        }
+      ],
+      "hook": "EU institutions concentrate here, so commuting and a multilingual daily life are the default.",
+      "tip": "Confirm the working language: Dutch-speaking and French-speaking regions are different worlds."
+    },
+    "CHE": {
+      "name": "Switzerland",
+      "tags": [
+        "Work permit (quota-based)",
+        "EU Blue Card",
+        "Researcher visa"
+      ],
+      "visa_note": "Non-EU nationals are capped by annual quotas, so an employer offer has to arrive first.",
+      "cities": [
+        {
+          "name": "Zurich"
+        },
+        {
+          "name": "Bern"
+        },
+        {
+          "name": "St. Gallen"
+        }
+      ],
+      "hook": "Salaries are Europe's highest and prices match, yet net savings usually still beat the neighbours.",
+      "tip": "Carry mandatory health insurance premiums as a separate budget line."
+    },
+    "AUT": {
+      "name": "Austria",
+      "tags": [
+        "Red-White-Red Card",
+        "EU Blue Card",
+        "Job-seeker visa"
+      ],
+      "visa_note": "The Red-White-Red Card scores qualifications and shortage occupations, with basic German earning extra points.",
+      "cities": [
+        {
+          "name": "Vienna"
+        },
+        {
+          "name": "Graz"
+        },
+        {
+          "name": "Linz"
+        }
+      ],
+      "hook": "Vienna's social housing keeps living costs well below what the salary levels would suggest.",
+      "tip": "Applying for a municipal flat early can cut rent dramatically."
+    },
+    "SWE": {
+      "name": "Sweden",
+      "tags": [
+        "Work permit",
+        "EU Blue Card",
+        "Job-seeker / startup visa"
+      ],
+      "visa_note": "Permits are tied to the employer and must meet the collective-agreement wage for the sector.",
+      "cities": [
+        {
+          "name": "Stockholm"
+        },
+        {
+          "name": "Gothenburg"
+        },
+        {
+          "name": "Linköping"
+        }
+      ],
+      "hook": "Work-life balance is the headline; winter darkness is the cost line nobody quotes.",
+      "tip": "Put winter travel and vitamin D in the budget and take the darkness seriously."
+    },
+    "NOR": {
+      "name": "Norway",
+      "tags": [
+        "Skilled worker permit",
+        "Job-seeker visa",
+        "Researcher visa"
+      ],
+      "visa_note": "Pay must match Norwegian norms, and non-EU applications are screened closely.",
+      "cities": [
+        {
+          "name": "Oslo"
+        },
+        {
+          "name": "Bergen"
+        },
+        {
+          "name": "Trondheim"
+        }
+      ],
+      "hook": "Oil, gas and marine industries pay well; groceries and alcohol sit at the top of the European range.",
+      "tip": "Round the food and alcohol budget up — that is where the surprises come from."
+    },
+    "DNK": {
+      "name": "Denmark",
+      "tags": [
+        "Positive List",
+        "Pay Limit Scheme",
+        "Researcher visa"
+      ],
+      "visa_note": "The Positive List follows shortage occupations, and language and integration requirements keep ratcheting up.",
+      "cities": [
+        {
+          "name": "Copenhagen"
+        },
+        {
+          "name": "Aarhus"
+        },
+        {
+          "name": "Odense"
+        }
+      ],
+      "hook": "Cycling infrastructure and high social trust are the everyday experience you are buying.",
+      "tip": "Treat cycling distance as a housing variable, not a lifestyle preference."
+    },
+    "FIN": {
+      "name": "Finland",
+      "tags": [
+        "Specialist work permit",
+        "EU Blue Card",
+        "Startup visa"
+      ],
+      "visa_note": "The specialist route moves quickly; the startup visa needs a positive evaluation from an approved assessor.",
+      "cities": [
+        {
+          "name": "Helsinki"
+        },
+        {
+          "name": "Tampere"
+        },
+        {
+          "name": "Turku"
+        }
+      ],
+      "hook": "Education and tech ecosystems are stable, and the winter is genuinely long.",
+      "tip": "When viewing flats, check heating and ventilation — they decide how winter feels."
+    },
+    "ISL": {
+      "name": "Iceland",
+      "tags": [
+        "Work permit (employer applies)",
+        "Researcher visa",
+        "Long-stay remote work visa"
+      ],
+      "visa_note": "Roles must be advertised on the local market first, and non-EU processing is slow.",
+      "cities": [
+        {
+          "name": "Reykjavík"
+        },
+        {
+          "name": "Akureyri"
+        },
+        {
+          "name": "Selfoss"
+        }
+      ],
+      "hook": "A small population means tight networks and an extremely thin rental market.",
+      "tip": "Popular areas rent through contacts, so start looking two months ahead."
+    },
+    "PRT": {
+      "name": "Portugal",
+      "tags": [
+        "D7 passive income visa",
+        "D8 digital nomad visa",
+        "Golden visa (fund route)"
+      ],
+      "visa_note": "D7 and D8 are generous towards remote and passive income, with light physical-presence rules.",
+      "cities": [
+        {
+          "name": "Lisbon"
+        },
+        {
+          "name": "Porto"
+        },
+        {
+          "name": "Coimbra"
+        }
+      ],
+      "hook": "Western Europe's cost floor, though rents in the popular cities have climbed hard.",
+      "tip": "Staying outside the tourist core typically saves about 30% on rent."
+    },
+    "ESP": {
+      "name": "Spain",
+      "tags": [
+        "Digital nomad visa",
+        "Non-lucrative residence",
+        "Highly qualified professional / startup visa"
+      ],
+      "visa_note": "The nomad visa ties income to a multiple of the local minimum wage, and processing varies by region.",
+      "cities": [
+        {
+          "name": "Madrid"
+        },
+        {
+          "name": "Valencia"
+        },
+        {
+          "name": "Granada"
+        }
+      ],
+      "hook": "Climate and daily rhythm are the draw; youth unemployment is the persistent asterisk.",
+      "tip": "Pick the industry before the city — the sector matters more than the map."
+    },
+    "ITA": {
+      "name": "Italy",
+      "tags": [
+        "Self-employment / investor residence",
+        "Digital nomad visa",
+        "EU Blue Card"
+      ],
+      "visa_note": "Bureaucracy is layered, and language plus local variation shape how the first year actually feels.",
+      "cities": [
+        {
+          "name": "Milan"
+        },
+        {
+          "name": "Bologna"
+        },
+        {
+          "name": "Bari"
+        }
+      ],
+      "hook": "The north-south gap is wide: the south is cheap but thin on jobs.",
+      "tip": "Double your estimate for administrative timelines and never plan around a fixed date."
+    },
+    "GRC": {
+      "name": "Greece",
+      "tags": [
+        "Golden visa (property / fund)",
+        "Digital nomad visa",
+        "Self-employed residence"
+      ],
+      "visa_note": "Golden visa thresholds were raised and are now priced by region, so check the current tier before you commit.",
+      "cities": [
+        {
+          "name": "Athens"
+        },
+        {
+          "name": "Thessaloniki"
+        },
+        {
+          "name": "Patras"
+        }
+      ],
+      "hook": "Low living costs and plenty of coastline, with a weak earning side.",
+      "tip": "Winter heating and island ferry fares belong in the monthly budget."
+    },
+    "POL": {
+      "name": "Poland",
+      "tags": [
+        "Work permit (employer applies)",
+        "EU Blue Card",
+        "Student-to-work permit"
+      ],
+      "visa_note": "Work permits require a labour-market test, though shortage roles such as IT clear quickly.",
+      "cities": [
+        {
+          "name": "Warsaw"
+        },
+        {
+          "name": "Kraków"
+        },
+        {
+          "name": "Łódź"
+        }
+      ],
+      "hook": "Central Europe's fastest growth at a cost level still well under Western Europe.",
+      "tip": "Check the contract type: B2B and employment contracts carry very different tax loads."
+    },
+    "CZE": {
+      "name": "Czechia",
+      "tags": [
+        "Employee Card",
+        "EU Blue Card",
+        "Freelance residence"
+      ],
+      "visa_note": "The Employee Card needs an employer and a labour-office step, and Prague's housing is tight.",
+      "cities": [
+        {
+          "name": "Prague"
+        },
+        {
+          "name": "Brno"
+        },
+        {
+          "name": "Ostrava"
+        }
+      ],
+      "hook": "Manufacturing and game studios cluster here, and beer is cheaper than water.",
+      "tip": "Two metro stops out of the centre can change rent by 40%."
+    },
+    "EST": {
+      "name": "Estonia",
+      "tags": [
+        "Digital nomad visa",
+        "Startup visa",
+        "Employee residence"
+      ],
+      "visa_note": "Public services are digital to the core; the startup visa requires a committee review.",
+      "cities": [
+        {
+          "name": "Tallinn"
+        },
+        {
+          "name": "Tartu"
+        },
+        {
+          "name": "Narva"
+        }
+      ],
+      "hook": "e-Residency and a dense startup scene, offset by almost no winter daylight.",
+      "tip": "The nomad visa has an income floor — verify the current threshold before applying."
+    },
+    "HUN": {
+      "name": "Hungary",
+      "tags": [
+        "Work residence",
+        "EU Blue Card",
+        "Guest worker programme"
+      ],
+      "visa_note": "Policy has tightened recently, and guest-worker categories plus family reunification rules change often.",
+      "cities": [
+        {
+          "name": "Budapest"
+        },
+        {
+          "name": "Debrecen"
+        },
+        {
+          "name": "Pécs"
+        }
+      ],
+      "hook": "Low costs and strong thermal-bath and medical tourism, with a forint that swings.",
+      "tip": "If you budget in euros, keep a currency buffer in the calculation."
+    },
+    "ROU": {
+      "name": "Romania",
+      "tags": [
+        "Work permit (employer)",
+        "EU Blue Card",
+        "Digital nomad visa"
+      ],
+      "visa_note": "Work permits are subject to annual quotas, and IT and outsourcing roles are the easiest entry.",
+      "cities": [
+        {
+          "name": "Bucharest"
+        },
+        {
+          "name": "Cluj-Napoca"
+        },
+        {
+          "name": "Iași"
+        }
+      ],
+      "hook": "Very low costs and excellent internet, with public services that vary street by street.",
+      "tip": "Confirm what your health insurance actually covers before you arrive."
+    },
+    "TUR": {
+      "name": "Turkey",
+      "tags": [
+        "Work permit",
+        "Short-term residence (property / income)",
+        "Citizenship by investment"
+      ],
+      "visa_note": "Short-term residence renewals need proof of stable income, and lira depreciation feeds straight into local prices.",
+      "cities": [
+        {
+          "name": "Istanbul"
+        },
+        {
+          "name": "Ankara"
+        },
+        {
+          "name": "İzmir"
+        }
+      ],
+      "hook": "A bridge between Europe and Asia at friendly prices, with inflation as the standing pressure.",
+      "tip": "Annual rent paid upfront is common — agree the payment structure in writing."
+    },
+    "JPN": {
+      "name": "Japan",
+      "tags": [
+        "Highly Skilled Professional visa",
+        "Engineer / Specialist in Humanities",
+        "Business Manager visa"
+      ],
+      "visa_note": "The points-based highly skilled route earns preferential treatment; the Business Manager visa needs a real operation and capital.",
+      "cities": [
+        {
+          "name": "Tokyo"
+        },
+        {
+          "name": "Osaka"
+        },
+        {
+          "name": "Fukuoka"
+        }
+      ],
+      "hook": "Order and public services are first class; the language is the wall most newcomers hit.",
+      "tip": "Treat commute time as a core living cost rather than a detail."
+    },
+    "CHN": {
+      "name": "China",
+      "tags": [
+        "Work residence (Z visa)",
+        "Premium talent (R visa)",
+        "Student-to-work conversion"
+      ],
+      "visa_note": "Work permit and residence permit are two separate steps, and enforcement details differ from city to city.",
+      "cities": [
+        {
+          "name": "Beijing"
+        },
+        {
+          "name": "Chengdu"
+        },
+        {
+          "name": "Kunming"
+        }
+      ],
+      "hook": "Megacities concentrate opportunity, while hukou and social-insurance rules vary sharply.",
+      "tip": "Confirm where social insurance is paid — it drives your long-term entitlements."
+    },
+    "KOR": {
+      "name": "South Korea",
+      "tags": [
+        "E-series employment visa",
+        "Investment / golden visa route",
+        "Global talent visa"
+      ],
+      "visa_note": "Employment visas need an employer sponsor, and long-term residence adds points and language requirements.",
+      "cities": [
+        {
+          "name": "Seoul"
+        },
+        {
+          "name": "Busan"
+        },
+        {
+          "name": "Daejeon"
+        }
+      ],
+      "hook": "Digital infrastructure and medical efficiency run high, and the deposit-based rental system is unique.",
+      "tip": "Jeonse and monthly rent create completely different cash-flow pressure."
+    },
+    "SGP": {
+      "name": "Singapore",
+      "tags": [
+        "Employment Pass (EP)",
+        "EntrePass",
+        "Global Investor Programme"
+      ],
+      "visa_note": "EP runs on the COMPASS points framework, with finance and tech roles concentrated in the CBD.",
+      "cities": [
+        {
+          "name": "Singapore"
+        },
+        {
+          "name": "Jurong"
+        },
+        {
+          "name": "Woodlands"
+        }
+      ],
+      "hook": "Efficiency and safety are exceptional; housing and car ownership are the expensive parts.",
+      "tip": "HDB and private condo prices differ enormously — read the lease type before signing."
+    },
+    "MYS": {
+      "name": "Malaysia",
+      "tags": [
+        "Employment Pass (EP I / II / III)",
+        "MM2H long-stay programme",
+        "DE Rantau nomad pass"
+      ],
+      "visa_note": "MM2H thresholds have changed repeatedly, so verify current fixed-deposit and income requirements.",
+      "cities": [
+        {
+          "name": "Kuala Lumpur"
+        },
+        {
+          "name": "Penang"
+        },
+        {
+          "name": "Ipoh"
+        }
+      ],
+      "hook": "English works everywhere and costs are low, though public transport thins out beyond the core.",
+      "tip": "If you settle in the suburbs, budget for a car and tolls."
+    },
+    "THA": {
+      "name": "Thailand",
+      "tags": [
+        "Work permit + Non-Immigrant B",
+        "Long-Term Resident (LTR)",
+        "Destination Thailand Visa (DTV)"
+      ],
+      "visa_note": "The DTV targets remote work and soft-power activities, and any local work still needs a separate permit.",
+      "cities": [
+        {
+          "name": "Bangkok"
+        },
+        {
+          "name": "Chiang Mai"
+        },
+        {
+          "name": "Khon Kaen"
+        }
+      ],
+      "hook": "Low costs and easy services, with visa rules that change more often than the weather.",
+      "tip": "Mind the boundary between a work permit and remote work for foreign clients."
+    },
+    "VNM": {
+      "name": "Vietnam",
+      "tags": [
+        "Work permit + work visa",
+        "Investor / business visa",
+        "E-visa"
+      ],
+      "visa_note": "Work permits require matching qualifications and role descriptions, and processing is administrative.",
+      "cities": [
+        {
+          "name": "Ho Chi Minh City"
+        },
+        {
+          "name": "Da Nang"
+        },
+        {
+          "name": "Can Tho"
+        }
+      ],
+      "hook": "Fast growth at low cost, with urban noise and traffic you simply have to adapt to.",
+      "tip": "Sign a long lease directly with the landlord to avoid sublet chains."
+    },
+    "IDN": {
+      "name": "Indonesia",
+      "tags": [
+        "Work permit (IMTA) + KITAS",
+        "Second Home visa",
+        "Remote worker visa"
+      ],
+      "visa_note": "Second Home needs proof of funds, and work permits are tied to a ratio of local hires.",
+      "cities": [
+        {
+          "name": "Jakarta"
+        },
+        {
+          "name": "Bali"
+        },
+        {
+          "name": "Yogyakarta"
+        }
+      ],
+      "hook": "Islands differ wildly — Bali now prices close to a mid-size city.",
+      "tip": "Choose the island before the city; cost baselines are not comparable across islands."
+    },
+    "PHL": {
+      "name": "Philippines",
+      "tags": [
+        "9G work visa",
+        "SRRV retirement visa",
+        "Digital nomad visa"
+      ],
+      "visa_note": "Work visas need a labour department permit, and the retirement visa sets deposit thresholds by age.",
+      "cities": [
+        {
+          "name": "Manila"
+        },
+        {
+          "name": "Cebu"
+        },
+        {
+          "name": "Davao"
+        }
+      ],
+      "hook": "English is widely spoken, alongside infrastructure gaps and typhoon season.",
+      "tip": "Plan for typhoon season and power outages as recurring conditions, not exceptions."
+    },
+    "HKG": {
+      "name": "Hong Kong SAR",
+      "tags": [
+        "Employment visa",
+        "Quality Migrant Admission Scheme (QMAS)",
+        "Top Talent Pass Scheme (TTPS)"
+      ],
+      "visa_note": "TTPS is banded by salary or a top-university degree, and renewals are tied to employment.",
+      "cities": [
+        {
+          "name": "Central"
+        },
+        {
+          "name": "Kowloon"
+        },
+        {
+          "name": "New Territories"
+        }
+      ],
+      "hook": "Low taxes and fast administration, with floor area as the compromise you make.",
+      "tip": "Compare price per square metre, not the headline rent."
+    },
+    "AUS": {
+      "name": "Australia",
+      "tags": [
+        "Skilled migration (189 / 190)",
+        "Employer sponsorship (482)",
+        "Graduate visa (485)"
+      ],
+      "visa_note": "Independent skilled migration invites by EOI points and occupation lists, and the points competition is fierce.",
+      "cities": [
+        {
+          "name": "Sydney"
+        },
+        {
+          "name": "Brisbane"
+        },
+        {
+          "name": "Adelaide"
+        }
+      ],
+      "hook": "Climate and outdoor access are strong, and regional sponsorship can be the cheaper route to status.",
+      "tip": "Regional nomination can cut the points you need substantially."
+    },
+    "NZL": {
+      "name": "New Zealand",
+      "tags": [
+        "Skilled Migrant Category",
+        "Green List straight-to-residence",
+        "Work-to-residence"
+      ],
+      "visa_note": "Green List occupations go straight to residence; everything else must clear the median wage line.",
+      "cities": [
+        {
+          "name": "Auckland"
+        },
+        {
+          "name": "Wellington"
+        },
+        {
+          "name": "Christchurch"
+        }
+      ],
+      "hook": "Few people and nature close by, with a limited total number of roles and salary ceilings.",
+      "tip": "Weigh job density ahead of scenery when you choose where to live."
+    },
+    "MEX": {
+      "name": "Mexico",
+      "tags": [
+        "Temporary residence (economic solvency)",
+        "Work visa (employer sponsored)",
+        "Retiree / annuity residence"
+      ],
+      "visa_note": "Temporary residence can be applied for on savings or income, and paid work needs a separate permit.",
+      "cities": [
+        {
+          "name": "Mexico City"
+        },
+        {
+          "name": "Guadalajara"
+        },
+        {
+          "name": "Puebla"
+        }
+      ],
+      "hook": "North America's cost floor, with safety varying sharply from block to block.",
+      "tip": "Choose neighbourhoods on safety data, not on city averages."
+    },
+    "CRI": {
+      "name": "Costa Rica",
+      "tags": [
+        "Investor / retiree residence",
+        "Digital nomad visa",
+        "Work visa"
+      ],
+      "visa_note": "Retiree and investor routes need stable income or a set investment, and the nomad visa has an income floor.",
+      "cities": [
+        {
+          "name": "San José"
+        },
+        {
+          "name": "Heredia"
+        },
+        {
+          "name": "Liberia"
+        }
+      ],
+      "hook": "Healthcare and eco-tourism are mature, and prices run above the neighbouring countries.",
+      "tip": "Budget private health cover separately from the public system."
+    },
+    "PAN": {
+      "name": "Panama",
+      "tags": [
+        "Friendly Nations visa",
+        "Pensionado visa",
+        "Investor residence"
+      ],
+      "visa_note": "Friendly Nations works off a nationality list, and the pensioner route needs a lifetime annuity.",
+      "cities": [
+        {
+          "name": "Panama City"
+        },
+        {
+          "name": "David"
+        },
+        {
+          "name": "Colón"
+        }
+      ],
+      "hook": "A dollarised economy with finance concentrated in the capital and a sharp urban-rural split.",
+      "tip": "Dollar pricing means no currency buffer — plan in dollars throughout."
+    },
+    "COL": {
+      "name": "Colombia",
+      "tags": [
+        "Work visa (employer)",
+        "Digital nomad visa",
+        "Retiree / annuity residence"
+      ],
+      "visa_note": "The nomad visa has an income threshold, and work visas stay tightly bound to one employer.",
+      "cities": [
+        {
+          "name": "Bogotá"
+        },
+        {
+          "name": "Medellín"
+        },
+        {
+          "name": "Cali"
+        }
+      ],
+      "hook": "Climate is set by altitude, costs are low, and safety has to be judged area by area.",
+      "tip": "Altitude decides climate here — pick the elevation before the city."
+    },
+    "CHL": {
+      "name": "Chile",
+      "tags": [
+        "Work visa (employer)",
+        "Investor residence",
+        "Digital nomad visa"
+      ],
+      "visa_note": "Work visas need a local contract, and investment routes carry minimum amounts.",
+      "cities": [
+        {
+          "name": "Santiago"
+        },
+        {
+          "name": "Valparaíso"
+        },
+        {
+          "name": "Concepción"
+        }
+      ],
+      "hook": "The steadiest governance in South America, at prices above its neighbours.",
+      "tip": "Winter air pollution is noticeable in the central-southern cities."
+    },
+    "ARG": {
+      "name": "Argentina",
+      "tags": [
+        "Work visa",
+        "Rental-income residence",
+        "Digital nomad visa"
+      ],
+      "visa_note": "Rental-income residence requires proof of stable passive income, and exchange controls shift constantly.",
+      "cities": [
+        {
+          "name": "Buenos Aires"
+        },
+        {
+          "name": "Córdoba"
+        },
+        {
+          "name": "Mendoza"
+        }
+      ],
+      "hook": "Culture and quality of daily life are high, while inflation keeps rewriting the budget.",
+      "tip": "Keep your books in dollars or euros to avoid local-currency illusion."
+    },
+    "BRA": {
+      "name": "Brazil",
+      "tags": [
+        "Work visa (employer)",
+        "Digital nomad visa",
+        "Investor residence"
+      ],
+      "visa_note": "The nomad visa needs monthly income proof, and work visas are tied to the employer.",
+      "cities": [
+        {
+          "name": "São Paulo"
+        },
+        {
+          "name": "Rio de Janeiro"
+        },
+        {
+          "name": "Curitiba"
+        }
+      ],
+      "hook": "Huge and internally varied, with safety that has to be assessed neighbourhood by neighbourhood.",
+      "tip": "In São Paulo, commuting time and security are the hidden costs."
+    },
+    "URY": {
+      "name": "Uruguay",
+      "tags": [
+        "Work visa",
+        "Retiree / annuity residence",
+        "Investor residence"
+      ],
+      "visa_note": "Residence routes are relatively stable, with steady income as the main qualifier.",
+      "cities": [
+        {
+          "name": "Montevideo"
+        },
+        {
+          "name": "Colonia"
+        },
+        {
+          "name": "Salto"
+        }
+      ],
+      "hook": "Institutionally calm for Latin America with a slow rhythm, at prices on the high side.",
+      "tip": "Low-season and high-season rents diverge sharply — negotiate the terms."
+    },
+    "PER": {
+      "name": "Peru",
+      "tags": [
+        "Work visa",
+        "Retirement visa",
+        "Investor residence"
+      ],
+      "visa_note": "Work visas need an employer sponsor, and the retirement visa has an annuity requirement.",
+      "cities": [
+        {
+          "name": "Lima"
+        },
+        {
+          "name": "Arequipa"
+        },
+        {
+          "name": "Cusco"
+        }
+      ],
+      "hook": "Excellent food at low cost, with a coastal fog season that wears on mood.",
+      "tip": "In Lima, pick the district first — seafront districts cost noticeably more."
+    },
+    "ARE": {
+      "name": "United Arab Emirates",
+      "tags": [
+        "Golden visa (10 years)",
+        "Employment visa (employer sponsored)",
+        "Free-zone company visa"
+      ],
+      "visa_note": "Golden visas target investors, specialised talent and top students, and personal tax is minimal.",
+      "cities": [
+        {
+          "name": "Dubai"
+        },
+        {
+          "name": "Abu Dhabi"
+        },
+        {
+          "name": "Sharjah"
+        }
+      ],
+      "hook": "Zero personal income tax, paid for with summer heat and no permanent-residence track.",
+      "tip": "Add summer electricity and air-conditioning servicing to monthly costs."
+    },
+    "ISR": {
+      "name": "Israel",
+      "tags": [
+        "Work visa (B/1)",
+        "Law of Return (Jewish diaspora)",
+        "Expert / startup visa"
+      ],
+      "visa_note": "Standard work visas are screened strictly, and long-term status pathways are narrow.",
+      "cities": [
+        {
+          "name": "Tel Aviv"
+        },
+        {
+          "name": "Haifa"
+        },
+        {
+          "name": "Beersheba"
+        }
+      ],
+      "hook": "High-tech density and high costs, with the security situation as the variable you cannot model.",
+      "tip": "Treat proximity to a shelter as a hard requirement when choosing housing."
+    },
+    "ZAF": {
+      "name": "South Africa",
+      "tags": [
+        "Work visa (employer)",
+        "Critical Skills visa",
+        "Business / retirement visa"
+      ],
+      "visa_note": "The critical-skills list drives approvals, and long-term status is tied to employment.",
+      "cities": [
+        {
+          "name": "Cape Town"
+        },
+        {
+          "name": "Johannesburg"
+        },
+        {
+          "name": "Durban"
+        }
+      ],
+      "hook": "Nature and low costs, with power supply and personal safety as daily variables.",
+      "tip": "Budget for backup power and private security from day one."
+    },
+    "GEO": {
+      "name": "Georgia",
+      "tags": [
+        "Long visa-free stay",
+        "Work / business residence",
+        "Investor residence"
+      ],
+      "visa_note": "Many nationalities can stay a year visa-free, though work and business activity have separate registration rules.",
+      "cities": [
+        {
+          "name": "Tbilisi"
+        },
+        {
+          "name": "Batumi"
+        },
+        {
+          "name": "Kutaisi"
+        }
+      ],
+      "hook": "Low costs and a low threshold to entry, with limited earning opportunities.",
+      "tip": "Great for freelancers, but you have to arrange your own health cover."
+    },
+    "SRB": {
+      "name": "Serbia",
+      "tags": [
+        "Work residence",
+        "Business / self-employment residence",
+        "Digital nomad residence"
+      ],
+      "visa_note": "Business and self-employment routes need a local company or evidence of activity; nomad residence has a time limit.",
+      "cities": [
+        {
+          "name": "Belgrade"
+        },
+        {
+          "name": "Novi Sad"
+        },
+        {
+          "name": "Niš"
+        }
+      ],
+      "hook": "A European cost floor with an active IT and outsourcing market.",
+      "tip": "Check renewal and tax treatment for long-term residence early."
+    },
+    "HRV": {
+      "name": "Croatia",
+      "tags": [
+        "Digital nomad residence",
+        "Work permit",
+        "Investor / property residence"
+      ],
+      "visa_note": "Nomad residence is issued yearly and requires health insurance plus proof of accommodation.",
+      "cities": [
+        {
+          "name": "Zagreb"
+        },
+        {
+          "name": "Split"
+        },
+        {
+          "name": "Osijek"
+        }
+      ],
+      "hook": "Superb coastline, with rents that spike hard in the tourist season.",
+      "tip": "On the coast, rent annually rather than by peak-season month."
+    },
+    "MAR": {
+      "name": "Morocco",
+      "tags": [
+        "Visa-free short stay / long-stay registration",
+        "Work permit",
+        "Investor / property residence"
+      ],
+      "visa_note": "Long stays require a residence card, and work permits are tied to a local employer.",
+      "cities": [
+        {
+          "name": "Casablanca"
+        },
+        {
+          "name": "Marrakesh"
+        },
+        {
+          "name": "Rabat"
+        }
+      ],
+      "hook": "Where Europe meets Africa at low cost, with an administration that moves slowly.",
+      "tip": "French or Arabic ability visibly changes how smoothly paperwork goes."
+    },
+    "EGY": {
+      "name": "Egypt",
+      "tags": [
+        "Work permit",
+        "Investor / property residence",
+        "Retirement residence"
+      ],
+      "visa_note": "Currency controls and exchange-rate swings affect moving money in and out, so check the current rules.",
+      "cities": [
+        {
+          "name": "Cairo"
+        },
+        {
+          "name": "Alexandria"
+        },
+        {
+          "name": "Luxor"
+        }
+      ],
+      "hook": "Extremely low costs, with public services and air quality varying widely.",
+      "tip": "If you convert from dollars, price in the risk of currency controls."
+    },
+    "IND": {
+      "name": "India",
+      "tags": [
+        "Employment visa",
+        "Business visa",
+        "OCI (Overseas Citizen of India)"
+      ],
+      "visa_note": "Employment visas need a local employer and labour clearance, and long-term status options are narrow.",
+      "cities": [
+        {
+          "name": "Mumbai"
+        },
+        {
+          "name": "Bengaluru"
+        },
+        {
+          "name": "Pune"
+        }
+      ],
+      "hook": "A deep IT and startup ecosystem sitting on infrastructure that varies enormously.",
+      "tip": "Choose housing by commute radius — travel time is a real cost here."
+    }
+  }
+}

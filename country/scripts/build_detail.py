@@ -9,6 +9,7 @@
 
     zh -> country/c/index.html + country/c/<iso>/index.html
     ja -> country/ja/index.html + country/ja/c/<iso>/index.html
+    en -> country/en/index.html + country/en/c/<iso>/index.html
 
 术语与文案统一来自 data/i18n_<lang>.json；数值一律取 data/country_data.json 原值，脚本不做任何换算或补值。
 """
@@ -22,7 +23,12 @@ ROOT = os.path.dirname(BASE)
 SITE = "https://3310zx.github.io/mbti-test"
 
 # 当前支持的语言；与 country 页树一一对应
-BUILD_LANGS = ["zh", "ja"]
+BUILD_LANGS = ["zh", "ja", "en"]
+
+# hreflang 值与语言切换导航的文案
+HL = {"zh": "zh-CN", "ja": "ja", "en": "en"}
+LANG_LABEL = {"zh": "中文", "ja": "日本語", "en": "English"}
+
 
 data = json.load(open(os.path.join(BASE, "data", "country_data.json"), encoding="utf-8"))
 ed = json.load(open(os.path.join(BASE, "data", "editorial.json"), encoding="utf-8"))
@@ -34,6 +40,39 @@ UPDATED = ed.get("updated") or "2026-11"
 # ---------- 语言上下文（由 set_lang 注入，供各模板函数读取） ----------
 LANG = "zh"
 I18N = None          # data/i18n_<lang>.json 的内容；zh 为 None（直接用内嵌中文原文）
+
+
+def lang_index_url(lang):
+    """某语言国家索引页的绝对地址。"""
+    return f"{SITE}/country/c/" if lang == "zh" else f"{SITE}/country/{lang}/"
+
+
+def lang_country_url(lang, iso):
+    """某语言单国详情页的绝对地址。"""
+    s = iso.lower()
+    return f"{SITE}/country/c/{s}/" if lang == "zh" else f"{SITE}/country/{lang}/c/{s}/"
+
+
+def hreflang_map(iso=None):
+    """四语 hreflang 组：zh-CN / ja / en / x-default（默认指向中文）。"""
+    out = {HL[lg]: (lang_country_url(lg, iso) if iso else lang_index_url(lg)) for lg in BUILD_LANGS}
+    out["x-default"] = out["zh-CN"]
+    return out
+
+
+def other_lang_links(cp, iso=None):
+    """当前页在其他语言下的相对地址（cp 为到 country 目录的相对前缀）。"""
+    out = []
+    for lg in BUILD_LANGS:
+        if lg == LANG:
+            continue
+        if iso:
+            seg = "c/" if lg == "zh" else lg + "/c/"
+            href = cp + seg + iso.lower() + "/"
+        else:
+            href = cp + ("c/" if lg == "zh" else lg + "/")
+        out.append((href, HL[lg], LANG_LABEL[lg]))
+    return out
 
 
 def set_lang(lang):
@@ -169,7 +208,7 @@ def fmt(key, v):
 def unit_text(key):
     """Dataset 里的单位文本：物价指数统一用「美国=100」口径。"""
     if key == "price_level":
-        return "US=100" if LANG == "zh" else "米国=100"
+        return "米国=100" if LANG == "ja" else "US=100"
     return UNAME(key)
 
 
@@ -299,18 +338,26 @@ def kv_strip(iso):
     return f'<div class="kv-strip">{"".join(cells)}</div>'
 
 
-def head(title, desc, canon, alt_zh, alt_ja, ctx, extra=""):
-    """ctx: sr(站点根相对) / cp(country 目录相对) / nav / lang_href / lang_hl / lang_label / site_name"""
+def head(title, desc, canon, alts, ctx, extra=""):
+    """ctx: sr(站点根相对) / cp(country 目录相对) / nav / langs[(href, hl, label)] / site_name
+    alts: 四语 hreflang 映射（zh-CN / ja / en / x-default）。"""
     sr, cp = ctx["sr"], ctx["cp"]
     e = html.escape(desc, quote=True)
     t = html.escape(title, quote=True)
     navs = "".join(f'      <a href="{h}">{lab}</a>\n' for h, lab in ctx["nav"])
-    langline = f'      <a href="{ctx["lang_href"]}" hreflang="{ctx["lang_hl"]}" lang="{ctx["lang_hl"]}">{ctx["lang_label"]}</a>\n'
+    langline = "".join(
+        f'      <a href="{h}" hreflang="{hl}" lang="{hl}">{lab}</a>\n' for h, hl, lab in ctx["langs"])
     html_lang = "zh-CN" if LANG == "zh" else I18N["html_lang"]
     og_locale = "zh_CN" if LANG == "zh" else I18N["og_locale"]
     site_name = "最适合生活的国家" if LANG == "zh" else I18N["ui"].get("og_site_name", "住みやすい国データ")
-    brand = f'MBTI<em>·</em>人生地理' if LANG == "zh" else f'MBTI<em>・</em>人生地理'
+    if LANG == "zh":
+        brand = f'MBTI<em>·</em>人生地理'
+    elif LANG == "en":
+        brand = f'MBTI<em>·</em>Life Geography'
+    else:
+        brand = f'MBTI<em>・</em>人生地理'
     toggle = "打开导航" if LANG == "zh" else T("nav_toggle", "")
+    alt_lines = "".join(f'<link rel="alternate" hreflang="{hl}" href="{u}">\n' for hl, u in alts.items())
     return f"""<!DOCTYPE html>
 <html lang="{html_lang}">
 <head>
@@ -321,10 +368,7 @@ def head(title, desc, canon, alt_zh, alt_ja, ctx, extra=""):
 <meta name="color-scheme" content="light">
 <meta name="robots" content="max-image-preview:large">
 <link rel="canonical" href="{canon}">
-<link rel="alternate" hreflang="zh-CN" href="{alt_zh}">
-<link rel="alternate" hreflang="ja" href="{alt_ja}">
-<link rel="alternate" hreflang="x-default" href="{alt_zh}">
-<meta property="og:type" content="article">
+{alt_lines}<meta property="og:type" content="article">
 <meta property="og:title" content="{t}">
 <meta property="og:description" content="{e}">
 <meta property="og:url" content="{canon}">
@@ -448,22 +492,17 @@ def country_page(iso):
     slug = iso.lower()
     if LANG == "zh":
         sr, cp = "../../../", "../../"
-        canon = f"{SITE}/country/c/{slug}/"
-        alt_zh, alt_ja = canon, f"{SITE}/country/ja/c/{slug}/"
-        ctx = {"sr": sr, "cp": cp,
-               "nav": [(cp + "c/", "国家数据"), (cp + "rank/", "维度榜单"), (cp + "compare/", "对比")],
-               "lang_href": f"{cp}ja/c/{slug}/", "lang_hl": "ja", "lang_label": "日本語"}
+        nav = [(cp + "c/", "国家数据"), (cp + "rank/", "维度榜单"), (cp + "compare/", "对比")]
         home_main = sr
         crumb_c = cp + "c/"
     else:
         sr, cp = "../../../../", "../../../"
-        canon = f"{SITE}/country/ja/c/{slug}/"
-        alt_zh, alt_ja = f"{SITE}/country/c/{slug}/", canon
-        ctx = {"sr": sr, "cp": cp,
-               "nav": [(cp + "c/", T("nav_c", "")), (cp + "rank/", T("nav_rank", "")), (cp + "compare/", T("nav_compare", ""))],
-               "lang_href": f"{cp}c/{slug}/", "lang_hl": "zh-CN", "lang_label": T("lang_link_label", "")}
-        home_main = sr + "ja/"
+        nav = [(cp + "c/", T("nav_c", "")), (cp + "rank/", T("nav_rank", "")), (cp + "compare/", T("nav_compare", ""))]
+        home_main = sr + LANG + "/"
         crumb_c = "../../"
+    canon = lang_country_url(LANG, iso)
+    alts = hreflang_map(iso)
+    ctx = {"sr": sr, "cp": cp, "nav": nav, "langs": other_lang_links(cp, iso)}
 
     tot = total_score(iso)
     best_d, best_s, best_fact, worst_d, worst_s, worst_fact = strength_text(iso)
@@ -554,8 +593,8 @@ def country_page(iso):
         "description": ds_desc,
         "url": canon,
         "isAccessibleForFree": True,
-        "creator": {"@type": "Organization", "name": "MBTI · 人生地理" if LANG == "zh" else "MBTI・人生地理"},
-        "publisher": {"@type": "Organization", "name": "MBTI · 人生地理" if LANG == "zh" else "MBTI・人生地理"},
+        "creator": {"@type": "Organization", "name": "MBTI · 人生地理" if LANG == "zh" else ("MBTI · Life Geography" if LANG == "en" else "MBTI・人生地理")},
+        "publisher": {"@type": "Organization", "name": "MBTI · 人生地理" if LANG == "zh" else ("MBTI · Life Geography" if LANG == "en" else "MBTI・人生地理")},
         "inLanguage": "zh-CN" if LANG == "zh" else I18N["html_lang"],
         "license": "https://creativecommons.org/licenses/by/4.0/",
         "isBasedOn": "https://data.worldbank.org/",
@@ -689,7 +728,7 @@ def country_page(iso):
   <p class="weight-note">{EDF(iso, "hook")}</p>
 </section>
 
-{ad_unit(T("ad1", "广告 · 下方继续看城市租金与签证门槛"))}
+{ad_unit(T("ad1", "广告 · 下方继续看城市租金与签证门槛"), T("ad_aria", "广告"))}
 
 <section class="wrap section">
   <h2>{h2_city}</h2>
@@ -719,7 +758,7 @@ def country_page(iso):
   <p class="weight-note">{peer_note}</p>
 </section>
 
-{pair_html}{ad_unit(T("ad2", "广告 · 下方为常见问题"))}
+{pair_html}{ad_unit(T("ad2", "广告 · 下方为常见问题"), T("ad_aria", "广告"))}
 <section class="wrap section">
   <h2>{h2_faq}</h2>
   <div class="faq-grid">
@@ -727,34 +766,26 @@ def country_page(iso):
   </div>
 </section>
 """
-    return head(title, desc, canon, alt_zh, alt_ja, ctx, ld) + body + foot()
+    return head(title, desc, canon, alts, ctx, ld) + body + foot()
 
 
 def index_page():
     slug_dir = "" if LANG == "zh" else "c/"
     if LANG == "zh":
         sr, cp = "../../", "../"
-        canon = f"{SITE}/country/c/"
-        alt_zh, alt_ja = canon, f"{SITE}/country/ja/"
-        ctx = {"sr": sr, "cp": cp,
-               "nav": [(cp + "c/", "国家数据"), (cp + "rank/", "维度榜单"), (cp + "compare/", "对比")],
-               "lang_href": f"{cp}ja/", "lang_hl": "ja", "lang_label": "日本語"}
+        nav = [(cp + "c/", "国家数据"), (cp + "rank/", "维度榜单"), (cp + "compare/", "对比")]
         home_main = sr
         crumb_c = ""
         nav_c_self = cp + "c/"
     else:
         sr, cp = "../../", "../"
-        canon = f"{SITE}/country/ja/"
-        alt_zh, alt_ja = f"{SITE}/country/c/", canon
-        ctx = {"sr": sr, "cp": cp,
-               "nav": ("./", T("nav_c", "")), }
-        ctx["nav"] = [("./", T("nav_c", "")), (cp + "rank/", T("nav_rank", "")), (cp + "compare/", T("nav_compare", ""))]
-        ctx["lang_href"] = "../c/"
-        ctx["lang_hl"] = "zh-CN"
-        ctx["lang_label"] = T("lang_link_label", "")
-        home_main = sr + "ja/"
+        nav = [("./", T("nav_c", "")), (cp + "rank/", T("nav_rank", "")), (cp + "compare/", T("nav_compare", ""))]
+        home_main = sr + LANG + "/"
         crumb_c = ""
         nav_c_self = "./"
+    canon = lang_index_url(LANG)
+    alts = hreflang_map()
+    ctx = {"sr": sr, "cp": cp, "nav": nav, "langs": other_lang_links(cp)}
 
     n_iso = len(TOTAL)
     if LANG == "zh":
@@ -793,7 +824,7 @@ def index_page():
              f'<th data-sort="num" style="text-align:right">{lab_total}</th>'
              + "".join(f'<th data-sort="num" style="text-align:right">{DNAME(d)}</th>' for d in DIMS)
              + "</tr>")
-    sort_locale = "zh" if LANG == "zh" else "ja"
+    sort_locale = "zh-CN" if LANG == "zh" else LANG
     body = f"""{crumbs([(T("crumbs_home", "首页"), home_main), (T("crumbs_c", "国家数据"), "")])}
 <section class="page-hero">
   <div class="wrap">
@@ -836,7 +867,7 @@ def index_page():
 }})();
 </script>
 """
-    return head(title, desc, canon, alt_zh, alt_ja, ctx) + body + foot()
+    return head(title, desc, canon, alts, ctx) + body + foot()
 
 
 def build(lang):
