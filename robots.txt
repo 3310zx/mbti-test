@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://3310zx.github.io/mbti-test/sitemap-index.xml
 Sitemap: https://3310zx.github.io/mbti-test/sitemap.xml
 Sitemap: https://3310zx.github.io/mbti-test/sitemap-images.xml
 

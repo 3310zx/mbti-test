@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://3310zx.github.io/mbti-test/sitemaps/sitemap-core.xml</loc>
+    <lastmod>2026-11-24</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://3310zx.github.io/mbti-test/sitemaps/sitemap-zh.xml</loc>
+    <lastmod>2026-11-27</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://3310zx.github.io/mbti-test/sitemaps/sitemap-ja.xml</loc>
+    <lastmod>2026-11-27</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://3310zx.github.io/mbti-test/sitemaps/sitemap-en.xml</loc>
+    <lastmod>2026-11-27</lastmod>
+  </sitemap>
+  <sitemap>
+    <loc>https://3310zx.github.io/mbti-test/sitemaps/sitemap-multi.xml</loc>
+    <lastmod>2026-11-14</lastmod>
+  </sitemap>
+</sitemapindex>
